@@ -1,13 +1,18 @@
+import { useDemo } from '@echoaway/app'
 import { AudioMetricCard } from '@echoaway/ui'
 import { DebugControls } from './DebugControls.js'
 
 export function SidePanel() {
+  const { audioMetric } = useDemo()
   return (
     <aside className="demo-side">
       <Brand />
       <Lede />
       <Tracks />
-      <AudioMetricCard metric={null} />
+      <AudioMetricCard
+        metric={audioMetric}
+        placeholder="Pending — populated when a voice session ends. ai-coustics enhances speech in real time during the call; metric numbers land here on disconnect."
+      />
       <DebugControls />
     </aside>
   )

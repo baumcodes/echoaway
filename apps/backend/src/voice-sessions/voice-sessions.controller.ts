@@ -5,6 +5,7 @@ import {
   NotFoundException,
   Param,
   Post,
+  Put,
 } from '@nestjs/common'
 import { ZodValidationPipe } from '../zod.pipe.js'
 import {
@@ -29,5 +30,10 @@ export class VoiceSessionsController {
     const session = await this.sessions.getById(id)
     if (!session) throw new NotFoundException(`VoiceSession ${id} not found`)
     return session
+  }
+
+  @Put(':id/audio-metric')
+  setAudioMetric(@Param('id') id: string, @Body() body: unknown) {
+    return this.sessions.setAudioMetric(id, body)
   }
 }

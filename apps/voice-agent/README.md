@@ -94,6 +94,51 @@ persona, the open-ended scope ("compose whatever tools fit the
 request"), the conversational arc, and the hard rules (always quote
 before confirm; always ask for explicit confirmation).
 
+## ai-coustics speech enhancement (Phase 6)
+
+The worker plugs `@livekit/plugins-ai-coustics` into the AgentSession's
+input audio pipeline. Quail Voice Focus 2.0 model at
+`enhancementLevel = 0.8` (the plugin's recommended balance for ASR
+word-error-rate on challenging audio — see
+[`docs/ai-coustics/livekit-quickstart.md`](../../docs/ai-coustics/livekit-quickstart.md)).
+
+```ts
+const noiseCancellation = aiCoustics.audioEnhancement({
+  model: 'quailVfL',
+  modelParameters: { enhancementLevel: 0.8 },
+  vadSettings: { speechHoldDuration: 0.03, sensitivity: 6.0, minimumSpeechDuration: 0 },
+})
+const aicVad = aiCoustics.vad()
+new voice.AgentSession({ llm: realtime, vad: aicVad })
+  .start({ agent, room, inputOptions: { noiseCancellation } })
+```
+
+**Auth model:** the plugin's `Credentials` are derived from the
+existing LiveKit Cloud token. **No `AICOUSTICS_API_KEY` required** —
+the env var stays blank in `.env.example`.
+
+The web demo can publish a noisy mic by toggling "Airport noise" in
+the debug panel. That mixes `apps/web/public/airport-noise.mp3` into
+the user's microphone via Web Audio API; the room audio reaches the
+agent worker noisy and ai-coustics cleans it up before Gemini Live
+hears it.
+
+## Audio intelligence metric (Phase 6)
+
+On session shutdown the worker computes a
+[`AudioIntelligenceMetric`](../../docs/component-data-shapes.md#5-voicesessionaudiometric)
+snapshot and `PUT`s it to the backend at
+`/voice-sessions/:id/audio-metric`. The web UI refetches the session
+once the room closes and renders the values in the side panel's
+Audio Intelligence card.
+
+Implementation: [`src/agent/audio-metric.ts`](./src/agent/audio-metric.ts).
+SNR numbers are heuristic anchors (clean ~0.85, noisy ~0.4, +0.4 lift
+when enhancement is active); booleans (`taskCompleted`,
+`correctActionSuggested`, etc.) are derived from the persisted
+`VoiceActionEvent` log for the session. `finalScore` uses the §8
+weighting from `PLAN.md`.
+
 ## Tests
 
 ```bash
@@ -106,8 +151,10 @@ covered there (`yarn test:app`).
 
 ## Limits
 
-- **No audio yet.** Phase 6 adds ai-coustics, Phase 7 adds Gradium.
-- **No LiveKit room joining yet.** The backend already mints LiveKit
-  tokens (`POST /voice/token`) and the web app can join — the agent
-  side joins when audio lands.
+- **Phase 7 swaps the audio backbone.** Today's Gemini Live
+  (`RealtimeModel`) handles audio in + LLM + audio out as one
+  websocket. Phase 7 splits this into `{ llm, stt: GradiumSTT,
+  tts: GradiumTTS }` so Gradium can plug in. ai-coustics enhancement
+  carries over unchanged — it's an input-pipeline `FrameProcessor`,
+  not coupled to the LLM choice.
 - **`searchTravelContext` is a stub.** Phase 8 will wire Tavily.

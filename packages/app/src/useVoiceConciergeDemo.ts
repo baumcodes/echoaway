@@ -31,6 +31,14 @@ export type DemoState = {
   /** Audio element ref the consumer must attach to a `<audio>` so the
    *  agent's voice actually plays. */
   voiceAudioRef: React.RefObject<HTMLAudioElement>
+  /** `VoiceSession.audioMetric` from the most recent session (refetched
+   *  when the room closes). Drives the audio-clarity card in the side
+   *  panel. Null until the agent worker has computed + persisted it. */
+  audioMetric: import('@echoaway/types').AudioIntelligenceMetric | null
+  /** When true, `startNewSession` defaults to mixing airport noise into
+   *  the published mic track so ai-coustics has something to clean up.
+   *  Phase 6 demo mode. */
+  noisyMode: boolean
 }
 
 export type DemoActions = {
@@ -53,10 +61,19 @@ export type DemoActions = {
    *  (`newCheckInDate must be at least 1 day before checkOutDate`). */
   resetDemoTrip: () => Promise<void>
   /** Open a fresh VoiceSession + LK room and connect the web mic. The
-   *  agent worker auto-dispatches into the same room and brings audio. */
-  startNewSession: () => Promise<void>
+   *  agent worker auto-dispatches into the same room and brings audio.
+   *  When `noisy` is true the published mic track is mixed with the
+   *  airport-noise audio file so the ai-coustics plugin's enhancement
+   *  is observable end-to-end (Phase 6 demo). Defaults to the
+   *  controller's `noisyMode` flag. */
+  startNewSession: (opts?: { noisy?: boolean }) => Promise<void>
   /** End the current LK room session. */
   endSession: () => Promise<void>
+  /** Phase 6 toggle. The flag takes effect on the *next* session —
+   *  flipping it during a connected session does nothing until the
+   *  user reconnects (renegotiating the local audio track on the fly
+   *  is doable but adds complexity for marginal demo value). */
+  setNoisyMode: (next: boolean) => void
 }
 
 export type UseVoiceConciergeDemoOptions = {
@@ -321,30 +338,80 @@ export function useVoiceConciergeDemo(
     name: 'Web Traveler',
   })
 
-  const startNewSession = useCallback(async () => {
-    if (!trip) return
-    try {
-      // Open a fresh VoiceSession server-side so the agent worker has
-      // a tripId/sessionId pair to thread through every tool call.
-      const session = await apiClient.createVoiceSession({ tripId: trip.id })
-      setSessionId(session.id)
-      dispatchAssistant({ type: 'reset' })
-      await voiceRoom.connect({
-        tripId: trip.id,
-        sessionId: session.id,
-        roomName: session.roomName,
-      })
-    } catch (err) {
-      dispatchAssistant({
-        type: 'error',
-        message: err instanceof Error ? err.message : 'Could not start session',
-      })
-    }
-  }, [apiClient, trip, voiceRoom])
+  const [noisyMode, setNoisyMode] = useState(false)
+  const noisyModeRef = useRef(noisyMode)
+  noisyModeRef.current = noisyMode
+
+  const startNewSession = useCallback(
+    async (callOpts?: { noisy?: boolean }) => {
+      if (!trip) return
+      const noisy = callOpts?.noisy ?? noisyModeRef.current
+      try {
+        // Open a fresh VoiceSession server-side so the agent worker has
+        // a tripId/sessionId pair to thread through every tool call.
+        const session = await apiClient.createVoiceSession({ tripId: trip.id })
+        setSessionId(session.id)
+        dispatchAssistant({ type: 'reset' })
+        await voiceRoom.connect({
+          tripId: trip.id,
+          sessionId: session.id,
+          roomName: session.roomName,
+          noisy,
+        })
+      } catch (err) {
+        dispatchAssistant({
+          type: 'error',
+          message: err instanceof Error ? err.message : 'Could not start session',
+        })
+      }
+    },
+    [apiClient, trip, voiceRoom],
+  )
 
   const endSession = useCallback(async () => {
     await voiceRoom.disconnect()
   }, [voiceRoom])
+
+  // Refetch the VoiceSession after the room closes so we can render
+  // its `audioMetric` (computed + persisted by the agent worker on
+  // shutdown). Polls a few times because the worker's PUT lands a
+  // moment after the disconnect — racing the UI repaint.
+  const [audioMetric, setAudioMetric] =
+    useState<import('@echoaway/types').AudioIntelligenceMetric | null>(null)
+  const prevRoomKindRef = useRef<string>('idle')
+  useEffect(() => {
+    const prev = prevRoomKindRef.current
+    const next = voiceRoom.state.kind
+    prevRoomKindRef.current = next
+    const sid = sessionIdRef.current
+    if (prev !== 'connected' || next === 'connected' || !sid) return
+    let cancelled = false
+    void (async () => {
+      // Up to 6 retries × 500ms — the worker writes the metric after
+      // its shutdown callback fires, which can lag the user disconnect
+      // by a couple of seconds.
+      for (let attempt = 0; attempt < 6; attempt++) {
+        if (cancelled) return
+        try {
+          const session = await apiClient.getVoiceSession(sid)
+          if (cancelled) return
+          if (session.audioMetric) {
+            setAudioMetric(
+              session.audioMetric as import('@echoaway/types').AudioIntelligenceMetric,
+            )
+            return
+          }
+        } catch {
+          // session was deleted (Reset trip) — bail.
+          return
+        }
+        await new Promise((r) => setTimeout(r, 500))
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [apiClient, voiceRoom.state.kind])
 
   return {
     trip,
@@ -354,6 +421,9 @@ export function useVoiceConciergeDemo(
     sessionId,
     voiceRoom: voiceRoom.state,
     voiceAudioRef: voiceRoom.audioRef,
+    audioMetric,
+    noisyMode,
+    setNoisyMode,
     refreshTrip,
     dispatchAssistant,
     triggerQuote,

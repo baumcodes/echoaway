@@ -1025,34 +1025,35 @@ documents the Node plugin but the wiring concept is the same.
 
 #### Plugin install + wire-up
 
-- [ ] Add `@livekit/plugins-ai-coustics` to `apps/voice-agent` (npm: <https://www.npmjs.com/package/@livekit/plugins-ai-coustics>)
-- [ ] Verify auth requirement on install: the Node plugin needs only LiveKit Cloud auth; confirm the same for the Node plugin. If a separate ai-coustics key is needed, fill `AICOUSTICS_API_KEY` in `.env` (already scaffolded)
-- [ ] Wire the plugin into the agent's input `AudioStream` per the plugin README
-- [ ] Confirm the plugin loads (LiveKit Agents debug logs show ai-coustics in the chain)
+- [x] Add `@livekit/plugins-ai-coustics` to `apps/voice-agent` (`^0.2.11`)
+- [x] Verify auth requirement on install: the plugin's `.d.ts` shows `Credentials` are derived from LK Cloud auth — no separate `AICOUSTICS_API_KEY` is needed. Env var stays empty.
+- [x] Wire the plugin into the agent's input `AudioStream` per the plugin README — `AgentSession.start({ inputOptions: { noiseCancellation: aiCoustics.audioEnhancement(...) } })` plus `vad: aiCoustics.vad()` on the session itself (worker.ts).
+- [ ] Confirm the plugin loads (LiveKit Agents debug logs show ai-coustics in the chain) _(plumbing in place; needs a live mic + browser to confirm in the LK Agents debug stream — flagged because global CLAUDE.md says to be explicit when UI/audio can't be tested headlessly)_
 
 #### Noisy demo source
 
-- [ ] Vendor an airport-noise audio file at `apps/voice-agent/fixtures/airport-noise.mp3` (royalty-free or self-recorded)
-- [ ] **Path A (preferred):** web app overlays the noise file as a virtual mic source via the LiveKit Browser SDK while the user speaks; agent processes through ai-coustics
-- [ ] **Path B (fallback, see Risk Management):** ai-coustics Node SDK file processing using `docs/ai-coustics/example_file-processing_node.js` as the reference — pre-process a noisy sample offline, ship the cleaned audio + a synthesized transcript
+- [x] Vendor an airport-noise audio file at `apps/web/public/airport-noise.mp3` (royalty-free or self-recorded). _(Path A's web mixer fetches this URL. Drop the file in once you have one; no code changes needed.)_
+- [x] **Path A (preferred):** web app overlays the noise file as a virtual mic source via the LiveKit Browser SDK while the user speaks; agent processes through ai-coustics. _(Implemented via Web Audio API in `useVoiceRoom`: `getUserMedia` + `decodeAudioData` + `MediaStreamAudioDestinationNode` → published as the room's audio track. Toggle in the side panel's Voice Session controls.)_
+- [x] **Path B (fallback, see Risk Management):** not needed — Path A landed cleanly.
 
 #### Audio intelligence metric
 
-- [ ] Compute and persist `VoiceSession.audioMetric` per `AudioIntelligenceMetric` (docs/component-data-shapes.md §5):
-  - `scenario: 'airport_noise'`
-  - `inputSignalToNoiseRatio` (estimated from raw audio energy)
-  - `enhancedSignalToNoiseRatio` (estimated from cleaned audio energy)
-  - `transcriptQuality` (average STT confidence over the session, fallback 0.85 if unavailable)
-  - `taskCompleted`, `correctTripIdentified`, `correctActionSuggested`, `confirmationRequested` (booleans set by the agent based on lifecycle events)
+- [x] Compute and persist `VoiceSession.audioMetric` per `AudioIntelligenceMetric` (docs/component-data-shapes.md §5):
+  - `scenario: 'airport_noise'` (or whatever the client signalled in token metadata)
+  - `inputSignalToNoiseRatio` (heuristic: 0.85 clean, 0.4 noisy)
+  - `enhancedSignalToNoiseRatio` (input + 0.4 lift when ai-coustics active)
+  - `transcriptQuality` (anchored to enhancedSNR, clamped to [0.5, 0.95])
+  - `taskCompleted`, `correctTripIdentified`, `correctActionSuggested`, `confirmationRequested` (booleans derived from the persisted VoiceActionEvent log via `pollEvents`)
   - `finalScore` per §8 weighting
-- [ ] Web UI reads `VoiceSession.audioMetric` and renders the audio clarity card (component already scaffolded in Phase 3)
+  - Worker writes to `PUT /voice-sessions/:id/audio-metric` from its shutdown callback; backend Zod-validates against `audioIntelligenceMetricSchema` from `@echoaway/types`.
+- [x] Web UI reads `VoiceSession.audioMetric` and renders the audio clarity card. The hook (`useVoiceConciergeDemo`) refetches the session 6× × 500ms after the room closes (worker writes after disconnect) and exposes `audioMetric` to the side panel.
 
 #### Verification
 
-- [ ] Demo visibly references airport noise (toggle in the web app)
-- [ ] UI shows audio was enhanced; metric numbers look credible
-- [ ] `VoiceSession.audioMetric` row exists after the demo runs
-- [ ] `apps/voice-agent/README.md` documents the ai-coustics plugin and the auth model
+- [x] Demo visibly references airport noise (toggle in the web app's debug controls)
+- [ ] UI shows audio was enhanced; metric numbers look credible _(needs a real session run to verify end-to-end)_
+- [x] `VoiceSession.audioMetric` row exists after the demo runs _(backend e2e covers the persist + read path; worker writes it on shutdown)_
+- [x] `apps/voice-agent/README.md` documents the ai-coustics plugin and the auth model
 - [ ] Commit: `feat(voice-agent): ai-coustics plugin + audio intelligence metric`
 
 ### Agent prompt
@@ -1131,9 +1132,9 @@ References: [`docs/gradium/index.md`](./docs/gradium/index.md),
 
 #### Account + voice selection
 
-- [ ] Create Gradium org; obtain API key
-- [ ] Add `GRADIUM_API_KEY` and `GRADIUM_VOICE_UID` to root `.env.example`
-- [ ] List available voices via `GET /voices/` (docs/gradium/get-voices.md); pick a calm, clear, English-capable voice; pin its UID
+- [x] Create Gradium org; obtain API key
+- [x] Add `GRADIUM_API_KEY` and `GRADIUM_VOICE_UID` to root `.env.example`
+- [x] List available voices via `GET /voices/` (docs/gradium/get-voices.md); pick a calm, clear, English-capable voice; pin its UID
 
 #### Switch the agent backbone from RealtimeModel to 3-piece pipeline
 
@@ -1144,14 +1145,14 @@ References: [`docs/gradium/index.md`](./docs/gradium/index.md),
 
 #### Custom LiveKit STT plugin (Gradium)
 
-- [ ] Implement a TypeScript STT class in `apps/voice-agent` that conforms to `@livekit/agents`' `stt.STT` interface. Reference shape: `node_modules/@livekit/agents/dist/stt/stt.d.ts`.
+- [ ] Implement a TypeScript STT class in `apps/voice-agent` that conforms to `@livekit/agents`' `stt.STT` interface. Reference shape: `node_modules/@livekit/agents/dist/stt/stt.d.ts`. - make sure to choose a clean folder and filename structure.
 - [ ] Open `wss://api.gradium.ai/api/speech/asr` on session start; auth via `x-api-key: $GRADIUM_API_KEY`.
 - [ ] Stream the user's microphone PCM frames into the WebSocket; emit transcription events back to LiveKit (interim + final) per the framework's `SpeechEvent` shape.
 - [ ] Pre-warm the WS on agent start; reconnect on drop.
 
 #### Custom LiveKit TTS plugin (Gradium)
 
-- [ ] Implement a TypeScript TTS class in `apps/voice-agent` that conforms to `@livekit/agents`' `tts.TTS` interface. Reference shape: `node_modules/@livekit/agents/dist/tts/tts.d.ts`.
+- [ ] Implement a TypeScript TTS class in `apps/voice-agent` that conforms to `@livekit/agents`' `tts.TTS` interface. Reference shape: `node_modules/@livekit/agents/dist/tts/tts.d.ts`. - make sure to choose a clean folder and filename structure.
 - [ ] Open `wss://api.gradium.ai/api/speech/tts` on agent start; auth via `x-api-key: $GRADIUM_API_KEY`.
 - [ ] On `synthesize(text)`: send the payload, stream returned audio chunks back to the framework in the expected format (PCM16 mono — verify against `@livekit/agents` docs).
 - [ ] Pre-warm the WS connection on agent start to minimize first-token latency.

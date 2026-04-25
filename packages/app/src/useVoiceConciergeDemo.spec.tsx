@@ -113,6 +113,19 @@ function makeFakeClient() {
     listActivities: vi.fn().mockResolvedValue([]),
     listFlightRoutes: vi.fn().mockResolvedValue([]),
     listTransfers: vi.fn().mockResolvedValue([]),
+    getVoiceSession: vi.fn().mockResolvedValue({
+      id: 'sess-1',
+      tripId: 'trip-demo-bcn',
+      travelerId: null,
+      status: 'ended',
+      startedAt: '2026-04-25T00:00:00.000Z',
+      roomName: 'echoaway-sess-1',
+      audioMetric: null,
+    }),
+    setVoiceSessionAudioMetric: vi.fn().mockResolvedValue({
+      ok: true,
+      audioMetric: null,
+    }),
   }
 }
 

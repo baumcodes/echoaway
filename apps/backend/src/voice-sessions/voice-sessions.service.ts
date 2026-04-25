@@ -1,6 +1,7 @@
+import { audioIntelligenceMetricSchema } from '@echoaway/types'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { randomUUID } from 'node:crypto'
-import { stringifyJson } from '../json.js'
+import { parseJson, stringifyJson } from '../json.js'
 import { PrismaService } from '../prisma.service.js'
 import { VoiceEventsBus } from '../events/voice-events.bus.js'
 import type { CreateVoiceSessionRequest } from './voice-sessions.dto.js'
@@ -79,6 +80,27 @@ export class VoiceSessionsService {
       status: row.status,
       startedAt: row.startedAt.toISOString(),
       roomName: `echoaway-${row.id}`,
+      audioMetric: parseJson(row.audioMetric),
     }
+  }
+
+  /**
+   * Persist a `VoiceSession.audioMetric` JSON snapshot. Validates the
+   * shape against `audioIntelligenceMetricSchema` from `@echoaway/types`
+   * so the column never holds garbage. Called by the agent worker on
+   * shutdown after computing scenario / SNR / lifecycle booleans.
+   */
+  async setAudioMetric(id: string, metric: unknown) {
+    const session = await this.prisma.voiceSession.findUnique({
+      where: { id },
+      select: { id: true },
+    })
+    if (!session) throw new NotFoundException(`VoiceSession ${id} not found`)
+    const validated = audioIntelligenceMetricSchema.parse(metric)
+    await this.prisma.voiceSession.update({
+      where: { id },
+      data: { audioMetric: stringifyJson(validated) },
+    })
+    return { ok: true, audioMetric: validated }
   }
 }

@@ -14,7 +14,7 @@ import type { ApiClient } from './client.js'
 export type VoiceRoomState =
   | { kind: 'idle' }
   | { kind: 'connecting' }
-  | { kind: 'connected'; roomName: string; sessionId: string }
+  | { kind: 'connected'; roomName: string; sessionId: string; noisy: boolean }
   | { kind: 'error'; message: string }
 
 export type UseVoiceRoomOptions = {
@@ -25,19 +25,89 @@ export type UseVoiceRoomOptions = {
   name?: string
 }
 
+export type ConnectArgs = {
+  tripId: string
+  sessionId: string
+  roomName: string
+  /** When true, the published mic track is the user's voice MIXED with
+   *  a looping ambient-noise file (`/airport-noise.mp3` from the web's
+   *  `public/`). Use this to demonstrate ai-coustics speech enhancement
+   *  on the agent side without needing the user to actually be in a
+   *  noisy environment. Defaults to false (clean mic). */
+  noisy?: boolean
+}
+
 export type UseVoiceRoomResult = {
   state: VoiceRoomState
   /** Open a new VoiceSession + LK room and connect. */
-  connect: (args: {
-    tripId: string
-    sessionId: string
-    roomName: string
-  }) => Promise<void>
+  connect: (args: ConnectArgs) => Promise<void>
   /** Disconnect from the current room. */
   disconnect: () => Promise<void>
   /** The agent's audio element — attach to the DOM (`audioRef={…}`) so
    *  remote audio actually plays. */
   audioRef: React.RefObject<HTMLAudioElement>
+}
+
+const NOISE_URL = '/airport-noise.mp3'
+const NOISE_GAIN = 0.6
+const VOICE_GAIN = 1.0
+
+type NoisyMicHandle = {
+  stream: MediaStream
+  cleanup: () => void
+}
+
+/**
+ * Build a MediaStream that is the user's microphone mixed with a
+ * looping background-noise file. Used by the ai-coustics demo so the
+ * agent receives a noisy input which the ai-coustics plugin then
+ * cleans up server-side.
+ *
+ * Pure browser code — not testable in node, not pulled into mobile.
+ * Returns a teardown that stops the user's mic tracks + the audio
+ * context so the browser releases the mic indicator.
+ */
+async function buildNoisyMicStream(noiseUrl: string): Promise<NoisyMicHandle> {
+  const userStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+  const audioCtx = new (window.AudioContext ||
+    (window as unknown as { webkitAudioContext: typeof AudioContext })
+      .webkitAudioContext)()
+
+  const userSource = audioCtx.createMediaStreamSource(userStream)
+  const userGain = audioCtx.createGain()
+  userGain.gain.value = VOICE_GAIN
+
+  const resp = await fetch(noiseUrl)
+  if (!resp.ok) {
+    throw new Error(
+      `Could not fetch ${noiseUrl} (HTTP ${resp.status}). Drop a real airport-noise file at apps/web/public/airport-noise.mp3.`,
+    )
+  }
+  const buf = await resp.arrayBuffer()
+  const decoded = await audioCtx.decodeAudioData(buf)
+  const noiseSource = audioCtx.createBufferSource()
+  noiseSource.buffer = decoded
+  noiseSource.loop = true
+  const noiseGain = audioCtx.createGain()
+  noiseGain.gain.value = NOISE_GAIN
+
+  const dest = audioCtx.createMediaStreamDestination()
+  userSource.connect(userGain).connect(dest)
+  noiseSource.connect(noiseGain).connect(dest)
+  noiseSource.start(0)
+
+  return {
+    stream: dest.stream,
+    cleanup: () => {
+      try {
+        noiseSource.stop()
+      } catch {
+        /* already stopped */
+      }
+      userStream.getTracks().forEach((t) => t.stop())
+      void audioCtx.close()
+    },
+  }
 }
 
 /**
@@ -55,6 +125,7 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
   const [state, setState] = useState<VoiceRoomState>({ kind: 'idle' })
   const roomRef = useRef<Room | null>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const noisyHandleRef = useRef<NoisyMicHandle | null>(null)
 
   const detachAll = useCallback(() => {
     const room = roomRef.current
@@ -75,11 +146,15 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
     detachAll()
     await room.disconnect()
     roomRef.current = null
+    if (noisyHandleRef.current) {
+      noisyHandleRef.current.cleanup()
+      noisyHandleRef.current = null
+    }
     setState({ kind: 'idle' })
   }, [detachAll])
 
   const connect = useCallback(
-    async (args: { tripId: string; sessionId: string; roomName: string }) => {
+    async (args: ConnectArgs) => {
       // Tear down any prior connection first.
       if (roomRef.current) await disconnect()
 
@@ -113,6 +188,10 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
         )
         room.on(RoomEvent.Disconnected, () => {
           roomRef.current = null
+          if (noisyHandleRef.current) {
+            noisyHandleRef.current.cleanup()
+            noisyHandleRef.current = null
+          }
           setState({ kind: 'idle' })
         })
         room.on(RoomEvent.ConnectionStateChanged, (cs: ConnectionState) => {
@@ -121,15 +200,46 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
               kind: 'connected',
               roomName: args.roomName,
               sessionId: args.sessionId,
+              noisy: !!args.noisy,
             })
           }
         })
 
         await room.connect(url, token)
-        // Publish the user's mic so the agent can hear them.
-        await room.localParticipant.setMicrophoneEnabled(true)
+
+        if (args.noisy) {
+          // Path A from PLAN.md Phase 6: mix the noise file in-browser
+          // and publish the combined stream as the room's mic. The
+          // agent worker's ai-coustics plugin then cleans the audio
+          // up before the LLM hears it.
+          try {
+            const handle = await buildNoisyMicStream(NOISE_URL)
+            noisyHandleRef.current = handle
+            const audioTrack = handle.stream.getAudioTracks()[0]
+            if (!audioTrack) {
+              throw new Error('mixed stream has no audio track')
+            }
+            await room.localParticipant.publishTrack(audioTrack, {
+              source: Track.Source.Microphone,
+              name: 'mic-noisy',
+            })
+          } catch (err) {
+            // Fall back to a clean mic so the demo still runs.
+            console.warn(
+              '[useVoiceRoom] noisy mic build failed, falling back to clean mic:',
+              err,
+            )
+            await room.localParticipant.setMicrophoneEnabled(true)
+          }
+        } else {
+          await room.localParticipant.setMicrophoneEnabled(true)
+        }
       } catch (err) {
         roomRef.current = null
+        if (noisyHandleRef.current) {
+          noisyHandleRef.current.cleanup()
+          noisyHandleRef.current = null
+        }
         setState({
           kind: 'error',
           message: err instanceof Error ? err.message : 'Could not connect',
@@ -144,6 +254,10 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
     return () => {
       void roomRef.current?.disconnect()
       roomRef.current = null
+      if (noisyHandleRef.current) {
+        noisyHandleRef.current.cleanup()
+        noisyHandleRef.current = null
+      }
     }
   }, [])
 

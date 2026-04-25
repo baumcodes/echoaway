@@ -149,6 +149,29 @@ export function createApiClient(opts: ApiClientOptions) {
         body: JSON.stringify(req),
       }),
 
+    getVoiceSession: (id: string) =>
+      request<{
+        id: string
+        tripId: string
+        travelerId: string | null
+        status: string
+        startedAt: string
+        roomName: string
+        /** Populated by the agent worker on shutdown. Null until the
+         *  session ends. Shape matches `AudioIntelligenceMetric` from
+         *  `@echoaway/types`. */
+        audioMetric: unknown | null
+      }>(`/voice-sessions/${encodeURIComponent(id)}`),
+
+    /** Persist the AI-listening metric snapshot at session end. The
+     *  agent worker calls this from its shutdown callback so the web
+     *  UI can refetch + render the audio-clarity card. */
+    setVoiceSessionAudioMetric: (id: string, metric: unknown) =>
+      request<{ ok: boolean; audioMetric: unknown }>(
+        `/voice-sessions/${encodeURIComponent(id)}/audio-metric`,
+        { method: 'PUT', body: JSON.stringify(metric) },
+      ),
+
     pollEvents: (params: { since?: string; tripId?: string } = {}) => {
       const search = new URLSearchParams()
       if (params.since) search.set('since', params.since)
