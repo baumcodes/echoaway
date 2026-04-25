@@ -1,13 +1,25 @@
 import { useDemo } from '@echoaway/app'
+import { useState } from 'react'
 
-/** Off-stage controls for driving the demo manually until Phase 4 wires
- *  SSE → assistant state. Kept on the side panel, not inside the phone. */
+/** Off-stage controls for driving the demo manually. SSE is wired now,
+ *  so the buttons coexist with live event-driven updates. The "Reset
+ *  trip" button is the recovery path when consecutive confirms have
+ *  consumed the bookable slack between check-in and check-out. */
 export function DebugControls() {
   const demo = useDemo()
+  const [resetting, setResetting] = useState(false)
   const isSuggesting = demo.assistant.kind === 'suggesting'
+  const onResetTrip = async () => {
+    setResetting(true)
+    try {
+      await demo.resetDemoTrip()
+    } finally {
+      setResetting(false)
+    }
+  }
   return (
     <div className="debug-panel">
-      <div className="debug-panel-title">Demo controls (Phase 4 wires SSE)</div>
+      <div className="debug-panel-title">Demo controls</div>
       <div className="debug-buttons">
         <button onClick={() => void demo.startDemoFlow()}>
           1 · Talk to Away
@@ -21,7 +33,10 @@ export function DebugControls() {
         <button onClick={demo.rejectSuggestion} disabled={!isSuggesting}>
           Reject
         </button>
-        <button onClick={demo.reset}>Reset</button>
+        <button onClick={demo.reset}>Reset assistant</button>
+        <button onClick={() => void onResetTrip()} disabled={resetting}>
+          {resetting ? 'Resetting…' : 'Reset trip'}
+        </button>
       </div>
     </div>
   )

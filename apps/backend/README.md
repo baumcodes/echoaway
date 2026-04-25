@@ -125,13 +125,43 @@ curl 'http://localhost:4000/catalog/transfers?fromAirportId=air-bcn' | jq
 
 ## VoiceSession + voice events
 
-Phase 2D writes `VoiceActionEvent` rows when `sessionId` is included on
-quote/confirm/support-log requests. The `VoiceSession` row that owns
-those events has to exist (FK is required) — Phase 5 (the voice agent)
-creates sessions; for now leave `sessionId` off when curl-testing.
+Persisted on `VoiceActionEvent` rows, broadcast via an in-memory
+`VoiceEventsBus` (`src/events/voice-events.bus.ts`) that producers
+publish to after the row is written.
 
-The `/events/stream` SSE endpoint that broadcasts these events to the
-web UI lands in Phase 4.
+### `POST /voice-sessions`
+
+Opens a session for a trip. Required for any quote/confirm/support-log
+call that wants to persist a `VoiceActionEvent` (the FK is non-null).
+Auto-emits `session_started` over the bus.
+
+```bash
+curl -X POST http://localhost:4000/voice-sessions \
+  -H 'Content-Type: application/json' \
+  -d '{"tripId":"trip-demo-bcn"}'
+```
+
+### `GET /events/stream` — Server-Sent Events
+
+Native `EventSource` works. Each push is a JSON envelope `{ id, type,
+sessionId, tripId, componentId, payload, createdAt }`.
+
+```bash
+curl -N -H 'Accept: text/event-stream' http://localhost:4000/events/stream
+# data: {"id":"…","type":"change_suggested",…}
+```
+
+### `GET /events?since=ISO&tripId=ID` — polling fallback
+
+For environments without SSE (corporate proxies, RN cold start, tests).
+Returns events created strictly after `since`, capped at 200 rows.
+
+```bash
+curl 'http://localhost:4000/events?tripId=trip-demo-bcn&since=2026-04-25T12:00:00Z' | jq
+```
+
+Web clients use SSE by default; the polling endpoint is the same shape
+so a fallback timer can drop in transparently.
 
 ## Tests
 

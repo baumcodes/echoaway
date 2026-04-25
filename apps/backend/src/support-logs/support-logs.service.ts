@@ -1,12 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { randomUUID } from 'node:crypto'
+import { VoiceEventsBus } from '../events/voice-events.bus.js'
 import { stringifyJson } from '../json.js'
 import { PrismaService } from '../prisma.service.js'
 import type { CreateSupportLogRequest } from './support-logs.dto.js'
 
 @Injectable()
 export class SupportLogsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly bus: VoiceEventsBus,
+  ) {}
 
   async create(req: CreateSupportLogRequest) {
     const trip = await this.prisma.trip.findUnique({
@@ -27,25 +31,36 @@ export class SupportLogsService {
     })
 
     if (req.sessionId) {
-      await this.prisma.voiceActionEvent
-        .create({
+      const eventId = randomUUID()
+      const payload = {
+        type: 'support_log_created' as const,
+        sessionId: req.sessionId,
+        supportLogId: log.id,
+      }
+      try {
+        const row = await this.prisma.voiceActionEvent.create({
           data: {
-            id: randomUUID(),
+            id: eventId,
             sessionId: req.sessionId,
             tripId: req.tripId,
             type: 'support_log_created',
-            payload: stringifyJson({
-              type: 'support_log_created',
-              sessionId: req.sessionId,
-              supportLogId: log.id,
-            }),
+            payload: stringifyJson(payload),
           },
         })
-        .catch((err) => {
-          // Same fail-open posture as TripsService.persistVoiceEvent.
-          // eslint-disable-next-line no-console
-          console.warn(`[support-logs] could not persist event:`, err)
+        this.bus.publish({
+          id: row.id,
+          type: row.type,
+          sessionId: row.sessionId,
+          tripId: row.tripId,
+          componentId: row.componentId,
+          payload,
+          createdAt: row.createdAt.toISOString(),
         })
+      } catch (err) {
+        // Same fail-open posture as TripsService.persistVoiceEvent.
+        // eslint-disable-next-line no-console
+        console.warn(`[support-logs] could not persist event:`, err)
+      }
     }
 
     return {

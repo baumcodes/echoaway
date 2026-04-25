@@ -68,6 +68,46 @@ describe('assistantReducer', () => {
     expect(next.kind).toBe('confirmed')
   })
 
+  it('change_suggested is a no-op when already confirmed (late SSE)', () => {
+    const confirmed: AssistantState = { kind: 'confirmed', quote: sampleQuote }
+    expect(
+      assistantReducer(confirmed, {
+        type: 'change_suggested',
+        quote: sampleQuote,
+      }),
+    ).toBe(confirmed)
+  })
+
+  it('change_suggested is a no-op when already suggesting the same quote', () => {
+    const suggesting: AssistantState = {
+      kind: 'suggesting',
+      quote: sampleQuote,
+    }
+    expect(
+      assistantReducer(suggesting, {
+        type: 'change_suggested',
+        quote: sampleQuote,
+      }),
+    ).toBe(suggesting)
+  })
+
+  it('change_confirmed is a no-op when already confirmed for the same change', () => {
+    const confirmed: AssistantState = { kind: 'confirmed', quote: sampleQuote }
+    expect(
+      assistantReducer(confirmed, {
+        type: 'change_confirmed',
+        quote: sampleQuote,
+      }),
+    ).toBe(confirmed)
+  })
+
+  it('change_rejected does not roll a confirmed state backwards', () => {
+    const confirmed: AssistantState = { kind: 'confirmed', quote: sampleQuote }
+    expect(
+      assistantReducer(confirmed, { type: 'change_rejected' }),
+    ).toBe(confirmed)
+  })
+
   it('change_rejected transitions to rejected with reason', () => {
     const next = assistantReducer(
       { kind: 'suggesting', quote: sampleQuote },

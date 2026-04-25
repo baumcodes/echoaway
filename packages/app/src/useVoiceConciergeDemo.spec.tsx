@@ -47,6 +47,16 @@ function makeFakeClient() {
     }),
     createSupportLog: vi.fn(),
     mintVoiceToken: vi.fn(),
+    createVoiceSession: vi.fn().mockResolvedValue({
+      id: 'sess-1',
+      tripId: 'trip-demo-bcn',
+      travelerId: null,
+      status: 'active',
+      startedAt: '2026-04-25T00:00:00.000Z',
+    }),
+    pollEvents: vi.fn().mockResolvedValue([]),
+    eventStreamUrl: vi.fn().mockReturnValue('http://test.local/events/stream'),
+    resetDemoTrip: vi.fn().mockResolvedValue({ ok: true }),
   }
 }
 
@@ -71,10 +81,12 @@ describe('useVoiceConciergeDemo', () => {
     if (result.current.assistant.kind === 'suggesting') {
       expect(result.current.assistant.quote.newValue).toBe('2026-05-03')
     }
-    expect(apiClient.quoteHotelCheckInChange).toHaveBeenCalledWith(
-      'trip-demo-bcn',
-      '2026-05-03',
-    )
+    // The third arg is the sessionId — it may or may not have been
+    // populated by the time triggerQuote ran (the create-session effect
+    // races with this test). Assert positional args 0 and 1 only.
+    const call = apiClient.quoteHotelCheckInChange.mock.calls[0]
+    expect(call?.[0]).toBe('trip-demo-bcn')
+    expect(call?.[1]).toBe('2026-05-03')
     // refetch happens after quote
     expect(apiClient.getTripByPhone).toHaveBeenCalledTimes(2)
   })
@@ -113,5 +125,20 @@ describe('useVoiceConciergeDemo', () => {
     })
     act(() => result.current.reset())
     expect(result.current.assistant.kind).toBe('idle')
+  })
+
+  it('resetDemoTrip calls the backend, returns to idle, and refetches', async () => {
+    const apiClient = makeFakeClient()
+    const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
+    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    const initialFetchCount = apiClient.getTripByPhone.mock.calls.length
+    await act(async () => {
+      await result.current.resetDemoTrip()
+    })
+    expect(apiClient.resetDemoTrip).toHaveBeenCalledTimes(1)
+    expect(result.current.assistant.kind).toBe('idle')
+    expect(apiClient.getTripByPhone.mock.calls.length).toBeGreaterThan(
+      initialFetchCount,
+    )
   })
 })

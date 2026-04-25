@@ -845,14 +845,14 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Decide: WebSocket or Server-Sent Events
-- [ ] Implement backend event stream that broadcasts new VoiceActionEvent rows
-- [ ] Web app subscribes to event stream via `/packages/app`
-- [ ] UI changes state based on events
-- [ ] Trigger quote endpoint from a debug button → see UI update live
-- [ ] Trigger confirm endpoint from a debug button → see confirmed screen
-- [ ] Add fallback polling on /events with `since` query param
-- [ ] Commit: `feat: sync assistant events to web UI`
+- [x] Decide: WebSocket or Server-Sent Events _(SSE — one-way push, native EventSource, NestJS `@Sse()`)_
+- [x] Implement backend event stream that broadcasts new VoiceActionEvent rows
+- [x] Web app subscribes to event stream via `/packages/app`
+- [x] UI changes state based on events
+- [x] Trigger quote endpoint from a debug button → see UI update live
+- [x] Trigger confirm endpoint from a debug button → see confirmed screen
+- [x] Add fallback polling on /events with `since` query param
+- [x] Commit: `feat: sync assistant events to web UI`
 
 ### Agent prompt
 

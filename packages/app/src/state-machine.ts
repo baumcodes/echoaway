@@ -50,10 +50,30 @@ export function assistantReducer(
     case 'thinking':
       return { kind: 'thinking', intent: event.intent }
     case 'change_suggested':
+      // Once the change has been confirmed or rejected, a late-arriving
+      // `change_suggested` (e.g. an SSE delivery for an event we already
+      // applied via the action's optimistic dispatch) must not roll us
+      // backwards. Same quote is a no-op when already suggesting.
+      if (state.kind === 'confirmed' || state.kind === 'rejected') return state
+      if (
+        state.kind === 'suggesting' &&
+        state.quote.componentId === event.quote.componentId &&
+        state.quote.newValue === event.quote.newValue
+      ) {
+        return state
+      }
       return { kind: 'suggesting', quote: event.quote }
     case 'change_confirmed':
+      if (
+        state.kind === 'confirmed' &&
+        state.quote.componentId === event.quote.componentId &&
+        state.quote.newValue === event.quote.newValue
+      ) {
+        return state
+      }
       return { kind: 'confirmed', quote: event.quote }
     case 'change_rejected':
+      if (state.kind === 'confirmed') return state
       return { kind: 'rejected', reason: event.reason }
     case 'error':
       return { kind: 'error', message: event.message }

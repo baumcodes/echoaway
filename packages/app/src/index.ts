@@ -1,5 +1,6 @@
 export * from './client.js'
 export * from './DemoProvider.js'
+export * from './eventStream.js'
 export * from './selectors.js'
 export * from './state-machine.js'
 export * from './types.js'

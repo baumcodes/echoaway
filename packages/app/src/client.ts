@@ -123,7 +123,56 @@ export function createApiClient(opts: ApiClientOptions) {
         `/voice/token`,
         { method: 'POST', body: JSON.stringify(req) },
       ),
+
+    createVoiceSession: (req: {
+      tripId: string
+      travelerId?: string
+      status?: 'active' | 'ended' | 'failed'
+    }) =>
+      request<{
+        id: string
+        tripId: string
+        travelerId: string | null
+        status: string
+        startedAt: string
+      }>(`/voice-sessions`, {
+        method: 'POST',
+        body: JSON.stringify(req),
+      }),
+
+    pollEvents: (params: { since?: string; tripId?: string } = {}) => {
+      const search = new URLSearchParams()
+      if (params.since) search.set('since', params.since)
+      if (params.tripId) search.set('tripId', params.tripId)
+      const qs = search.toString()
+      return request<VoiceEventEnvelope[]>(
+        `/events${qs ? `?${qs}` : ''}`,
+      )
+    },
+
+    /** Streaming URL — passed to `EventSource` in the browser, or to
+     *  the polling fallback when SSE is unavailable. */
+    eventStreamUrl: () => `${base}/events/stream`,
+
+    /** Re-runs the demo-trip seed so the bookable window is fresh.
+     *  Useful for debugging when consecutive confirms have consumed
+     *  the slack between check-in and check-out. */
+    resetDemoTrip: () =>
+      request<{ ok: boolean }>(`/admin/reset-demo`, { method: 'POST' }),
   }
+}
+
+/** Shape of one row pushed by `/events/stream` and `/events`. Matches
+ *  the backend's `VoiceEventEnvelope` exactly so consumers can treat
+ *  both transports interchangeably. */
+export type VoiceEventEnvelope = {
+  id: string
+  type: string
+  sessionId: string
+  tripId: string | null
+  componentId: string | null
+  payload: unknown
+  createdAt: string
 }
 
 export type ApiClient = ReturnType<typeof createApiClient>

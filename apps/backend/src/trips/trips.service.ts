@@ -12,8 +12,9 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common'
-import { addDays, differenceInCalendarDays, format, parseISO } from 'date-fns'
+import { differenceInCalendarDays, format, parseISO } from 'date-fns'
 import { randomUUID } from 'node:crypto'
+import { VoiceEventsBus } from '../events/voice-events.bus.js'
 import { parseJson, stringifyJson } from '../json.js'
 import { PrismaService } from '../prisma.service.js'
 
@@ -21,7 +22,10 @@ const QUOTE_VALID_MINUTES = 15
 
 @Injectable()
 export class TripsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly bus: VoiceEventsBus,
+  ) {}
 
   /**
    * Inflate a Trip with components / bookings / events / disruptions and
@@ -389,15 +393,25 @@ export class TripsService {
       )
       return
     }
-    await this.prisma.voiceActionEvent.create({
+    const id = randomUUID()
+    const row = await this.prisma.voiceActionEvent.create({
       data: {
-        id: randomUUID(),
+        id,
         sessionId: args.sessionId,
         tripId: args.tripId ?? null,
         componentId: args.componentId ?? null,
         type: args.type,
         payload: stringifyJson(args.payload),
       },
+    })
+    this.bus.publish({
+      id: row.id,
+      type: row.type,
+      sessionId: row.sessionId,
+      tripId: row.tripId,
+      componentId: row.componentId,
+      payload: args.payload,
+      createdAt: row.createdAt.toISOString(),
     })
   }
 }
