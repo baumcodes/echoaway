@@ -1,5 +1,11 @@
 import type { ChangeQuote } from '@echoaway/types'
-import type { Trip, TripDisruption } from './types.js'
+import type { Trip, TripCandidate, TripDisruption } from './types.js'
+
+/** Append `?sessionId=…` only when sessionId is present, so callers
+ *  that don't have a session (curl, the deterministic demo script)
+ *  don't pollute their URLs with `?sessionId=undefined`. */
+const sessionIdQs = (sessionId?: string) =>
+  sessionId ? `?sessionId=${encodeURIComponent(sessionId)}` : ''
 
 export type ApiClientOptions = {
   baseUrl: string
@@ -62,8 +68,49 @@ export function createApiClient(opts: ApiClientOptions) {
     getTripById: (tripId: string) =>
       request<Trip>(`/trips/${encodeURIComponent(tripId)}`),
 
-    getTripByPhone: (phone: string) =>
-      request<Trip>(`/trips/by-phone/${encodeURIComponent(phone)}`),
+    getTripByPhone: (phone: string, sessionId?: string) =>
+      request<Trip>(
+        `/trips/by-phone/${encodeURIComponent(phone)}${sessionIdQs(sessionId)}`,
+      ),
+
+    getTripByEmail: (email: string, sessionId?: string) =>
+      request<Trip>(
+        `/trips/by-email/${encodeURIComponent(email)}${sessionIdQs(sessionId)}`,
+      ),
+
+    /** Trip-id lookup that tolerates dashes / spacing / casing on the
+     *  caller side — backend normalizes both ends. When sessionId is
+     *  passed, the backend also emits a `trip_loaded` SSE so the web
+     *  UI knows to fetch + render. */
+    getTripByIdLoose: (tripIdInput: string, sessionId?: string) =>
+      request<Trip>(
+        `/trips/by-id/${encodeURIComponent(tripIdInput)}${sessionIdQs(sessionId)}`,
+      ),
+
+    /** Privacy-safe fuzzy search. Returns redacted candidates only —
+     *  raw name / phone / email never leak. The agent then asks the
+     *  traveler for a verifier and calls `confirmTripCandidate`. */
+    searchTrips: (query: string) =>
+      request<TripCandidate[]>(
+        `/trips/search?q=${encodeURIComponent(query)}`,
+      ),
+
+    /** Server-side verifier check. Returns the real `tripId` + full
+     *  trip payload only on a match; otherwise 400 with a remaining-
+     *  attempts message, or 404 if the candidate has expired or used
+     *  up its three attempts. */
+    confirmTripCandidate: (
+      candidateId: string,
+      verifier: string,
+      sessionId?: string,
+    ) =>
+      request<{ tripId: string; trip: Trip }>(
+        `/trip-candidates/${encodeURIComponent(candidateId)}/confirm`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ verifier, sessionId }),
+        },
+      ),
 
     getDisruptions: (tripId: string) =>
       request<TripDisruption[]>(

@@ -14,9 +14,19 @@ import {
 } from '@nestjs/common'
 import { differenceInCalendarDays, format, parseISO } from 'date-fns'
 import { randomUUID } from 'node:crypto'
+import {
+  initialsOfName,
+  lastDigitsOfPhone,
+  maskEmail,
+  normalizeEmail,
+  normalizeNameQuery,
+  normalizePhone,
+  normalizeTripIdKey,
+} from '@echoaway/types'
 import { VoiceEventsBus } from '../events/voice-events.bus.js'
 import { parseJson, stringifyJson } from '../json.js'
 import { PrismaService } from '../prisma.service.js'
+import { TripCandidatesService } from './trip-candidates.service.js'
 
 const QUOTE_VALID_MINUTES = 15
 
@@ -25,6 +35,7 @@ export class TripsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly bus: VoiceEventsBus,
+    private readonly candidates: TripCandidatesService,
   ) {}
 
   /**
@@ -112,12 +123,20 @@ export class TripsService {
     }
   }
 
-  async getTripByPhone(phone: string) {
+  async getTripByPhone(phone: string, sessionId?: string) {
+    // Normalize aggressively — STT renders "+49 151 1234 5678" as
+    // every variant under the sun; the seed stores the canonical form.
+    const normalized = normalizePhone(phone)
+    if (!normalized) {
+      throw new BadRequestException('Phone number is empty')
+    }
     const traveler = await this.prisma.traveler.findUnique({
-      where: { phone },
+      where: { phone: normalized },
     })
     if (!traveler) {
-      throw new NotFoundException(`No traveler found for phone ${phone}`)
+      throw new NotFoundException(
+        `No traveler found for phone ${normalized}`,
+      )
     }
     const trip = await this.prisma.trip.findFirst({
       where: { travelers: { some: { travelerId: traveler.id } } },
@@ -126,7 +145,222 @@ export class TripsService {
     if (!trip) {
       throw new NotFoundException(`No trip found for traveler ${traveler.id}`)
     }
-    return this.getTripFull(trip.id)
+    const full = await this.getTripFull(trip.id)
+    await this.emitTripLoaded(sessionId, full)
+    return full
+  }
+
+  /**
+   * Direct lookup by email. Email is non-unique in the schema so we
+   * use `findFirst` and pick the earliest-starting trip if a traveler
+   * happens to be on more than one. Trim + lowercase on input.
+   */
+  async getTripByEmail(email: string, sessionId?: string) {
+    const normalized = normalizeEmail(email)
+    if (!normalized) {
+      throw new BadRequestException('Email is empty')
+    }
+    const traveler = await this.prisma.traveler.findFirst({
+      where: { email: normalized },
+    })
+    if (!traveler) {
+      throw new NotFoundException(`No traveler found for email ${normalized}`)
+    }
+    const trip = await this.prisma.trip.findFirst({
+      where: { travelers: { some: { travelerId: traveler.id } } },
+      orderBy: { startDate: 'asc' },
+    })
+    if (!trip) {
+      throw new NotFoundException(`No trip found for traveler ${traveler.id}`)
+    }
+    const full = await this.getTripFull(trip.id)
+    await this.emitTripLoaded(sessionId, full)
+    return full
+  }
+
+  /**
+   * Trip-id lookup that tolerates dashes, spaces, casing. We compare
+   * a normalized key on both sides — input "trip demo bcn" / "trip-
+   * demo-bcn" / "TRIPDEMOBCN" all hit `trip-demo-bcn`. SQLite has no
+   * functional index for this, so we scan and match in JS — fine at
+   * hackathon scale (~handfuls of trips).
+   */
+  async getTripByIdLoose(tripIdInput: string, sessionId?: string) {
+    const key = normalizeTripIdKey(tripIdInput)
+    if (!key) {
+      throw new BadRequestException('Trip id is empty')
+    }
+    // First try the exact match — covers the happy path without a
+    // table scan.
+    const exact = await this.prisma.trip.findUnique({
+      where: { id: tripIdInput },
+      select: { id: true },
+    })
+    if (exact) {
+      const full = await this.getTripFull(exact.id)
+      await this.emitTripLoaded(sessionId, full)
+      return full
+    }
+
+    const all = await this.prisma.trip.findMany({ select: { id: true } })
+    const hit = all.find((t) => normalizeTripIdKey(t.id) === key)
+    if (!hit) {
+      throw new NotFoundException(`No trip found matching id "${tripIdInput}"`)
+    }
+    const full = await this.getTripFull(hit.id)
+    await this.emitTripLoaded(sessionId, full)
+    return full
+  }
+
+  /**
+   * Privacy-safe fuzzy search by traveler name. Returns *redacted*
+   * candidates — never raw name / email / phone — plus an opaque
+   * `candidateId` the caller can later confirm with a verifier. See
+   * `TripCandidatesService` for the in-memory store + TTL semantics.
+   *
+   * SQLite + Prisma's `contains` is case-sensitive on the default
+   * collation; we lowercase both sides ourselves by normalizing the
+   * query and storing fullName as-is and post-filtering in JS. At
+   * the seeded scale this is trivially fast.
+   */
+  async searchTrips(query: string) {
+    const q = normalizeNameQuery(query)
+    if (q.length < 2) {
+      throw new BadRequestException('Search query must be at least 2 characters')
+    }
+
+    const allTravelers = await this.prisma.traveler.findMany({
+      include: {
+        trips: {
+          include: { trip: { select: { id: true, title: true } } },
+        },
+      },
+    })
+
+    const matches = allTravelers
+      .filter((t) => t.fullName.toLowerCase().includes(q))
+      // Need at least one trip to issue a candidate, AND at least one
+      // verifier (phone or email) — otherwise the candidate would be
+      // permanently unverifiable, which we'd rather hide than show.
+      .filter((t) => t.trips.length > 0 && (t.phone || t.email))
+
+    // Cap results so a broad query doesn't return everyone.
+    const capped = matches.slice(0, 10)
+
+    return capped.map((t) => {
+      // Pick the earliest trip for this traveler as the candidate's
+      // canonical trip — same convention as getTripByPhone.
+      const trip = [...t.trips]
+        .map((x) => x.trip)
+        .sort((a, b) => a.id.localeCompare(b.id))[0]!
+      const candidate = this.candidates.issue({
+        tripId: trip.id,
+        travelerPhone: t.phone ?? '',
+        travelerEmail: t.email,
+        travelerFullName: t.fullName,
+      })
+      return {
+        candidateId: candidate.candidateId,
+        tripTitle: trip.title,
+        matchedTravelerInitials: initialsOfName(t.fullName),
+        phoneTail: t.phone ? lastDigitsOfPhone(t.phone, 3) : null,
+        emailMasked: t.email ? maskEmail(t.email) : null,
+      }
+    })
+  }
+
+  /**
+   * Validate a verifier against a previously-issued candidate. The
+   * verifier is treated permissively: it matches if it equals the
+   * candidate's last-N phone digits (any N from 2 upward) OR appears
+   * inside the email's local part. Three failed attempts retire the
+   * candidate.
+   *
+   * On success: returns the real `tripId` plus the full trip payload
+   * (one round-trip vs two) and consumes the candidate.
+   */
+  async confirmTripCandidate(
+    candidateId: string,
+    verifier: string,
+    sessionId?: string,
+  ) {
+    const c = this.candidates.peek(candidateId)
+    if (!c) {
+      throw new NotFoundException(
+        'Candidate not found or expired — please search again',
+      )
+    }
+    const v = verifier.trim().toLowerCase()
+    if (!v) {
+      throw new BadRequestException('Verifier is empty')
+    }
+
+    const phoneDigits = normalizePhone(c.travelerPhone).replace(/^\+/, '')
+    const phoneMatch =
+      v.length >= 2 &&
+      /^\d+$/.test(v) &&
+      phoneDigits.endsWith(v)
+
+    const emailLocal = c.travelerEmail
+      ? c.travelerEmail.split('@')[0]?.toLowerCase() ?? ''
+      : ''
+    const emailMatch =
+      v.length >= 2 && emailLocal.length > 0 && emailLocal.includes(v)
+
+    if (!phoneMatch && !emailMatch) {
+      const remaining = this.candidates.recordFailedAttempt(candidateId)
+      throw new BadRequestException(
+        remaining > 0
+          ? `Verifier did not match. ${remaining} attempt${remaining === 1 ? '' : 's'} left.`
+          : 'Verifier did not match. Please search again.',
+      )
+    }
+
+    this.candidates.consume(candidateId)
+    const trip = await this.getTripFull(c.tripId)
+    await this.emitTripLoaded(sessionId, trip)
+    return { tripId: c.tripId, trip }
+  }
+
+  /**
+   * Emit a `trip_loaded` VoiceActionEvent so the web UI knows when to
+   * render the trip cards. No-op when sessionId is missing — direct
+   * REST callers (curl, the demo script) skip the event entirely.
+   */
+  private async emitTripLoaded(
+    sessionId: string | undefined,
+    trip: { id: string; title: string },
+  ): Promise<void> {
+    if (!sessionId) return
+    const session = await this.prisma.voiceSession.findUnique({
+      where: { id: sessionId },
+      select: { id: true, tripId: true },
+    })
+    if (!session) return // session was wiped (Reset trip) — best-effort skip
+    const row = await this.prisma.voiceActionEvent.create({
+      data: {
+        id: randomUUID(),
+        sessionId,
+        tripId: trip.id,
+        componentId: null,
+        type: 'trip_loaded',
+        payload: stringifyJson({
+          type: 'trip_loaded',
+          sessionId,
+          tripId: trip.id,
+          tripSummary: trip.title,
+        }),
+      },
+    })
+    this.bus.publish({
+      id: row.id,
+      sessionId: row.sessionId,
+      tripId: row.tripId,
+      componentId: row.componentId,
+      type: row.type,
+      payload: parseJson(row.payload),
+      createdAt: row.createdAt.toISOString(),
+    })
   }
 
   async getDisruptions(tripId: string) {

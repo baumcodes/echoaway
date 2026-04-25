@@ -18,12 +18,17 @@ describe('tools registry', () => {
     // (the `satisfies` clause in tools/index.ts) and code review.
     expect(Object.keys(tools).sort()).toEqual([
       'confirmHotelCheckInChange',
+      'confirmTripCandidate',
       'createSupportLog',
+      'endSession',
+      'findTripById',
+      'getTripByEmail',
       'getTripByPhone',
       'getTripDisruptions',
       'listAccommodations',
       'quoteHotelCheckInChange',
       'searchTravelContext',
+      'searchTripsByTraveler',
     ])
   })
 

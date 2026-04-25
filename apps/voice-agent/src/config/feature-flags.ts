@@ -74,7 +74,7 @@ export const LLM_MODEL: string = 'gemini-3-flash-preview'
  * or mid-stream LLM errors. Validate against your specific setup
  * before enabling.
  */
-export const AUTO_CONTINUE_ON_TOOL_ERROR = true
+export const AUTO_CONTINUE_ON_TOOL_ERROR = false
 
 /**
  * When a single tool's `execute()` runs longer than

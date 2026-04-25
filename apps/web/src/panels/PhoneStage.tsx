@@ -1,5 +1,5 @@
 import { useDemo } from '@echoaway/app'
-import { PhoneShell, VoiceMicButton } from '@echoaway/ui'
+import { PhoneShell, TripPlaceholder, VoiceMicButton } from '@echoaway/ui'
 import { AssistantOverlay } from './AssistantOverlay.js'
 import { BookingPager } from './BookingPager.js'
 import { SessionChimes } from './SessionChimes.js'
@@ -8,17 +8,29 @@ import { TripTimeline } from './TripTimeline.js'
 
 export function PhoneStage() {
   const demo = useDemo()
-  if (!demo.trip) return null
+  // Trip-less render path: the user just opened the page, or just
+  // hit "Reset trip". We still show the phone shell + mic button
+  // (so the user can start talking), but instead of trip cards we
+  // show a placeholder explaining how to load one. The trip + its
+  // child cards reappear automatically when the agent's first
+  // lookup tool succeeds (backend emits trip_loaded → SSE → web
+  // fetches via getTripById).
   return (
     <div className="demo-stage">
       <PhoneShell>
         <PhoneHeader />
-        <TripOverview />
-        {/* Agent-driven interactive cards sit *above* the booking pager
-            so the call-to-action is always visible without scrolling. */}
-        <AssistantOverlay />
-        <BookingPager />
-        <TripTimeline />
+        {demo.trip ? (
+          <>
+            <TripOverview />
+            {/* Agent-driven interactive cards sit *above* the booking pager
+                so the call-to-action is always visible without scrolling. */}
+            <AssistantOverlay />
+            <BookingPager />
+            <TripTimeline />
+          </>
+        ) : (
+          <TripPlaceholder />
+        )}
       </PhoneShell>
       {/* Hidden audio sink for the agent's TTS track. Has to live in
           the DOM (not just a ref) so the browser actually plays audio. */}

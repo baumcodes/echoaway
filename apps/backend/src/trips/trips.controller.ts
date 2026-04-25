@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
 import { ZodValidationPipe } from '../zod.pipe.js'
 import {
   type HotelChangeRequest,
@@ -13,8 +13,36 @@ export class TripsController {
   constructor(private readonly trips: TripsService) {}
 
   @Get('by-phone/:phoneNumber')
-  byPhone(@Param('phoneNumber') phoneNumber: string) {
-    return this.trips.getTripByPhone(phoneNumber)
+  byPhone(
+    @Param('phoneNumber') phoneNumber: string,
+    @Query('sessionId') sessionId?: string,
+  ) {
+    return this.trips.getTripByPhone(phoneNumber, sessionId)
+  }
+
+  @Get('by-email/:email')
+  byEmail(
+    @Param('email') email: string,
+    @Query('sessionId') sessionId?: string,
+  ) {
+    return this.trips.getTripByEmail(email, sessionId)
+  }
+
+  // Path-segment lookup that tolerates dashes/spacing/casing. The
+  // path is `/trips/by-id/:tripId` (rather than `/trips/:tripId`)
+  // so the loose-match logic doesn't conflict with the exact-id
+  // route below.
+  @Get('by-id/:tripId')
+  byIdLoose(
+    @Param('tripId') tripId: string,
+    @Query('sessionId') sessionId?: string,
+  ) {
+    return this.trips.getTripByIdLoose(tripId, sessionId)
+  }
+
+  @Get('search')
+  search(@Query('q') q: string) {
+    return this.trips.searchTrips(q ?? '')
   }
 
   @Get(':tripId')

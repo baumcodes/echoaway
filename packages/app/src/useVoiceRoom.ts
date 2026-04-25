@@ -64,8 +64,14 @@ export type UseVoiceRoomOptions = {
 }
 
 export type ConnectArgs = {
-  tripId: string
-  sessionId: string
+  /** Pre-loaded trip id, if any. When omitted, the agent worker
+   *  creates its own VoiceSession via fallback — the web doesn't
+   *  track a sessionId in that case (audio metric refetch is best-
+   *  effort). The trip arrives later via the `trip_loaded` SSE the
+   *  agent emits after a successful lookup tool call. */
+  tripId?: string
+  /** Pre-created VoiceSession id, if any. Same logic as `tripId`. */
+  sessionId?: string
   roomName: string
   /** When true, the published mic track is the user's voice MIXED with
    *  a looping ambient-noise file (`/airport-noise.mp3` from the web's
@@ -277,7 +283,7 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
               setState({
                 kind: 'connected',
                 roomName: args.roomName,
-                sessionId: args.sessionId,
+                sessionId: args.sessionId ?? '',
                 noisy: !!args.noisy,
               })
             }
@@ -326,7 +332,7 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
             setState({
               kind: 'awaitingAgent',
               roomName: args.roomName,
-              sessionId: args.sessionId,
+              sessionId: args.sessionId ?? '',
               noisy: !!args.noisy,
             })
             // Safety net: if dispatch fails or the worker is down, we
@@ -345,7 +351,7 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
               setState({
                 kind: 'connected',
                 roomName: args.roomName,
-                sessionId: args.sessionId,
+                sessionId: args.sessionId ?? '',
                 noisy: !!args.noisy,
               })
             }, AGENT_READY_TIMEOUT_MS)

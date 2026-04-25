@@ -5,7 +5,7 @@ export const searchTravelContext: Tool = {
   declaration: {
     name: 'searchTravelContext',
     description:
-      "Search lightweight travel context (airport guides, hotel norms, airline policy summaries). Phase 8 will plug Tavily; for now returns a stub note.",
+      "Pull external travel context (web search) when the booking data alone won't answer the traveler. Good fits: airport arrival hall layout, transit options between airport and city, hotel check-in norms in a country, airline delay support guidance, weather / event context for a destination. NOT for: anything about the traveler's own booking (use getTrip*… and getTripDisruptions for that), pricing or availability of catalog inventory (use listAccommodations etc.). Keep queries short and specific — one topic at a time. Treat results as supplementary — never as a guarantee or legal claim.",
     parameters: {
       type: 'object',
       properties: {

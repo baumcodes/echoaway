@@ -1,6 +1,30 @@
 import { useDemo } from '@echoaway/app'
-import { AudioMetricCard, TranscriptCard } from '@echoaway/ui'
+import {
+  AudioMetricCard,
+  DemoBookingCard,
+  TranscriptCard,
+} from '@echoaway/ui'
 import { DebugControls } from './DebugControls.js'
+
+/** Always-visible cheat sheet: the four lookup keys the agent can
+ *  resolve. Click-to-copy on each row. Sourced from the seed.
+ *  Update if `apps/backend/prisma/seed/demo-trip/travelers.ts`
+ *  changes. */
+const DEMO_BOOKING_ROWS = [
+  {
+    label: 'Phone',
+    value: '+49 151 1234 5678',
+    hint: 'verifier: last 3 digits → 678',
+  },
+  {
+    label: 'Email',
+    value: 'big-berlin-hack-april-26@planaway.com',
+    hint: 'verifier: any fragment of the local part',
+  },
+  { label: 'Booking reference', value: 'trip-demo-bcn' },
+  { label: 'Lead traveler', value: 'Stephan Rüschenbaum' },
+  { label: 'Companion', value: 'Anna Müller' },
+] as const
 
 export function SidePanel() {
   const { audioMetric, transcripts, clearTranscripts } = useDemo()
@@ -9,6 +33,7 @@ export function SidePanel() {
       <Brand />
       <Lede />
       <Tracks />
+      <DemoBookingCard rows={DEMO_BOOKING_ROWS} />
       <AudioMetricCard
         metric={audioMetric}
         placeholder="Pending — populated when a voice session ends. ai-coustics enhances speech in real time during the call; metric numbers land here on disconnect."

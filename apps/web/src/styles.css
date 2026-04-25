@@ -975,6 +975,102 @@ body {
   word-break: break-word;
 }
 
+/* ---- DemoBookingCard ---- */
+
+.demo-booking-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.demo-booking-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.025);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.45rem;
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.demo-booking-row:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+.demo-booking-row-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.demo-booking-row-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.demo-booking-row-value code {
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.demo-booking-row-copy {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+  flex: 0 0 auto;
+}
+
+.demo-booking-row-copy.is-copied {
+  opacity: 1;
+  color: var(--accent-success, #2a8550);
+}
+
+.demo-booking-row-hint {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* ---- TripPlaceholder ---- */
+
+.trip-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.4rem 1rem;
+  gap: 0.4rem;
+}
+
+.trip-placeholder-glyph {
+  font-size: 2rem;
+  opacity: 0.55;
+  margin-bottom: 0.3rem;
+}
+
+.trip-placeholder h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.trip-placeholder p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  max-width: 24em;
+}
+
 @media (max-width: 920px) {
   .demo-shell {
     grid-template-columns: 1fr;

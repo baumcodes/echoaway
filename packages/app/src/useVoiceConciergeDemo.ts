@@ -51,7 +51,10 @@ export type DemoState = {
 }
 
 export type DemoActions = {
-  refreshTrip: () => Promise<void>
+  /** Refetch the trip by id, or pass `null` to clear. The web UI
+   *  shouldn't call this directly any more — the SSE handler does it
+   *  on `trip_loaded`. Kept exported for tests / future tooling. */
+  refreshTrip: (tripId: string | null) => Promise<void>
   dispatchAssistant: (event: AssistantEvent) => void
   /** Hits the backend quote endpoint and dispatches `change_suggested`. */
   triggerQuote: (newCheckInDate: string) => Promise<void>
@@ -122,53 +125,54 @@ export function useVoiceConciergeDemo(
   const sessionIdRef = useRef<string | null>(null)
   sessionIdRef.current = sessionId
 
-  const refreshTrip = useCallback(async () => {
-    setFetchStatus((s) => (s === 'idle' ? 'loading' : s))
-    try {
-      const fresh = await apiClient.getTripByPhone(travelerPhone)
-      setTrip(fresh)
-      setFetchStatus('ready')
-      setFetchError(null)
-    } catch (err) {
-      const message =
-        err instanceof ApiError
-          ? `Backend ${err.status}: ${typeof err.body === 'object' ? JSON.stringify(err.body) : String(err.body)}`
-          : err instanceof Error
-            ? err.message
-            : 'Unknown error'
-      setFetchStatus('error')
-      setFetchError(message)
-    }
-  }, [apiClient, travelerPhone])
-
-  // Initial load.
-  useEffect(() => {
-    setFetchStatus('loading')
-    void refreshTrip()
-  }, [refreshTrip])
-
-  // Open a VoiceSession once we know the trip id. The session backs
-  // every persisted VoiceActionEvent and lets SSE filter to this UI.
-  useEffect(() => {
-    if (!trip || sessionIdRef.current) return
-    let cancelled = false
-    void (async () => {
-      try {
-        const session = await apiClient.createVoiceSession({ tripId: trip.id })
-        if (!cancelled) setSessionId(session.id)
-      } catch (err) {
-        if (cancelled) return
-        // eslint-disable-next-line no-console
-        console.warn(
-          '[demo] could not open voice session; live updates disabled',
-          err,
-        )
+  /**
+   * Refetch the trip by id. Triggered by:
+   *   - the `trip_loaded` SSE event (the agent just looked up a trip
+   *     via getTripByPhone / -ByEmail / findTripById /
+   *     confirmTripCandidate; the backend emitted the event so the
+   *     web knows which trip to render)
+   *   - mutations (quote / confirm) that change the trip and want a
+   *     fresh snapshot
+   *
+   * Pass `null` to reset (clears the trip + status — used when the
+   * voice room is closed or the demo trip is reset).
+   */
+  const refreshTrip = useCallback(
+    async (tripId: string | null) => {
+      if (!tripId) {
+        setTrip(null)
+        setFetchStatus('idle')
+        setFetchError(null)
+        return
       }
-    })()
-    return () => {
-      cancelled = true
-    }
-  }, [trip, apiClient])
+      setFetchStatus((s) => (s === 'idle' ? 'loading' : s))
+      try {
+        const fresh = await apiClient.getTripById(tripId)
+        setTrip(fresh)
+        setFetchStatus('ready')
+        setFetchError(null)
+      } catch (err) {
+        const message =
+          err instanceof ApiError
+            ? `Backend ${err.status}: ${typeof err.body === 'object' ? JSON.stringify(err.body) : String(err.body)}`
+            : err instanceof Error
+              ? err.message
+              : 'Unknown error'
+        setFetchStatus('error')
+        setFetchError(message)
+      }
+    },
+    [apiClient],
+  )
+
+  // No mount-time fetch. The web stays in `idle` (showing
+  // TripPlaceholder) until the agent looks up a trip via voice and
+  // the backend emits a `trip_loaded` SSE event — handled below in
+  // the SSE subscription. The session is created by the agent worker
+  // when it joins the room; nothing for us to do here.
+  // (`travelerPhone` is now unused but kept on the options for
+  // backward compatibility with existing call sites.)
+  void travelerPhone
 
   // ---- Live transcript debug overlay ----
   // Both user and agent transcripts arrive via the LiveKit room as
@@ -233,9 +237,27 @@ export function useVoiceConciergeDemo(
 
   // Subscribe to the SSE stream once. Stays open for the life of the
   // hook; events for other trips are filtered out client-side.
+  //
+  // The `trip_loaded` event is special — it's how the agent tells the
+  // web "I just looked up a trip, here's the id, go fetch it". Until
+  // we get one, we have no trip and the UI shows the empty
+  // placeholder. Subsequent assistant events (`change_suggested`,
+  // `change_confirmed`, …) all carry tripId, and we filter them
+  // against the loaded trip so a stray cross-trip event doesn't
+  // confuse the UI.
   useEffect(() => {
     const teardown = subscribeToEvents(apiClient, {
       onEvent: (envelope) => {
+        if (envelope.type === 'trip_loaded' && envelope.tripId) {
+          const incoming = envelope.tripId
+          // If we already had a different trip loaded (the agent
+          // switched), drop the assistant state and re-fetch.
+          if (tripIdRef.current && tripIdRef.current !== incoming) {
+            dispatchAssistant({ type: 'reset' })
+          }
+          void refreshTrip(incoming)
+          return
+        }
         const ourTrip = tripIdRef.current
         if (envelope.tripId && ourTrip && envelope.tripId !== ourTrip) return
         const mapped = envelopeToAssistantEvent(envelope)
@@ -247,7 +269,7 @@ export function useVoiceConciergeDemo(
       },
     })
     return teardown
-  }, [apiClient])
+  }, [apiClient, refreshTrip])
 
   const triggerQuote = useCallback(
     async (newCheckInDate: string) => {
@@ -261,7 +283,7 @@ export function useVoiceConciergeDemo(
           sessionIdRef.current ?? undefined,
         )
         dispatchAssistant({ type: 'change_suggested', quote })
-        await refreshTrip()
+        await refreshTrip(tripIdRef.current)
       } catch (err) {
         dispatchAssistant({
           type: 'error',
@@ -284,7 +306,7 @@ export function useVoiceConciergeDemo(
           sessionIdRef.current ?? undefined,
         )
         dispatchAssistant({ type: 'change_confirmed', quote: result.quote })
-        await refreshTrip()
+        await refreshTrip(tripIdRef.current)
       } catch (err) {
         dispatchAssistant({
           type: 'error',
@@ -312,15 +334,20 @@ export function useVoiceConciergeDemo(
   const startDemoFlow = useCallback(async () => {
     const current = assistantRef.current
     if (current.kind !== 'idle' && current.kind !== 'rejected') return
-    const sessionId = sessionIdRef.current
     const tripId = tripIdRef.current
-    if (!sessionId || !tripId) {
+    if (!tripId) {
       dispatchAssistant({
         type: 'error',
-        message: 'Voice session not ready yet — try again in a moment.',
+        message:
+          'No trip loaded yet — talk to the agent to load one first.',
       })
       return
     }
+    // sessionId is optional now (web no longer pre-creates one — the
+    // agent worker owns session lifecycle). The script + apiClient
+    // methods all treat sessionId as optional, so falling through with
+    // an empty string is safe; just drops the SSE event tagging.
+    const sessionId = sessionIdRef.current ?? ''
     // Closed-over flag so the onTurn callback can ignore the script's
     // post-decision user line ("Actually, keep it as is" / "Yes, please
     // confirm"). Without this, that line would dispatch a fresh
@@ -354,7 +381,7 @@ export function useVoiceConciergeDemo(
           },
         },
       )
-      await refreshTrip()
+      await refreshTrip(tripIdRef.current)
     } catch (err) {
       dispatchAssistant({
         type: 'error',
@@ -393,7 +420,9 @@ export function useVoiceConciergeDemo(
     try {
       await apiClient.resetDemoTrip()
       dispatchAssistant({ type: 'reset' })
-      await refreshTrip()
+      // Clear the trip — the user has to talk to the agent again to
+      // load a fresh one, same as on first mount.
+      await refreshTrip(null)
     } catch (err) {
       dispatchAssistant({
         type: 'error',
@@ -417,19 +446,42 @@ export function useVoiceConciergeDemo(
 
   const startNewSession = useCallback(
     async (callOpts?: { noisy?: boolean }) => {
-      if (!trip) return
       const noisy = callOpts?.noisy ?? noisyModeRef.current
       try {
-        // Open a fresh VoiceSession server-side so the agent worker has
-        // a tripId/sessionId pair to thread through every tool call.
-        const session = await apiClient.createVoiceSession({ tripId: trip.id })
-        setSessionId(session.id)
+        // Two paths:
+        //
+        // 1. Trip already loaded (re-opening the call after a hangup).
+        //    Pre-create the VoiceSession on the backend and pass its
+        //    id + the trip id as token metadata. The worker reads
+        //    metadata and skips its fallback path. Audio metric and
+        //    SSE filtering work normally.
+        //
+        // 2. No trip yet (fresh page load — the typical demo open).
+        //    Mint a token with no metadata and a fresh per-session
+        //    room name. The worker falls back to creating its own
+        //    session against the seeded demo trip; the agent then
+        //    looks up the trip via voice (any of the four lookup
+        //    tools) and the backend emits `trip_loaded` over SSE
+        //    so the web can fetch + render. We don't track the
+        //    server-side sessionId in this path — audio metric on
+        //    disconnect is best-effort.
+        const tripId = tripIdRef.current
+        let roomName: string
+        let sessionId: string | undefined
+        if (tripId) {
+          const session = await apiClient.createVoiceSession({ tripId })
+          setSessionId(session.id)
+          roomName = session.roomName
+          sessionId = session.id
+        } else {
+          roomName = `echoaway-${Math.random().toString(36).slice(2, 10)}`
+        }
         dispatchAssistant({ type: 'reset' })
         setTranscripts([])
         await voiceRoom.connect({
-          tripId: trip.id,
-          sessionId: session.id,
-          roomName: session.roomName,
+          tripId: tripId ?? undefined,
+          sessionId,
+          roomName,
           noisy,
         })
       } catch (err) {
@@ -439,7 +491,7 @@ export function useVoiceConciergeDemo(
         })
       }
     },
-    [apiClient, trip, voiceRoom],
+    [apiClient, voiceRoom],
   )
 
   const endSession = useCallback(async () => {

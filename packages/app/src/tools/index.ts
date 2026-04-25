@@ -1,10 +1,15 @@
 import { confirmHotelCheckInChange } from './confirmHotelCheckInChange.js'
+import { confirmTripCandidate } from './confirmTripCandidate.js'
 import { createSupportLog } from './createSupportLog.js'
+import { endSession } from './endSession.js'
+import { findTripById } from './findTripById.js'
+import { getTripByEmail } from './getTripByEmail.js'
 import { getTripByPhone } from './getTripByPhone.js'
 import { getTripDisruptions } from './getTripDisruptions.js'
 import { listAccommodations } from './listAccommodations.js'
 import { quoteHotelCheckInChange } from './quoteHotelCheckInChange.js'
 import { searchTravelContext } from './searchTravelContext.js'
+import { searchTripsByTraveler } from './searchTripsByTraveler.js'
 import type { Tool, ToolDeclaration } from './types.js'
 
 /**
@@ -25,13 +30,21 @@ import type { Tool, ToolDeclaration } from './types.js'
  * the SSE stream can deliver them to the web UI.
  */
 export const tools = {
+  // Trip lookup — four ways in, picked by what the traveler offers.
   getTripByPhone,
+  getTripByEmail,
+  findTripById,
+  searchTripsByTraveler,
+  confirmTripCandidate,
+  // Trip / change handling once a trip is loaded.
   getTripDisruptions,
   quoteHotelCheckInChange,
   confirmHotelCheckInChange,
   createSupportLog,
   listAccommodations,
   searchTravelContext,
+  // Wrap-up — agent calls this once the traveler is done.
+  endSession,
 } satisfies Record<string, Tool>
 
 export type ToolName = keyof typeof tools

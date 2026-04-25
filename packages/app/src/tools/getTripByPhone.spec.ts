@@ -28,7 +28,10 @@ describe('getTripByPhone', () => {
       { phoneNumber: '+4915112345678' },
       ctx,
     )) as { tripId: string }
-    expect(ctx.apiClient.getTripByPhone).toHaveBeenCalledWith('+4915112345678')
+    expect(ctx.apiClient.getTripByPhone).toHaveBeenCalledWith(
+      '+4915112345678',
+      'sess-1',
+    )
     expect(result.tripId).toBe('trip-demo-bcn')
     expect(ctx.tripId).toBe('trip-demo-bcn')
   })

@@ -83,6 +83,13 @@ function makeFakeClient() {
     health: vi.fn(),
     getTripById: vi.fn().mockResolvedValue(sampleTrip),
     getTripByPhone: vi.fn().mockResolvedValue(sampleTrip),
+    getTripByEmail: vi.fn().mockResolvedValue(sampleTrip),
+    getTripByIdLoose: vi.fn().mockResolvedValue(sampleTrip),
+    searchTrips: vi.fn().mockResolvedValue([]),
+    confirmTripCandidate: vi.fn().mockResolvedValue({
+      tripId: 'trip-demo-bcn',
+      trip: sampleTrip,
+    }),
     getDisruptions: vi.fn().mockResolvedValue([]),
     quoteHotelCheckInChange: vi.fn().mockResolvedValue(sampleQuote),
     confirmHotelCheckInChange: vi.fn().mockResolvedValue({
@@ -133,19 +140,45 @@ function makeFakeClient() {
   }
 }
 
+/** Drive the new lazy-load flow in tests: simulate the agent's
+ *  trip-lookup having succeeded by calling `refreshTrip(tripId)`
+ *  directly. In production this is triggered by the `trip_loaded`
+ *  SSE event the backend emits when a lookup tool runs. */
+async function loadTripForTest(
+  result: ReturnType<typeof renderHook<ReturnType<typeof useVoiceConciergeDemo>, unknown>>['result'],
+  tripId: string,
+) {
+  await act(async () => {
+    await result.current.refreshTrip(tripId)
+  })
+}
+
 describe('useVoiceConciergeDemo', () => {
-  it('loads the trip on mount and exposes ready state', async () => {
+  it('starts in idle state with no trip loaded — waits for trip_loaded SSE', async () => {
     const apiClient = makeFakeClient()
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    // Mount-time: no eager fetch. The hook stays idle until the
+    // backend pushes a `trip_loaded` event (driven by the agent
+    // calling a lookup tool).
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(result.current.trip).toBeNull()
+    expect(apiClient.getTripByPhone).not.toHaveBeenCalled()
+    expect(apiClient.getTripById).not.toHaveBeenCalled()
+  })
+
+  it('refreshTrip(id) loads the trip and exposes ready state', async () => {
+    const apiClient = makeFakeClient()
+    const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
+    await loadTripForTest(result, 'trip-demo-bcn')
+    expect(result.current.fetchStatus).toBe('ready')
     expect(result.current.trip?.id).toBe('trip-demo-bcn')
-    expect(apiClient.getTripByPhone).toHaveBeenCalledWith('+4915112345678')
+    expect(apiClient.getTripById).toHaveBeenCalledWith('trip-demo-bcn')
   })
 
   it('triggerQuote dispatches change_suggested and refetches the trip', async () => {
     const apiClient = makeFakeClient()
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await loadTripForTest(result, 'trip-demo-bcn')
 
     await act(async () => {
       await result.current.triggerQuote('2026-05-03')
@@ -154,20 +187,17 @@ describe('useVoiceConciergeDemo', () => {
     if (result.current.assistant.kind === 'suggesting') {
       expect(result.current.assistant.quote.newValue).toBe('2026-05-03')
     }
-    // The third arg is the sessionId — it may or may not have been
-    // populated by the time triggerQuote ran (the create-session effect
-    // races with this test). Assert positional args 0 and 1 only.
     const call = apiClient.quoteHotelCheckInChange.mock.calls[0]
     expect(call?.[0]).toBe('trip-demo-bcn')
     expect(call?.[1]).toBe('2026-05-03')
-    // refetch happens after quote
-    expect(apiClient.getTripByPhone).toHaveBeenCalledTimes(2)
+    // Initial load + post-quote refetch.
+    expect(apiClient.getTripById).toHaveBeenCalledTimes(2)
   })
 
   it('triggerConfirm dispatches change_confirmed', async () => {
     const apiClient = makeFakeClient()
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await loadTripForTest(result, 'trip-demo-bcn')
 
     await act(async () => {
       await result.current.triggerConfirm('2026-05-03')
@@ -181,7 +211,7 @@ describe('useVoiceConciergeDemo', () => {
       new Error('Hotel booking is non-modifiable'),
     )
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await loadTripForTest(result, 'trip-demo-bcn')
 
     await act(async () => {
       await result.current.triggerQuote('2026-05-03')
@@ -192,7 +222,7 @@ describe('useVoiceConciergeDemo', () => {
   it('reset returns the assistant to idle', async () => {
     const apiClient = makeFakeClient()
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await loadTripForTest(result, 'trip-demo-bcn')
     await act(async () => {
       await result.current.triggerQuote('2026-05-03')
     })
@@ -203,10 +233,8 @@ describe('useVoiceConciergeDemo', () => {
   it('startDemoFlow runs the script, pauses for confirm, and ends in confirmed', async () => {
     const apiClient = makeFakeClient()
     apiClient.getTripById.mockResolvedValue(tripWithStay)
-    apiClient.getTripByPhone.mockResolvedValue(tripWithStay)
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
-    await waitFor(() => expect(result.current.sessionId).toBe('sess-1'))
+    await loadTripForTest(result, 'trip-demo-bcn')
 
     // Kick off the script — it pauses on the confirm hook so we can
     // observe the suggesting state mid-flight.
@@ -214,7 +242,9 @@ describe('useVoiceConciergeDemo', () => {
     act(() => {
       runPromise = result.current.startDemoFlow()
     })
-    await waitFor(() => expect(result.current.assistant.kind).toBe('suggesting'))
+    await waitFor(() =>
+      expect(result.current.assistant.kind).toBe('suggesting'),
+    )
     expect(apiClient.quoteHotelCheckInChange).toHaveBeenCalledTimes(1)
     expect(apiClient.confirmHotelCheckInChange).not.toHaveBeenCalled()
 
@@ -230,16 +260,16 @@ describe('useVoiceConciergeDemo', () => {
   it('rejectSuggestion resolves the script pause and skips confirm', async () => {
     const apiClient = makeFakeClient()
     apiClient.getTripById.mockResolvedValue(tripWithStay)
-    apiClient.getTripByPhone.mockResolvedValue(tripWithStay)
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
-    await waitFor(() => expect(result.current.sessionId).toBe('sess-1'))
+    await loadTripForTest(result, 'trip-demo-bcn')
 
     let runPromise!: Promise<void>
     act(() => {
       runPromise = result.current.startDemoFlow()
     })
-    await waitFor(() => expect(result.current.assistant.kind).toBe('suggesting'))
+    await waitFor(() =>
+      expect(result.current.assistant.kind).toBe('suggesting'),
+    )
 
     await act(async () => {
       result.current.rejectSuggestion()
@@ -251,18 +281,19 @@ describe('useVoiceConciergeDemo', () => {
     expect(apiClient.createSupportLog).toHaveBeenCalledTimes(1)
   })
 
-  it('resetDemoTrip calls the backend, returns to idle, and refetches', async () => {
+  it('resetDemoTrip calls the backend, returns to idle, and clears the trip', async () => {
     const apiClient = makeFakeClient()
     const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
-    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
-    const initialFetchCount = apiClient.getTripByPhone.mock.calls.length
+    await loadTripForTest(result, 'trip-demo-bcn')
+    expect(result.current.trip).not.toBeNull()
     await act(async () => {
       await result.current.resetDemoTrip()
     })
     expect(apiClient.resetDemoTrip).toHaveBeenCalledTimes(1)
     expect(result.current.assistant.kind).toBe('idle')
-    expect(apiClient.getTripByPhone.mock.calls.length).toBeGreaterThan(
-      initialFetchCount,
-    )
+    // After reset, the trip is cleared — the user has to talk to the
+    // agent again to load a fresh one (matches the production flow).
+    expect(result.current.trip).toBeNull()
+    expect(result.current.fetchStatus).toBe('idle')
   })
 })

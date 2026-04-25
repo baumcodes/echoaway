@@ -13,6 +13,11 @@ export type ToolContext = {
   /** Set after the first `getTripByPhone` call so subsequent tools can
    *  default to it instead of asking the model to pass it again. */
   tripId: string | null
+  /** Hang up the live call. Provided by the LiveKit worker; absent from
+   *  the deterministic script and CLI surfaces (where there's no room to
+   *  disconnect). The `endSession` tool calls this after the agent's
+   *  closing line so the room tears down cleanly. */
+  endSession?: () => void | Promise<void>
 }
 
 /** Minimal JSON-schema-ish shape for one tool parameter. The fields

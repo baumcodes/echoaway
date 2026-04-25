@@ -93,6 +93,21 @@ export type Trip = {
   disruptions: TripDisruption[]
 }
 
+/** Redacted result row from `/trips/search?q=`. Crucially missing
+ *  the raw fullName / email / phone — those stay server-side. The
+ *  agent uses the masked fields to ask for a verifier and then
+ *  posts to `/trip-candidates/:id/confirm`. */
+export type TripCandidate = {
+  candidateId: string
+  tripTitle: string
+  /** "S.R." — joined per-word initials. */
+  matchedTravelerInitials: string
+  /** Last 3 digits of the phone, or null if the traveler has no phone. */
+  phoneTail: string | null
+  /** "s***@p***.com", or null if the traveler has no email. */
+  emailMasked: string | null
+}
+
 export type {
   AudioIntelligenceMetric,
   BookingPolicy,

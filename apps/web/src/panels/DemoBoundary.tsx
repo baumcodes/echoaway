@@ -1,29 +1,38 @@
 import { useDemo } from '@echoaway/app'
 import type { ReactNode } from 'react'
 
-/** Gates the demo on the initial trip fetch. Renders the loading or
- *  error placeholder until the trip is in hand, then hands off to its
- *  children. Keeps `App.tsx` free of fetch-status branching. */
+/**
+ * Gates the demo on transient fetch states only.
+ *
+ * The "no trip yet" idle state is *normal* now — the web doesn't
+ * eagerly fetch on mount; the user has to talk to the agent first.
+ * That's not an error or a loading state, so we hand through to the
+ * children (PhoneStage renders TripPlaceholder for that case).
+ *
+ * What we still gate on:
+ *   - mid-fetch (after a trip_loaded event triggered getTripById and
+ *     it hasn't resolved yet) → spinner
+ *   - fetch error → backend-down message with the actual cause
+ */
 export function DemoBoundary({ children }: { children: ReactNode }) {
   const { fetchStatus, fetchError, trip } = useDemo()
 
   if (fetchStatus === 'loading' && !trip) {
-    return <CenterMsg>Loading demo trip…</CenterMsg>
+    return <CenterMsg>Loading trip…</CenterMsg>
   }
   if (fetchStatus === 'error' && !trip) {
     return (
       <CenterMsg>
         <div className="error-state">
-          <div className="label">Backend unreachable</div>
+          <div className="label">Could not load trip</div>
           <div>{fetchError}</div>
           <div style={{ marginTop: 8 }}>
-            Try <code>yarn dev:backend</code> in another terminal.
+            Make sure <code>yarn dev:backend</code> is running.
           </div>
         </div>
       </CenterMsg>
     )
   }
-  if (!trip) return <CenterMsg>No trip.</CenterMsg>
   return <>{children}</>
 }
 

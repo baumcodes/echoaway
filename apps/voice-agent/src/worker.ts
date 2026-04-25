@@ -116,7 +116,19 @@ export default defineAgent({
       | 'street_noise'
       | undefined) ?? DEFAULT_AUDIO_METRIC_SCENARIO
 
-    const ourToolCtx = { apiClient, sessionId, tripId }
+    // Filled in once the AgentSession is built (below). The endSession
+    // tool flips this to true; the AgentStateChanged listener tears the
+    // room down when state next returns to 'listening' (i.e. after the
+    // farewell TTS finishes), so the goodbye line is never cut off.
+    const endSessionState = { requested: false }
+    const ourToolCtx = {
+      apiClient,
+      sessionId,
+      tripId,
+      endSession: () => {
+        endSessionState.requested = true
+      },
+    }
     // sessionRef is filled in once buildAgentSession() returns. Both
     // the slow-tool callback and the auto-continue listener (below)
     // need to call back into the session, but the session can't be
@@ -261,6 +273,24 @@ export default defineAgent({
     session.on(E.Error, (ev) =>
       console.error('[voice-agent worker] session error', ev),
     )
+
+    // endSession tool → graceful disconnect. The tool sets
+    // endSessionState.requested = true; we wait for the agent to finish
+    // speaking (state returns to 'listening') and then tear down the
+    // room. Disconnecting mid-TTS would cut the farewell line off.
+    session.on(E.AgentStateChanged, (ev) => {
+      if (!endSessionState.requested) return
+      if (ev.newState !== 'listening') return
+      console.log('[voice-agent worker] endSession requested · disconnecting room')
+      try {
+        ctx.room.disconnect()
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.warn(
+          `[voice-agent worker] room.disconnect() failed (non-fatal): ${msg}`,
+        )
+      }
+    })
 
     await session.start({
       agent: new voice.Agent({
