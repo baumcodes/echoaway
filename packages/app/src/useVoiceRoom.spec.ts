@@ -74,6 +74,19 @@ function makeApi() {
   } as unknown as Parameters<typeof useVoiceRoom>[0]['apiClient']
 }
 
+/** Fire a fake remote audio track subscription so the hook flips
+ *  from `awaitingAgent` to `connected`. Mirrors what would normally
+ *  happen when the agent worker publishes its first TTS track. */
+function emitAgentAudioTrack() {
+  if (!lastRoom) throw new Error('no room yet')
+  lastRoom.emit(
+    'trackSubscribed',
+    { kind: 'audio', attach: () => document.createElement('audio') },
+    { trackSid: 'TR_fake' },
+    { identity: 'agent' },
+  )
+}
+
 describe('useVoiceRoom', () => {
   it('starts idle', () => {
     const { result } = renderHook(() =>
@@ -93,6 +106,14 @@ describe('useVoiceRoom', () => {
         sessionId: 'sess-1',
         roomName: 'echoaway-sess-1',
       })
+    })
+    // After connect we're `awaitingAgent` until the agent publishes
+    // its first audio track. Fire the fake track to advance.
+    await waitFor(() =>
+      expect(result.current.state.kind).toBe('awaitingAgent'),
+    )
+    await act(async () => {
+      emitAgentAudioTrack()
     })
     await waitFor(() =>
       expect(result.current.state.kind).toBe('connected'),
@@ -141,6 +162,9 @@ describe('useVoiceRoom', () => {
         sessionId: 's',
         roomName: 'r',
       })
+    })
+    await act(async () => {
+      emitAgentAudioTrack()
     })
     await waitFor(() => expect(result.current.state.kind).toBe('connected'))
 
@@ -194,6 +218,30 @@ describe('useVoiceRoom', () => {
     })
   })
 
+  it('after WebRTC connect, sits in awaitingAgent until first remote audio track', async () => {
+    const apiClient = makeApi()
+    const { result } = renderHook(() =>
+      useVoiceRoom({ apiClient, identity: 'web-traveler' }),
+    )
+    await act(async () => {
+      await result.current.connect({
+        tripId: 't',
+        sessionId: 's',
+        roomName: 'r',
+      })
+    })
+    // The fake Room.connect fires connectionStateChanged immediately.
+    // We should land on awaitingAgent, NOT connected — because no
+    // remote audio track has subscribed yet.
+    expect(result.current.state.kind).toBe('awaitingAgent')
+
+    // Once the agent publishes audio (simulated), we promote.
+    await act(async () => {
+      emitAgentAudioTrack()
+    })
+    expect(result.current.state.kind).toBe('connected')
+  })
+
   it('disconnect tears down and returns to idle', async () => {
     const apiClient = makeApi()
     const { result } = renderHook(() =>
@@ -205,6 +253,9 @@ describe('useVoiceRoom', () => {
         sessionId: 's',
         roomName: 'r',
       })
+    })
+    await act(async () => {
+      emitAgentAudioTrack()
     })
     await waitFor(() => expect(result.current.state.kind).toBe('connected'))
 

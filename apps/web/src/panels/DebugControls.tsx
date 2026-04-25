@@ -72,11 +72,13 @@ function VoiceSessionCard() {
   const roomLabel =
     demo.voiceRoom.kind === 'connected'
       ? `Room: ${demo.voiceRoom.roomName.slice(-8)} ✓`
-      : demo.voiceRoom.kind === 'connecting'
-        ? 'Room: connecting…'
-        : demo.voiceRoom.kind === 'error'
-          ? `Room: ${demo.voiceRoom.message}`
-          : 'Room: not connected'
+      : demo.voiceRoom.kind === 'awaitingAgent'
+        ? `Room: ${demo.voiceRoom.roomName.slice(-8)} · waiting for agent…`
+        : demo.voiceRoom.kind === 'connecting'
+          ? 'Room: connecting…'
+          : demo.voiceRoom.kind === 'error'
+            ? `Room: ${demo.voiceRoom.message}`
+            : 'Room: not connected'
   return (
     <Card
       title="Voice session"
@@ -88,13 +90,19 @@ function VoiceSessionCard() {
       <div className="debug-buttons">
         <button
           onClick={() => void demo.startNewSession()}
-          disabled={demo.voiceRoom.kind === 'connecting'}
+          disabled={
+            demo.voiceRoom.kind === 'connecting' ||
+            demo.voiceRoom.kind === 'awaitingAgent'
+          }
         >
           New session (mic + agent)
         </button>
         <button
           onClick={() => void demo.endSession()}
-          disabled={demo.voiceRoom.kind !== 'connected'}
+          disabled={
+            demo.voiceRoom.kind !== 'connected' &&
+            demo.voiceRoom.kind !== 'awaitingAgent'
+          }
         >
           End session
         </button>
@@ -107,7 +115,9 @@ function VoiceSessionCard() {
         }}
       >
         {roomLabel}
-        {demo.voiceRoom.kind === 'connected' && demo.voiceRoom.noisy
+        {(demo.voiceRoom.kind === 'connected' ||
+          demo.voiceRoom.kind === 'awaitingAgent') &&
+        demo.voiceRoom.noisy
           ? ' · ✈ noisy mic'
           : ''}
       </div>

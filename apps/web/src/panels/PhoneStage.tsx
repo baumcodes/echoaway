@@ -45,7 +45,10 @@ function PhoneHeader() {
       demo.rejectSuggestion()
       return
     }
-    if (demo.voiceRoom.kind === 'connected') {
+    if (
+      demo.voiceRoom.kind === 'connected' ||
+      demo.voiceRoom.kind === 'awaitingAgent'
+    ) {
       void demo.endSession()
       return
     }
@@ -71,10 +74,13 @@ type Demo = ReturnType<typeof useDemo>
  *   1. `suggesting` / `confirmed` — agent is asking for or has just
  *      acknowledged a decision. Always wins (needs user action).
  *   2. Room state takes over the in-between moments:
- *        - `connecting` → spinner ("thinking")
- *        - `connected`  → listening animation (mic is hot — even if the
- *          agent hasn't transcribed anything yet)
- *        - `error`      → error
+ *        - `connecting`     → spinner ("connecting…")
+ *        - `awaitingAgent`  → spinner ("waiting for agent…") — WebRTC
+ *          is up but the agent worker hasn't published audio yet, so
+ *          the user shouldn't think the mic is hot.
+ *        - `connected`      → listening animation (mic is hot — even
+ *          if the agent hasn't transcribed anything yet)
+ *        - `error`          → error
  *   3. Otherwise, fall through to the assistant's own state.
  */
 function pickButtonState(
@@ -87,6 +93,8 @@ function pickButtonState(
   switch (room.kind) {
     case 'connecting':
       return { kind: 'thinking', intent: 'connecting…' }
+    case 'awaitingAgent':
+      return { kind: 'thinking', intent: 'waiting for agent…' }
     case 'connected':
       return assistant.kind === 'listening' ? assistant : { kind: 'listening' }
     case 'error':

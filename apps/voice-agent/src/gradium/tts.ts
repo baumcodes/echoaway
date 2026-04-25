@@ -69,18 +69,59 @@ class GradiumSynthesizeStream extends tts.SynthesizeStream {
 
   protected async run(): Promise<void> {
     let segmentText = ''
+    let segmentNumber = 0
+    // Same closed-queue guard as in the STT plugin: the AgentSession
+    // can close mid-segment (LLM 429, room disconnect, etc.), and a
+    // bare queue.put after that throws and crashes the worker.
+    const safePut = (
+      audio: tts.SynthesizedAudio | typeof tts.SynthesizeStream.END_OF_STREAM,
+    ) => {
+      if (this.queue.closed || this.closed) return
+      try {
+        this.queue.put(audio)
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        if (!msg.includes('Queue is closed')) throw err
+      }
+    }
     const synth = async (text: string) => {
-      await synthesizeSegment({
-        text,
-        options: this.#options,
-        requestId: randomUUID(),
-        segmentId: randomUUID(),
-        push: (audio) => this.queue.put(audio),
-      })
+      const reqId = randomUUID()
+      const segId = randomUUID()
+      const startedAt = Date.now()
+      let frames = 0
+      try {
+        await synthesizeSegment({
+          text,
+          options: this.#options,
+          requestId: reqId,
+          segmentId: segId,
+          push: (audio) => {
+            frames += 1
+            safePut(audio)
+          },
+        })
+      } catch (err) {
+        // Per-segment failure must NOT kill the whole turn —
+        // otherwise one transient Gradium WS error blanks out the
+        // rest of the agent's reply and the user only sees the live
+        // transcript with no audio. Log it and keep going so later
+        // segments still synthesize.
+        const msg = err instanceof Error ? err.message : String(err)
+        console.warn(
+          `[gradium TTS] segment #${segmentNumber} failed (${frames} frames in ${Date.now() - startedAt}ms): ${msg} · text="${text.slice(0, 60)}${text.length > 60 ? '…' : ''}"`,
+        )
+        return
+      }
+      if (frames === 0) {
+        console.warn(
+          `[gradium TTS] segment #${segmentNumber} produced no audio frames (${Date.now() - startedAt}ms) · text="${text.slice(0, 60)}${text.length > 60 ? '…' : ''}"`,
+        )
+      }
     }
     for await (const item of this.input) {
       if (item === tts.SynthesizeStream.FLUSH_SENTINEL) {
         if (segmentText.trim().length === 0) continue
+        segmentNumber += 1
         await synth(segmentText)
         segmentText = ''
         continue
@@ -89,10 +130,11 @@ class GradiumSynthesizeStream extends tts.SynthesizeStream {
     }
 
     if (segmentText.trim().length > 0) {
+      segmentNumber += 1
       await synth(segmentText)
     }
 
-    this.queue.put(tts.SynthesizeStream.END_OF_STREAM)
+    safePut(tts.SynthesizeStream.END_OF_STREAM)
   }
 }
 
@@ -117,7 +159,16 @@ class GradiumChunkedStream extends tts.ChunkedStream {
       options: this.#options,
       requestId: randomUUID(),
       segmentId: randomUUID(),
-      push: (audio) => this.queue.put(audio),
+      push: (audio) => {
+        // Match the streaming path: never throw on a closed queue.
+        if (this.queue.closed || this.closed) return
+        try {
+          this.queue.put(audio)
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err)
+          if (!msg.includes('Queue is closed')) throw err
+        }
+      },
     })
   }
 }

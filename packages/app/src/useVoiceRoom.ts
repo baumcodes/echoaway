@@ -16,9 +16,28 @@ import type { ApiClient } from './client.js'
 
 export type VoiceRoomState =
   | { kind: 'idle' }
+  /** WebRTC handshake in progress (token mint → media negotiation). */
   | { kind: 'connecting' }
+  /** WebRTC connected, but the agent worker hasn't joined / published
+   *  audio yet. The traveler can hear silence and wouldn't get a
+   *  response if they spoke — surface this as a distinct loading
+   *  state so the UI doesn't lie. */
+  | {
+      kind: 'awaitingAgent'
+      roomName: string
+      sessionId: string
+      noisy: boolean
+    }
+  /** Agent has published its first audio track — listening / speaking
+   *  works end-to-end. */
   | { kind: 'connected'; roomName: string; sessionId: string; noisy: boolean }
   | { kind: 'error'; message: string }
+
+/** Hard cap on how long we wait for the agent worker to publish its
+ *  first audio track before giving up and flipping to `connected`
+ *  anyway. Keeps the UI from getting permanently stuck if dispatch
+ *  fails or the worker is down. */
+const AGENT_READY_TIMEOUT_MS = 8000
 
 /** One segment as published by the LiveKit Agents framework — both
  *  the user's STT/realtime transcript and the agent's spoken-text
@@ -150,6 +169,21 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
   const onTranscriptionRef = useRef(onTranscription)
   onTranscriptionRef.current = onTranscription
 
+  // The agent publishes more than one audio track (TTS + ambience),
+  // so we can't share a single <audio> element — the second attach
+  // would replace the first. The first track lands on the consumer's
+  // `audioRef` (visible / controllable from the UI); every additional
+  // track gets its own hidden element appended to <body>, tracked here
+  // so we can clean them up on disconnect.
+  const audioElAttachedRef = useRef(false)
+  const extraAudioElsRef = useRef<HTMLAudioElement[]>([])
+  // Two-phase readiness signal. WebRTC `Connected` only means our
+  // mic is hot — it doesn't mean the agent has joined the room and
+  // can hear us. We flip to `connected` only after the agent's first
+  // audio track lands (or the timeout fires as a safety net).
+  const agentReadyRef = useRef(false)
+  const agentReadyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
   const detachAll = useCallback(() => {
     const room = roomRef.current
     if (!room) return
@@ -157,6 +191,16 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
       for (const pub of participant.audioTrackPublications.values()) {
         pub.track?.detach().forEach((el) => el.remove())
       }
+    }
+    for (const el of extraAudioElsRef.current) {
+      el.remove()
+    }
+    extraAudioElsRef.current = []
+    audioElAttachedRef.current = false
+    agentReadyRef.current = false
+    if (agentReadyTimerRef.current) {
+      clearTimeout(agentReadyTimerRef.current)
+      agentReadyTimerRef.current = null
     }
   }, [])
 
@@ -204,9 +248,39 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
             _participant: RemoteParticipant,
           ) => {
             if (track.kind !== Track.Kind.Audio) return
-            const el = audioRef.current
-            if (!el) return
-            ;(track as RemoteAudioTrack).attach(el)
+            const audioTrack = track as RemoteAudioTrack
+            // First audio track → visible / consumer-owned element.
+            // Subsequent tracks (e.g. the agent's ambience track) →
+            // hidden body-level elements so all tracks play in
+            // parallel instead of fighting for the same element.
+            const primary = audioRef.current
+            if (primary && !audioElAttachedRef.current) {
+              audioTrack.attach(primary)
+              audioElAttachedRef.current = true
+            } else {
+              const el = audioTrack.attach()
+              el.style.display = 'none'
+              document.body.appendChild(el)
+              extraAudioElsRef.current.push(el)
+            }
+            // First remote audio track means the agent worker is in
+            // the room and publishing — this is the real "ready"
+            // signal that the WebRTC `Connected` event can't give us.
+            // Promote the visible state to `connected` now (and cancel
+            // the safety-net timeout).
+            if (!agentReadyRef.current) {
+              agentReadyRef.current = true
+              if (agentReadyTimerRef.current) {
+                clearTimeout(agentReadyTimerRef.current)
+                agentReadyTimerRef.current = null
+              }
+              setState({
+                kind: 'connected',
+                roomName: args.roomName,
+                sessionId: args.sessionId,
+                noisy: !!args.noisy,
+              })
+            }
           },
         )
         // The Agents framework publishes both user and agent transcripts
@@ -242,13 +316,39 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
           setState({ kind: 'idle' })
         })
         room.on(RoomEvent.ConnectionStateChanged, (cs: ConnectionState) => {
-          if (cs === ConnectionState.Connected) {
+          if (cs !== ConnectionState.Connected) return
+          // WebRTC is up but the agent worker may not have joined yet.
+          // Surface an explicit `awaitingAgent` state so the UI can
+          // show a loading affordance instead of pretending the agent
+          // is listening. The TrackSubscribed handler above promotes
+          // to `connected` when the agent's first audio track lands.
+          if (!agentReadyRef.current) {
             setState({
-              kind: 'connected',
+              kind: 'awaitingAgent',
               roomName: args.roomName,
               sessionId: args.sessionId,
               noisy: !!args.noisy,
             })
+            // Safety net: if dispatch fails or the worker is down, we
+            // don't want the UI stuck on "awaitingAgent" forever.
+            // After AGENT_READY_TIMEOUT_MS, give up and assume
+            // connected so the user can at least try to talk.
+            if (agentReadyTimerRef.current) {
+              clearTimeout(agentReadyTimerRef.current)
+            }
+            agentReadyTimerRef.current = setTimeout(() => {
+              if (agentReadyRef.current) return
+              console.warn(
+                `[useVoiceRoom] agent ready timeout (${AGENT_READY_TIMEOUT_MS}ms) — flipping to connected anyway`,
+              )
+              agentReadyRef.current = true
+              setState({
+                kind: 'connected',
+                roomName: args.roomName,
+                sessionId: args.sessionId,
+                noisy: !!args.noisy,
+              })
+            }, AGENT_READY_TIMEOUT_MS)
           }
         })
 

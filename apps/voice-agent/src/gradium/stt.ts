@@ -97,8 +97,23 @@ class GradiumSpeechStream extends stt.SpeechStream {
     let flushArmed = true
     const turnEndProb = this.#options.turnEndProbability
 
+    // Guard every queue write: when the AgentSession closes (e.g.
+    // because the LLM blew up with a 429), the queue is closed but
+    // the Gradium WS may still emit messages mid-flight. Putting into
+    // a closed queue throws and kills the worker. No-op here, log,
+    // and let the WS close naturally.
+    const safePut = (event: stt.SpeechEvent) => {
+      if (this.queue.closed || this.closed) return
+      try {
+        this.queue.put(event)
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        if (!msg.includes('Queue is closed')) throw err
+      }
+    }
+
     const emitInterim = (segment: string) => {
-      this.queue.put({
+      safePut({
         type: stt.SpeechEventType.INTERIM_TRANSCRIPT,
         requestId,
         alternatives: [
@@ -120,7 +135,7 @@ class GradiumSpeechStream extends stt.SpeechStream {
         cumulativeText = ''
         return
       }
-      this.queue.put({
+      safePut({
         type: stt.SpeechEventType.FINAL_TRANSCRIPT,
         requestId,
         alternatives: [
@@ -133,7 +148,7 @@ class GradiumSpeechStream extends stt.SpeechStream {
           },
         ],
       })
-      this.queue.put({
+      safePut({
         type: stt.SpeechEventType.END_OF_SPEECH,
         requestId,
       })
@@ -168,7 +183,7 @@ class GradiumSpeechStream extends stt.SpeechStream {
           if (!segment) break
           if (!speechStarted) {
             speechStarted = true
-            this.queue.put({
+            safePut({
               type: stt.SpeechEventType.START_OF_SPEECH,
               requestId,
             })
