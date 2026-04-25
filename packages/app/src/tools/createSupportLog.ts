@@ -19,6 +19,11 @@ export const createSupportLog: Tool = {
         },
         actions: {
           type: 'array',
+          // Gemini Live's BidiGenerate validator requires `items` on
+          // every array — schemas without it are rejected at the
+          // websocket setup step. Stick to a primitive item shape; the
+          // executor coerces non-strings out anyway.
+          items: { type: 'string' },
           description:
             'Names of the tools that mutated state during this session.',
         },

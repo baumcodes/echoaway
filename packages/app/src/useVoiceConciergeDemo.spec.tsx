@@ -16,6 +16,57 @@ const sampleTrip: Trip = {
   disruptions: [],
 }
 
+// Trip with a hotel booking — required for startDemoFlow because the
+// script reads the current check-in to compute the proposed +1 day.
+const tripWithStay: Trip = {
+  ...sampleTrip,
+  components: [
+    {
+      id: 'comp-stay',
+      type: 'accommodation',
+      title: 'Hotel',
+      status: 'booked',
+      segmentId: null,
+      catalogRef: {
+        accommodationProductId: 'hotel-bcn-01',
+        activityProductId: null,
+        flightRouteProductId: null,
+        groundTransferProductId: null,
+      },
+      booking: {
+        id: 'book-stay',
+        supplierId: 'sup-hotelbeds',
+        supplierBookingReference: 'DEMO-HB-001',
+        status: 'confirmed',
+        priceCents: 58000,
+        currency: 'EUR',
+        policy: null,
+        data: {
+          kind: 'accommodation',
+          productSnapshot: {
+            productId: 'hotel-bcn-01',
+            name: 'Hotel Brisa Barcelona',
+            stars: 4,
+            pricePerNightCents: 14500,
+            currency: 'EUR',
+            coordinates: { lat: 0, lng: 0 },
+            amenities: [],
+            images: [],
+          },
+          checkInDate: '2026-05-02',
+          checkOutDate: '2026-05-06',
+          nights: 4,
+          totalPriceCents: 58000,
+          guests: [],
+        },
+        bookedAt: '2026-04-25T00:00:00.000Z',
+        cancelledAt: null,
+      },
+      events: [],
+    },
+  ],
+}
+
 const sampleQuote = {
   componentId: 'comp-stay',
   changeType: 'check_in_date' as const,
@@ -57,6 +108,11 @@ function makeFakeClient() {
     pollEvents: vi.fn().mockResolvedValue([]),
     eventStreamUrl: vi.fn().mockReturnValue('http://test.local/events/stream'),
     resetDemoTrip: vi.fn().mockResolvedValue({ ok: true }),
+    listDestinations: vi.fn().mockResolvedValue([]),
+    listAccommodations: vi.fn().mockResolvedValue([]),
+    listActivities: vi.fn().mockResolvedValue([]),
+    listFlightRoutes: vi.fn().mockResolvedValue([]),
+    listTransfers: vi.fn().mockResolvedValue([]),
   }
 }
 
@@ -125,6 +181,57 @@ describe('useVoiceConciergeDemo', () => {
     })
     act(() => result.current.reset())
     expect(result.current.assistant.kind).toBe('idle')
+  })
+
+  it('startDemoFlow runs the script, pauses for confirm, and ends in confirmed', async () => {
+    const apiClient = makeFakeClient()
+    apiClient.getTripById.mockResolvedValue(tripWithStay)
+    apiClient.getTripByPhone.mockResolvedValue(tripWithStay)
+    const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
+    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await waitFor(() => expect(result.current.sessionId).toBe('sess-1'))
+
+    // Kick off the script — it pauses on the confirm hook so we can
+    // observe the suggesting state mid-flight.
+    let runPromise!: Promise<void>
+    act(() => {
+      runPromise = result.current.startDemoFlow()
+    })
+    await waitFor(() => expect(result.current.assistant.kind).toBe('suggesting'))
+    expect(apiClient.quoteHotelCheckInChange).toHaveBeenCalledTimes(1)
+    expect(apiClient.confirmHotelCheckInChange).not.toHaveBeenCalled()
+
+    // Resolve the pause via the user-facing confirm action.
+    await act(async () => {
+      await result.current.confirmSuggestion()
+      await runPromise
+    })
+    expect(apiClient.confirmHotelCheckInChange).toHaveBeenCalledTimes(1)
+    expect(apiClient.createSupportLog).toHaveBeenCalledTimes(1)
+  })
+
+  it('rejectSuggestion resolves the script pause and skips confirm', async () => {
+    const apiClient = makeFakeClient()
+    apiClient.getTripById.mockResolvedValue(tripWithStay)
+    apiClient.getTripByPhone.mockResolvedValue(tripWithStay)
+    const { result } = renderHook(() => useVoiceConciergeDemo({ apiClient }))
+    await waitFor(() => expect(result.current.fetchStatus).toBe('ready'))
+    await waitFor(() => expect(result.current.sessionId).toBe('sess-1'))
+
+    let runPromise!: Promise<void>
+    act(() => {
+      runPromise = result.current.startDemoFlow()
+    })
+    await waitFor(() => expect(result.current.assistant.kind).toBe('suggesting'))
+
+    await act(async () => {
+      result.current.rejectSuggestion()
+      await runPromise
+    })
+    expect(result.current.assistant.kind).toBe('rejected')
+    expect(apiClient.confirmHotelCheckInChange).not.toHaveBeenCalled()
+    // Support log still written for the operator's record.
+    expect(apiClient.createSupportLog).toHaveBeenCalledTimes(1)
   })
 
   it('resetDemoTrip calls the backend, returns to idle, and refetches', async () => {

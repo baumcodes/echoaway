@@ -118,7 +118,14 @@ export function createApiClient(opts: ApiClientOptions) {
         body: JSON.stringify(req),
       }),
 
-    mintVoiceToken: (req: { identity: string; name?: string; room?: string }) =>
+    mintVoiceToken: (req: {
+      identity: string
+      name?: string
+      room?: string
+      /** Encoded into the participant token; the agent worker reads
+       *  this to resolve tripId/sessionId without an extra round-trip. */
+      metadata?: { tripId?: string; sessionId?: string }
+    }) =>
       request<{ token: string; url: string; room: string; identity: string }>(
         `/voice/token`,
         { method: 'POST', body: JSON.stringify(req) },
@@ -135,6 +142,8 @@ export function createApiClient(opts: ApiClientOptions) {
         travelerId: string | null
         status: string
         startedAt: string
+        /** LiveKit room name owned by this VoiceSession. */
+        roomName: string
       }>(`/voice-sessions`, {
         method: 'POST',
         body: JSON.stringify(req),
@@ -159,7 +168,125 @@ export function createApiClient(opts: ApiClientOptions) {
      *  the slack between check-in and check-out. */
     resetDemoTrip: () =>
       request<{ ok: boolean }>(`/admin/reset-demo`, { method: 'POST' }),
+
+    // -------- Catalog reads ------------------------------------------------
+    // Browser-friendly wrappers around `GET /catalog/*`. The voice agent
+    // (and future expanded tool surface) uses these to suggest swaps,
+    // alternatives, or context — keep them all here so adding a new
+    // catalog query doesn't touch the agent layer.
+
+    listDestinations: (countryCode?: string) => {
+      const qs = countryCode ? `?countryCode=${encodeURIComponent(countryCode)}` : ''
+      return request<CatalogDestination[]>(`/catalog/destinations${qs}`)
+    },
+
+    listAccommodations: (destinationId?: string) => {
+      const qs = destinationId
+        ? `?destinationId=${encodeURIComponent(destinationId)}`
+        : ''
+      return request<CatalogAccommodation[]>(`/catalog/accommodations${qs}`)
+    },
+
+    listActivities: (destinationId?: string) => {
+      const qs = destinationId
+        ? `?destinationId=${encodeURIComponent(destinationId)}`
+        : ''
+      return request<CatalogActivity[]>(`/catalog/activities${qs}`)
+    },
+
+    listFlightRoutes: (params: { fromIata?: string; toIata?: string } = {}) => {
+      const search = new URLSearchParams()
+      if (params.fromIata) search.set('fromIata', params.fromIata)
+      if (params.toIata) search.set('toIata', params.toIata)
+      const qs = search.toString()
+      return request<CatalogFlightRoute[]>(
+        `/catalog/flight-routes${qs ? `?${qs}` : ''}`,
+      )
+    },
+
+    listTransfers: (fromAirportId?: string) => {
+      const qs = fromAirportId
+        ? `?fromAirportId=${encodeURIComponent(fromAirportId)}`
+        : ''
+      return request<CatalogTransfer[]>(`/catalog/transfers${qs}`)
+    },
   }
+}
+
+// Catalog response shapes. Kept narrow — only fields the agent / web UI
+// consume. Backend serialises JSON columns server-side so these are
+// already-parsed objects.
+
+export type CatalogDestination = {
+  id: string
+  name: string
+  type: string
+  countryCode: string
+  countryName: string
+  timezone: string
+  coordinates: { lat: number; lng: number } | null
+  summary: string | null
+  tags: string[] | null
+}
+
+export type CatalogAccommodation = {
+  id: string
+  name: string
+  destinationId: string | null
+  stars: number
+  pricePerNightCents: number
+  currency: string
+  coordinates: { lat: number; lng: number } | null
+  amenities: string[] | null
+  images: string[] | null
+  description: string | null
+}
+
+export type CatalogActivity = {
+  id: string
+  name: string
+  destinationId: string | null
+  durationHours: number
+  priceCents: number
+  currency: string
+  tags: string[] | null
+  description: string | null
+}
+
+export type CatalogFlightRoute = {
+  id: string
+  from: { id: string; iata: string }
+  to: { id: string; iata: string }
+  stops: number
+  durationHours: number
+  priceAvgCents: number
+  currency: string
+  fareConditions: string
+  daysOfWeek: number[] | null
+  legs: Array<{
+    id: string
+    order: number
+    flightNo: string
+    airline: string
+    fromAirportId: string
+    toAirportId: string
+    depTime: string
+    arrTime: string
+  }>
+}
+
+export type CatalogTransfer = {
+  id: string
+  fromAirportId: string | null
+  toAccommodationProductId: string | null
+  toDestinationId: string | null
+  fromLabel: string
+  toLabel: string
+  mode: string
+  durationMinutes: number
+  priceCents: number
+  currency: string
+  schedule: unknown
 }
 
 /** Shape of one row pushed by `/events/stream` and `/events`. Matches

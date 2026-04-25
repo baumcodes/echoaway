@@ -46,8 +46,12 @@ export function assistantReducer(
     case 'session_started':
       return state.kind === 'idle' ? { kind: 'listening' } : state
     case 'listening':
+      // Don't roll a terminal state backwards. After confirmed/rejected
+      // the demo waits for an explicit reset before listening again.
+      if (state.kind === 'confirmed' || state.kind === 'rejected') return state
       return { kind: 'listening', transcript: event.transcript }
     case 'thinking':
+      if (state.kind === 'confirmed' || state.kind === 'rejected') return state
       return { kind: 'thinking', intent: event.intent }
     case 'change_suggested':
       // Once the change has been confirmed or rejected, a late-arriving

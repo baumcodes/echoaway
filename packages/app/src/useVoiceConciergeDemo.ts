@@ -1,16 +1,21 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import { ApiError, type ApiClient } from './client.js'
 import {
+  type PauseDecision,
+  type ScriptTurn,
+  runDemoScript,
+} from './demo-script.js'
+import {
   envelopeToAssistantEvent,
   subscribeToEvents,
 } from './eventStream.js'
-import { selectProposedNewCheckIn } from './selectors.js'
 import {
   type AssistantEvent,
   assistantReducer,
   initialAssistantState,
 } from './state-machine.js'
 import type { Trip } from './types.js'
+import { useVoiceRoom, type VoiceRoomState } from './useVoiceRoom.js'
 
 export type DemoFetchStatus = 'idle' | 'loading' | 'ready' | 'error'
 
@@ -20,6 +25,12 @@ export type DemoState = {
   fetchError: string | null
   assistant: ReturnType<typeof assistantReducer>
   sessionId: string | null
+  /** LiveKit room state. `idle` → no audio session; `connected` → web
+   *  is in the room and the agent worker should be too. */
+  voiceRoom: VoiceRoomState
+  /** Audio element ref the consumer must attach to a `<audio>` so the
+   *  agent's voice actually plays. */
+  voiceAudioRef: React.RefObject<HTMLAudioElement>
 }
 
 export type DemoActions = {
@@ -41,6 +52,11 @@ export type DemoActions = {
    *  Use when consecutive confirms have consumed the bookable slack
    *  (`newCheckInDate must be at least 1 day before checkOutDate`). */
   resetDemoTrip: () => Promise<void>
+  /** Open a fresh VoiceSession + LK room and connect the web mic. The
+   *  agent worker auto-dispatches into the same room and brings audio. */
+  startNewSession: () => Promise<void>
+  /** End the current LK room session. */
+  endSession: () => Promise<void>
 }
 
 export type UseVoiceConciergeDemoOptions = {
@@ -199,36 +215,89 @@ export function useVoiceConciergeDemo(
   const assistantRef = useRef(assistant)
   assistantRef.current = assistant
 
+  // Resolver for the script's pauseBeforeConfirm hook. Set while a script
+  // run is waiting on the human; cleared by confirmSuggestion /
+  // rejectSuggestion (or the script's own teardown) so it can't fire twice.
+  const pauseResolverRef = useRef<((d: PauseDecision) => void) | null>(null)
+
   const startDemoFlow = useCallback(async () => {
     const current = assistantRef.current
     if (current.kind !== 'idle' && current.kind !== 'rejected') return
-    const newCheckIn = selectProposedNewCheckIn(tripRef.current)
-    if (!newCheckIn) {
+    const sessionId = sessionIdRef.current
+    const tripId = tripIdRef.current
+    if (!sessionId || !tripId) {
       dispatchAssistant({
         type: 'error',
-        message: 'No hotel booking — cannot quote a change.',
+        message: 'Voice session not ready yet — try again in a moment.',
       })
       return
     }
-    dispatchAssistant({
-      type: 'listening',
-      transcript:
-        'My flight to Barcelona is delayed. Can I move my hotel check-in to tomorrow?',
-    })
-    // Tiny pause so the UI can read the transcript before the quote
-    // response replaces it.
-    await new Promise((r) => setTimeout(r, 600))
-    await triggerQuote(newCheckIn)
-  }, [triggerQuote])
+    // Closed-over flag so the onTurn callback can ignore the script's
+    // post-decision user line ("Actually, keep it as is" / "Yes, please
+    // confirm"). Without this, that line would dispatch a fresh
+    // `listening` event after the user has already chosen — rolling the
+    // UI back to listening when it should sit on rejected/confirmed.
+    let userDecided: PauseDecision | null = null
+    try {
+      await runDemoScript(
+        { apiClient, sessionId, tripId },
+        {
+          onTurn: (turn: ScriptTurn) => {
+            if (turn.speaker !== 'user') return
+            if (userDecided) return
+            dispatchAssistant({ type: 'listening', transcript: turn.text })
+          },
+          // Drive the state machine synchronously alongside the SSE
+          // delivery — the reducer dedupes identical quotes/confirms so
+          // the duplicate event is a no-op.
+          onQuote: (quote) => {
+            dispatchAssistant({ type: 'change_suggested', quote })
+          },
+          onConfirm: (quote) => {
+            dispatchAssistant({ type: 'change_confirmed', quote })
+          },
+          pauseBeforeConfirm: async () => {
+            const decision = await new Promise<PauseDecision>((resolve) => {
+              pauseResolverRef.current = resolve
+            })
+            userDecided = decision
+            return decision
+          },
+        },
+      )
+      await refreshTrip()
+    } catch (err) {
+      dispatchAssistant({
+        type: 'error',
+        message: err instanceof Error ? err.message : 'Demo flow failed',
+      })
+    } finally {
+      pauseResolverRef.current = null
+    }
+  }, [apiClient, refreshTrip])
 
   const confirmSuggestion = useCallback(async () => {
     const current = assistantRef.current
     if (current.kind !== 'suggesting') return
+    const resolve = pauseResolverRef.current
+    if (resolve) {
+      pauseResolverRef.current = null
+      resolve('confirm')
+      return
+    }
+    // Fallback for direct callers (tests, future integrations) that
+    // dispatched a `change_suggested` event without going through the
+    // script — call confirm directly so the UI still progresses.
     await triggerConfirm(current.quote.newValue)
   }, [triggerConfirm])
 
   const rejectSuggestion = useCallback(() => {
     dispatchAssistant({ type: 'change_rejected', reason: 'user' })
+    const resolve = pauseResolverRef.current
+    if (resolve) {
+      pauseResolverRef.current = null
+      resolve('reject')
+    }
   }, [])
 
   const resetDemoTrip = useCallback(async () => {
@@ -245,12 +314,46 @@ export function useVoiceConciergeDemo(
     }
   }, [apiClient, refreshTrip])
 
+  // ---- LiveKit voice room (Phase 5 audio path) ----
+  const voiceRoom = useVoiceRoom({
+    apiClient,
+    identity: 'web-traveler',
+    name: 'Web Traveler',
+  })
+
+  const startNewSession = useCallback(async () => {
+    if (!trip) return
+    try {
+      // Open a fresh VoiceSession server-side so the agent worker has
+      // a tripId/sessionId pair to thread through every tool call.
+      const session = await apiClient.createVoiceSession({ tripId: trip.id })
+      setSessionId(session.id)
+      dispatchAssistant({ type: 'reset' })
+      await voiceRoom.connect({
+        tripId: trip.id,
+        sessionId: session.id,
+        roomName: session.roomName,
+      })
+    } catch (err) {
+      dispatchAssistant({
+        type: 'error',
+        message: err instanceof Error ? err.message : 'Could not start session',
+      })
+    }
+  }, [apiClient, trip, voiceRoom])
+
+  const endSession = useCallback(async () => {
+    await voiceRoom.disconnect()
+  }, [voiceRoom])
+
   return {
     trip,
     fetchStatus,
     fetchError,
     assistant,
     sessionId,
+    voiceRoom: voiceRoom.state,
+    voiceAudioRef: voiceRoom.audioRef,
     refreshTrip,
     dispatchAssistant,
     triggerQuote,
@@ -260,6 +363,8 @@ export function useVoiceConciergeDemo(
     rejectSuggestion,
     reset,
     resetDemoTrip,
+    startNewSession,
+    endSession,
   }
 }
 
