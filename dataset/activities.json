@@ -1018,5 +1018,7257 @@
       "contract_ref": "GYG-CAD-SURF"
     },
     "description": "Learn to surf with certified instructors on Cádiz’s best surfing beach, Playa de Cortadura."
+  },
+  {
+    "_id": "act-bcn-osm671914513",
+    "name": "Pastelería Escribá Rambla De Les Flors",
+    "city": "Barcelona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BCN-671914513"
+    },
+    "description": "Guided experience around Pastelería Escribá Rambla De Les Flors in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bcn-osm673264230",
+    "name": "Museu de la Música",
+    "city": "Barcelona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-BCN-673264230"
+    },
+    "description": "Guided experience around Museu de la Música in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bcn-osm898852798",
+    "name": "Mirador de Miramar",
+    "city": "Barcelona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BCN-898852798"
+    },
+    "description": "Guided experience around Mirador de Miramar in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bcn-osm1072728133",
+    "name": "Sala Güell",
+    "city": "Barcelona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BCN-1072728133"
+    },
+    "description": "Guided experience around Sala Güell in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bcn-osm1371719212",
+    "name": "Park Güell",
+    "city": "Barcelona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BCN-1371719212"
+    },
+    "description": "Guided experience around Park Güell in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bcn-osm1643199193",
+    "name": "Museu d'Història de la Ciutat",
+    "city": "Barcelona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BCN-1643199193"
+    },
+    "description": "Guided experience around Museu d'Història de la Ciutat in Barcelona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm420182174",
+    "name": "Museu Maricel de Mar",
+    "city": "Sitges",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SITGES-420182174"
+    },
+    "description": "Guided experience around Museu Maricel de Mar in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm420371538",
+    "name": "Punta de les Coves",
+    "city": "Sitges",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SITGES-420371538"
+    },
+    "description": "Guided experience around Punta de les Coves in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm989045393",
+    "name": "Balcó de Sitges",
+    "city": "Sitges",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SITGES-989045393"
+    },
+    "description": "Guided experience around Balcó de Sitges in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm1892158477",
+    "name": "Pedroell",
+    "city": "Sitges",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SITGES-1892158477"
+    },
+    "description": "Guided experience around Pedroell in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm2468883571",
+    "name": "Museu Romàntic",
+    "city": "Sitges",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SITGES-2468883571"
+    },
+    "description": "Guided experience around Museu Romàntic in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sitges-osm3779165120",
+    "name": "Fundació Stämpfli",
+    "city": "Sitges",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SITGES-3779165120"
+    },
+    "description": "Guided experience around Fundació Stämpfli in Sitges, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm1512085710",
+    "name": "Balcó del Mediterrani",
+    "city": "Tarragona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TARRAG-1512085710"
+    },
+    "description": "Guided experience around Balcó del Mediterrani in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm2380227828",
+    "name": "Necròpolis de Tàrraco",
+    "city": "Tarragona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TARRAG-2380227828"
+    },
+    "description": "Guided experience around Necròpolis de Tàrraco in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm5336977922",
+    "name": "Mirador de l'Oliva",
+    "city": "Tarragona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-TARRAG-5336977922"
+    },
+    "description": "Guided experience around Mirador de l'Oliva in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm6371369985",
+    "name": "Museu del Port de Tarragona",
+    "city": "Tarragona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TARRAG-6371369985"
+    },
+    "description": "Guided experience around Museu del Port de Tarragona in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm11478802170",
+    "name": "Torre del Cabiscol I del Seminari",
+    "city": "Tarragona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TARRAG-11478802170"
+    },
+    "description": "Guided experience around Torre del Cabiscol I del Seminari in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarrag-osm11759007070",
+    "name": "Passeig Arqueològic",
+    "city": "Tarragona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TARRAG-11759007070"
+    },
+    "description": "Guided experience around Passeig Arqueològic in Tarragona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1295354224",
+    "name": "Ermita de Santa Anna",
+    "city": "Montserrat",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MONTSE-1295354224"
+    },
+    "description": "Guided experience around Ermita de Santa Anna in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1633267711",
+    "name": "Panoràmica",
+    "city": "Montserrat",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MONTSE-1633267711"
+    },
+    "description": "Guided experience around Panoràmica in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1633330385",
+    "name": "Miranda de Santa Magdalena",
+    "city": "Montserrat",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MONTSE-1633330385"
+    },
+    "description": "Guided experience around Miranda de Santa Magdalena in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1633330398",
+    "name": "Miranda dels Ermitans",
+    "city": "Montserrat",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-MONTSE-1633330398"
+    },
+    "description": "Guided experience around Miranda dels Ermitans in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1633330400",
+    "name": "Miranda",
+    "city": "Montserrat",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MONTSE-1633330400"
+    },
+    "description": "Guided experience around Miranda in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-montse-osm1868801518",
+    "name": "Miranda del Moro",
+    "city": "Montserrat",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MONTSE-1868801518"
+    },
+    "description": "Guided experience around Miranda del Moro in Montserrat, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm2508173010",
+    "name": "Museo Taurino",
+    "city": "Valencia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-VLC-2508173010"
+    },
+    "description": "Guided experience around Museo Taurino in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm2700282752",
+    "name": "Museo de los Soldaditos de Plomo L'Iber",
+    "city": "Valencia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VLC-2700282752"
+    },
+    "description": "Guided experience around Museo de los Soldaditos de Plomo L'Iber in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm4854372337",
+    "name": "Museu de Prehistòria de València",
+    "city": "Valencia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-VLC-4854372337"
+    },
+    "description": "Guided experience around Museu de Prehistòria de València in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm4854372524",
+    "name": "L'ETNO - Museu Valencià d'Etnologia",
+    "city": "Valencia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VLC-4854372524"
+    },
+    "description": "Guided experience around L'ETNO - Museu Valencià d'Etnologia in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm4935866321",
+    "name": "Cripta de la Cárcel de San Vicente Mártir",
+    "city": "Valencia",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VLC-4935866321"
+    },
+    "description": "Guided experience around Cripta de la Cárcel de San Vicente Mártir in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vlc-osm5100017480",
+    "name": "Bombas Gens Centre d'Art",
+    "city": "Valencia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VLC-5100017480"
+    },
+    "description": "Guided experience around Bombas Gens Centre d'Art in Valencia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm2327421284",
+    "name": "Mirador de la Gola de Pujol",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ALBUFE-2327421284"
+    },
+    "description": "Guided experience around Mirador de la Gola de Pujol in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm4300559355",
+    "name": "Embarcadero Cañas y Barro",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALBUFE-4300559355"
+    },
+    "description": "Guided experience around Embarcadero Cañas y Barro in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm4300559357",
+    "name": "Embarcadero Port de Sollana",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ALBUFE-4300559357"
+    },
+    "description": "Guided experience around Embarcadero Port de Sollana in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm4300559359",
+    "name": "Embarcadero de Silla",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ALBUFE-4300559359"
+    },
+    "description": "Guided experience around Embarcadero de Silla in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm5295993901",
+    "name": "Mirador de la ratlla",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ALBUFE-5295993901"
+    },
+    "description": "Guided experience around Mirador de la ratlla in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-albufe-osm6732249792",
+    "name": "Albufera Parc",
+    "city": "Albufera Natural Park",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALBUFE-6732249792"
+    },
+    "description": "Guided experience around Albufera Parc in Albufera Natural Park, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xativa-osm1596068081",
+    "name": "Museu Almodí",
+    "city": "Xàtiva",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-XATIVA-1596068081"
+    },
+    "description": "Guided experience around Museu Almodí in Xàtiva, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xativa-osm3159612996",
+    "name": "Cova dels Lleons",
+    "city": "Xàtiva",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-XATIVA-3159612996"
+    },
+    "description": "Guided experience around Cova dels Lleons in Xàtiva, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xativa-osm4825022624",
+    "name": "Casa de l'Ensenyança",
+    "city": "Xàtiva",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-XATIVA-4825022624"
+    },
+    "description": "Guided experience around Casa de l'Ensenyança in Xàtiva, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xativa-osm11331695080",
+    "name": "Balcó d'Himilce",
+    "city": "Xàtiva",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-XATIVA-11331695080"
+    },
+    "description": "Guided experience around Balcó d'Himilce in Xàtiva, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xativa-osm10846448",
+    "name": "Hospital Reial",
+    "city": "Xàtiva",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-XATIVA-10846448"
+    },
+    "description": "Guided experience around Hospital Reial in Xàtiva, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm219237024",
+    "name": "Mirador del castillo",
+    "city": "Alicante",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALC-219237024"
+    },
+    "description": "Guided experience around Mirador del castillo in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm241786295",
+    "name": "Museo Bellas Artes Gravina",
+    "city": "Alicante",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ALC-241786295"
+    },
+    "description": "Guided experience around Museo Bellas Artes Gravina in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm244887843",
+    "name": "Museo del Agua - Los Pozos de Garrigós",
+    "city": "Alicante",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALC-244887843"
+    },
+    "description": "Guided experience around Museo del Agua - Los Pozos de Garrigós in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm339873199",
+    "name": "mirador del puerto",
+    "city": "Alicante",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ALC-339873199"
+    },
+    "description": "Guided experience around mirador del puerto in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm3198656613",
+    "name": "Museo Taurino",
+    "city": "Alicante",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALC-3198656613"
+    },
+    "description": "Guided experience around Museo Taurino in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-alc-osm5605172221",
+    "name": "Refugio guerra civil Séneca",
+    "city": "Alicante",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ALC-5605172221"
+    },
+    "description": "Guided experience around Refugio guerra civil Séneca in Alicante, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm234147199",
+    "name": "Mirador de la Creu",
+    "city": "Benidorm",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BENIDO-234147199"
+    },
+    "description": "Guided experience around Mirador de la Creu in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm968953558",
+    "name": "Punta Canfali",
+    "city": "Benidorm",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BENIDO-968953558"
+    },
+    "description": "Guided experience around Punta Canfali in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm3727847932",
+    "name": "Viewpoint Aqualandia",
+    "city": "Benidorm",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BENIDO-3727847932"
+    },
+    "description": "Guided experience around Viewpoint Aqualandia in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm8016406624",
+    "name": "Capsula d'Alegria",
+    "city": "Benidorm",
+    "tags": [
+      "theme_park"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BENIDO-8016406624"
+    },
+    "description": "Guided experience around Capsula d'Alegria in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm9022949417",
+    "name": "Mirador Serra Gelada 1",
+    "city": "Benidorm",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-BENIDO-9022949417"
+    },
+    "description": "Guided experience around Mirador Serra Gelada 1 in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-benido-osm13612328442",
+    "name": "Ruinas castillo",
+    "city": "Benidorm",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-BENIDO-13612328442"
+    },
+    "description": "Guided experience around Ruinas castillo in Benidorm, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm288472096",
+    "name": "Mirador de Carabiners",
+    "city": "Calpe",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CALPE-288472096"
+    },
+    "description": "Guided experience around Mirador de Carabiners in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm1535258848",
+    "name": "Galería de Arte Contempóraneo",
+    "city": "Calpe",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CALPE-1535258848"
+    },
+    "description": "Guided experience around Galería de Arte Contempóraneo in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm1543956717",
+    "name": "Museo del Coleccionismo",
+    "city": "Calpe",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CALPE-1543956717"
+    },
+    "description": "Guided experience around Museo del Coleccionismo in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm3722759221",
+    "name": "Mirador Monte Toix",
+    "city": "Calpe",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CALPE-3722759221"
+    },
+    "description": "Guided experience around Mirador Monte Toix in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm3754680320",
+    "name": "Museo de Historia de Calp",
+    "city": "Calpe",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CALPE-3754680320"
+    },
+    "description": "Guided experience around Museo de Historia de Calp in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-calpe-osm3754680321",
+    "name": "Plaça Mestre Llopis",
+    "city": "Calpe",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CALPE-3754680321"
+    },
+    "description": "Guided experience around Plaça Mestre Llopis in Calpe, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm1925519658",
+    "name": "Cova de l'Aigua",
+    "city": "Dénia",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-DENIA-1925519658"
+    },
+    "description": "Guided experience around Cova de l'Aigua in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm1989450534",
+    "name": "Museu Etnològic de Dénia",
+    "city": "Dénia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-DENIA-1989450534"
+    },
+    "description": "Guided experience around Museu Etnològic de Dénia in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm4478875748",
+    "name": "Mundo Marino Dénia",
+    "city": "Dénia",
+    "tags": [
+      "attraction",
+      "ferry_terminal"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-DENIA-4478875748"
+    },
+    "description": "Guided experience around Mundo Marino Dénia in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm5054885823",
+    "name": "Galería Champagnat",
+    "city": "Dénia",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-DENIA-5054885823"
+    },
+    "description": "Guided experience around Galería Champagnat in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm5874133404",
+    "name": "Espai Faller de Dénia",
+    "city": "Dénia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-DENIA-5874133404"
+    },
+    "description": "Guided experience around Espai Faller de Dénia in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-denia-osm9602711726",
+    "name": "Grupo Mundo Marino",
+    "city": "Dénia",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-DENIA-9602711726"
+    },
+    "description": "Guided experience around Grupo Mundo Marino in Dénia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm1925530877",
+    "name": "Cova del Gamell",
+    "city": "Jávea",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-JAVEA-1925530877"
+    },
+    "description": "Guided experience around Cova del Gamell in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm4983600621",
+    "name": "La Casa del Cable",
+    "city": "Jávea",
+    "tags": [
+      "museum",
+      "arts_centre"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-JAVEA-4983600621"
+    },
+    "description": "Guided experience around La Casa del Cable in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm9125248365",
+    "name": "Embarque Mundo Marino",
+    "city": "Jávea",
+    "tags": [
+      "attraction",
+      "ferry_terminal"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-JAVEA-9125248365"
+    },
+    "description": "Guided experience around Embarque Mundo Marino in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm9898329547",
+    "name": "Mirador les Rotes",
+    "city": "Jávea",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-JAVEA-9898329547"
+    },
+    "description": "Guided experience around Mirador les Rotes in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm13598930057",
+    "name": "Centro de interpretación de la Reserva Marina y del Parque Natural del Montgó",
+    "city": "Jávea",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-JAVEA-13598930057"
+    },
+    "description": "Guided experience around Centro de interpretación de la Reserva Marina y del Parque Natural del Montgó in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-javea-osm668013142",
+    "name": "Museo Arqueológico y Etnográfico Soler Blasco",
+    "city": "Jávea",
+    "tags": [
+      "museum",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-JAVEA-668013142"
+    },
+    "description": "Guided experience around Museo Arqueológico y Etnográfico Soler Blasco in Jávea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm3190873362",
+    "name": "Museu Municipal de la Festa",
+    "city": "Elche",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ELCHE-3190873362"
+    },
+    "description": "Guided experience around Museu Municipal de la Festa in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm4609617047",
+    "name": "Banys Àrabs",
+    "city": "Elche",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELCHE-4609617047"
+    },
+    "description": "Guided experience around Banys Àrabs in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm12695567071",
+    "name": "Multiaventura Elche",
+    "city": "Elche",
+    "tags": [
+      "theme_park"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ELCHE-12695567071"
+    },
+    "description": "Guided experience around Multiaventura Elche in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm61390313",
+    "name": "Museo de Arte Contemporáneo de Elche",
+    "city": "Elche",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELCHE-61390313"
+    },
+    "description": "Guided experience around Museo de Arte Contemporáneo de Elche in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm61390315",
+    "name": "Centro municipal de exposiciones",
+    "city": "Elche",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ELCHE-61390315"
+    },
+    "description": "Guided experience around Centro municipal de exposiciones in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elche-osm61390484",
+    "name": "MUPE Museo Paleontológico",
+    "city": "Elche",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELCHE-61390484"
+    },
+    "description": "Guided experience around MUPE Museo Paleontológico in Elche, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-torrev-osm4303817890",
+    "name": "Museo del Mar y de la Sal",
+    "city": "Torrevieja",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TORREV-4303817890"
+    },
+    "description": "Guided experience around Museo del Mar y de la Sal in Torrevieja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-torrev-osm480233469",
+    "name": "Sala de Exposiciones Vista Alegre",
+    "city": "Torrevieja",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TORREV-480233469"
+    },
+    "description": "Guided experience around Sala de Exposiciones Vista Alegre in Torrevieja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-torrev-osm1484260108",
+    "name": "Museos flotantes Delfín S-61 y Albatros III",
+    "city": "Torrevieja",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TORREV-1484260108"
+    },
+    "description": "Guided experience around Museos flotantes Delfín S-61 y Albatros III in Torrevieja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm388223070",
+    "name": "Museu d'Etnologia",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CASTEL-388223070"
+    },
+    "description": "Guided experience around Museu d'Etnologia in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm4660622969",
+    "name": "Museo Etnológico",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CASTEL-4660622969"
+    },
+    "description": "Guided experience around Museo Etnológico in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm6871212465",
+    "name": "Sala Sant Miquel",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CASTEL-6871212465"
+    },
+    "description": "Guided experience around Sala Sant Miquel in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm8732059117",
+    "name": "Refugi Antiaeri de la Plaça Tetuan",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CASTEL-8732059117"
+    },
+    "description": "Guided experience around Refugi Antiaeri de la Plaça Tetuan in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm8732124817",
+    "name": "Torre dels Alçaments",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CASTEL-8732124817"
+    },
+    "description": "Guided experience around Torre dels Alçaments in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-castel-osm10816244574",
+    "name": "Refugi Antiaeri",
+    "city": "Castellón de la Plana",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CASTEL-10816244574"
+    },
+    "description": "Guided experience around Refugi Antiaeri in Castellón de la Plana, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm3023544737",
+    "name": "Castillo de Peniscola",
+    "city": "Peñíscola",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PENISC-3023544737"
+    },
+    "description": "Guided experience around Castillo de Peniscola in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm5039444323",
+    "name": "lo Bufador",
+    "city": "Peñíscola",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-PENISC-5039444323"
+    },
+    "description": "Guided experience around lo Bufador in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm8838916817",
+    "name": "Magic Museum by Yunke",
+    "city": "Peñíscola",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PENISC-8838916817"
+    },
+    "description": "Guided experience around Magic Museum by Yunke in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm9917528831",
+    "name": "la Porteta",
+    "city": "Peñíscola",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PENISC-9917528831"
+    },
+    "description": "Guided experience around la Porteta in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm205130272",
+    "name": "Museu de la Mar",
+    "city": "Peñíscola",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-PENISC-205130272"
+    },
+    "description": "Guided experience around Museu de la Mar in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-penisc-osm1082144309",
+    "name": "Casa de les Petxines",
+    "city": "Peñíscola",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PENISC-1082144309"
+    },
+    "description": "Guided experience around Casa de les Petxines in Peñíscola, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-altea-osm757520115",
+    "name": "Mirador Cronistes d'Espanya",
+    "city": "Altea",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALTEA-757520115"
+    },
+    "description": "Guided experience around Mirador Cronistes d'Espanya in Altea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-altea-osm4762843193",
+    "name": "Torre de Bellaguarda",
+    "city": "Altea",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ALTEA-4762843193"
+    },
+    "description": "Guided experience around Torre de Bellaguarda in Altea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-altea-osm9602385084",
+    "name": "Mundo Marino Altea",
+    "city": "Altea",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ALTEA-9602385084"
+    },
+    "description": "Guided experience around Mundo Marino Altea in Altea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-altea-osm13612757722",
+    "name": "Antic arc d'accés al casc antic",
+    "city": "Altea",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ALTEA-13612757722"
+    },
+    "description": "Guided experience around Antic arc d'accés al casc antic in Altea, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm660283246",
+    "name": "Parque Genovés",
+    "city": "Cádiz",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CDZ-660283246"
+    },
+    "description": "Guided experience around Parque Genovés in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm1259587250",
+    "name": "Ficus macrophylla",
+    "city": "Cádiz",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CDZ-1259587250"
+    },
+    "description": "Guided experience around Ficus macrophylla in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm1743798709",
+    "name": "Peña Flamenca Juan Villar",
+    "city": "Cádiz",
+    "tags": [
+      "attraction",
+      "bar"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CDZ-1743798709"
+    },
+    "description": "Guided experience around Peña Flamenca Juan Villar in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm1941189209",
+    "name": "Torre Tavira",
+    "city": "Cádiz",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CDZ-1941189209"
+    },
+    "description": "Guided experience around Torre Tavira in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm3769297307",
+    "name": "Castillo de Santa Catalina",
+    "city": "Cádiz",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CDZ-3769297307"
+    },
+    "description": "Guided experience around Castillo de Santa Catalina in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cdz-osm3769313739",
+    "name": "Paseo de Santa Bárbara",
+    "city": "Cádiz",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CDZ-3769313739"
+    },
+    "description": "Guided experience around Paseo de Santa Bárbara in Cádiz, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm3359807879",
+    "name": "Pinacoteca Rivero",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-XRY-3359807879"
+    },
+    "description": "Guided experience around Pinacoteca Rivero in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm5263794921",
+    "name": "Catedral de Jerez de la Frontera",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-XRY-5263794921"
+    },
+    "description": "Guided experience around Catedral de Jerez de la Frontera in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm13388084796",
+    "name": "Tío Pepe",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-XRY-13388084796"
+    },
+    "description": "Guided experience around Tío Pepe in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm32826928",
+    "name": "Sala de Exposiciones Bodega Callejón de los Bolos",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-XRY-32826928"
+    },
+    "description": "Guided experience around Sala de Exposiciones Bodega Callejón de los Bolos in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm158966988",
+    "name": "Real Escuela del Arte Ecuestre",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-XRY-158966988"
+    },
+    "description": "Guided experience around Real Escuela del Arte Ecuestre in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-xry-osm236112189",
+    "name": "Zoobotánico Jerez",
+    "city": "Jerez de la Frontera",
+    "tags": [
+      "zoo"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-XRY-236112189"
+    },
+    "description": "Guided experience around Zoobotánico Jerez in Jerez de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm4006093513",
+    "name": "Centro Expositivo de la Migracion de Aves",
+    "city": "Tarifa",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TARIFA-4006093513"
+    },
+    "description": "Guided experience around Centro Expositivo de la Migracion de Aves in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm4109528810",
+    "name": "Observatorio de Aves Los Lances",
+    "city": "Tarifa",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-TARIFA-4109528810"
+    },
+    "description": "Guided experience around Observatorio de Aves Los Lances in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm4114079289",
+    "name": "Observatorio de Aves Cazalla",
+    "city": "Tarifa",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TARIFA-4114079289"
+    },
+    "description": "Guided experience around Observatorio de Aves Cazalla in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm4128055289",
+    "name": "Observatorio Migración de Aves",
+    "city": "Tarifa",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-TARIFA-4128055289"
+    },
+    "description": "Guided experience around Observatorio Migración de Aves in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm5367753331",
+    "name": "Mirador de la Playa de los Lances",
+    "city": "Tarifa",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TARIFA-5367753331"
+    },
+    "description": "Guided experience around Mirador de la Playa de los Lances in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tarifa-osm10582229500",
+    "name": "Carro elevador de la antigua grúa Titán",
+    "city": "Tarifa",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TARIFA-10582229500"
+    },
+    "description": "Guided experience around Carro elevador de la antigua grúa Titán in Tarifa, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm6867099047",
+    "name": "Los Molinos Miraflores",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VEJER-6867099047"
+    },
+    "description": "Guided experience around Los Molinos Miraflores in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm6867099048",
+    "name": "Los Molinos Aula de la Naturaleza",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-VEJER-6867099048"
+    },
+    "description": "Guided experience around Los Molinos Aula de la Naturaleza in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm7604607674",
+    "name": "Mirador del Santo",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-VEJER-7604607674"
+    },
+    "description": "Guided experience around Mirador del Santo in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm7604667346",
+    "name": "Mirador a Trafalgar",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-VEJER-7604667346"
+    },
+    "description": "Guided experience around Mirador a Trafalgar in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm9040176021",
+    "name": "Museo de Vejer",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-VEJER-9040176021"
+    },
+    "description": "Guided experience around Museo de Vejer in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-vejer-osm10572505875",
+    "name": "Rincón del beso",
+    "city": "Vejer de la Frontera",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-VEJER-10572505875"
+    },
+    "description": "Guided experience around Rincón del beso in Vejer de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm1826159450",
+    "name": "Mirador del Jabiguero",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CONIL-1826159450"
+    },
+    "description": "Guided experience around Mirador del Jabiguero in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm1963702558",
+    "name": "Mirador",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CONIL-1963702558"
+    },
+    "description": "Guided experience around Mirador in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm5208061169",
+    "name": "La Chanca",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CONIL-5208061169"
+    },
+    "description": "Guided experience around La Chanca in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm6124165888",
+    "name": "Mercadillo de los viernes",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CONIL-6124165888"
+    },
+    "description": "Guided experience around Mercadillo de los viernes in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm6124165889",
+    "name": "Muralla (restos)",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CONIL-6124165889"
+    },
+    "description": "Guided experience around Muralla (restos) in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-conil-osm189536519",
+    "name": "Museo de Raíces Conileñas",
+    "city": "Conil de la Frontera",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CONIL-189536519"
+    },
+    "description": "Guided experience around Museo de Raíces Conileñas in Conil de la Frontera, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zahara-osm5645513332",
+    "name": "Gladiator",
+    "city": "Zahara de los Atunes",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ZAHARA-5645513332"
+    },
+    "description": "Guided experience around Gladiator in Zahara de los Atunes, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm5223422426",
+    "name": "Bodega La Gitana",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SANLUC-5223422426"
+    },
+    "description": "Guided experience around Bodega La Gitana in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm5598557622",
+    "name": "Bodegón de Arte a Contratiempo",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANLUC-5598557622"
+    },
+    "description": "Guided experience around Bodegón de Arte a Contratiempo in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm7176429786",
+    "name": "Parada Safari Doñana (Ferry)",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANLUC-7176429786"
+    },
+    "description": "Guided experience around Parada Safari Doñana (Ferry) in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm332751407",
+    "name": "Iglesia de Santo Domingo",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction",
+      "place_of_worship"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SANLUC-332751407"
+    },
+    "description": "Guided experience around Iglesia de Santo Domingo in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm401803993",
+    "name": "Auditorio de la Merced",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction",
+      "community_centre"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SANLUC-401803993"
+    },
+    "description": "Guided experience around Auditorio de la Merced in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-sanluc-osm401804001",
+    "name": "Palacio Ducal de Medina Sidonia",
+    "city": "Sanlúcar de Barrameda",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANLUC-401804001"
+    },
+    "description": "Guided experience around Palacio Ducal de Medina Sidonia in Sanlúcar de Barrameda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm5224458923",
+    "name": "Almacenes de Bodegas Osborne",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELPUER-5224458923"
+    },
+    "description": "Guided experience around Almacenes de Bodegas Osborne in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm5224474322",
+    "name": "Palacio de Araníbar",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELPUER-5224474322"
+    },
+    "description": "Guided experience around Palacio de Araníbar in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm5224511222",
+    "name": "Palacio Reinoso Mendoza",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELPUER-5224511222"
+    },
+    "description": "Guided experience around Palacio Reinoso Mendoza in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm6698977018",
+    "name": "Fundación Pedro Muñoz Seca",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ELPUER-6698977018"
+    },
+    "description": "Guided experience around Fundación Pedro Muñoz Seca in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm301758071",
+    "name": "Bodegas Osborne",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ELPUER-301758071"
+    },
+    "description": "Guided experience around Bodegas Osborne in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-elpuer-osm712533844",
+    "name": "Museo Municipal-Sala Hospitalito",
+    "city": "El Puerto de Santa María",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ELPUER-712533844"
+    },
+    "description": "Guided experience around Museo Municipal-Sala Hospitalito in El Puerto de Santa María, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-rota-osm8952335898",
+    "name": "Mirador Pinares de Rota",
+    "city": "Rota",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ROTA-8952335898"
+    },
+    "description": "Guided experience around Mirador Pinares de Rota in Rota, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-rota-osm10106498920",
+    "name": "Mirador Pico Barro",
+    "city": "Rota",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ROTA-10106498920"
+    },
+    "description": "Guided experience around Mirador Pico Barro in Rota, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-rota-osm370405429",
+    "name": "Espacio Cultural Hispano Norteamericano de Rota",
+    "city": "Rota",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ROTA-370405429"
+    },
+    "description": "Guided experience around Espacio Cultural Hispano Norteamericano de Rota in Rota, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-chipio-osm5223516423",
+    "name": "Mi Abuela Rocío",
+    "city": "Chipiona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CHIPIO-5223516423"
+    },
+    "description": "Guided experience around Mi Abuela Rocío in Chipiona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-chipio-osm12801308686",
+    "name": "Cartel de Chipiona",
+    "city": "Chipiona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CHIPIO-12801308686"
+    },
+    "description": "Guided experience around Cartel de Chipiona in Chipiona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-chipio-osm589303517",
+    "name": "Mirador Manolo Sanlúcar",
+    "city": "Chipiona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CHIPIO-589303517"
+    },
+    "description": "Guided experience around Mirador Manolo Sanlúcar in Chipiona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-chipio-osm698098648",
+    "name": "Mirador Poeta José Manuel Caballero Bonald",
+    "city": "Chipiona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CHIPIO-698098648"
+    },
+    "description": "Guided experience around Mirador Poeta José Manuel Caballero Bonald in Chipiona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm158849464",
+    "name": "Museo Casa de la Moneda",
+    "city": "Madrid",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MAD-158849464"
+    },
+    "description": "Guided experience around Museo Casa de la Moneda in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm255288522",
+    "name": "Museo Arqueológico Nacional",
+    "city": "Madrid",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-MAD-255288522"
+    },
+    "description": "Guided experience around Museo Arqueológico Nacional in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm316810700",
+    "name": "La Atalaya",
+    "city": "Madrid",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MAD-316810700"
+    },
+    "description": "Guided experience around La Atalaya in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm317381105",
+    "name": "Mirador de Tierno Galván",
+    "city": "Madrid",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MAD-317381105"
+    },
+    "description": "Guided experience around Mirador de Tierno Galván in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm317911511",
+    "name": "Museo del Ferrocarril de Madrid",
+    "city": "Madrid",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MAD-317911511"
+    },
+    "description": "Guided experience around Museo del Ferrocarril de Madrid in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mad-osm324814372",
+    "name": "Mirador Este Parque Enrique Tierno Galván",
+    "city": "Madrid",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MAD-324814372"
+    },
+    "description": "Guided experience around Mirador Este Parque Enrique Tierno Galván in Madrid, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm747693261",
+    "name": "Sala de exposiciones Santa Inés",
+    "city": "Seville",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SVQ-747693261"
+    },
+    "description": "Guided experience around Sala de exposiciones Santa Inés in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm844175401",
+    "name": "Castillo de San Jorge",
+    "city": "Seville",
+    "tags": [
+      "museum",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SVQ-844175401"
+    },
+    "description": "Guided experience around Castillo de San Jorge in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm1308942334",
+    "name": "Antiqvarivm",
+    "city": "Seville",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SVQ-1308942334"
+    },
+    "description": "Guided experience around Antiqvarivm in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm1345316690",
+    "name": "Sala Exposición Santa Clara",
+    "city": "Seville",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SVQ-1345316690"
+    },
+    "description": "Guided experience around Sala Exposición Santa Clara in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm1714881306",
+    "name": "Plaza de toros de Sevilla",
+    "city": "Seville",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SVQ-1714881306"
+    },
+    "description": "Guided experience around Plaza de toros de Sevilla in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-svq-osm2343687022",
+    "name": "Una Ave María",
+    "city": "Seville",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SVQ-2343687022"
+    },
+    "description": "Guided experience around Una Ave María in Seville, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm295148495",
+    "name": "Torre de la Vela",
+    "city": "Granada",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-GRX-295148495"
+    },
+    "description": "Guided experience around Torre de la Vela in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm507114110",
+    "name": "Mirador de San Cristóbal",
+    "city": "Granada",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-GRX-507114110"
+    },
+    "description": "Guided experience around Mirador de San Cristóbal in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm533647928",
+    "name": "Casa Museo Manuel de Falla",
+    "city": "Granada",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-GRX-533647928"
+    },
+    "description": "Guided experience around Casa Museo Manuel de Falla in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm940435771",
+    "name": "Museo de la Alhambra",
+    "city": "Granada",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-GRX-940435771"
+    },
+    "description": "Guided experience around Museo de la Alhambra in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm1213321729",
+    "name": "Mirador de San Nicolás",
+    "city": "Granada",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-GRX-1213321729"
+    },
+    "description": "Guided experience around Mirador de San Nicolás in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-grx-osm1351200937",
+    "name": "Fundación Rodríguez Acosta",
+    "city": "Granada",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-GRX-1351200937"
+    },
+    "description": "Guided experience around Fundación Rodríguez Acosta in Granada, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm3367825721",
+    "name": "Casa de Sefarad",
+    "city": "Córdoba",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-COR-3367825721"
+    },
+    "description": "Guided experience around Casa de Sefarad in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm3367825722",
+    "name": "Zoco Municipal",
+    "city": "Córdoba",
+    "tags": [
+      "attraction",
+      "marketplace"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-COR-3367825722"
+    },
+    "description": "Guided experience around Zoco Municipal in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm3647845576",
+    "name": "Galería de la Inquisición",
+    "city": "Córdoba",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-COR-3647845576"
+    },
+    "description": "Guided experience around Galería de la Inquisición in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm4172841541",
+    "name": "Puerta de los Sacos",
+    "city": "Córdoba",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-COR-4172841541"
+    },
+    "description": "Guided experience around Puerta de los Sacos in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm4383587391",
+    "name": "Patios de Córdoba",
+    "city": "Córdoba",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-COR-4383587391"
+    },
+    "description": "Guided experience around Patios de Córdoba in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cor-osm4383602989",
+    "name": "historic centre",
+    "city": "Córdoba",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-COR-4383602989"
+    },
+    "description": "Guided experience around historic centre in Córdoba, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm2020714412",
+    "name": "Mirador de los Pinos",
+    "city": "Málaga",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-AGP-2020714412"
+    },
+    "description": "Guided experience around Mirador de los Pinos in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm2266226547",
+    "name": "Mirador de San Miguel",
+    "city": "Málaga",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-AGP-2266226547"
+    },
+    "description": "Guided experience around Mirador de San Miguel in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm6461154509",
+    "name": "Torre Blanca",
+    "city": "Málaga",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-AGP-6461154509"
+    },
+    "description": "Guided experience around Torre Blanca in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm6503992574",
+    "name": "Mirador de la Alcazaba",
+    "city": "Málaga",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-AGP-6503992574"
+    },
+    "description": "Guided experience around Mirador de la Alcazaba in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm6622812706",
+    "name": "Palacio Episcopal Centro de Arte",
+    "city": "Málaga",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-AGP-6622812706"
+    },
+    "description": "Guided experience around Palacio Episcopal Centro de Arte in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-agp-osm6624534082",
+    "name": "Museo Catedralicio",
+    "city": "Málaga",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-AGP-6624534082"
+    },
+    "description": "Guided experience around Museo Catedralicio in Málaga, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm1042711945",
+    "name": "Balcón de la Virgen de los Dolores",
+    "city": "Marbella",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MARBEL-1042711945"
+    },
+    "description": "Guided experience around Balcón de la Virgen de los Dolores in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm4428333539",
+    "name": "Reloj de Sol",
+    "city": "Marbella",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MARBEL-4428333539"
+    },
+    "description": "Guided experience around Reloj de Sol in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm6349361347",
+    "name": "Mirador de los Gitanos",
+    "city": "Marbella",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MARBEL-6349361347"
+    },
+    "description": "Guided experience around Mirador de los Gitanos in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm178410359",
+    "name": "Pirate's park",
+    "city": "Marbella",
+    "tags": [
+      "theme_park"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MARBEL-178410359"
+    },
+    "description": "Guided experience around Pirate's park in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm564464606",
+    "name": "Fuente Virgen del Rocio",
+    "city": "Marbella",
+    "tags": [
+      "attraction",
+      "fountain"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MARBEL-564464606"
+    },
+    "description": "Guided experience around Fuente Virgen del Rocio in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-marbel-osm1184275",
+    "name": "Playa de la Fontanilla",
+    "city": "Marbella",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MARBEL-1184275"
+    },
+    "description": "Guided experience around Playa de la Fontanilla in Marbella, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm280764164",
+    "name": "Museo Taurino",
+    "city": "Ronda",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-RONDA-280764164"
+    },
+    "description": "Guided experience around Museo Taurino in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm280764185",
+    "name": "Museo Lara",
+    "city": "Ronda",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-RONDA-280764185"
+    },
+    "description": "Guided experience around Museo Lara in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm886119351",
+    "name": "Fuente de los Ocho Caños",
+    "city": "Ronda",
+    "tags": [
+      "attraction",
+      "drinking_water"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-RONDA-886119351"
+    },
+    "description": "Guided experience around Fuente de los Ocho Caños in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm903073237",
+    "name": "Arco del Cristo",
+    "city": "Ronda",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-RONDA-903073237"
+    },
+    "description": "Guided experience around Arco del Cristo in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm1257612328",
+    "name": "Torre alminar de la Iglesia de San Sebastián",
+    "city": "Ronda",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-RONDA-1257612328"
+    },
+    "description": "Guided experience around Torre alminar de la Iglesia de San Sebastián in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-ronda-osm1855576778",
+    "name": "Mirador Tajo de Ronda",
+    "city": "Ronda",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-RONDA-1855576778"
+    },
+    "description": "Guided experience around Mirador Tajo de Ronda in Ronda, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm588942122",
+    "name": "Casa Museo",
+    "city": "Mijas",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MIJAS-588942122"
+    },
+    "description": "Guided experience around Casa Museo in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm937539477",
+    "name": "Museo del vino Málaga",
+    "city": "Mijas",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-MIJAS-937539477"
+    },
+    "description": "Guided experience around Museo del vino Málaga in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm937539612",
+    "name": "Museo de la Plaza de Toros",
+    "city": "Mijas",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-MIJAS-937539612"
+    },
+    "description": "Guided experience around Museo de la Plaza de Toros in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm2954727881",
+    "name": "Mirador Juan Antonio Gómez Alarcón",
+    "city": "Mijas",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MIJAS-2954727881"
+    },
+    "description": "Guided experience around Mirador Juan Antonio Gómez Alarcón in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm3341926440",
+    "name": "Centro de Arte Contemporáneo (CAC Mijas)",
+    "city": "Mijas",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-MIJAS-3341926440"
+    },
+    "description": "Guided experience around Centro de Arte Contemporáneo (CAC Mijas) in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mijas-osm4479115280",
+    "name": "Mirador Hermanos Nuñez Andreu",
+    "city": "Mijas",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MIJAS-4479115280"
+    },
+    "description": "Guided experience around Mirador Hermanos Nuñez Andreu in Mijas, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm1132249588",
+    "name": "El acueducto del Águila",
+    "city": "Nerja",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-NERJA-1132249588"
+    },
+    "description": "Guided experience around El acueducto del Águila in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm1589280608",
+    "name": "Museo de Nerja",
+    "city": "Nerja",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-NERJA-1589280608"
+    },
+    "description": "Guided experience around Museo de Nerja in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm2113920727",
+    "name": "Mirador del Bendito",
+    "city": "Nerja",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-NERJA-2113920727"
+    },
+    "description": "Guided experience around Mirador del Bendito in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm2481346642",
+    "name": "Cueva de Nerja",
+    "city": "Nerja",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-NERJA-2481346642"
+    },
+    "description": "Guided experience around Cueva de Nerja in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm2816634858",
+    "name": "Balcón de Europa",
+    "city": "Nerja",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-NERJA-2816634858"
+    },
+    "description": "Guided experience around Balcón de Europa in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-nerja-osm28036007",
+    "name": "Paseo Balcón de Europa",
+    "city": "Nerja",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-NERJA-28036007"
+    },
+    "description": "Guided experience around Paseo Balcón de Europa in Nerja, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm498483153",
+    "name": "Pasio-Irudien Museoa",
+    "city": "Bilbao",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-BIO-498483153"
+    },
+    "description": "Guided experience around Pasio-Irudien Museoa in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm518227646",
+    "name": "Itsasmuseum Bilbao",
+    "city": "Bilbao",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-BIO-518227646"
+    },
+    "description": "Guided experience around Itsasmuseum Bilbao in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm1271964866",
+    "name": "Rekalde aretoa",
+    "city": "Bilbao",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-BIO-1271964866"
+    },
+    "description": "Guided experience around Rekalde aretoa in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm3531190084",
+    "name": "Mirador de Artxanda",
+    "city": "Bilbao",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BIO-3531190084"
+    },
+    "description": "Guided experience around Mirador de Artxanda in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm3904709063",
+    "name": "Mirador de Uretamendi",
+    "city": "Bilbao",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-BIO-3904709063"
+    },
+    "description": "Guided experience around Mirador de Uretamendi in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-bio-osm3922519111",
+    "name": "Bilboko zezen museoa",
+    "city": "Bilbao",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-BIO-3922519111"
+    },
+    "description": "Guided experience around Bilboko zezen museoa in Bilbao, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm259491671",
+    "name": "Donostiako Aquariuma",
+    "city": "San Sebastián",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-EAS-259491671"
+    },
+    "description": "Guided experience around Donostiako Aquariuma in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm361064995",
+    "name": "Igeldoko itsasargia",
+    "city": "San Sebastián",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-EAS-361064995"
+    },
+    "description": "Guided experience around Igeldoko itsasargia in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm537141520",
+    "name": "Real 100 Museoa",
+    "city": "San Sebastián",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-EAS-537141520"
+    },
+    "description": "Guided experience around Real 100 Museoa in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm538050483",
+    "name": "Igeldo mendia",
+    "city": "San Sebastián",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-EAS-538050483"
+    },
+    "description": "Guided experience around Igeldo mendia in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm540864241",
+    "name": "Museo Diocesano",
+    "city": "San Sebastián",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-EAS-540864241"
+    },
+    "description": "Guided experience around Museo Diocesano in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-eas-osm738565711",
+    "name": "Eureka! Zientzia Museoa",
+    "city": "San Sebastián",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-EAS-738565711"
+    },
+    "description": "Guided experience around Eureka! Zientzia Museoa in San Sebastián, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm134570196",
+    "name": "Museo de Prehistoria y Arqueología de Cantabria",
+    "city": "Santander",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANTAN-134570196"
+    },
+    "description": "Guided experience around Museo de Prehistoria y Arqueología de Cantabria in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm1255212375",
+    "name": "Mirador del faro de Cabo Mayor",
+    "city": "Santander",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANTAN-1255212375"
+    },
+    "description": "Guided experience around Mirador del faro de Cabo Mayor in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm2390791059",
+    "name": "Centro de Interpretación de Golf Severiano Ballesteros",
+    "city": "Santander",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANTAN-2390791059"
+    },
+    "description": "Guided experience around Centro de Interpretación de Golf Severiano Ballesteros in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm2592654629",
+    "name": "Lafuente Cultura Material",
+    "city": "Santander",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SANTAN-2592654629"
+    },
+    "description": "Guided experience around Lafuente Cultura Material in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm3649126896",
+    "name": "Refugio antiaéreo",
+    "city": "Santander",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANTAN-3649126896"
+    },
+    "description": "Guided experience around Refugio antiaéreo in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-santan-osm3658337091",
+    "name": "El Hombre y La Mar",
+    "city": "Santander",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SANTAN-3658337091"
+    },
+    "description": "Guided experience around El Hombre y La Mar in Santander, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm2167339801",
+    "name": "Museo Catedralicio",
+    "city": "Oviedo",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-OVIEDO-2167339801"
+    },
+    "description": "Guided experience around Museo Catedralicio in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm4558454475",
+    "name": "Museo de Geología",
+    "city": "Oviedo",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-OVIEDO-4558454475"
+    },
+    "description": "Guided experience around Museo de Geología in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm4696390542",
+    "name": "Jardín calendario",
+    "city": "Oviedo",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-OVIEDO-4696390542"
+    },
+    "description": "Guided experience around Jardín calendario in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm9311304388",
+    "name": "Letras de Oviedo",
+    "city": "Oviedo",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-OVIEDO-9311304388"
+    },
+    "description": "Guided experience around Letras de Oviedo in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm10151605577",
+    "name": "Sala de exposiciones Banco Sabadell Herrero",
+    "city": "Oviedo",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-OVIEDO-10151605577"
+    },
+    "description": "Guided experience around Sala de exposiciones Banco Sabadell Herrero in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-oviedo-osm11150213836",
+    "name": "Sala Borrón",
+    "city": "Oviedo",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-OVIEDO-11150213836"
+    },
+    "description": "Guided experience around Sala Borrón in Oviedo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm28978951",
+    "name": "Museo de las Termas Romanas de Campo Valdés / Muséu de les Termes Romanes d'El Campu Valdés",
+    "city": "Gijón",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-GIJON-28978951"
+    },
+    "description": "Guided experience around Museo de las Termas Romanas de Campo Valdés / Muséu de les Termes Romanes d'El Campu Valdés in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm28979058",
+    "name": "Acuario de Gijón/Xixón",
+    "city": "Gijón",
+    "tags": [
+      "aquarium"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-GIJON-28979058"
+    },
+    "description": "Guided experience around Acuario de Gijón/Xixón in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm977634285",
+    "name": "Mirador Playa de Poniente",
+    "city": "Gijón",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-GIJON-977634285"
+    },
+    "description": "Guided experience around Mirador Playa de Poniente in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm989132121",
+    "name": "Mirador de La Providencia",
+    "city": "Gijón",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-GIJON-989132121"
+    },
+    "description": "Guided experience around Mirador de La Providencia in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm4287247493",
+    "name": "Las letronas de Gijón",
+    "city": "Gijón",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-GIJON-4287247493"
+    },
+    "description": "Guided experience around Las letronas de Gijón in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-gijon-osm5020212724",
+    "name": "Bateria Baja",
+    "city": "Gijón",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-GIJON-5020212724"
+    },
+    "description": "Guided experience around Bateria Baja in Gijón, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm1296297478",
+    "name": "Antigua Fábrica de luz",
+    "city": "Toledo",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TOL-1296297478"
+    },
+    "description": "Guided experience around Antigua Fábrica de luz in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm1296667840",
+    "name": "Museo de Arte Contemporáneo de Toledo",
+    "city": "Toledo",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TOL-1296667840"
+    },
+    "description": "Guided experience around Museo de Arte Contemporáneo de Toledo in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm2092210074",
+    "name": "Mirador Del Valle",
+    "city": "Toledo",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TOL-2092210074"
+    },
+    "description": "Guided experience around Mirador Del Valle in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm2092210076",
+    "name": "Mirador Toledo",
+    "city": "Toledo",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-TOL-2092210076"
+    },
+    "description": "Guided experience around Mirador Toledo in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm2590897948",
+    "name": "Capilla de San Blas",
+    "city": "Toledo",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-TOL-2590897948"
+    },
+    "description": "Guided experience around Capilla de San Blas in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-tol-osm2590897953",
+    "name": "Capilla de los Reyes Nuevos",
+    "city": "Toledo",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-TOL-2590897953"
+    },
+    "description": "Guided experience around Capilla de los Reyes Nuevos in Toledo, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm613410585",
+    "name": "Mirador del Acueducto",
+    "city": "Segovia",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SEG-613410585"
+    },
+    "description": "Guided experience around Mirador del Acueducto in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm2672249428",
+    "name": "Museo de Segovia",
+    "city": "Segovia",
+    "tags": [
+      "museum",
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SEG-2672249428"
+    },
+    "description": "Guided experience around Museo de Segovia in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm2675594000",
+    "name": "Foster's Hollywood",
+    "city": "Segovia",
+    "tags": [
+      "attraction",
+      "restaurant"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SEG-2675594000"
+    },
+    "description": "Guided experience around Foster's Hollywood in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm2675594002",
+    "name": "Casa-Museo de Antonio Machado",
+    "city": "Segovia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SEG-2675594002"
+    },
+    "description": "Guided experience around Casa-Museo de Antonio Machado in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm2675594009",
+    "name": "Museo de Arte Contemporáneo - Esteban Vicente",
+    "city": "Segovia",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SEG-2675594009"
+    },
+    "description": "Guided experience around Museo de Arte Contemporáneo - Esteban Vicente in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-seg-osm3682792951",
+    "name": "Mirador del Alcázar y los dos valles",
+    "city": "Segovia",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SEG-3682792951"
+    },
+    "description": "Guided experience around Mirador del Alcázar y los dos valles in Segovia, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm620970257",
+    "name": "Cueva de Salamanca",
+    "city": "Salamanca",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SLK-620970257"
+    },
+    "description": "Guided experience around Cueva de Salamanca in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm954663116",
+    "name": "Fachada de la Universidad de Salamanca",
+    "city": "Salamanca",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SLK-954663116"
+    },
+    "description": "Guided experience around Fachada de la Universidad de Salamanca in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm969116979",
+    "name": "Avión",
+    "city": "Salamanca",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SLK-969116979"
+    },
+    "description": "Guided experience around Avión in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm1316127394",
+    "name": "Monumenta Salmanticae",
+    "city": "Salamanca",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SLK-1316127394"
+    },
+    "description": "Guided experience around Monumenta Salmanticae in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm1353682859",
+    "name": "Ieronimus Torres Medievales de la Catedral",
+    "city": "Salamanca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SLK-1353682859"
+    },
+    "description": "Guided experience around Ieronimus Torres Medievales de la Catedral in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-slk-osm2921600481",
+    "name": "Subida a las Torres de la Clerecía. Scala Coeli",
+    "city": "Salamanca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SLK-2921600481"
+    },
+    "description": "Guided experience around Subida a las Torres de la Clerecía. Scala Coeli in Salamanca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm649057956",
+    "name": "Los Cuatro Postes",
+    "city": "Ávila",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-AVILA-649057956"
+    },
+    "description": "Guided experience around Los Cuatro Postes in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm6545730425",
+    "name": "Portada del antiguo Hospital de Santa Escolástica",
+    "city": "Ávila",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-AVILA-6545730425"
+    },
+    "description": "Guided experience around Portada del antiguo Hospital de Santa Escolástica in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm6545730481",
+    "name": "Museo Provincial de Ávila",
+    "city": "Ávila",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-AVILA-6545730481"
+    },
+    "description": "Guided experience around Museo Provincial de Ávila in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm6545730483",
+    "name": "Muralla de Ávila",
+    "city": "Ávila",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-AVILA-6545730483"
+    },
+    "description": "Guided experience around Muralla de Ávila in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm6724002335",
+    "name": "Museo de Intendencia del Ejército",
+    "city": "Ávila",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-AVILA-6724002335"
+    },
+    "description": "Guided experience around Museo de Intendencia del Ejército in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-avila-osm8725498260",
+    "name": "Museo de Ciencias Naturales",
+    "city": "Ávila",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-AVILA-8725498260"
+    },
+    "description": "Guided experience around Museo de Ciencias Naturales in Ávila, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm1779176285",
+    "name": "Mirador Rincón Seco",
+    "city": "Cuenca",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CUENCA-1779176285"
+    },
+    "description": "Guided experience around Mirador Rincón Seco in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm1779176335",
+    "name": "Mirador de la Hoz",
+    "city": "Cuenca",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CUENCA-1779176335"
+    },
+    "description": "Guided experience around Mirador de la Hoz in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm1779176650",
+    "name": "Mirador Cerro del Socorro",
+    "city": "Cuenca",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-CUENCA-1779176650"
+    },
+    "description": "Guided experience around Mirador Cerro del Socorro in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm3035414621",
+    "name": "Casas Colgadas",
+    "city": "Cuenca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-CUENCA-3035414621"
+    },
+    "description": "Guided experience around Casas Colgadas in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm4396335396",
+    "name": "Castillo y restos Murallas",
+    "city": "Cuenca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CUENCA-4396335396"
+    },
+    "description": "Guided experience around Castillo y restos Murallas in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-cuenca-osm4396341297",
+    "name": "Convento de los Descalzos",
+    "city": "Cuenca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-CUENCA-4396341297"
+    },
+    "description": "Guided experience around Convento de los Descalzos in Cuenca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm263797275",
+    "name": "Puerta del Carmen",
+    "city": "Zaragoza",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ZAZ-263797275"
+    },
+    "description": "Guided experience around Puerta del Carmen in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm759519863",
+    "name": "Noria de la Paz",
+    "city": "Zaragoza",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ZAZ-759519863"
+    },
+    "description": "Guided experience around Noria de la Paz in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm759519913",
+    "name": "Reloj de Sol",
+    "city": "Zaragoza",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ZAZ-759519913"
+    },
+    "description": "Guided experience around Reloj de Sol in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm1089829041",
+    "name": "Museo del Teatro de Caesaraugusta",
+    "city": "Zaragoza",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ZAZ-1089829041"
+    },
+    "description": "Guided experience around Museo del Teatro de Caesaraugusta in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm1334337694",
+    "name": "Museo Pilarista",
+    "city": "Zaragoza",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-ZAZ-1334337694"
+    },
+    "description": "Guided experience around Museo Pilarista in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-zaz-osm1334337704",
+    "name": "Museo de Tapices de La Seo",
+    "city": "Zaragoza",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ZAZ-1334337704"
+    },
+    "description": "Guided experience around Museo de Tapices de La Seo in Zaragoza, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm819450741",
+    "name": "Fuente de Navarrería",
+    "city": "Pamplona",
+    "tags": [
+      "attraction",
+      "drinking_water"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-PAMPLO-819450741"
+    },
+    "description": "Guided experience around Fuente de Navarrería in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm915415268",
+    "name": "Museo medioambiental de San Pedro",
+    "city": "Pamplona",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PAMPLO-915415268"
+    },
+    "description": "Guided experience around Museo medioambiental de San Pedro in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm2588442668",
+    "name": "Mirador de Ripagaina",
+    "city": "Pamplona",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PAMPLO-2588442668"
+    },
+    "description": "Guided experience around Mirador de Ripagaina in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm2769312531",
+    "name": "Sequoya del Palacio de Diputación",
+    "city": "Pamplona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-PAMPLO-2769312531"
+    },
+    "description": "Guided experience around Sequoya del Palacio de Diputación in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm3018266204",
+    "name": "Hornacina de San Fermín",
+    "city": "Pamplona",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PAMPLO-3018266204"
+    },
+    "description": "Guided experience around Hornacina de San Fermín in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pamplo-osm5219639981",
+    "name": "Portal de La Taconera",
+    "city": "Pamplona",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PAMPLO-5219639981"
+    },
+    "description": "Guided experience around Portal de La Taconera in Pamplona, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm4722191592",
+    "name": "Puente de Piedra",
+    "city": "Logroño",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-LOGRON-4722191592"
+    },
+    "description": "Guided experience around Puente de Piedra in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm4722262593",
+    "name": "Puerta de las Bolas",
+    "city": "Logroño",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-LOGRON-4722262593"
+    },
+    "description": "Guided experience around Puerta de las Bolas in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm4833128635",
+    "name": "Calado de San Gregorio",
+    "city": "Logroño",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-LOGRON-4833128635"
+    },
+    "description": "Guided experience around Calado de San Gregorio in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm4833128637",
+    "name": "Sala de Exposiciones Ibercaja",
+    "city": "Logroño",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-LOGRON-4833128637"
+    },
+    "description": "Guided experience around Sala de Exposiciones Ibercaja in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm5301287232",
+    "name": "Filmoteca de la Rioja Rafael Azcona - sala Gonzalo de Berceo;Sala Gonzalo de Berceo",
+    "city": "Logroño",
+    "tags": [
+      "gallery",
+      "cinema"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-LOGRON-5301287232"
+    },
+    "description": "Guided experience around Filmoteca de la Rioja Rafael Azcona - sala Gonzalo de Berceo;Sala Gonzalo de Berceo in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-logron-osm5836798586",
+    "name": "Bodegas Franco Españolas Winery Tour",
+    "city": "Logroño",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-LOGRON-5836798586"
+    },
+    "description": "Guided experience around Bodegas Franco Españolas Winery Tour in Logroño, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm466518076",
+    "name": "Galicia Dixital",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SCQ-466518076"
+    },
+    "description": "Guided experience around Galicia Dixital in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm913958016",
+    "name": "Miradoiro do Pedroso",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-SCQ-913958016"
+    },
+    "description": "Guided experience around Miradoiro do Pedroso in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm1123463957",
+    "name": "Miradoiro do Monte da Almáciga",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SCQ-1123463957"
+    },
+    "description": "Guided experience around Miradoiro do Monte da Almáciga in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm1661165690",
+    "name": "Miradoiro do Monte de Deus",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-SCQ-1661165690"
+    },
+    "description": "Guided experience around Miradoiro do Monte de Deus in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm4365449521",
+    "name": "Miradoiro do Bosque de Galicia",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SCQ-4365449521"
+    },
+    "description": "Guided experience around Miradoiro do Bosque de Galicia in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-scq-osm4607064595",
+    "name": "Museo Eugenio Granell",
+    "city": "Santiago de Compostela",
+    "tags": [
+      "gallery"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-SCQ-4607064595"
+    },
+    "description": "Guided experience around Museo Eugenio Granell in Santiago de Compostela, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm276640476",
+    "name": "Mirador de San Amaro",
+    "city": "A Coruña",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ACORUN-276640476"
+    },
+    "description": "Guided experience around Mirador de San Amaro in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm360686100",
+    "name": "A Coiraza",
+    "city": "A Coruña",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ACORUN-360686100"
+    },
+    "description": "Guided experience around A Coiraza in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm860109170",
+    "name": "Museo dos Reloxos",
+    "city": "A Coruña",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ACORUN-860109170"
+    },
+    "description": "Guided experience around Museo dos Reloxos in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm1572657171",
+    "name": "Faro de Punta Fieiteira",
+    "city": "A Coruña",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ACORUN-1572657171"
+    },
+    "description": "Guided experience around Faro de Punta Fieiteira in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm1659229170",
+    "name": "Obelisco",
+    "city": "A Coruña",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-ACORUN-1659229170"
+    },
+    "description": "Guided experience around Obelisco in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-acorun-osm1712912810",
+    "name": "Torre de Hércules",
+    "city": "A Coruña",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-ACORUN-1712912810"
+    },
+    "description": "Guided experience around Torre de Hércules in A Coruña, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm368247348",
+    "name": "mirador de na Burguesa",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-PMI-368247348"
+    },
+    "description": "Guided experience around mirador de na Burguesa in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm497114358",
+    "name": "Molí d'en Garleta",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-PMI-497114358"
+    },
+    "description": "Guided experience around Molí d'en Garleta in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm810080651",
+    "name": "Banys Àrabs",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PMI-810080651"
+    },
+    "description": "Guided experience around Banys Àrabs in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm1378796343",
+    "name": "es Drac de na Coca",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "attraction",
+      "history"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GET-PMI-1378796343"
+    },
+    "description": "Guided experience around es Drac de na Coca in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm2992214120",
+    "name": "Casino De Mallorca",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "attraction",
+      "casino"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PMI-2992214120"
+    },
+    "description": "Guided experience around Casino De Mallorca in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-pmi-osm4843898522",
+    "name": "Plaça Major",
+    "city": "Palma de Mallorca",
+    "tags": [
+      "attraction"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 44,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-PMI-4843898522"
+    },
+    "description": "Guided experience around Plaça Major in Palma de Mallorca, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mallor-osm297356680",
+    "name": "Mirador des Pujol d'en Banya",
+    "city": "Sóller",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MALLOR-297356680"
+    },
+    "description": "Guided experience around Mirador des Pujol d'en Banya in Sóller, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mallor-osm366051791",
+    "name": "es Cornador gran",
+    "city": "Sóller",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MALLOR-366051791"
+    },
+    "description": "Guided experience around es Cornador gran in Sóller, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mallor-osm366054175",
+    "name": "Es Pujol d'en Banya",
+    "city": "Sóller",
+    "tags": [
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TIQ-MALLOR-366054175"
+    },
+    "description": "Guided experience around Es Pujol d'en Banya in Sóller, suitable for first-time visitors."
+  },
+  {
+    "_id": "act-mallor-osm685534931",
+    "name": "Museu Balear de Ciències Naturals",
+    "city": "Sóller",
+    "tags": [
+      "museum"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-15:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VIA-MALLOR-685534931"
+    },
+    "description": "Guided experience around Museu Balear de Ciències Naturals in Sóller, suitable for first-time visitors."
   }
 ]
