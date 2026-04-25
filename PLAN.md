@@ -1028,7 +1028,7 @@ documents the Python plugin but the wiring concept is the same.
 
 #### Noisy demo source
 
-- [ ] Vendor an airport-noise audio file at `apps/voice-agent/fixtures/airport-noise.wav` (royalty-free or self-recorded)
+- [ ] Vendor an airport-noise audio file at `apps/voice-agent/fixtures/airport-noise.mp3` (royalty-free or self-recorded)
 - [ ] **Path A (preferred):** web app overlays the noise file as a virtual mic source via the LiveKit Browser SDK while the user speaks; agent processes through ai-coustics
 - [ ] **Path B (fallback, see Risk Management):** ai-coustics Node SDK file processing using `docs/ai-coustics/example_file-processing_node.js` as the reference — pre-process a noisy sample offline, ship the cleaned audio + a synthesized transcript
 
@@ -1070,7 +1070,7 @@ Steps:
    the Node plugin behaves the same, leave AICOUSTICS_API_KEY blank.
    Otherwise, fill it from https://developers.ai-coustics.io.
 3. Wire the plugin into the Agent's input AudioStream per the plugin README.
-4. Vendor a short airport-noise WAV at apps/voice-agent/fixtures/airport-noise.wav.
+4. Vendor a short airport-noise MP3 at apps/voice-agent/fixtures/airport-noise.mp3. (The browser decodes MP3 natively when mixing it as a virtual mic source — no conversion needed for Path A.)
 5. Web app: add a "noisy environment" toggle that mixes the noise file into
    the LiveKit room as a virtual mic source while the user speaks.
 6. On session end, compute and persist VoiceSession.audioMetric per
@@ -1378,8 +1378,13 @@ Fallback (the second of the two paths in `docs/ai-coustics/index.md`):
 
 - [ ] Switch to ai-coustics Node SDK file processing using
       `docs/ai-coustics/example_file-processing_node.js` as the starting point
-- [ ] Pre-process a vendored airport-noise WAV offline; ship the cleaned audio
-      and a hand-written transcript through the same agent loop
+- [ ] Pre-process the vendored `apps/voice-agent/fixtures/airport-noise.mp3`
+      offline; ship the cleaned audio and a hand-written transcript through
+      the same agent loop. The SDK's `example_file-processing_node.js` uses
+      the `wavefile` package and expects WAV — decode the MP3 to a
+      `Float32Array` first (e.g. via `fluent-ffmpeg` piped to PCM) or run a
+      one-shot `ffmpeg -i airport-noise.mp3 airport-noise.wav` to keep the
+      example unchanged.
 - [ ] Show before/after waveform + computed `audioMetric` in the UI
 - [ ] Document the path switch in `apps/voice-agent/README.md`
 
