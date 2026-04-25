@@ -13,6 +13,7 @@
     "prisma:studio": "dotenv -e ../../.env -- prisma studio",
     "seed:catalog": "tsx prisma/seed/index.ts catalog",
     "seed:demo": "tsx prisma/seed/index.ts demo",
+    "seed:demo:reset": "tsx prisma/seed/index.ts demo --reset",
     "sanity": "tsx prisma/seed/sanity.ts"
   },
   "prisma": {
@@ -24,6 +25,7 @@
     "@nestjs/core": "^10.4.0",
     "@nestjs/platform-express": "^10.4.0",
     "@prisma/client": "^5.22.0",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"

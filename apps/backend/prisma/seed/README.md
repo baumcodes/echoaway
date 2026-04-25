@@ -4,18 +4,34 @@ Two phases (per [`/docs/seed-strategy.md`](../../../../docs/seed-strategy.md)):
 
 1. **`seed:catalog`** — idempotent load of all reusable inventory. Run as
    often as you like; safe to re-run.
-2. **`seed:demo`** — composes the "Barcelona Long Weekend" demo trip.
-   Phase 2C (not yet implemented). Will accept `--reset` for clean re-runs.
+2. **`seed:demo`** — runs catalog (idempotent), then composes the
+   "Barcelona Long Weekend" demo trip. The demo-trip step is **not**
+   idempotent on its own — re-runs without `--reset` will fail on unique
+   constraints. Use `seed:demo:reset` to wipe just the demo trip and
+   recreate.
 
 ## Layout
 
 ```
 seed/
-  index.ts                  entry; dispatches catalog | demo by argv
-  sanity.ts                 prints row counts (also runnable standalone)
+  index.ts                  entry; dispatches catalog | demo (+ --reset) by argv
+  sanity.ts                 row counts + relational + Zod-shape validator
+                            (43+ checks; runnable standalone)
   shared/
     db.ts                   PrismaClient singleton + JSON stringify helper
     dataset.ts              loads /dataset/*.json with typed shapes
+  demo-trip/
+    index.ts                orchestrates trip → bookings → events → disruption
+    constants.ts            stable demo IDs (DEMO_TRIP_ID, COMPONENTS, …)
+    dates.ts                anchors the trip to today + 7 days
+    travelers.ts            Stephan (phone-keyed) + Anna
+    trip.ts                 Trip + TripSegment + TripTraveler
+    components.ts           5 Component rows (polymorphic-FK invariant)
+    bookings.ts             5 ComponentBooking rows (Zod-validated data + policy)
+    events.ts               10 ComponentEvent rows (Zod-validated location)
+    disruption.ts           flight_delay disruption + suggestedActions
+    load-catalog.ts         pre-loads + asserts every catalog reference
+    reset.ts                wipes just the demo trip (cascades take the rest)
   catalog/
     index.ts                orchestrates inserts in FK-safe order
     shared.ts               inferDestinationType, matchSupplier,
@@ -61,7 +77,7 @@ the same legs in place.
 
 | Model | Expected | Source |
 |---|---|---|
-| Destination | 29 | 28 dataset + Spain root |
+| Destination | dataset rows + 1 | dataset rows + Spain root (currently 62) |
 | Airport | 22 | 20 dataset + 2 stubs (AMS, OSL) for out-of-corridor flight routes |
 | Supplier | 6 | constants in `catalog/shared.ts` |
 | AccommodationProduct | 80 | dataset |
@@ -69,6 +85,17 @@ the same legs in place.
 | FlightRouteProduct | 3 | dataset |
 | FlightRouteLeg | 4 | derived (1+1+2 legs across the 3 routes) |
 | GroundTransferProduct | 3 | dataset |
+
+After `yarn seed:demo` you additionally get:
+
+| Model | Expected | Source |
+|---|---|---|
+| Traveler | 2 | Stephan (phone-keyed) + Anna |
+| Trip | 1 | "Barcelona Long Weekend" |
+| Component | 5 | flight, transfer, stay, sagrada activity, food activity |
+| ComponentBooking | 5 | one per Component |
+| ComponentEvent | 10 | departure/arrival, pickup, check-in/out, meeting+start+end ×2 |
+| Disruption | 1 | flight_delay with 2 suggestedActions |
 
 `yarn seed` ends by printing these counts. You can also run
 `yarn workspace @echoaway/backend sanity` standalone to inspect the DB.

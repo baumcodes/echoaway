@@ -632,15 +632,15 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Add `yarn seed:demo-trip` (and `yarn seed:demo --reset`)
-- [ ] Create travelers (Stephan with phone, Anna without)
-- [ ] Create the "Barcelona Long Weekend" trip + 1 segment
-- [ ] Create 5 components (flight, transfer, accommodation, 2 activities)
-- [ ] Create 5 ComponentBookings with snapshots per `docs/component-data-shapes.md`
-- [ ] Create ~10 ComponentEvents with proper location JSON
-- [ ] Create the flight-delay Disruption with 2 suggested actions
-- [ ] Hotel ComponentBooking.policy must allow free same-day check-in change (override)
-- [ ] Sanity script: `yarn sanity` prints the demo trip and any disruptions
+- [x] Add `yarn seed:demo-trip` (and `yarn seed:demo --reset`)
+- [x] Create travelers (Stephan with phone, Anna without)
+- [x] Create the "Barcelona Long Weekend" trip + 1 segment
+- [x] Create 5 components (flight, transfer, accommodation, 2 activities)
+- [x] Create 5 ComponentBookings with snapshots per `docs/component-data-shapes.md`
+- [x] Create ~10 ComponentEvents with proper location JSON
+- [x] Create the flight-delay Disruption with 2 suggested actions
+- [x] Hotel ComponentBooking.policy must allow free same-day check-in change (override)
+- [x] Sanity script: `yarn sanity` prints the demo trip and any disruptions
 - [ ] Commit: `feat(backend): demo trip seed`
 
 ### Agent prompt

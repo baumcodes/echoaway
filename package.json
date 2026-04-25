@@ -25,7 +25,9 @@
     "db:studio": "yarn workspace @echoaway/backend prisma:studio",
     "setup": "yarn install && yarn db:migrate",
     "seed": "yarn workspace @echoaway/backend seed:catalog",
-    "seed:demo": "yarn workspace @echoaway/backend seed:demo"
+    "seed:demo": "yarn workspace @echoaway/backend seed:demo",
+    "seed:demo:reset": "yarn workspace @echoaway/backend seed:demo:reset",
+    "sanity": "yarn workspace @echoaway/backend sanity"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

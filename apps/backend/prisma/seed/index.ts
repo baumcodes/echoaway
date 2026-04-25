@@ -7,20 +7,21 @@ loadEnv({ path: resolve(__dirname, '../../../../.env') })
 
 import { prisma } from './shared/db.js'
 import { seedCatalog } from './catalog/index.js'
+import { seedDemoTrip } from './demo-trip/index.js'
 import { printSanity } from './sanity.js'
 
 type Mode = 'catalog' | 'demo'
 
 const argv = process.argv.slice(2)
-const flag = argv.find((a) => !a.startsWith('--'))
-const mode: Mode = flag === 'demo' ? 'demo' : 'catalog'
+const positional = argv.find((a) => !a.startsWith('--'))
+const mode: Mode = positional === 'demo' ? 'demo' : 'catalog'
+const reset = argv.includes('--reset')
 
 async function main() {
-  console.log(`[seed] mode=${mode}`)
+  console.log(`[seed] mode=${mode}${reset ? ' (--reset)' : ''}`)
   await seedCatalog()
   if (mode === 'demo') {
-    // Phase 2C will fill this in.
-    console.log('[seed] demo-trip seed not yet implemented (Phase 2C)')
+    await seedDemoTrip({ reset })
   }
   await printSanity()
 }

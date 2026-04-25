@@ -44,6 +44,8 @@ Design docs (canonical):
   `BookingPolicy`, `Disruption.suggestedActions`, etc.
 - [`docs/seed-strategy.md`](./docs/seed-strategy.md) — `dataset/*.json` →
   Prisma pipeline.
+- [`docs/seed-setup.md`](./docs/seed-setup.md) — exact commands and order
+  to seed a fresh checkout (catalog → demo trip → sanity).
 
 Build plan: [`PLAN.md`](./PLAN.md). Phase 1 sets up the monorepo
 skeleton; Phase 2 adds Prisma + seeds; Phase 3+ build UI, voice, and
@@ -112,7 +114,7 @@ yarn db:migrate       # apply pending migrations (creates one if schema drifted)
 yarn db:reset         # nuke dev.db + replay migrations + reseed
 yarn db:studio        # open Prisma Studio in the browser
 
-# seeds
+# seeds — full chain documented in docs/seed-setup.md
 yarn seed             # catalog from /dataset (idempotent, ~80 hotels etc.)
 yarn seed:demo        # catalog + demo trip (demo-trip step lands in Phase 2C)
 

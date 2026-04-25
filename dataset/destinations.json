@@ -28,7 +28,7 @@
     "iso_country_code": "ES",
     "description": "Seaside town southwest of Barcelona famous for its beaches, LGBTQ+ friendly scene, and film festival.",
     "location": {
-      "lat": 41.2360,
+      "lat": 41.236,
       "lng": 1.8059
     },
     "tags": [
@@ -67,7 +67,7 @@
     "description": "Mountainous monastery complex northwest of Barcelona, known for its unique rock formations and hiking trails.",
     "location": {
       "lat": 41.5956,
-      "lng": 1.8330
+      "lng": 1.833
     },
     "tags": [
       "mountain",
@@ -144,7 +144,7 @@
     "description": "Lively port city on Spain’s Costa Blanca with a castle overlooking the sea, old town nightlife, and long beaches.",
     "location": {
       "lat": 38.3452,
-      "lng": -0.4810
+      "lng": -0.481
     },
     "tags": [
       "city",
@@ -183,8 +183,8 @@
     "iso_country_code": "ES",
     "description": "Coastal town north of Alicante, dominated by the Peñón de Ifach rock and known for seafood restaurants.",
     "location": {
-      "lat": 38.6430,
-      "lng": 0.0440
+      "lat": 38.643,
+      "lng": 0.044
     },
     "tags": [
       "coastal",
@@ -202,7 +202,7 @@
     "iso_country_code": "ES",
     "description": "Harbor town halfway between Alicante and Valencia, with ferry connections to Ibiza and a local castle.",
     "location": {
-      "lat": 38.8400,
+      "lat": 38.84,
       "lng": 0.1057
     },
     "tags": [
@@ -412,7 +412,7 @@
     "description": "Relaxed seaside town with wide sandy beaches, surf spots, and a laid-back Andalusian feel.",
     "location": {
       "lat": 36.277,
-      "lng": -6.090
+      "lng": -6.09
     },
     "tags": [
       "beach",
@@ -487,7 +487,7 @@
     "iso_country_code": "ES",
     "description": "Elegant port city across the bay from Cádiz, known for sherry bodegas, sailing, and fine beaches.",
     "location": {
-      "lat": 36.600,
+      "lat": 36.6,
       "lng": -6.227
     },
     "tags": [
@@ -507,7 +507,7 @@
     "description": "Beach town north of Cádiz with calm waters, family-friendly resorts, and traditional Andalusian atmosphere.",
     "location": {
       "lat": 36.619,
-      "lng": -6.360
+      "lng": -6.36
     },
     "tags": [
       "beach",
@@ -535,6 +535,587 @@
       "family",
       "heritage",
       "relaxation"
+    ]
+  },
+  {
+    "_id": "dest-madrid",
+    "name": "Madrid",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Spain's capital, a high-energy city of grand boulevards, world-class museums, and late-night tapas culture.",
+    "location": {
+      "lat": 40.4168,
+      "lng": -3.7038
+    },
+    "tags": [
+      "city",
+      "capital",
+      "museums",
+      "gastronomy",
+      "nightlife"
+    ]
+  },
+  {
+    "_id": "dest-seville",
+    "name": "Seville",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Andalusian capital with flamenco roots, a Moorish-Gothic cathedral, and the lush Alcázar gardens.",
+    "location": {
+      "lat": 37.3886,
+      "lng": -5.9823
+    },
+    "tags": [
+      "flamenco",
+      "culture",
+      "architecture",
+      "history",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-granada",
+    "name": "Granada",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Sierra Nevada–set city crowned by the Alhambra and famous for free-tapas bars and Albaicín views.",
+    "location": {
+      "lat": 37.1773,
+      "lng": -3.5986
+    },
+    "tags": [
+      "alhambra",
+      "history",
+      "tapas",
+      "mountain",
+      "unesco"
+    ]
+  },
+  {
+    "_id": "dest-cordoba",
+    "name": "Córdoba",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Andalusian city famed for the UNESCO-listed Mezquita-Catedral and flower-filled patios in the Judería.",
+    "location": {
+      "lat": 37.8882,
+      "lng": -4.7794
+    },
+    "tags": [
+      "mezquita",
+      "history",
+      "patio",
+      "unesco"
+    ]
+  },
+  {
+    "_id": "dest-malaga",
+    "name": "Málaga",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Costa del Sol gateway with Picasso's birthplace, an emerging art scene, and tapas-rich old town.",
+    "location": {
+      "lat": 36.7213,
+      "lng": -4.4214
+    },
+    "tags": [
+      "beach",
+      "art",
+      "picasso",
+      "gastronomy",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-marbella",
+    "name": "Marbella",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Costa del Sol resort town synonymous with luxury marinas, Puerto Banús nightlife, and elegant old quarter.",
+    "location": {
+      "lat": 36.5101,
+      "lng": -4.8826
+    },
+    "tags": [
+      "luxury",
+      "beach",
+      "resort",
+      "nightlife",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-ronda",
+    "name": "Ronda",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Cliff-perched white town split by a 100-metre gorge and one of the oldest bullrings in Spain.",
+    "location": {
+      "lat": 36.7427,
+      "lng": -5.1625
+    },
+    "tags": [
+      "cliff",
+      "bridge",
+      "inland",
+      "pueblo",
+      "wine"
+    ]
+  },
+  {
+    "_id": "dest-mijas",
+    "name": "Mijas",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Whitewashed mountain village above the Costa del Sol with steep cobbled streets and panoramic Mediterranean views.",
+    "location": {
+      "lat": 36.5953,
+      "lng": -4.6373
+    },
+    "tags": [
+      "whitewashed",
+      "pueblo",
+      "mountain",
+      "coastal_view"
+    ]
+  },
+  {
+    "_id": "dest-nerja",
+    "name": "Nerja",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "East-Costa-del-Sol town built around the 'Balcón de Europa' cliff and the prehistoric Nerja Caves.",
+    "location": {
+      "lat": 36.7521,
+      "lng": -3.8742
+    },
+    "tags": [
+      "beach",
+      "cave",
+      "coastal",
+      "cliff",
+      "whitewashed"
+    ]
+  },
+  {
+    "_id": "dest-bilbao",
+    "name": "Bilbao",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Industrial city reborn around the Guggenheim, Basque pintxos bars, and a riverside art scene.",
+    "location": {
+      "lat": 43.263,
+      "lng": -2.935
+    },
+    "tags": [
+      "art",
+      "guggenheim",
+      "gastronomy",
+      "pintxos",
+      "urban"
+    ]
+  },
+  {
+    "_id": "dest-sansebastian",
+    "name": "San Sebastián",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Belle-Époque seaside city famed for La Concha bay, Michelin-density gastronomy, and pintxos crawls.",
+    "location": {
+      "lat": 43.3183,
+      "lng": -1.9812
+    },
+    "tags": [
+      "beach",
+      "pintxos",
+      "gastronomy",
+      "film_festival",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-santander",
+    "name": "Santander",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Cantabrian capital wrapped around a deep bay, with grand promenades and Magdalena palace beaches.",
+    "location": {
+      "lat": 43.4623,
+      "lng": -3.8099
+    },
+    "tags": [
+      "beach",
+      "coastal",
+      "palace",
+      "urban"
+    ]
+  },
+  {
+    "_id": "dest-oviedo",
+    "name": "Oviedo",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Asturian capital celebrated for its medieval old town, cider houses, and pre-Romanesque churches.",
+    "location": {
+      "lat": 43.3603,
+      "lng": -5.8448
+    },
+    "tags": [
+      "city",
+      "history",
+      "cider",
+      "old_town",
+      "green_spain"
+    ]
+  },
+  {
+    "_id": "dest-gijon",
+    "name": "Gijón",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Asturian coast city with surf-friendly San Lorenzo beach and a lively cider-house old quarter.",
+    "location": {
+      "lat": 43.5453,
+      "lng": -5.6619
+    },
+    "tags": [
+      "coastal",
+      "beach",
+      "cider",
+      "urban"
+    ]
+  },
+  {
+    "_id": "dest-toledo",
+    "name": "Toledo",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "UNESCO-listed 'City of Three Cultures' on a hilltop loop of the Tagus, with Christian, Jewish, and Moorish quarters.",
+    "location": {
+      "lat": 39.8628,
+      "lng": -4.0273
+    },
+    "tags": [
+      "unesco",
+      "history",
+      "medieval",
+      "inland",
+      "cathedral"
+    ]
+  },
+  {
+    "_id": "dest-segovia",
+    "name": "Segovia",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "UNESCO Castilian city defined by a Roman aqueduct, fairytale Alcázar, and famous roast suckling pig.",
+    "location": {
+      "lat": 40.9483,
+      "lng": -4.118
+    },
+    "tags": [
+      "unesco",
+      "aqueduct",
+      "history",
+      "inland",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-salamanca",
+    "name": "Salamanca",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Honey-stoned UNESCO city centred on Plaza Mayor and one of Europe's oldest universities.",
+    "location": {
+      "lat": 40.9701,
+      "lng": -5.6635
+    },
+    "tags": [
+      "university",
+      "unesco",
+      "history",
+      "plaza",
+      "student_life"
+    ]
+  },
+  {
+    "_id": "dest-avila",
+    "name": "Ávila",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "High-altitude walled city encircled by intact medieval ramparts and tied to Saint Teresa.",
+    "location": {
+      "lat": 40.6566,
+      "lng": -4.6818
+    },
+    "tags": [
+      "walls",
+      "unesco",
+      "medieval",
+      "history"
+    ]
+  },
+  {
+    "_id": "dest-cuenca",
+    "name": "Cuenca",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "UNESCO Castilian town clinging to a gorge, famed for the 'casas colgadas' hanging houses.",
+    "location": {
+      "lat": 40.0704,
+      "lng": -2.1374
+    },
+    "tags": [
+      "hanging_houses",
+      "unesco",
+      "cliff",
+      "inland"
+    ]
+  },
+  {
+    "_id": "dest-zaragoza",
+    "name": "Zaragoza",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Halfway between Madrid and Barcelona, an Ebro-side city of Mudéjar churches and the Pilar basilica.",
+    "location": {
+      "lat": 41.6488,
+      "lng": -0.8891
+    },
+    "tags": [
+      "city",
+      "basilica",
+      "mudejar",
+      "inland",
+      "history"
+    ]
+  },
+  {
+    "_id": "dest-pamplona",
+    "name": "Pamplona",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Navarran city wrapped in star-shaped citadel walls, famous for the San Fermín running of the bulls.",
+    "location": {
+      "lat": 42.8125,
+      "lng": -1.6458
+    },
+    "tags": [
+      "running_bulls",
+      "history",
+      "fortifications",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-logroño",
+    "name": "Logroño",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Rioja capital with a compact tapas alley (Calle Laurel) and rolling vineyards on the doorstep.",
+    "location": {
+      "lat": 42.4627,
+      "lng": -2.4449
+    },
+    "tags": [
+      "wine",
+      "pintxos",
+      "rioja",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-santiago",
+    "name": "Santiago de Compostela",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Galician pilgrimage city and UNESCO old town crowned by the cathedral that ends the Camino de Santiago.",
+    "location": {
+      "lat": 42.8782,
+      "lng": -8.5448
+    },
+    "tags": [
+      "camino",
+      "pilgrimage",
+      "unesco",
+      "cathedral",
+      "history"
+    ]
+  },
+  {
+    "_id": "dest-acoruna",
+    "name": "A Coruña",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Atlantic Galician city wrapped around a glass-galleried promenade and the Roman 'Tower of Hercules'.",
+    "location": {
+      "lat": 43.3623,
+      "lng": -8.4115
+    },
+    "tags": [
+      "coastal",
+      "beach",
+      "lighthouse",
+      "urban"
+    ]
+  },
+  {
+    "_id": "dest-mallorca-palma",
+    "name": "Palma de Mallorca",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Capital of Mallorca: Gothic cathedral on the bay, a maze of medieval lanes, and turquoise calas nearby.",
+    "location": {
+      "lat": 39.5696,
+      "lng": 2.6502
+    },
+    "tags": [
+      "island",
+      "beach",
+      "cathedral",
+      "coastal",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-mallorca-soller",
+    "name": "Sóller",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Mallorcan valley town surrounded by orange groves and linked to its port by a vintage wooden tram.",
+    "location": {
+      "lat": 39.7656,
+      "lng": 2.7148
+    },
+    "tags": [
+      "island",
+      "mountain",
+      "orange_groves",
+      "tram"
+    ]
+  },
+  {
+    "_id": "dest-menorca-mahon",
+    "name": "Mahón",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Menorca's capital wrapped around one of the deepest natural harbours in the Mediterranean.",
+    "location": {
+      "lat": 39.8888,
+      "lng": 4.2658
+    },
+    "tags": [
+      "island",
+      "harbour",
+      "gin",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-ibiza-town",
+    "name": "Ibiza Town",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "UNESCO Dalt Vila citadel above a marina that doubles as the Mediterranean nightlife capital.",
+    "location": {
+      "lat": 38.9067,
+      "lng": 1.4206
+    },
+    "tags": [
+      "island",
+      "nightlife",
+      "unesco",
+      "beach",
+      "old_town"
+    ]
+  },
+  {
+    "_id": "dest-formentera",
+    "name": "Formentera",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Tiny Balearic island known for almost-Caribbean turquoise water and dune-backed beaches.",
+    "location": {
+      "lat": 38.7088,
+      "lng": 1.4339
+    },
+    "tags": [
+      "island",
+      "beach",
+      "turquoise",
+      "remote",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-tenerife-santacruz",
+    "name": "Santa Cruz de Tenerife",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Tenerife's capital, a port city with the wave-shaped Auditorio and the dark-sand Las Teresitas beach nearby.",
+    "location": {
+      "lat": 28.4636,
+      "lng": -16.2518
+    },
+    "tags": [
+      "island",
+      "volcanic",
+      "auditorium",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-tenerife-teide",
+    "name": "Teide National Park",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Spain's tallest peak rising from a Mars-like volcanic caldera, a UNESCO park ringed with hiking trails.",
+    "location": {
+      "lat": 28.2724,
+      "lng": -16.6425
+    },
+    "tags": [
+      "volcano",
+      "unesco",
+      "park",
+      "hiking",
+      "stargazing"
+    ]
+  },
+  {
+    "_id": "dest-graancanaria-laspalmas",
+    "name": "Las Palmas de Gran Canaria",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Year-round-warm Canary capital with the long urban beach of Las Canteras and a lively colonial old town.",
+    "location": {
+      "lat": 28.1235,
+      "lng": -15.4363
+    },
+    "tags": [
+      "island",
+      "beach",
+      "urban",
+      "volcanic"
+    ]
+  },
+  {
+    "_id": "dest-lanzarote-arrecife",
+    "name": "Arrecife",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Lanzarote's capital, gateway to volcanic landscapes and César Manrique's signature architectural sites.",
+    "location": {
+      "lat": 28.9637,
+      "lng": -13.5477
+    },
+    "tags": [
+      "island",
+      "volcanic",
+      "beach",
+      "coastal",
+      "manrique"
     ]
   }
 ]
