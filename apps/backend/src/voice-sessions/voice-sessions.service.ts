@@ -61,6 +61,24 @@ export class VoiceSessionsService {
       travelerId: session.travelerId,
       status: session.status,
       startedAt: session.startedAt.toISOString(),
+      // Convention: each VoiceSession owns a unique LiveKit room so
+      // multiple concurrent demos don't share state. The worker reads
+      // tripId/sessionId from participant metadata, not the room name —
+      // this string is just a humane handle and a uniqueness anchor.
+      roomName: `echoaway-${session.id}`,
+    }
+  }
+
+  async getById(id: string) {
+    const row = await this.prisma.voiceSession.findUnique({ where: { id } })
+    if (!row) return null
+    return {
+      id: row.id,
+      tripId: row.tripId,
+      travelerId: row.travelerId,
+      status: row.status,
+      startedAt: row.startedAt.toISOString(),
+      roomName: `echoaway-${row.id}`,
     }
   }
 }

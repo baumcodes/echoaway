@@ -13,7 +13,7 @@ describe('POST /voice-sessions', () => {
     await app.close()
   })
 
-  it('creates a session and persists a session_started event', async () => {
+  it('creates a session, returns the room name, and persists a session_started event', async () => {
     const res = await request(app.getHttpServer())
       .post('/voice-sessions')
       .send({ tripId: 'trip-demo-bcn' })
@@ -21,6 +21,7 @@ describe('POST /voice-sessions', () => {
     expect(res.body.id).toBeTruthy()
     expect(res.body.tripId).toBe('trip-demo-bcn')
     expect(res.body.status).toBe('active')
+    expect(res.body.roomName).toBe(`echoaway-${res.body.id}`)
 
     // The session_started event should be visible via the polling endpoint.
     const events = await request(app.getHttpServer())
@@ -31,6 +32,25 @@ describe('POST /voice-sessions', () => {
         e.sessionId === res.body.id && e.type === 'session_started',
     )
     expect(matching).toHaveLength(1)
+  })
+
+  it('GET /voice-sessions/:id returns the session', async () => {
+    const created = await request(app.getHttpServer())
+      .post('/voice-sessions')
+      .send({ tripId: 'trip-demo-bcn' })
+    const got = await request(app.getHttpServer()).get(
+      `/voice-sessions/${created.body.id}`,
+    )
+    expect(got.status).toBe(200)
+    expect(got.body.id).toBe(created.body.id)
+    expect(got.body.roomName).toBe(`echoaway-${created.body.id}`)
+  })
+
+  it('GET /voice-sessions/:unknown 404s', async () => {
+    const res = await request(app.getHttpServer()).get(
+      '/voice-sessions/no-such-session',
+    )
+    expect(res.status).toBe(404)
   })
 
   it('404s on unknown trip', async () => {

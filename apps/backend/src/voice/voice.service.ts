@@ -29,6 +29,9 @@ export class VoiceService {
       identity: req.identity,
       name: req.name,
       ttl: TOKEN_TTL_SECONDS,
+      // Stringify metadata so the agent worker can JSON.parse it on the
+      // other side. Empty object if caller didn't pass one.
+      metadata: JSON.stringify(req.metadata ?? {}),
     })
     at.addGrant({
       room,

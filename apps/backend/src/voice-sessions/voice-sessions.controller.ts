@@ -1,4 +1,11 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common'
 import { ZodValidationPipe } from '../zod.pipe.js'
 import {
   type CreateVoiceSessionRequest,
@@ -15,5 +22,12 @@ export class VoiceSessionsController {
   @Post()
   create(@Body(createPipe) body: CreateVoiceSessionRequest) {
     return this.sessions.create(body)
+  }
+
+  @Get(':id')
+  async one(@Param('id') id: string) {
+    const session = await this.sessions.getById(id)
+    if (!session) throw new NotFoundException(`VoiceSession ${id} not found`)
+    return session
   }
 }
