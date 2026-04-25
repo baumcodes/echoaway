@@ -1,0 +1,22 @@
+{
+  "name": "@echoaway/dataset-enrich",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pulls real Spanish hotels & attractions from OSM Overpass, enriches soft fields with Gemini, and merges results into /dataset/*.json. Run on demand; output is committed.",
+  "scripts": {
+    "enrich": "tsx src/index.ts",
+    "test": "tsx src/__test__/run.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.4.5"
+  }
+}

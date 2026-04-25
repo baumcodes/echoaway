@@ -1,0 +1,761 @@
+// Curated catalogue of Spanish destinations the enrich tool can fetch
+// against. Each entry maps to a single dataset/destinations.json row.
+//
+// IDs match existing rows in /dataset/destinations.json so re-running the
+// enricher does NOT duplicate them. Only NEW entries (those not already in
+// the dataset by `_id`) get appended on merge.
+
+export type CuratedDestination = {
+  id: string
+  name: string
+  /** OSM/Overpass-friendly query name (`Barcelona, Spain`). */
+  queryName: string
+  /** Region label used for transfer pairing & UI grouping. */
+  region: string
+  /** Rough centroid for radius-based Overpass queries. */
+  location: { lat: number; lng: number }
+  /** Radius in meters used when fetching hotels/attractions. */
+  searchRadiusM: number
+  baseTags: string[]
+  /** Inferred Destination.type per docs/seed-strategy.md §2.2. */
+  destinationType: 'city' | 'city_area' | 'park' | 'island' | 'village'
+  description: string
+}
+
+export const CURATED_DESTINATIONS: CuratedDestination[] = [
+  // --- Existing 28 (preserved verbatim from /dataset/destinations.json)
+  {
+    id: 'dest-barcelona',
+    name: 'Barcelona',
+    queryName: 'Barcelona, Spain',
+    region: 'Catalonia',
+    location: { lat: 41.3851, lng: 2.1734 },
+    searchRadiusM: 6000,
+    baseTags: ['city', 'beach', 'culture', 'architecture', 'gastronomy'],
+    destinationType: 'city',
+    description:
+      'Vibrant coastal city on the Mediterranean, known for Gaudí architecture, urban beaches, and rich Catalan culture.',
+  },
+  {
+    id: 'dest-sitges',
+    name: 'Sitges',
+    queryName: 'Sitges, Spain',
+    region: 'Catalonia',
+    location: { lat: 41.236, lng: 1.8059 },
+    searchRadiusM: 3500,
+    baseTags: ['beach', 'coastal', 'art', 'lgbtq_friendly'],
+    destinationType: 'city',
+    description:
+      'Seaside town southwest of Barcelona famous for its beaches, LGBTQ+ friendly scene, and film festival.',
+  },
+  {
+    id: 'dest-tarragona',
+    name: 'Tarragona',
+    queryName: 'Tarragona, Spain',
+    region: 'Catalonia',
+    location: { lat: 41.1189, lng: 1.2445 },
+    searchRadiusM: 4000,
+    baseTags: ['roman_ruins', 'history', 'coastal', 'beach', 'heritage'],
+    destinationType: 'city',
+    description:
+      'Historic port city on the Costa Daurada, featuring Roman ruins, a cathedral, and golden beaches.',
+  },
+  {
+    id: 'dest-montserrat',
+    name: 'Montserrat',
+    queryName: 'Montserrat, Catalonia, Spain',
+    region: 'Catalonia',
+    location: { lat: 41.5949, lng: 1.8378 },
+    searchRadiusM: 4000,
+    baseTags: ['mountain', 'monastery', 'hiking', 'spiritual'],
+    destinationType: 'park',
+    description:
+      'Spectacular serrated mountain range with the Benedictine Montserrat monastery and panoramic hiking trails.',
+  },
+  {
+    id: 'dest-valencia',
+    name: 'Valencia',
+    queryName: 'Valencia, Spain',
+    region: 'Valencian Community',
+    location: { lat: 39.4699, lng: -0.3763 },
+    searchRadiusM: 5500,
+    baseTags: ['city', 'beach', 'gastronomy', 'paella', 'architecture'],
+    destinationType: 'city',
+    description:
+      'Mediterranean port city with futuristic architecture, sandy beaches, and the spiritual home of paella.',
+  },
+  {
+    id: 'dest-albufera',
+    name: 'Albufera Natural Park',
+    queryName: "L'Albufera, Valencia, Spain",
+    region: 'Valencian Community',
+    location: { lat: 39.3361, lng: -0.3517 },
+    searchRadiusM: 5000,
+    baseTags: ['park', 'nature', 'birdwatching', 'lake', 'rice_fields'],
+    destinationType: 'park',
+    description:
+      'Wetland reserve south of Valencia famous for rice paddies, traditional barca rides, and migratory birds.',
+  },
+  {
+    id: 'dest-xativa',
+    name: 'Xàtiva',
+    queryName: 'Xàtiva, Valencia, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.9913, lng: -0.5158 },
+    searchRadiusM: 3000,
+    baseTags: ['castle', 'history', 'inland', 'medieval'],
+    destinationType: 'city',
+    description:
+      'Inland Valencian town crowned by a hilltop castle with sweeping views and Moorish heritage.',
+  },
+  {
+    id: 'dest-alicante',
+    name: 'Alicante',
+    queryName: 'Alicante, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.3452, lng: -0.481 },
+    searchRadiusM: 4500,
+    baseTags: ['city', 'beach', 'coastal', 'castle', 'nightlife'],
+    destinationType: 'city',
+    description:
+      'Costa Blanca capital with a palm-lined promenade, Santa Bárbara castle, and lively old town tapas scene.',
+  },
+  {
+    id: 'dest-benidorm',
+    name: 'Benidorm',
+    queryName: 'Benidorm, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.5411, lng: -0.1225 },
+    searchRadiusM: 3500,
+    baseTags: ['beach', 'resort', 'nightlife', 'coastal', 'family'],
+    destinationType: 'city',
+    description:
+      'Costa Blanca resort city famous for its skyscraper skyline, broad beaches, and high-energy nightlife.',
+  },
+  {
+    id: 'dest-calpe',
+    name: 'Calpe',
+    queryName: 'Calpe, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.6448, lng: 0.0444 },
+    searchRadiusM: 3500,
+    baseTags: ['coastal', 'beach', 'cliff', 'hiking', 'paella'],
+    destinationType: 'city',
+    description:
+      'Coastal town flanked by the dramatic Peñón de Ifach rock and quiet family beaches.',
+  },
+  {
+    id: 'dest-denia',
+    name: 'Dénia',
+    queryName: 'Dénia, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.8408, lng: 0.1057 },
+    searchRadiusM: 3500,
+    baseTags: ['coastal', 'gastronomy', 'beach', 'castle', 'unesco'],
+    destinationType: 'city',
+    description:
+      'UNESCO city of gastronomy with a hilltop castle, fishing port, and acclaimed seafood restaurants.',
+  },
+  {
+    id: 'dest-javea',
+    name: 'Jávea',
+    queryName: 'Jávea, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.7895, lng: 0.1657 },
+    searchRadiusM: 3500,
+    baseTags: ['coastal', 'beach', 'cove', 'hiking', 'whitewashed'],
+    destinationType: 'city',
+    description:
+      'Whitewashed Costa Blanca town tucked between coves, cliffs, and the Montgó natural park.',
+  },
+  {
+    id: 'dest-elche',
+    name: 'Elche',
+    queryName: 'Elche, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.2682, lng: -0.6991 },
+    searchRadiusM: 3500,
+    baseTags: ['palm_grove', 'unesco', 'inland', 'culture'],
+    destinationType: 'city',
+    description:
+      'Home to the UNESCO-listed palm grove El Palmeral, the largest in Europe, and a centuries-old mystery play.',
+  },
+  {
+    id: 'dest-torrevieja',
+    name: 'Torrevieja',
+    queryName: 'Torrevieja, Spain',
+    region: 'Valencian Community',
+    location: { lat: 37.9772, lng: -0.6824 },
+    searchRadiusM: 3500,
+    baseTags: ['beach', 'coastal', 'salt_lakes', 'family'],
+    destinationType: 'city',
+    description:
+      'Costa Blanca resort known for its pink salt lake, long sandy beaches, and quiet residential vibe.',
+  },
+  {
+    id: 'dest-castellon',
+    name: 'Castellón de la Plana',
+    queryName: 'Castellón de la Plana, Spain',
+    region: 'Valencian Community',
+    location: { lat: 39.9864, lng: -0.0513 },
+    searchRadiusM: 3500,
+    baseTags: ['city', 'coastal', 'beach', 'culture'],
+    destinationType: 'city',
+    description:
+      'Provincial capital between Valencia and Tarragona with broad esplanades and easy beach access.',
+  },
+  {
+    id: 'dest-peñiscola',
+    name: 'Peñíscola',
+    queryName: 'Peñíscola, Spain',
+    region: 'Valencian Community',
+    location: { lat: 40.3589, lng: 0.4083 },
+    searchRadiusM: 3000,
+    baseTags: ['castle', 'coastal', 'medieval', 'beach', 'whitewashed'],
+    destinationType: 'city',
+    description:
+      'Walled coastal town with a Templar castle perched dramatically on a rocky peninsula.',
+  },
+  {
+    id: 'dest-altea',
+    name: 'Altea',
+    queryName: 'Altea, Spain',
+    region: 'Valencian Community',
+    location: { lat: 38.5994, lng: -0.0517 },
+    searchRadiusM: 3000,
+    baseTags: ['whitewashed', 'art', 'coastal', 'old_town'],
+    destinationType: 'city',
+    description:
+      'Whitewashed artist town on the Costa Blanca with a blue-domed church and lively cliff-top old town.',
+  },
+  {
+    id: 'dest-cadiz',
+    name: 'Cádiz',
+    queryName: 'Cádiz, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.5298, lng: -6.2924 },
+    searchRadiusM: 4000,
+    baseTags: ['city', 'beach', 'history', 'old_town'],
+    destinationType: 'city',
+    description:
+      'Ancient Andalusian port surrounded on three sides by the Atlantic, famous for crumbling old quarters and beaches.',
+  },
+  {
+    id: 'dest-jerez',
+    name: 'Jerez de la Frontera',
+    queryName: 'Jerez de la Frontera, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.6864, lng: -6.1377 },
+    searchRadiusM: 4000,
+    baseTags: ['sherry', 'flamenco', 'horses', 'city'],
+    destinationType: 'city',
+    description:
+      'Inland Andalusian city famed for sherry bodegas, flamenco, and the Royal Andalusian Riding School.',
+  },
+  {
+    id: 'dest-tarifa',
+    name: 'Tarifa',
+    queryName: 'Tarifa, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.0143, lng: -5.6066 },
+    searchRadiusM: 3500,
+    baseTags: ['kitesurfing', 'beach', 'coastal', 'wind'],
+    destinationType: 'city',
+    description:
+      "Europe's southernmost continental town, a kitesurfing capital framed by Atlantic-Mediterranean winds.",
+  },
+  {
+    id: 'dest-vejer',
+    name: 'Vejer de la Frontera',
+    queryName: 'Vejer de la Frontera, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.2517, lng: -5.9658 },
+    searchRadiusM: 2500,
+    baseTags: ['whitewashed', 'hilltop', 'pueblo', 'gastronomy'],
+    destinationType: 'village',
+    description:
+      'Whitewashed pueblo blanco on a hilltop with cobbled lanes, Moorish gates, and award-winning restaurants.',
+  },
+  {
+    id: 'dest-conil',
+    name: 'Conil de la Frontera',
+    queryName: 'Conil de la Frontera, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.2784, lng: -6.0888 },
+    searchRadiusM: 3000,
+    baseTags: ['beach', 'coastal', 'pueblo', 'tuna'],
+    destinationType: 'city',
+    description:
+      'Andalusian fishing town along Costa de la Luz with miles of golden Atlantic beaches and tuna almadraba traditions.',
+  },
+  {
+    id: 'dest-zahara',
+    name: 'Zahara de los Atunes',
+    queryName: 'Zahara de los Atunes, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.1339, lng: -5.8497 },
+    searchRadiusM: 2500,
+    baseTags: ['beach', 'coastal', 'tuna', 'remote'],
+    destinationType: 'village',
+    description:
+      'Sleepy Atlantic beach village famous for red tuna and uninterrupted dune-backed shoreline.',
+  },
+  {
+    id: 'dest-elpalmar',
+    name: 'El Palmar',
+    queryName: 'El Palmar, Cádiz, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.2333, lng: -6.0333 },
+    searchRadiusM: 2000,
+    baseTags: ['surf', 'beach', 'remote', 'coastal'],
+    destinationType: 'village',
+    description:
+      'Costa de la Luz surf village with a vast open beach popular with surfers and sunset crowds.',
+  },
+  {
+    id: 'dest-sanlucar',
+    name: 'Sanlúcar de Barrameda',
+    queryName: 'Sanlúcar de Barrameda, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.7775, lng: -6.3539 },
+    searchRadiusM: 3000,
+    baseTags: ['sherry', 'beach', 'gastronomy', 'river_mouth'],
+    destinationType: 'city',
+    description:
+      "Andalusian seaside town at the mouth of the Guadalquivir, famed for manzanilla sherry and prawns.",
+  },
+  {
+    id: 'dest-elpuerto',
+    name: 'El Puerto de Santa María',
+    queryName: 'El Puerto de Santa María, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.5953, lng: -6.2336 },
+    searchRadiusM: 3500,
+    baseTags: ['sherry', 'coastal', 'tapas', 'beach'],
+    destinationType: 'city',
+    description:
+      'Bay-of-Cádiz town with riverside seafood shacks, sherry bodegas, and broad Atlantic beaches.',
+  },
+  {
+    id: 'dest-rota',
+    name: 'Rota',
+    queryName: 'Rota, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.6231, lng: -6.3597 },
+    searchRadiusM: 3000,
+    baseTags: ['beach', 'coastal', 'family', 'surf'],
+    destinationType: 'city',
+    description:
+      'Costa de la Luz town with calm family beaches, a small old quarter, and a long boardwalk.',
+  },
+  {
+    id: 'dest-chipiona',
+    name: 'Chipiona',
+    queryName: 'Chipiona, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.7383, lng: -6.4378 },
+    searchRadiusM: 3000,
+    baseTags: ['beach', 'lighthouse', 'family', 'coastal'],
+    destinationType: 'city',
+    description:
+      "Family-friendly Atlantic town capped by Spain's tallest lighthouse and miles of fine sand beaches.",
+  },
+
+  // --- New (32 added for demo depth)
+  {
+    id: 'dest-madrid',
+    name: 'Madrid',
+    queryName: 'Madrid, Spain',
+    region: 'Madrid',
+    location: { lat: 40.4168, lng: -3.7038 },
+    searchRadiusM: 6000,
+    baseTags: ['city', 'capital', 'museums', 'gastronomy', 'nightlife'],
+    destinationType: 'city',
+    description:
+      "Spain's capital, a high-energy city of grand boulevards, world-class museums, and late-night tapas culture.",
+  },
+  {
+    id: 'dest-seville',
+    name: 'Seville',
+    queryName: 'Seville, Spain',
+    region: 'Andalusia',
+    location: { lat: 37.3886, lng: -5.9823 },
+    searchRadiusM: 5500,
+    baseTags: ['flamenco', 'culture', 'architecture', 'history', 'gastronomy'],
+    destinationType: 'city',
+    description:
+      'Andalusian capital with flamenco roots, a Moorish-Gothic cathedral, and the lush Alcázar gardens.',
+  },
+  {
+    id: 'dest-granada',
+    name: 'Granada',
+    queryName: 'Granada, Spain',
+    region: 'Andalusia',
+    location: { lat: 37.1773, lng: -3.5986 },
+    searchRadiusM: 5000,
+    baseTags: ['alhambra', 'history', 'tapas', 'mountain', 'unesco'],
+    destinationType: 'city',
+    description:
+      "Sierra Nevada–set city crowned by the Alhambra and famous for free-tapas bars and Albaicín views.",
+  },
+  {
+    id: 'dest-cordoba',
+    name: 'Córdoba',
+    queryName: 'Córdoba, Spain',
+    region: 'Andalusia',
+    location: { lat: 37.8882, lng: -4.7794 },
+    searchRadiusM: 4000,
+    baseTags: ['mezquita', 'history', 'patio', 'unesco'],
+    destinationType: 'city',
+    description:
+      'Andalusian city famed for the UNESCO-listed Mezquita-Catedral and flower-filled patios in the Judería.',
+  },
+  {
+    id: 'dest-malaga',
+    name: 'Málaga',
+    queryName: 'Málaga, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.7213, lng: -4.4214 },
+    searchRadiusM: 5000,
+    baseTags: ['beach', 'art', 'picasso', 'gastronomy', 'coastal'],
+    destinationType: 'city',
+    description:
+      "Costa del Sol gateway with Picasso's birthplace, an emerging art scene, and tapas-rich old town.",
+  },
+  {
+    id: 'dest-marbella',
+    name: 'Marbella',
+    queryName: 'Marbella, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.5101, lng: -4.8826 },
+    searchRadiusM: 4000,
+    baseTags: ['luxury', 'beach', 'resort', 'nightlife', 'coastal'],
+    destinationType: 'city',
+    description:
+      "Costa del Sol resort town synonymous with luxury marinas, Puerto Banús nightlife, and elegant old quarter.",
+  },
+  {
+    id: 'dest-ronda',
+    name: 'Ronda',
+    queryName: 'Ronda, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.7427, lng: -5.1625 },
+    searchRadiusM: 3000,
+    baseTags: ['cliff', 'bridge', 'inland', 'pueblo', 'wine'],
+    destinationType: 'city',
+    description:
+      'Cliff-perched white town split by a 100-metre gorge and one of the oldest bullrings in Spain.',
+  },
+  {
+    id: 'dest-mijas',
+    name: 'Mijas',
+    queryName: 'Mijas, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.5953, lng: -4.6373 },
+    searchRadiusM: 2500,
+    baseTags: ['whitewashed', 'pueblo', 'mountain', 'coastal_view'],
+    destinationType: 'village',
+    description:
+      'Whitewashed mountain village above the Costa del Sol with steep cobbled streets and panoramic Mediterranean views.',
+  },
+  {
+    id: 'dest-nerja',
+    name: 'Nerja',
+    queryName: 'Nerja, Spain',
+    region: 'Andalusia',
+    location: { lat: 36.7521, lng: -3.8742 },
+    searchRadiusM: 3000,
+    baseTags: ['beach', 'cave', 'coastal', 'cliff', 'whitewashed'],
+    destinationType: 'city',
+    description:
+      "East-Costa-del-Sol town built around the 'Balcón de Europa' cliff and the prehistoric Nerja Caves.",
+  },
+  {
+    id: 'dest-bilbao',
+    name: 'Bilbao',
+    queryName: 'Bilbao, Spain',
+    region: 'Basque Country',
+    location: { lat: 43.263, lng: -2.935 },
+    searchRadiusM: 5000,
+    baseTags: ['art', 'guggenheim', 'gastronomy', 'pintxos', 'urban'],
+    destinationType: 'city',
+    description:
+      'Industrial city reborn around the Guggenheim, Basque pintxos bars, and a riverside art scene.',
+  },
+  {
+    id: 'dest-sansebastian',
+    name: 'San Sebastián',
+    queryName: 'San Sebastián, Spain',
+    region: 'Basque Country',
+    location: { lat: 43.3183, lng: -1.9812 },
+    searchRadiusM: 4500,
+    baseTags: ['beach', 'pintxos', 'gastronomy', 'film_festival', 'coastal'],
+    destinationType: 'city',
+    description:
+      'Belle-Époque seaside city famed for La Concha bay, Michelin-density gastronomy, and pintxos crawls.',
+  },
+  {
+    id: 'dest-santander',
+    name: 'Santander',
+    queryName: 'Santander, Spain',
+    region: 'Cantabria',
+    location: { lat: 43.4623, lng: -3.8099 },
+    searchRadiusM: 4500,
+    baseTags: ['beach', 'coastal', 'palace', 'urban'],
+    destinationType: 'city',
+    description:
+      'Cantabrian capital wrapped around a deep bay, with grand promenades and Magdalena palace beaches.',
+  },
+  {
+    id: 'dest-oviedo',
+    name: 'Oviedo',
+    queryName: 'Oviedo, Spain',
+    region: 'Asturias',
+    location: { lat: 43.3603, lng: -5.8448 },
+    searchRadiusM: 4000,
+    baseTags: ['city', 'history', 'cider', 'old_town', 'green_spain'],
+    destinationType: 'city',
+    description:
+      "Asturian capital celebrated for its medieval old town, cider houses, and pre-Romanesque churches.",
+  },
+  {
+    id: 'dest-gijon',
+    name: 'Gijón',
+    queryName: 'Gijón, Spain',
+    region: 'Asturias',
+    location: { lat: 43.5453, lng: -5.6619 },
+    searchRadiusM: 4000,
+    baseTags: ['coastal', 'beach', 'cider', 'urban'],
+    destinationType: 'city',
+    description:
+      'Asturian coast city with surf-friendly San Lorenzo beach and a lively cider-house old quarter.',
+  },
+  {
+    id: 'dest-toledo',
+    name: 'Toledo',
+    queryName: 'Toledo, Spain',
+    region: 'Castile-La Mancha',
+    location: { lat: 39.8628, lng: -4.0273 },
+    searchRadiusM: 3500,
+    baseTags: ['unesco', 'history', 'medieval', 'inland', 'cathedral'],
+    destinationType: 'city',
+    description:
+      "UNESCO-listed 'City of Three Cultures' on a hilltop loop of the Tagus, with Christian, Jewish, and Moorish quarters.",
+  },
+  {
+    id: 'dest-segovia',
+    name: 'Segovia',
+    queryName: 'Segovia, Spain',
+    region: 'Castile and León',
+    location: { lat: 40.9483, lng: -4.118 },
+    searchRadiusM: 3000,
+    baseTags: ['unesco', 'aqueduct', 'history', 'inland', 'gastronomy'],
+    destinationType: 'city',
+    description:
+      'UNESCO Castilian city defined by a Roman aqueduct, fairytale Alcázar, and famous roast suckling pig.',
+  },
+  {
+    id: 'dest-salamanca',
+    name: 'Salamanca',
+    queryName: 'Salamanca, Spain',
+    region: 'Castile and León',
+    location: { lat: 40.9701, lng: -5.6635 },
+    searchRadiusM: 3500,
+    baseTags: ['university', 'unesco', 'history', 'plaza', 'student_life'],
+    destinationType: 'city',
+    description:
+      "Honey-stoned UNESCO city centred on Plaza Mayor and one of Europe's oldest universities.",
+  },
+  {
+    id: 'dest-avila',
+    name: 'Ávila',
+    queryName: 'Ávila, Spain',
+    region: 'Castile and León',
+    location: { lat: 40.6566, lng: -4.6818 },
+    searchRadiusM: 2500,
+    baseTags: ['walls', 'unesco', 'medieval', 'history'],
+    destinationType: 'city',
+    description:
+      'High-altitude walled city encircled by intact medieval ramparts and tied to Saint Teresa.',
+  },
+  {
+    id: 'dest-cuenca',
+    name: 'Cuenca',
+    queryName: 'Cuenca, Spain',
+    region: 'Castile-La Mancha',
+    location: { lat: 40.0704, lng: -2.1374 },
+    searchRadiusM: 3000,
+    baseTags: ['hanging_houses', 'unesco', 'cliff', 'inland'],
+    destinationType: 'city',
+    description:
+      "UNESCO Castilian town clinging to a gorge, famed for the 'casas colgadas' hanging houses.",
+  },
+  {
+    id: 'dest-zaragoza',
+    name: 'Zaragoza',
+    queryName: 'Zaragoza, Spain',
+    region: 'Aragon',
+    location: { lat: 41.6488, lng: -0.8891 },
+    searchRadiusM: 4500,
+    baseTags: ['city', 'basilica', 'mudejar', 'inland', 'history'],
+    destinationType: 'city',
+    description:
+      'Halfway between Madrid and Barcelona, an Ebro-side city of Mudéjar churches and the Pilar basilica.',
+  },
+  {
+    id: 'dest-pamplona',
+    name: 'Pamplona',
+    queryName: 'Pamplona, Spain',
+    region: 'Navarra',
+    location: { lat: 42.8125, lng: -1.6458 },
+    searchRadiusM: 3500,
+    baseTags: ['running_bulls', 'history', 'fortifications', 'gastronomy'],
+    destinationType: 'city',
+    description:
+      'Navarran city wrapped in star-shaped citadel walls, famous for the San Fermín running of the bulls.',
+  },
+  {
+    id: 'dest-logroño',
+    name: 'Logroño',
+    queryName: 'Logroño, Spain',
+    region: 'La Rioja',
+    location: { lat: 42.4627, lng: -2.4449 },
+    searchRadiusM: 3000,
+    baseTags: ['wine', 'pintxos', 'rioja', 'gastronomy'],
+    destinationType: 'city',
+    description:
+      'Rioja capital with a compact tapas alley (Calle Laurel) and rolling vineyards on the doorstep.',
+  },
+  {
+    id: 'dest-santiago',
+    name: 'Santiago de Compostela',
+    queryName: 'Santiago de Compostela, Spain',
+    region: 'Galicia',
+    location: { lat: 42.8782, lng: -8.5448 },
+    searchRadiusM: 3500,
+    baseTags: ['camino', 'pilgrimage', 'unesco', 'cathedral', 'history'],
+    destinationType: 'city',
+    description:
+      'Galician pilgrimage city and UNESCO old town crowned by the cathedral that ends the Camino de Santiago.',
+  },
+  {
+    id: 'dest-acoruna',
+    name: 'A Coruña',
+    queryName: 'A Coruña, Spain',
+    region: 'Galicia',
+    location: { lat: 43.3623, lng: -8.4115 },
+    searchRadiusM: 4000,
+    baseTags: ['coastal', 'beach', 'lighthouse', 'urban'],
+    destinationType: 'city',
+    description:
+      "Atlantic Galician city wrapped around a glass-galleried promenade and the Roman 'Tower of Hercules'.",
+  },
+  {
+    id: 'dest-mallorca-palma',
+    name: 'Palma de Mallorca',
+    queryName: 'Palma, Mallorca, Spain',
+    region: 'Balearic Islands',
+    location: { lat: 39.5696, lng: 2.6502 },
+    searchRadiusM: 5000,
+    baseTags: ['island', 'beach', 'cathedral', 'coastal', 'gastronomy'],
+    destinationType: 'island',
+    description:
+      "Capital of Mallorca: Gothic cathedral on the bay, a maze of medieval lanes, and turquoise calas nearby.",
+  },
+  {
+    id: 'dest-mallorca-soller',
+    name: 'Sóller',
+    queryName: 'Sóller, Mallorca, Spain',
+    region: 'Balearic Islands',
+    location: { lat: 39.7656, lng: 2.7148 },
+    searchRadiusM: 3000,
+    baseTags: ['island', 'mountain', 'orange_groves', 'tram'],
+    destinationType: 'village',
+    description:
+      'Mallorcan valley town surrounded by orange groves and linked to its port by a vintage wooden tram.',
+  },
+  {
+    id: 'dest-menorca-mahon',
+    name: 'Mahón',
+    queryName: 'Mahón, Menorca, Spain',
+    region: 'Balearic Islands',
+    location: { lat: 39.8888, lng: 4.2658 },
+    searchRadiusM: 3500,
+    baseTags: ['island', 'harbour', 'gin', 'coastal'],
+    destinationType: 'island',
+    description:
+      "Menorca's capital wrapped around one of the deepest natural harbours in the Mediterranean.",
+  },
+  {
+    id: 'dest-ibiza-town',
+    name: 'Ibiza Town',
+    queryName: 'Ibiza, Spain',
+    region: 'Balearic Islands',
+    location: { lat: 38.9067, lng: 1.4206 },
+    searchRadiusM: 3500,
+    baseTags: ['island', 'nightlife', 'unesco', 'beach', 'old_town'],
+    destinationType: 'island',
+    description:
+      'UNESCO Dalt Vila citadel above a marina that doubles as the Mediterranean nightlife capital.',
+  },
+  {
+    id: 'dest-formentera',
+    name: 'Formentera',
+    queryName: 'Formentera, Spain',
+    region: 'Balearic Islands',
+    location: { lat: 38.7088, lng: 1.4339 },
+    searchRadiusM: 4000,
+    baseTags: ['island', 'beach', 'turquoise', 'remote', 'coastal'],
+    destinationType: 'island',
+    description:
+      "Tiny Balearic island known for almost-Caribbean turquoise water and dune-backed beaches.",
+  },
+  {
+    id: 'dest-tenerife-santacruz',
+    name: 'Santa Cruz de Tenerife',
+    queryName: 'Santa Cruz de Tenerife, Spain',
+    region: 'Canary Islands',
+    location: { lat: 28.4636, lng: -16.2518 },
+    searchRadiusM: 4500,
+    baseTags: ['island', 'volcanic', 'auditorium', 'coastal'],
+    destinationType: 'island',
+    description:
+      "Tenerife's capital, a port city with the wave-shaped Auditorio and the dark-sand Las Teresitas beach nearby.",
+  },
+  {
+    id: 'dest-tenerife-teide',
+    name: 'Teide National Park',
+    queryName: 'Teide National Park, Tenerife, Spain',
+    region: 'Canary Islands',
+    location: { lat: 28.2724, lng: -16.6425 },
+    searchRadiusM: 5000,
+    baseTags: ['volcano', 'unesco', 'park', 'hiking', 'stargazing'],
+    destinationType: 'park',
+    description:
+      "Spain's tallest peak rising from a Mars-like volcanic caldera, a UNESCO park ringed with hiking trails.",
+  },
+  {
+    id: 'dest-graancanaria-laspalmas',
+    name: 'Las Palmas de Gran Canaria',
+    queryName: 'Las Palmas de Gran Canaria, Spain',
+    region: 'Canary Islands',
+    location: { lat: 28.1235, lng: -15.4363 },
+    searchRadiusM: 4500,
+    baseTags: ['island', 'beach', 'urban', 'volcanic'],
+    destinationType: 'island',
+    description:
+      'Year-round-warm Canary capital with the long urban beach of Las Canteras and a lively colonial old town.',
+  },
+  {
+    id: 'dest-lanzarote-arrecife',
+    name: 'Arrecife',
+    queryName: 'Arrecife, Lanzarote, Spain',
+    region: 'Canary Islands',
+    location: { lat: 28.9637, lng: -13.5477 },
+    searchRadiusM: 3500,
+    baseTags: ['island', 'volcanic', 'beach', 'coastal', 'manrique'],
+    destinationType: 'island',
+    description:
+      "Lanzarote's capital, gateway to volcanic landscapes and César Manrique's signature architectural sites.",
+  },
+]
