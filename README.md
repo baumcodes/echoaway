@@ -78,7 +78,7 @@ The hackathon requires at least three. Used here:
 | Tech                | Role                                              | Wired in |
 |---------------------|---------------------------------------------------|----------|
 | Google DeepMind / Gemini | LLM reasoning + tool calling for the agent  | Phase 5  |
-| Gradium             | Realtime voice / TTS                              | Phase 7  |
+| Gradium             | Realtime STT + TTS (custom LiveKit plugins)       | Phase 7  |
 | Tavily              | Travel context enrichment                         | Phase 8  |
 | ai-coustics         | Audio enhancement (track-specific)                | Phase 6  |
 | Aikido              | Optional security scan on the repo                | Phase 9  |

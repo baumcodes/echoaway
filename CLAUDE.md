@@ -25,9 +25,10 @@ The four files under `docs/` are the **canonical** source of truth for the data 
 
 ## What this product is
 
-- **Demo flow:** A traveler whose Berlin → Barcelona flight is delayed asks the voice agent to move their hotel check-in to tomorrow. The agent loads the trip, reads the seeded `Disruption`, quotes a change against the hotel policy, asks for confirmation, and updates the web UI live.
+- **Canonical demo flow (one example, not the whole product):** A traveler whose Berlin → Barcelona flight is delayed asks the voice agent to move their hotel check-in to tomorrow. The agent loads the trip, reads the seeded `Disruption`, quotes a change against the hotel policy, asks for confirmation, and updates the web UI live.
+- **Bigger picture — don't hard-bind to the single demo flow.** The agent's tool surface is meant to **grow**: hotel swaps, activity reschedules, transfer re-quotes, destination context lookups, more disruption types, etc. New tools land as new entries in `packages/app/src/agent-tools.ts`; the system prompt in `apps/voice-agent/src/agent/system-prompt.ts` already tells the model to compose tools to fit whatever the traveler asks. When you add a new tool, also add the matching wrapper to `apiClient` (`packages/app/src/client.ts`) and a test in `agent-tools.spec.ts`. **Avoid hard-coding the hotel-check-in flow into UI panels or copy** — the demo script in `packages/app/src/demo-script.ts` is the only place that walks one specific flow end-to-end, and it's labeled as such.
 - **Primary track:** telli & ai-coustics (voice AI in the wild). Side challenge: Gradium.
-- **Partner techs in code:** Gemini (reasoning + tool calling), Gradium (voice), Tavily (context enrichment), ai-coustics (audio enhancement).
+- **Partner techs in code:** Gemini (reasoning + tool calling; Gemini Live `RealtimeModel` is the Phase-5 audio fallback), Gradium (Phase 7 — both STT and TTS via custom LiveKit plugins), Tavily (Phase 8 — context enrichment), ai-coustics (Phase 6 — audio enhancement).
 
 ---
 
