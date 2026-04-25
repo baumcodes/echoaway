@@ -186,6 +186,25 @@ export function createApiClient(opts: ApiClientOptions) {
      *  the polling fallback when SSE is unavailable. */
     eventStreamUrl: () => `${base}/events/stream`,
 
+    /** SSE URL for the live transcript debug overlay. Carries user +
+     *  assistant transcript fragments produced by the agent worker.
+     *  Not persisted — drops chunks if no subscriber. */
+    transcriptStreamUrl: () => `${base}/transcripts/stream`,
+
+    /** Worker-side: push one transcript fragment for live debugging.
+     *  Web doesn't call this — it only listens via the SSE stream. */
+    postTranscript: (req: {
+      sessionId: string
+      tripId?: string | null
+      role: 'user' | 'assistant'
+      text: string
+      isFinal?: boolean
+    }) =>
+      request<{ ok: boolean }>(`/transcripts`, {
+        method: 'POST',
+        body: JSON.stringify(req),
+      }),
+
     /** Re-runs the demo-trip seed so the bookable window is fresh.
      *  Useful for debugging when consecutive confirms have consumed
      *  the slack between check-in and check-out. */
@@ -322,6 +341,18 @@ export type VoiceEventEnvelope = {
   tripId: string | null
   componentId: string | null
   payload: unknown
+  createdAt: string
+}
+
+/** Shape of one row pushed by `/transcripts/stream`. Matches the
+ *  backend's `TranscriptEnvelope` exactly. */
+export type TranscriptEnvelope = {
+  id: string
+  sessionId: string
+  tripId: string | null
+  role: 'user' | 'assistant'
+  text: string
+  isFinal: boolean
   createdAt: string
 }
 

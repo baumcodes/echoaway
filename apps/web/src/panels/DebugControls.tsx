@@ -1,4 +1,5 @@
 import { useDemo } from '@echoaway/app'
+import { Card } from '@echoaway/ui'
 import { useEffect, useRef, useState } from 'react'
 
 /** Same file the noisy-mic mixer fetches in `useVoiceRoom`. Keeping
@@ -10,8 +11,22 @@ const NOISE_URL = '/airport-noise.mp3'
  *  LiveKit room joining is wired — buttons let you exercise paths
  *  individually without going through the mic. The "Reset trip"
  *  button is the recovery path when consecutive confirms have consumed
- *  the bookable slack between check-in and check-out. */
+ *  the bookable slack between check-in and check-out.
+ *
+ *  Rendered as two collapsible cards (`Demo controls`, `Voice session`)
+ *  so the side panel can be triaged at a glance — collapse the
+ *  buttons you don't need, expand the live transcript.
+ */
 export function DebugControls() {
+  return (
+    <>
+      <DemoControlsCard />
+      <VoiceSessionCard />
+    </>
+  )
+}
+
+function DemoControlsCard() {
   const demo = useDemo()
   const [resetting, setResetting] = useState(false)
   const isSuggesting = demo.assistant.kind === 'suggesting'
@@ -23,17 +38,13 @@ export function DebugControls() {
       setResetting(false)
     }
   }
-  const roomLabel =
-    demo.voiceRoom.kind === 'connected'
-      ? `Room: ${demo.voiceRoom.roomName.slice(-8)} ✓`
-      : demo.voiceRoom.kind === 'connecting'
-        ? 'Room: connecting…'
-        : demo.voiceRoom.kind === 'error'
-          ? `Room: ${demo.voiceRoom.message}`
-          : 'Room: not connected'
   return (
-    <div className="debug-panel">
-      <div className="debug-panel-title">Demo controls</div>
+    <Card
+      title="Demo controls"
+      subtitle="Drive the demo without the mic"
+      collapsible
+      defaultOpen={false}
+    >
       <div className="debug-buttons">
         <button onClick={() => void demo.startDemoFlow()}>
           1 · Run demo script
@@ -52,9 +63,27 @@ export function DebugControls() {
           {resetting ? 'Resetting…' : 'Reset trip'}
         </button>
       </div>
-      <div className="debug-panel-title" style={{ marginTop: '0.7rem' }}>
-        Voice session
-      </div>
+    </Card>
+  )
+}
+
+function VoiceSessionCard() {
+  const demo = useDemo()
+  const roomLabel =
+    demo.voiceRoom.kind === 'connected'
+      ? `Room: ${demo.voiceRoom.roomName.slice(-8)} ✓`
+      : demo.voiceRoom.kind === 'connecting'
+        ? 'Room: connecting…'
+        : demo.voiceRoom.kind === 'error'
+          ? `Room: ${demo.voiceRoom.message}`
+          : 'Room: not connected'
+  return (
+    <Card
+      title="Voice session"
+      subtitle="LiveKit room + noisy-mic toggle"
+      collapsible
+      defaultOpen={false}
+    >
       <NoiseToggleRow />
       <div className="debug-buttons">
         <button
@@ -82,7 +111,7 @@ export function DebugControls() {
           ? ' · ✈ noisy mic'
           : ''}
       </div>
-    </div>
+    </Card>
   )
 }
 

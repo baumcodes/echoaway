@@ -107,6 +107,10 @@ function makeFakeClient() {
     }),
     pollEvents: vi.fn().mockResolvedValue([]),
     eventStreamUrl: vi.fn().mockReturnValue('http://test.local/events/stream'),
+    transcriptStreamUrl: vi
+      .fn()
+      .mockReturnValue('http://test.local/transcripts/stream'),
+    postTranscript: vi.fn().mockResolvedValue({ ok: true }),
     resetDemoTrip: vi.fn().mockResolvedValue({ ok: true }),
     listDestinations: vi.fn().mockResolvedValue([]),
     listAccommodations: vi.fn().mockResolvedValue([]),

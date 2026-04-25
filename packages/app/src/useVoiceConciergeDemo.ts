@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
-import { ApiError, type ApiClient } from './client.js'
+import {
+  ApiError,
+  type ApiClient,
+  type TranscriptEnvelope,
+} from './client.js'
 import {
   type PauseDecision,
   type ScriptTurn,
@@ -8,6 +12,7 @@ import {
 import {
   envelopeToAssistantEvent,
   subscribeToEvents,
+  subscribeToTranscripts,
 } from './eventStream.js'
 import {
   type AssistantEvent,
@@ -39,6 +44,10 @@ export type DemoState = {
    *  the published mic track so ai-coustics has something to clean up.
    *  Phase 6 demo mode. */
   noisyMode: boolean
+  /** Live transcript fragments from the agent worker. Capped at the
+   *  most recent N entries so the UI doesn't grow unbounded over a
+   *  long demo. Cleared when the user starts a new session. */
+  transcripts: TranscriptEnvelope[]
 }
 
 export type DemoActions = {
@@ -74,6 +83,8 @@ export type DemoActions = {
    *  user reconnects (renegotiating the local audio track on the fly
    *  is doable but adds complexity for marginal demo value). */
   setNoisyMode: (next: boolean) => void
+  /** Wipe the live-transcript debug buffer. */
+  clearTranscripts: () => void
 }
 
 export type UseVoiceConciergeDemoOptions = {
@@ -158,6 +169,67 @@ export function useVoiceConciergeDemo(
       cancelled = true
     }
   }, [trip, apiClient])
+
+  // ---- Live transcript debug overlay ----
+  // Both user and agent transcripts arrive via the LiveKit room as
+  // `RoomEvent.TranscriptionReceived` (the Agents framework publishes
+  // them by default). Each segment carries a stable `id` that's reused
+  // across interim updates and the final version, so we dedupe by id —
+  // streaming an entry rewrites it in place rather than appending a
+  // new row. Bounded ring keeps long sessions from growing unbounded.
+  const TRANSCRIPT_CAP = 200
+  const [transcripts, setTranscripts] = useState<TranscriptEnvelope[]>([])
+  const clearTranscripts = useCallback(() => setTranscripts([]), [])
+  const handleRoomTranscription = useCallback(
+    (event: {
+      id: string
+      role: 'user' | 'assistant'
+      text: string
+      isFinal: boolean
+    }) => {
+      setTranscripts((prev) => {
+        const envelope: TranscriptEnvelope = {
+          id: event.id,
+          sessionId: sessionIdRef.current ?? '',
+          tripId: tripIdRef.current,
+          role: event.role,
+          text: event.text,
+          isFinal: event.isFinal,
+          createdAt: new Date().toISOString(),
+        }
+        const idx = prev.findIndex((t) => t.id === event.id)
+        const next =
+          idx >= 0
+            ? [...prev.slice(0, idx), envelope, ...prev.slice(idx + 1)]
+            : [...prev, envelope]
+        return next.length > TRANSCRIPT_CAP
+          ? next.slice(next.length - TRANSCRIPT_CAP)
+          : next
+      })
+    },
+    [],
+  )
+  // Backend SSE remains a fallback path (for non-room debug consumers).
+  // It coexists harmlessly with room transcription because the worker
+  // no longer POSTs to /transcripts — but the SSE endpoint stays live
+  // for ad-hoc tooling / future external producers.
+  useEffect(() => {
+    const teardown = subscribeToTranscripts(apiClient, {
+      onTranscript: (env) => {
+        setTranscripts((prev) => {
+          const idx = prev.findIndex((t) => t.id === env.id)
+          const next =
+            idx >= 0
+              ? [...prev.slice(0, idx), env, ...prev.slice(idx + 1)]
+              : [...prev, env]
+          return next.length > TRANSCRIPT_CAP
+            ? next.slice(next.length - TRANSCRIPT_CAP)
+            : next
+        })
+      },
+    })
+    return teardown
+  }, [apiClient])
 
   // Subscribe to the SSE stream once. Stays open for the life of the
   // hook; events for other trips are filtered out client-side.
@@ -336,6 +408,7 @@ export function useVoiceConciergeDemo(
     apiClient,
     identity: 'web-traveler',
     name: 'Web Traveler',
+    onTranscription: handleRoomTranscription,
   })
 
   const [noisyMode, setNoisyMode] = useState(false)
@@ -352,6 +425,7 @@ export function useVoiceConciergeDemo(
         const session = await apiClient.createVoiceSession({ tripId: trip.id })
         setSessionId(session.id)
         dispatchAssistant({ type: 'reset' })
+        setTranscripts([])
         await voiceRoom.connect({
           tripId: trip.id,
           sessionId: session.id,
@@ -424,6 +498,8 @@ export function useVoiceConciergeDemo(
     audioMetric,
     noisyMode,
     setNoisyMode,
+    transcripts,
+    clearTranscripts,
     refreshTrip,
     dispatchAssistant,
     triggerQuote,

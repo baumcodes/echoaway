@@ -336,6 +336,24 @@ body {
   border: 1px solid var(--line);
 }
 
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.card-header-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card-header-extra {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .card-header h3 {
   margin: 0;
   font-size: 0.95rem;
@@ -350,6 +368,46 @@ body {
 
 .card-body {
   margin-top: 0.6rem;
+}
+
+/* ---------- Collapsible card (native <details>) ---------- */
+
+.card-collapsible {
+  /* Reset the default disclosure marker — we draw our own chevron. */
+  padding: 0;
+}
+
+.card-collapsible > .card-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.1rem;
+  user-select: none;
+}
+
+.card-collapsible > .card-summary::-webkit-details-marker {
+  display: none;
+}
+
+.card-collapsible > .card-body {
+  padding: 0 1.1rem 1rem;
+  margin-top: 0;
+}
+
+.card-chevron {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  transition: transform 0.18s ease;
+  display: inline-block;
+}
+
+.card-collapsible:not([open]) > .card-summary .card-chevron {
+  transform: rotate(-90deg);
+}
+
+.card-collapsible:hover > .card-summary {
+  background: var(--surface-soft);
+  border-radius: 18px;
 }
 
 .card-body > *:first-child {
@@ -824,6 +882,97 @@ body {
 
 .debug-buttons button:hover {
   background: var(--bg-soft);
+}
+
+/* ---------- Transcript card ---------- */
+
+.transcript-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+}
+
+.transcript-card-count {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.transcript-card-clear {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.transcript-card-clear:hover {
+  background: var(--surface-soft);
+}
+
+.transcript-empty {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.transcript-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.transcript-entry {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.transcript-entry-user {
+  background: var(--info-soft);
+  border: 1px solid var(--info);
+  color: #14366b;
+}
+
+.transcript-entry-assistant {
+  background: var(--success-soft);
+  border: 1px solid var(--success);
+  color: #1c5a35;
+}
+
+.transcript-entry-interim {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.transcript-role {
+  flex: 0 0 auto;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 0.1rem;
+  min-width: 2.6rem;
+  opacity: 0.85;
+}
+
+.transcript-text {
+  flex: 1 1 auto;
+  word-break: break-word;
 }
 
 @media (max-width: 920px) {

@@ -4,9 +4,12 @@ import {
   Room,
   RoomEvent,
   Track,
+  type Participant,
   type RemoteParticipant,
   type RemoteTrack,
   type RemoteTrackPublication,
+  type TrackPublication,
+  type TranscriptionSegment,
 } from 'livekit-client'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ApiClient } from './client.js'
@@ -17,12 +20,28 @@ export type VoiceRoomState =
   | { kind: 'connected'; roomName: string; sessionId: string; noisy: boolean }
   | { kind: 'error'; message: string }
 
+/** One segment as published by the LiveKit Agents framework — both
+ *  the user's STT/realtime transcript and the agent's spoken-text
+ *  output land here, streamed as they're generated. The same `id`
+ *  is reused as a segment grows (interim → final), so consumers
+ *  should dedupe on it. */
+export type RoomTranscriptionEvent = {
+  id: string
+  role: 'user' | 'assistant'
+  text: string
+  isFinal: boolean
+}
+
 export type UseVoiceRoomOptions = {
   apiClient: ApiClient
   /** Identity used for the LiveKit token. Usually the traveler id. */
   identity: string
   /** Display name shown to other room participants. */
   name?: string
+  /** Fires for every transcription segment published in the room.
+   *  Role is derived from participant identity: `user` if the
+   *  segment is attributed to the local participant, else `assistant`. */
+  onTranscription?: (event: RoomTranscriptionEvent) => void
 }
 
 export type ConnectArgs = {
@@ -121,11 +140,15 @@ async function buildNoisyMicStream(noiseUrl: string): Promise<NoisyMicHandle> {
  * `audioRef`. Mobile would substitute its own audio renderer.
  */
 export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
-  const { apiClient, identity, name } = opts
+  const { apiClient, identity, name, onTranscription } = opts
   const [state, setState] = useState<VoiceRoomState>({ kind: 'idle' })
   const roomRef = useRef<Room | null>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const noisyHandleRef = useRef<NoisyMicHandle | null>(null)
+  // Latest callback ref so the room listener picks up renames without
+  // re-binding the listener on every render.
+  const onTranscriptionRef = useRef(onTranscription)
+  onTranscriptionRef.current = onTranscription
 
   const detachAll = useCallback(() => {
     const room = roomRef.current
@@ -184,6 +207,30 @@ export function useVoiceRoom(opts: UseVoiceRoomOptions): UseVoiceRoomResult {
             const el = audioRef.current
             if (!el) return
             ;(track as RemoteAudioTrack).attach(el)
+          },
+        )
+        // The Agents framework publishes both user and agent transcripts
+        // here as they stream — interim segments share an `id` with
+        // their final version, so the consumer should dedupe on that.
+        room.on(
+          RoomEvent.TranscriptionReceived,
+          (
+            segments: TranscriptionSegment[],
+            participant?: Participant,
+            _publication?: TrackPublication,
+          ) => {
+            const cb = onTranscriptionRef.current
+            if (!cb) return
+            const isLocal =
+              participant?.identity === room.localParticipant?.identity
+            for (const seg of segments) {
+              cb({
+                id: seg.id,
+                role: isLocal ? 'user' : 'assistant',
+                text: seg.text,
+                isFinal: seg.final,
+              })
+            }
           },
         )
         room.on(RoomEvent.Disconnected, () => {

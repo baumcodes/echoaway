@@ -21,6 +21,8 @@ export function makeToolCtx(overrides: Partial<ToolContext> = {}): ToolContext {
       createVoiceSession: vi.fn(),
       pollEvents: vi.fn(),
       eventStreamUrl: vi.fn(),
+      transcriptStreamUrl: vi.fn(),
+      postTranscript: vi.fn(),
       resetDemoTrip: vi.fn(),
       listDestinations: vi.fn(),
       listAccommodations: vi.fn(),

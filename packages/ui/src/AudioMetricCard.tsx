@@ -5,6 +5,9 @@ export type AudioMetricCardProps = {
   metric: AudioIntelligenceMetric | null
   /** Shown when no metric is available yet (Phase 6 will populate). */
   placeholder?: string
+  /** Render as an accordion. */
+  collapsible?: boolean
+  defaultOpen?: boolean
 }
 
 const scenarioLabel: Record<AudioIntelligenceMetric['scenario'], string> = {
@@ -14,10 +17,20 @@ const scenarioLabel: Record<AudioIntelligenceMetric['scenario'], string> = {
   street_noise: 'Street noise',
 }
 
-export function AudioMetricCard({ metric, placeholder }: AudioMetricCardProps) {
+export function AudioMetricCard({
+  metric,
+  placeholder,
+  collapsible,
+  defaultOpen,
+}: AudioMetricCardProps) {
   if (!metric) {
     return (
-      <Card title="Audio intelligence" subtitle="Track-specific metric">
+      <Card
+        title="Audio intelligence"
+        subtitle="Track-specific metric"
+        collapsible={collapsible}
+        defaultOpen={defaultOpen}
+      >
         <p className="audio-metric-placeholder">
           {placeholder ?? 'Pending — populated when a voice session ends.'}
         </p>
@@ -30,6 +43,8 @@ export function AudioMetricCard({ metric, placeholder }: AudioMetricCardProps) {
       title="Audio intelligence"
       subtitle={scenarioLabel[metric.scenario]}
       accent="info"
+      collapsible={collapsible}
+      defaultOpen={defaultOpen}
     >
       <div className="audio-metric">
         <Row

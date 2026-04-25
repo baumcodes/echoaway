@@ -1,8 +1,17 @@
-import type { ApiClient, VoiceEventEnvelope } from './client.js'
+import type {
+  ApiClient,
+  TranscriptEnvelope,
+  VoiceEventEnvelope,
+} from './client.js'
 import type { AssistantEvent } from './state-machine.js'
 
 export type EventStreamHandlers = {
   onEvent: (envelope: VoiceEventEnvelope) => void
+  onError?: (err: Error) => void
+}
+
+export type TranscriptStreamHandlers = {
+  onTranscript: (envelope: TranscriptEnvelope) => void
   onError?: (err: Error) => void
 }
 
@@ -41,6 +50,45 @@ export function subscribeToEvents(
   source.addEventListener('message', onMessage)
   source.addEventListener('error', onError)
   return () => {
+    source.removeEventListener('message', onMessage)
+    source.removeEventListener('error', onError)
+    source.close()
+  }
+}
+
+/**
+ * Subscribes to the backend transcript SSE stream. Same resilience
+ * contract as `subscribeToEvents` — `EventSource` retries on its own,
+ * we forward errors but keep the connection alive.
+ *
+ * Transcripts are not persisted, so there's no polling fallback — when
+ * SSE is unavailable the consumer simply has no live overlay.
+ */
+export function subscribeToTranscripts(
+  apiClient: ApiClient,
+  handlers: TranscriptStreamHandlers,
+): () => void {
+  if (typeof EventSource === 'undefined') return () => {}
+  const source = new EventSource(apiClient.transcriptStreamUrl())
+  const onMessage = (e: MessageEvent) => {
+    try {
+      const data = JSON.parse(e.data) as TranscriptEnvelope
+      handlers.onTranscript(data)
+    } catch (err) {
+      handlers.onError?.(err instanceof Error ? err : new Error(String(err)))
+    }
+  }
+  const onError = () => {
+    handlers.onError?.(new Error('Transcript stream connection error'))
+  }
+  // The controller emits with `event: transcript` rather than the default
+  // `message` event, so listen for both — `message` is the fallback if
+  // the SSE serializer ever changes.
+  source.addEventListener('transcript', onMessage as EventListener)
+  source.addEventListener('message', onMessage)
+  source.addEventListener('error', onError)
+  return () => {
+    source.removeEventListener('transcript', onMessage as EventListener)
     source.removeEventListener('message', onMessage)
     source.removeEventListener('error', onError)
     source.close()

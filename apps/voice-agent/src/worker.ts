@@ -87,21 +87,32 @@ export default defineAgent({
     const ourToolCtx = { apiClient, sessionId, tripId }
     const toolCtx = buildLivekitToolCtx(ourToolCtx)
 
-    // Pinned to `gemini-2.0-flash-exp` rather than the plugin's newer
-    // `*-native-audio-*` default. The native-audio preview models have
-    // unstable function-calling support in BidiGenerate — symptoms in
-    // the wild include WebSocket close 1008 ("Operation is not
-    // implemented, or supported, or enabled") right after the model
-    // tries to chain a second tool call. `gemini-2.0-flash-exp` has
-    // less expressive prosody but battle-tested function calling +
-    // audio I/O. Trade audio polish for tool-call reliability until
-    // Phase 7 swaps the audio backbone to Gradium TTS anyway.
+    // Picking the Live model is a moving target — Google sunsets and
+    // renames bidiGenerateContent models on a quarterly cadence:
+    //   2025-10-20  gemini-2.5-flash-preview-native-audio-dialog       ✗
+    //   2025-12-09  gemini-2.0-flash-exp                                ✗
+    //   2025-12-09  gemini-2.0-flash-live-001                           ✗
+    //   2025-12-09  gemini-live-2.5-flash-preview                       ✗
+    //   …
+    // The two models active for AI Studio API keys (v1beta endpoint,
+    // i.e. `GEMINI_API_KEY` rather than Vertex) as of April 2026:
+    //   • gemini-3.1-flash-live-preview                  (2026-03-26, newest)
+    //   • gemini-2.5-flash-native-audio-preview-12-2025  (2025-12-12, plugin default)
+    // Names like `gemini-live-2.5-flash-native-audio` only resolve via
+    // Vertex (`*-aiplatform.googleapis.com`), so they 1008-close on the
+    // AI Studio websocket.
     //
-    // The plugin's allowlist is the source of truth for valid model
-    // names: node_modules/@livekit/agents-plugin-google/.../api_proto.d.ts
+    // Picked the December model — it has the most real-world flight
+    // time for function calling. If it starts dropping connections
+    // mid-tool-call (the recurring failure mode of these previews),
+    // step UP to `gemini-3.1-flash-live-preview`. Plugin allowlist:
+    //   node_modules/@livekit/agents-plugin-google/.../api_proto.d.ts
+    //
+    // Phase 7 sidesteps all this churn by swapping to the 3-piece
+    // `{ llm, stt, tts }` pipeline backed by Gradium.
     const realtime = new beta.realtime.RealtimeModel({
       apiKey: GEMINI_API_KEY,
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-2.5-flash-native-audio-preview-12-2025',
       voice: 'Aoede',
       instructions: SYSTEM_PROMPT,
     })
@@ -145,6 +156,13 @@ export default defineAgent({
     // tells you whether Gemini Live decoded any speech at all, and
     // `user_state_changed` tracks the AgentSession's internal idea of
     // whether the user is "talking" / "listening" / "away".
+    // The Agents framework auto-publishes both user and agent
+    // transcripts to the LiveKit room as streaming `TranscriptionReceived`
+    // segments (default `transcriptionEnabled: true`). The web client
+    // subscribes to `RoomEvent.TranscriptionReceived` directly — no
+    // backend roundtrip needed, partials stream as Gemini generates.
+    // We just keep these as console telemetry for diagnosing
+    // "agent never replies" / turn-detection issues.
     session.on(E.UserInputTranscribed, (ev) =>
       console.log('[voice-agent worker] user_input_transcribed', ev),
     )
