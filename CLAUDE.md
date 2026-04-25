@@ -94,3 +94,4 @@ Four layers: **Catalog** (reusable inventory seeded from `dataset/`), **Identity
 - When adding components, hotels, flights, etc., source from `dataset/*.json` rather than inventing data.
 - The hackathon is solo and time-boxed (~48 hours) — keep scope tight per @PLAN.md §10.
 - **Tick PLAN.md checkboxes as you finish work.** When you complete a task in a phase and have verified it (build passes, endpoint works, etc.), flip its `- [ ]` to `- [x]` in @PLAN.md. Only check items you actually verified — don't check ahead.
+- **Tests are part of every change.** Write unit tests (or e2e where it fits — seed scripts, API endpoints, agent tool calls) alongside the code, then run the relevant test suite (`yarn workspace <pkg> test` or `yarn test`) and confirm it passes before marking work done. No "I'll add tests later".
