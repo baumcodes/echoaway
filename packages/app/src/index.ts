@@ -1,10 +1,6 @@
-// Shared application logic for EchoAway Voice Concierge.
-// Filled in starting Phase 3:
-//   - apiClient (wraps backend tool endpoints)
-//   - useVoiceConciergeDemo hook
-//   - event-to-state mapping
-//   - demo flow state machine
-//
-// Phase 1 keeps this as a placeholder so workspace wiring is testable.
-
-export const APP_PACKAGE_NAME = '@echoaway/app'
+export * from './client.js'
+export * from './DemoProvider.js'
+export * from './selectors.js'
+export * from './state-machine.js'
+export * from './types.js'
+export * from './useVoiceConciergeDemo.js'

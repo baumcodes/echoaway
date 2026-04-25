@@ -774,22 +774,22 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Build EchoAway-style web demo screen in `/apps/web`
-- [ ] Wire `/packages/app` API client to backend's GET /trips/:id and /trips/by-phone/:phone
-- [ ] Add trip overview card (reads real seeded trip)
-- [ ] Add flight delay card (reads disruption + flight component)
-- [ ] Add hotel booking card (reads accommodation component + booking)
+- [x] Build EchoAway-style web demo screen in `/apps/web`
+- [x] Wire `/packages/app` API client to backend's GET /trips/:id and /trips/by-phone/:phone
+- [x] Add trip overview card (reads real seeded trip)
+- [x] Add flight delay card (reads disruption + flight component)
+- [x] Add hotel booking card (reads accommodation component + booking)
 - [ ] Install `@livekit/components-react` + `livekit-client` in `apps/web`; wrap LiveKit primitives behind a `/packages/app` hook so `apps/mobile` can reuse later
-- [ ] Add "Talk to Away" voice button (in Phase 5 it joins the LiveKit room; in Phase 3 it can stay a placeholder that triggers debug events)
-- [ ] Add assistant status states: idle, listening, thinking, suggesting, confirmed
-- [ ] Add live action card component (renders ChangeQuote)
-- [ ] Add confirmation modal/card
-- [ ] Add small audio clarity metric display
-- [ ] Add polished empty/loading/error states
-- [ ] Create reusable feature components in `/packages/ui`
-- [ ] Create app orchestration hooks/state machine in `/packages/app`
-- [ ] Keep `/apps/mobile` as a thin future shell that can later import the same packages
-- [ ] Commit: `feat: build web voice concierge UI`
+- [x] Add "Talk to Away" voice button (in Phase 5 it joins the LiveKit room; in Phase 3 it can stay a placeholder that triggers debug events)
+- [x] Add assistant status states: idle, listening, thinking, suggesting, confirmed
+- [x] Add live action card component (renders ChangeQuote)
+- [x] Add confirmation modal/card
+- [x] Add small audio clarity metric display
+- [x] Add polished empty/loading/error states
+- [x] Create reusable feature components in `/packages/ui`
+- [x] Create app orchestration hooks/state machine in `/packages/app`
+- [x] Keep `/apps/mobile` as a thin future shell that can later import the same packages
+- [x] Commit: `feat: build web voice concierge UI`
 
 ### Agent prompt
 

@@ -1,16 +1,28 @@
+import { useMemo } from 'react'
+import { createApiClient, DemoProvider } from '@echoaway/app'
+import { DemoBoundary } from './panels/DemoBoundary.js'
+import { PhoneStage } from './panels/PhoneStage.js'
+import { SidePanel } from './panels/SidePanel.js'
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:4000'
+
+/**
+ * Layout-only entry. All data, state, and orchestration live in
+ * @echoaway/app via DemoProvider; panels self-serve via useDemo().
+ */
 export function App() {
+  const apiClient = useMemo(
+    () => createApiClient({ baseUrl: BACKEND_URL }),
+    [],
+  )
   return (
-    <main>
-      <header>
-        <h1>EchoAway Voice Concierge</h1>
-        <p>Phase 1 placeholder. The polished UI lands in Phase 3.</p>
-      </header>
-      <section>
-        <p>
-          Backend URL:{' '}
-          <code>{import.meta.env.VITE_BACKEND_URL ?? '(unset)'}</code>
-        </p>
-      </section>
-    </main>
+    <DemoProvider apiClient={apiClient}>
+      <DemoBoundary>
+        <div className="demo-shell">
+          <SidePanel />
+          <PhoneStage />
+        </div>
+      </DemoBoundary>
+    </DemoProvider>
   )
 }
