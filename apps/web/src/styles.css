@@ -216,6 +216,41 @@ body {
   50% { transform: scaleY(0.45); }
 }
 
+/* ---- listening (idle): hot mic, no transcript yet ---- */
+/* Calmer animation than the actively-transcribing case so the user
+   can still tell at a glance the mic is open, without the visual
+   noise of bouncing bars during a long pause. The class chains on top
+   of `.mic-btn-listening` so all colour/icon rules carry over; only
+   the timing/intensity is overridden. */
+
+.mic-btn-listening.mic-btn-listening-idle {
+  /* Slower, gentler outward ring. */
+  animation: mic-ring-idle 2.4s ease-out infinite;
+}
+
+@keyframes mic-ring-idle {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(232, 93, 58, 0.32),
+      0 6px 18px rgba(232, 93, 58, 0.22);
+  }
+  100% {
+    box-shadow:
+      0 0 0 10px rgba(232, 93, 58, 0),
+      0 6px 18px rgba(232, 93, 58, 0.22);
+  }
+}
+
+.mic-btn-listening.mic-btn-listening-idle .wave-bar {
+  /* Slower, shallower bounce; bars don't collapse, they just breathe. */
+  animation: wave-breathe 2s ease-in-out infinite;
+}
+
+@keyframes wave-breathe {
+  0%, 100% { transform: scaleY(1); opacity: 0.85; }
+  50% { transform: scaleY(0.78); opacity: 1; }
+}
+
 .mic-btn-thinking {
   background: var(--ink-soft);
 }

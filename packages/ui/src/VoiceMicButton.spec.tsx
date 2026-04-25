@@ -48,6 +48,29 @@ describe('VoiceMicButton', () => {
     }
   })
 
+  describe('listening variants', () => {
+    it('without transcript adds the idle (hot mic) modifier class', () => {
+      render(
+        <VoiceMicButton state={{ kind: 'listening' }} onClick={() => undefined} />,
+      )
+      const btn = screen.getByRole('button')
+      expect(btn.className).toContain('mic-btn-listening')
+      expect(btn.className).toContain('mic-btn-listening-idle')
+    })
+
+    it('with transcript drops the idle modifier (active transcription)', () => {
+      render(
+        <VoiceMicButton
+          state={{ kind: 'listening', transcript: 'hello' }}
+          onClick={() => undefined}
+        />,
+      )
+      const btn = screen.getByRole('button')
+      expect(btn.className).toContain('mic-btn-listening')
+      expect(btn.className).not.toContain('mic-btn-listening-idle')
+    })
+  })
+
   it('updates aria-label across states', () => {
     const { rerender } = render(
       <VoiceMicButton state={{ kind: 'idle' }} onClick={() => undefined} />,

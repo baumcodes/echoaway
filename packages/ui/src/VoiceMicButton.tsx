@@ -36,10 +36,18 @@ export function VoiceMicButton({
   ariaLabel,
 }: VoiceMicButtonProps) {
   const isSuggesting = state.kind === 'suggesting'
+  // `listening` has two visual flavors: with a transcript = agent is
+  // actively transcribing speech (full bouncy animation); without =
+  // mic is hot but the user hasn't started talking yet (calmer pulse).
+  // We discriminate by transcript presence so the state machine stays
+  // a 7-kind union.
+  const isLiveIdle =
+    state.kind === 'listening' && !state.transcript
   const className = [
     'mic-btn',
     `mic-btn-${state.kind}`,
     isSuggesting ? 'mic-btn-wide' : '',
+    isLiveIdle ? 'mic-btn-listening-idle' : '',
   ]
     .filter(Boolean)
     .join(' ')
