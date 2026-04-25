@@ -1,0 +1,540 @@
+[
+  {
+    "_id": "dest-barcelona",
+    "name": "Barcelona",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Vibrant coastal city on the Mediterranean, known for Gaudí architecture, urban beaches, and rich Catalan culture.",
+    "location": {
+      "lat": 41.3851,
+      "lng": 2.1734
+    },
+    "tags": [
+      "city",
+      "beach",
+      "culture",
+      "architecture",
+      "nightlife",
+      "gastronomy",
+      "urban",
+      "gaudi",
+      "modernisme"
+    ]
+  },
+  {
+    "_id": "dest-sitges",
+    "name": "Sitges",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Seaside town southwest of Barcelona famous for its beaches, LGBTQ+ friendly scene, and film festival.",
+    "location": {
+      "lat": 41.2360,
+      "lng": 1.8059
+    },
+    "tags": [
+      "beach",
+      "coastal",
+      "party",
+      "art",
+      "film_festival",
+      "lgbtq_friendly"
+    ]
+  },
+  {
+    "_id": "dest-tarragona",
+    "name": "Tarragona",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Historic port city on Spain’s Costa Daurada, featuring Roman ruins, a cathedral, and golden beaches.",
+    "location": {
+      "lat": 41.1189,
+      "lng": 1.2445
+    },
+    "tags": [
+      "roman_ruins",
+      "history",
+      "coastal",
+      "beach",
+      "architecture",
+      "heritage"
+    ]
+  },
+  {
+    "_id": "dest-montserrat",
+    "name": "Montserrat",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Mountainous monastery complex northwest of Barcelona, known for its unique rock formations and hiking trails.",
+    "location": {
+      "lat": 41.5956,
+      "lng": 1.8330
+    },
+    "tags": [
+      "mountain",
+      "nature",
+      "monastery",
+      "hiking",
+      "scenic",
+      "spiritual"
+    ]
+  },
+  {
+    "_id": "dest-valencia",
+    "name": "Valencia",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Spain’s third-largest city, blending futuristic architecture and historical charm, with famous paella and beaches.",
+    "location": {
+      "lat": 39.4699,
+      "lng": -0.3763
+    },
+    "tags": [
+      "city",
+      "culture",
+      "architecture",
+      "food",
+      "beach",
+      "modern",
+      "family",
+      "festivals"
+    ]
+  },
+  {
+    "_id": "dest-albufera",
+    "name": "Albufera Natural Park",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Wetland nature reserve south of Valencia, home to rice paddies, birdlife, and traditional fishing villages.",
+    "location": {
+      "lat": 39.3407,
+      "lng": -0.3236
+    },
+    "tags": [
+      "nature",
+      "wetlands",
+      "birdwatching",
+      "traditional",
+      "rice",
+      "paella_origin"
+    ]
+  },
+  {
+    "_id": "dest-xativa",
+    "name": "Xàtiva",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Historic inland town famous for its medieval castle and scenic hilltop views over the Vall d’Albaida.",
+    "location": {
+      "lat": 38.9897,
+      "lng": -0.5196
+    },
+    "tags": [
+      "castle",
+      "history",
+      "mountain",
+      "heritage",
+      "architecture"
+    ]
+  },
+  {
+    "_id": "dest-alicante",
+    "name": "Alicante",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Lively port city on Spain’s Costa Blanca with a castle overlooking the sea, old town nightlife, and long beaches.",
+    "location": {
+      "lat": 38.3452,
+      "lng": -0.4810
+    },
+    "tags": [
+      "city",
+      "beach",
+      "coastal",
+      "castle",
+      "sunny",
+      "marina",
+      "gastronomy",
+      "family"
+    ]
+  },
+  {
+    "_id": "dest-benidorm",
+    "name": "Benidorm",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "High-rise resort city on the Costa Blanca known for its beaches, nightlife, and holiday atmosphere.",
+    "location": {
+      "lat": 38.5411,
+      "lng": -0.1225
+    },
+    "tags": [
+      "resort",
+      "beach",
+      "nightlife",
+      "holiday",
+      "coastal",
+      "entertainment"
+    ]
+  },
+  {
+    "_id": "dest-calpe",
+    "name": "Calpe",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Coastal town north of Alicante, dominated by the Peñón de Ifach rock and known for seafood restaurants.",
+    "location": {
+      "lat": 38.6430,
+      "lng": 0.0440
+    },
+    "tags": [
+      "coastal",
+      "hiking",
+      "seafood",
+      "beach",
+      "scenic",
+      "landmark"
+    ]
+  },
+  {
+    "_id": "dest-denia",
+    "name": "Dénia",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Harbor town halfway between Alicante and Valencia, with ferry connections to Ibiza and a local castle.",
+    "location": {
+      "lat": 38.8400,
+      "lng": 0.1057
+    },
+    "tags": [
+      "coastal",
+      "harbor",
+      "castle",
+      "ferry",
+      "seafood",
+      "relaxed"
+    ]
+  },
+  {
+    "_id": "dest-javea",
+    "name": "Jávea",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Charming seaside town with coves, cliffs, and turquoise waters popular with divers and expats.",
+    "location": {
+      "lat": 38.7833,
+      "lng": 0.1667
+    },
+    "tags": [
+      "beach",
+      "diving",
+      "nature",
+      "coastal",
+      "relaxation",
+      "expat"
+    ]
+  },
+  {
+    "_id": "dest-elche",
+    "name": "Elche",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "UNESCO-listed palm grove city near Alicante, known for its historic center and palm-tree-filled landscapes.",
+    "location": {
+      "lat": 38.2669,
+      "lng": -0.6983
+    },
+    "tags": [
+      "culture",
+      "heritage",
+      "nature",
+      "palms",
+      "unesco",
+      "architecture"
+    ]
+  },
+  {
+    "_id": "dest-torrevieja",
+    "name": "Torrevieja",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Coastal town south of Alicante known for its pink salt lagoons, beaches, and relaxed Mediterranean vibe.",
+    "location": {
+      "lat": 37.9784,
+      "lng": -0.6822
+    },
+    "tags": [
+      "beach",
+      "nature",
+      "salt_lagoons",
+      "relaxation",
+      "family",
+      "coastal"
+    ]
+  },
+  {
+    "_id": "dest-castellon",
+    "name": "Castellón de la Plana",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Lesser-known coastal city north of Valencia, offering authentic Spanish culture and long sandy beaches.",
+    "location": {
+      "lat": 39.9857,
+      "lng": -0.0513
+    },
+    "tags": [
+      "beach",
+      "authentic",
+      "culture",
+      "family",
+      "coastal",
+      "underrated"
+    ]
+  },
+  {
+    "_id": "dest-peñiscola",
+    "name": "Peñíscola",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Walled medieval town on the Costa del Azahar, set on a rocky headland with a seaside castle.",
+    "location": {
+      "lat": 40.3601,
+      "lng": 0.4042
+    },
+    "tags": [
+      "castle",
+      "coastal",
+      "historic",
+      "scenic",
+      "film_location"
+    ]
+  },
+  {
+    "_id": "dest-altea",
+    "name": "Altea",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Whitewashed coastal village north of Benidorm, famous for its blue-domed church and artistic vibe.",
+    "location": {
+      "lat": 38.6026,
+      "lng": -0.0474
+    },
+    "tags": [
+      "village",
+      "art",
+      "architecture",
+      "coastal",
+      "relaxation",
+      "photogenic"
+    ]
+  },
+  {
+    "_id": "dest-cadiz",
+    "name": "Cádiz",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Ancient port city surrounded by the Atlantic Ocean, known for its old town charm, golden beaches, and lively Andalusian culture.",
+    "location": {
+      "lat": 36.5271,
+      "lng": -6.2886
+    },
+    "tags": [
+      "city",
+      "beach",
+      "historic",
+      "coastal",
+      "culture",
+      "music",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-jerez",
+    "name": "Jerez de la Frontera",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Cultural hub famous for sherry wine, Andalusian horses, and flamenco traditions, located inland from Cádiz.",
+    "location": {
+      "lat": 36.686,
+      "lng": -6.136
+    },
+    "tags": [
+      "wine",
+      "flamenco",
+      "culture",
+      "heritage",
+      "horses",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-tarifa",
+    "name": "Tarifa",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Europe’s southernmost town where the Mediterranean meets the Atlantic, popular for kitesurfing and bohemian beach vibes.",
+    "location": {
+      "lat": 36.013,
+      "lng": -5.602
+    },
+    "tags": [
+      "beach",
+      "surf",
+      "bohemian",
+      "nature",
+      "coastal",
+      "adventure"
+    ]
+  },
+  {
+    "_id": "dest-vejer",
+    "name": "Vejer de la Frontera",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Whitewashed hilltop village overlooking the Atlantic, offering narrow streets, artisan shops, and sunset views.",
+    "location": {
+      "lat": 36.252,
+      "lng": -5.962
+    },
+    "tags": [
+      "village",
+      "whitewashed",
+      "scenic",
+      "heritage",
+      "romantic",
+      "gastronomy"
+    ]
+  },
+  {
+    "_id": "dest-conil",
+    "name": "Conil de la Frontera",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Relaxed seaside town with wide sandy beaches, surf spots, and a laid-back Andalusian feel.",
+    "location": {
+      "lat": 36.277,
+      "lng": -6.090
+    },
+    "tags": [
+      "beach",
+      "surf",
+      "relaxation",
+      "family",
+      "coastal",
+      "local"
+    ]
+  },
+  {
+    "_id": "dest-zahara",
+    "name": "Zahara de los Atunes",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Unspoiled coastal village known for its pristine beaches, tuna gastronomy, and tranquil charm.",
+    "location": {
+      "lat": 36.135,
+      "lng": -5.842
+    },
+    "tags": [
+      "beach",
+      "gastronomy",
+      "relaxation",
+      "coastal",
+      "authentic",
+      "seafood"
+    ]
+  },
+  {
+    "_id": "dest-elpalmar",
+    "name": "El Palmar",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Rustic beach destination near Vejer, loved by surfers and digital nomads for its sunsets and chiringuitos.",
+    "location": {
+      "lat": 36.229,
+      "lng": -6.068
+    },
+    "tags": [
+      "surf",
+      "beach",
+      "sunset",
+      "coastal",
+      "bohemian",
+      "nomad"
+    ]
+  },
+  {
+    "_id": "dest-sanlucar",
+    "name": "Sanlúcar de Barrameda",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Historic coastal town at the Guadalquivir River mouth, famous for manzanilla sherry and seafood on Bajo de Guía beach.",
+    "location": {
+      "lat": 36.778,
+      "lng": -6.351
+    },
+    "tags": [
+      "food",
+      "wine",
+      "coastal",
+      "culture",
+      "heritage",
+      "seafood"
+    ]
+  },
+  {
+    "_id": "dest-elpuerto",
+    "name": "El Puerto de Santa María",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Elegant port city across the bay from Cádiz, known for sherry bodegas, sailing, and fine beaches.",
+    "location": {
+      "lat": 36.600,
+      "lng": -6.227
+    },
+    "tags": [
+      "wine",
+      "beach",
+      "sailing",
+      "heritage",
+      "gastronomy",
+      "family"
+    ]
+  },
+  {
+    "_id": "dest-rota",
+    "name": "Rota",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Beach town north of Cádiz with calm waters, family-friendly resorts, and traditional Andalusian atmosphere.",
+    "location": {
+      "lat": 36.619,
+      "lng": -6.360
+    },
+    "tags": [
+      "beach",
+      "family",
+      "coastal",
+      "local",
+      "relaxation",
+      "resort"
+    ]
+  },
+  {
+    "_id": "dest-chipiona",
+    "name": "Chipiona",
+    "country": "Spain",
+    "iso_country_code": "ES",
+    "description": "Coastal town famous for its lighthouse, moscatel wine, and beaches stretching toward the Guadalquivir River.",
+    "location": {
+      "lat": 36.736,
+      "lng": -6.437
+    },
+    "tags": [
+      "beach",
+      "wine",
+      "coastal",
+      "family",
+      "heritage",
+      "relaxation"
+    ]
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "_id": "air-fra",
+    "iata": "FRA",
+    "icao": "EDDF",
+    "name": "Frankfurt Airport",
+    "city": "Frankfurt",
+    "country": "Germany",
+    "location": {
+      "lat": 50.0379,
+      "lng": 8.5622
+    }
+  },
+  {
+    "_id": "air-muc",
+    "iata": "MUC",
+    "icao": "EDDM",
+    "name": "Munich Airport",
+    "city": "Munich",
+    "country": "Germany",
+    "location": {
+      "lat": 48.3538,
+      "lng": 11.7861
+    }
+  },
+  {
+    "_id": "air-dus",
+    "iata": "DUS",
+    "icao": "EDDL",
+    "name": "Düsseldorf Airport",
+    "city": "Düsseldorf",
+    "country": "Germany",
+    "location": {
+      "lat": 51.2895,
+      "lng": 6.7668
+    }
+  },
+  {
+    "_id": "air-ber",
+    "iata": "BER",
+    "icao": "EDDB",
+    "name": "Berlin Brandenburg Airport",
+    "city": "Berlin",
+    "country": "Germany",
+    "location": {
+      "lat": 52.3667,
+      "lng": 13.5033
+    }
+  },
+  {
+    "_id": "air-ham",
+    "iata": "HAM",
+    "icao": "EDDH",
+    "name": "Hamburg Airport",
+    "city": "Hamburg",
+    "country": "Germany",
+    "location": {
+      "lat": 53.6304,
+      "lng": 9.9882
+    }
+  },
+  {
+    "_id": "air-str",
+    "iata": "STR",
+    "icao": "EDDS",
+    "name": "Stuttgart Airport",
+    "city": "Stuttgart",
+    "country": "Germany",
+    "location": {
+      "lat": 48.6899,
+      "lng": 9.2219
+    }
+  },
+  {
+    "_id": "air-cgn",
+    "iata": "CGN",
+    "icao": "EDDK",
+    "name": "Cologne Bonn Airport",
+    "city": "Cologne",
+    "country": "Germany",
+    "location": {
+      "lat": 50.8659,
+      "lng": 7.1427
+    }
+  },
+  {
+    "_id": "air-nue",
+    "iata": "NUE",
+    "icao": "EDDN",
+    "name": "Nuremberg Airport",
+    "city": "Nuremberg",
+    "country": "Germany",
+    "location": {
+      "lat": 49.4987,
+      "lng": 11.0669
+    }
+  },
+  {
+    "_id": "air-lej",
+    "iata": "LEJ",
+    "icao": "EDDP",
+    "name": "Leipzig/Halle Airport",
+    "city": "Leipzig",
+    "country": "Germany",
+    "location": {
+      "lat": 51.423,
+      "lng": 12.2364
+    }
+  },
+  {
+    "_id": "air-haj",
+    "iata": "HAJ",
+    "icao": "EDDV",
+    "name": "Hannover Airport",
+    "city": "Hanover",
+    "country": "Germany",
+    "location": {
+      "lat": 52.461,
+      "lng": 9.685
+    }
+  },
+  {
+    "_id": "air-bcn",
+    "iata": "BCN",
+    "icao": "LEBL",
+    "name": "Barcelona–El Prat Airport",
+    "city": "Barcelona",
+    "country": "Spain",
+    "location": {
+      "lat": 41.2974,
+      "lng": 2.0833
+    }
+  },
+  {
+    "_id": "air-vlc",
+    "iata": "VLC",
+    "icao": "LEVC",
+    "name": "Valencia Airport",
+    "city": "Valencia",
+    "country": "Spain",
+    "location": {
+      "lat": 39.4893,
+      "lng": -0.4816
+    }
+  },
+  {
+    "_id": "air-alc",
+    "iata": "ALC",
+    "icao": "LEAL",
+    "name": "Alicante–Elche Miguel Hernández Airport",
+    "city": "Alicante",
+    "country": "Spain",
+    "location": {
+      "lat": 38.2822,
+      "lng": -0.5582
+    }
+  },
+  {
+    "_id": "air-xry",
+    "iata": "XRY",
+    "icao": "LEJR",
+    "name": "Jerez Airport",
+    "city": "Jerez de la Frontera (Cádiz)",
+    "country": "Spain",
+    "location": {
+      "lat": 36.7445,
+      "lng": -6.0601
+    }
+  },
+  {
+    "_id": "air-sev",
+    "iata": "SVQ",
+    "icao": "LEZL",
+    "name": "Seville Airport",
+    "city": "Seville",
+    "country": "Spain",
+    "location": {
+      "lat": 37.418,
+      "lng": -5.898
+    }
+  },
+  {
+    "_id": "air-agp",
+    "iata": "AGP",
+    "icao": "LEMG",
+    "name": "Málaga–Costa del Sol Airport",
+    "city": "Málaga",
+    "country": "Spain",
+    "location": {
+      "lat": 36.6749,
+      "lng": -4.4991
+    }
+  },
+  {
+    "_id": "air-mad",
+    "iata": "MAD",
+    "icao": "LEMD",
+    "name": "Adolfo Suárez Madrid–Barajas Airport",
+    "city": "Madrid",
+    "country": "Spain",
+    "location": {
+      "lat": 40.4722,
+      "lng": -3.5608
+    }
+  },
+  {
+    "_id": "air-reu",
+    "iata": "REU",
+    "icao": "LERS",
+    "name": "Reus Airport",
+    "city": "Tarragona (near Barcelona)",
+    "country": "Spain",
+    "location": {
+      "lat": 41.146,
+      "lng": 1.1575
+    }
+  },
+  {
+    "_id": "air-mur",
+    "iata": "RMU",
+    "icao": "LEMI",
+    "name": "Murcia–Corvera International Airport",
+    "city": "Murcia",
+    "country": "Spain",
+    "location": {
+      "lat": 37.803,
+      "lng": -1.125
+    }
+  },
+  {
+    "_id": "air-gro",
+    "iata": "GRO",
+    "icao": "LEGE",
+    "name": "Girona–Costa Brava Airport",
+    "city": "Girona (near Barcelona)",
+    "country": "Spain",
+    "location": {
+      "lat": 41.9009,
+      "lng": 2.7606
+    }
+  }
+]

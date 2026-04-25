@@ -1,0 +1,2159 @@
+[
+  {
+    "_id": "hotel-bcn-01",
+    "name": "Hotel Brisa Barcelona",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 145,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "gym",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 41.384,
+      "lng": 2.185
+    },
+    "description": "Modern beachside hotel near Barceloneta with rooftop pool and tapas bar.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-001"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/brisa-barcelona.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-02",
+    "name": "Casa del Mar Boutique",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 160,
+    "amenities": [
+      "wifi",
+      "ac",
+      "terrace",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 41.378,
+      "lng": 2.191
+    },
+    "description": "Elegant boutique hotel steps from the beach with Mediterranean décor and rooftop terrace.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-002"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/casa-del-mar-bcn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-03",
+    "name": "Eixample Suites",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 110,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "central_location"
+    ],
+    "location": {
+      "lat": 41.392,
+      "lng": 2.164
+    },
+    "description": "Spacious serviced apartments in Eixample district, ideal for longer stays.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-003"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/eixample-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-04",
+    "name": "Hotel Mirador Montjuïc",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 135,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa",
+      "parking"
+    ],
+    "location": {
+      "lat": 41.367,
+      "lng": 2.157
+    },
+    "description": "Panoramic views of the city from Montjuïc hill, with outdoor pool and wellness spa.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-004"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/mirador-montjuic.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-05",
+    "name": "La Rambla Central",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 120,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 41.383,
+      "lng": 2.173
+    },
+    "description": "Classic hotel located directly on La Rambla, surrounded by restaurants and nightlife.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-005"
+    },
+    "cancellation_terms": "free_until_2025-11-18",
+    "images": [
+      "https://cdn.echoaway.com/hotels/la-rambla-central.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-06",
+    "name": "Diagonal Art Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 155,
+    "amenities": [
+      "wifi",
+      "ac",
+      "gym",
+      "rooftop_bar"
+    ],
+    "location": {
+      "lat": 41.405,
+      "lng": 2.203
+    },
+    "description": "Modern design hotel near Torre Glòries featuring rooftop cocktail bar.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-006"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/diagonal-art.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-07",
+    "name": "Gothic Quarter Inn",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 85,
+    "amenities": [
+      "wifi",
+      "ac",
+      "historic_building"
+    ],
+    "location": {
+      "lat": 41.379,
+      "lng": 2.177
+    },
+    "description": "Cozy budget inn set in a 17th-century building in the Gothic Quarter.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-007"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/gothic-quarter-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-08",
+    "name": "Hotel Azul Diagonal Mar",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 235,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "pool",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 41.409,
+      "lng": 2.217
+    },
+    "description": "Luxury stay in Diagonal Mar with direct beach access and infinity pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-008"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/azul-diagonal-mar.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-09",
+    "name": "Park Güell View Apartments",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 115,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "terrace"
+    ],
+    "location": {
+      "lat": 41.414,
+      "lng": 2.152
+    },
+    "description": "Apartments near Park Güell offering private terraces and Gaudí-inspired interiors.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-009"
+    },
+    "cancellation_terms": "free_until_2025-11-19",
+    "images": [
+      "https://cdn.echoaway.com/hotels/park-guell-view.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-10",
+    "name": "Gracia Garden Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 128,
+    "amenities": [
+      "wifi",
+      "ac",
+      "garden",
+      "pet_friendly"
+    ],
+    "location": {
+      "lat": 41.402,
+      "lng": 2.156
+    },
+    "description": "Relaxing hotel in Gràcia neighborhood with a leafy inner courtyard.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-010"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/gracia-garden.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-11",
+    "name": "Sagrada Luxe Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 245,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "rooftop_pool",
+      "city_view"
+    ],
+    "location": {
+      "lat": 41.403,
+      "lng": 2.174
+    },
+    "description": "Exclusive hotel overlooking the Sagrada Família, featuring panoramic rooftop pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-011"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/sagrada-luxe.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-12",
+    "name": "Born District Studios",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 105,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location"
+    ],
+    "location": {
+      "lat": 41.385,
+      "lng": 2.182
+    },
+    "description": "Trendy studios in El Born with easy access to tapas bars and boutiques.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-012"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/born-district-studios.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-13",
+    "name": "Hotel Marina View",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 170,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "pool",
+      "gym"
+    ],
+    "location": {
+      "lat": 41.381,
+      "lng": 2.191
+    },
+    "description": "Seafront hotel overlooking Port Vell Marina with outdoor pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-013"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/marina-view-bcn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-14",
+    "name": "Passeig Art House",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 260,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "butler_service",
+      "city_view"
+    ],
+    "location": {
+      "lat": 41.394,
+      "lng": 2.161
+    },
+    "description": "Boutique luxury along Passeig de Gràcia featuring art deco interiors.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-014"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/passeig-art-house.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-15",
+    "name": "Arc del Triomf Inn",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 95,
+    "amenities": [
+      "wifi",
+      "ac",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 41.394,
+      "lng": 2.182
+    },
+    "description": "Charming inn next to Arc de Triomf and Ciutadella Park.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-015"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/arc-del-triomf-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-16",
+    "name": "Plaza Catalunya Stay",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 130,
+    "amenities": [
+      "wifi",
+      "ac",
+      "gym",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 41.386,
+      "lng": 2.170
+    },
+    "description": "Central location on Plaça Catalunya, ideal for shoppers and explorers.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-016"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/plaza-catalunya-stay.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-17",
+    "name": "Boqueria Market Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 80,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location"
+    ],
+    "location": {
+      "lat": 41.382,
+      "lng": 2.172
+    },
+    "description": "Budget-friendly stay right beside La Boqueria market on La Rambla.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-017"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/boqueria-market-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-18",
+    "name": "Sant Antoni Loft Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 105,
+    "amenities": [
+      "wifi",
+      "ac",
+      "terrace"
+    ],
+    "location": {
+      "lat": 41.396,
+      "lng": 2.176
+    },
+    "description": "Urban loft-style rooms close to Sagrada Família with rooftop terrace.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-018"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/sant-antoni-loft.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-19",
+    "name": "Waves & Wine Hotel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 290,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa",
+      "fine_dining"
+    ],
+    "location": {
+      "lat": 41.376,
+      "lng": 2.198
+    },
+    "description": "High-end beachfront hotel combining gourmet dining and seaside serenity.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-019"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/waves-wine.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-bcn-20",
+    "name": "El Poble Rooftop Hostel",
+    "city": "Barcelona",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 60,
+    "amenities": [
+      "wifi",
+      "rooftop_terrace",
+      "shared_kitchen"
+    ],
+    "location": {
+      "lat": 41.369,
+      "lng": 2.155
+    },
+    "description": "Colorful hostel with rooftop bar overlooking Montjuïc, ideal for backpackers.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-BCN-020"
+    },
+    "cancellation_terms": "free_until_2025-11-19",
+    "images": [
+      "https://cdn.echoaway.com/hotels/el-poble-rooftop.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-01",
+    "name": "Valencia Urban Boutique",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 98,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 39.469,
+      "lng": -0.376
+    },
+    "description": "Stylish mid-range hotel near the old town, 10 min from the City of Arts and Sciences.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-001"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/urban-valencia.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-02",
+    "name": "Turia Riverside Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 135,
+    "amenities": [
+      "wifi",
+      "ac",
+      "gym",
+      "parking"
+    ],
+    "location": {
+      "lat": 39.477,
+      "lng": -0.383
+    },
+    "description": "Relaxing hotel overlooking the Turia Gardens with modern rooms and gym.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-002"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/turia-riverside.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-03",
+    "name": "City of Arts Suites",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 220,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "pool",
+      "fine_dining"
+    ],
+    "location": {
+      "lat": 39.455,
+      "lng": -0.352
+    },
+    "description": "Luxury hotel next to the City of Arts and Sciences with panoramic glass pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-003"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/city-of-arts-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-04",
+    "name": "Barrio del Carmen Inn",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 95,
+    "amenities": [
+      "wifi",
+      "ac",
+      "historic_building"
+    ],
+    "location": {
+      "lat": 39.478,
+      "lng": -0.377
+    },
+    "description": "Charming inn set in a restored 18th-century building in Valencia’s old town.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-004"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/barrio-del-carmen-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-05",
+    "name": "Marina Playa Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 150,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "pool"
+    ],
+    "location": {
+      "lat": 39.465,
+      "lng": -0.323
+    },
+    "description": "Beachfront hotel at Las Arenas with spacious rooms and outdoor pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-005"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/marina-playa-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-06",
+    "name": "El Cabanyal Design Loft",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 110,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "terrace"
+    ],
+    "location": {
+      "lat": 39.467,
+      "lng": -0.325
+    },
+    "description": "Trendy lofts in the El Cabanyal district, close to the beach and seafood restaurants.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-006"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/el-cabanyal-design-loft.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-07",
+    "name": "Ruzafa Central Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 105,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 39.463,
+      "lng": -0.374
+    },
+    "description": "Lively hotel in Ruzafa with modern design and easy access to cafés and nightlife.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-007"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/ruzafa-central.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-08",
+    "name": "Oceanografico View Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 160,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa"
+    ],
+    "location": {
+      "lat": 39.453,
+      "lng": -0.351
+    },
+    "description": "Contemporary hotel offering views of Oceanogràfic and on-site wellness center.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-008"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/oceanografico-view.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-09",
+    "name": "Mercado Central Suites",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 100,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette"
+    ],
+    "location": {
+      "lat": 39.474,
+      "lng": -0.379
+    },
+    "description": "Spacious suites near Mercado Central and Valencia Cathedral.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-009"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/mercado-central-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-10",
+    "name": "Port Valencia Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 175,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "pool"
+    ],
+    "location": {
+      "lat": 39.460,
+      "lng": -0.328
+    },
+    "description": "Seaside hotel next to Valencia Marina with rooftop bar and pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-010"
+    },
+    "cancellation_terms": "free_until_2025-11-27",
+    "images": [
+      "https://cdn.echoaway.com/hotels/port-valencia-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-11",
+    "name": "Turia Gardens Inn",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 80,
+    "amenities": [
+      "wifi",
+      "ac",
+      "bike_rental"
+    ],
+    "location": {
+      "lat": 39.476,
+      "lng": -0.370
+    },
+    "description": "Affordable and eco-friendly stay along Turia Gardens with free bikes.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-011"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/turia-gardens-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-12",
+    "name": "Gran Via Palace",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 260,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "fine_dining",
+      "valet_parking"
+    ],
+    "location": {
+      "lat": 39.471,
+      "lng": -0.374
+    },
+    "description": "Grand luxury palace-style hotel with gourmet restaurant and spa.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-012"
+    },
+    "cancellation_terms": "free_until_2025-11-29",
+    "images": [
+      "https://cdn.echoaway.com/hotels/gran-via-palace.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-13",
+    "name": "Colón Street Apartments",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 115,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "central_location"
+    ],
+    "location": {
+      "lat": 39.470,
+      "lng": -0.373
+    },
+    "description": "Modern serviced apartments near Calle Colón shopping street.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-013"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/colon-street-apartments.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-14",
+    "name": "Botánico Boutique Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 140,
+    "amenities": [
+      "wifi",
+      "ac",
+      "garden",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 39.483,
+      "lng": -0.386
+    },
+    "description": "Elegant boutique near the Botanical Gardens with quiet inner patio.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-014"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/botanico-boutique.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-15",
+    "name": "Malvarrosa Beach Hostel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 60,
+    "amenities": [
+      "wifi",
+      "shared_kitchen",
+      "beach_access"
+    ],
+    "location": {
+      "lat": 39.464,
+      "lng": -0.321
+    },
+    "description": "Youthful hostel just steps from Malvarrosa Beach with ocean views.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-015"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/malvarrosa-beach-hostel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-16",
+    "name": "Valencia Cathedral View",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 165,
+    "amenities": [
+      "wifi",
+      "ac",
+      "city_view",
+      "rooftop_bar"
+    ],
+    "location": {
+      "lat": 39.475,
+      "lng": -0.376
+    },
+    "description": "Upscale hotel with terrace overlooking Valencia Cathedral and Plaza de la Reina.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-016"
+    },
+    "cancellation_terms": "free_until_2025-11-27",
+    "images": [
+      "https://cdn.echoaway.com/hotels/valencia-cathedral-view.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-17",
+    "name": "Ciutat Vella Apartments",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 110,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette"
+    ],
+    "location": {
+      "lat": 39.477,
+      "lng": -0.376
+    },
+    "description": "Modern apartments in Ciutat Vella, ideal for long stays.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-017"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/ciutat-vella-apartments.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-18",
+    "name": "Avenida del Puerto Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 120,
+    "amenities": [
+      "wifi",
+      "ac",
+      "parking"
+    ],
+    "location": {
+      "lat": 39.463,
+      "lng": -0.344
+    },
+    "description": "Comfortable mid-range hotel between the port and the City of Arts and Sciences.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-018"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/avenida-del-puerto.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-19",
+    "name": "Jardín del Turia Suites",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 145,
+    "amenities": [
+      "wifi",
+      "ac",
+      "garden",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 39.472,
+      "lng": -0.367
+    },
+    "description": "Stylish suites overlooking the Turia Gardens, perfect for couples.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-019"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/jardin-del-turia.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-vlc-20",
+    "name": "Estación Norte Hotel",
+    "city": "Valencia",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 99,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location"
+    ],
+    "location": {
+      "lat": 39.466,
+      "lng": -0.376
+    },
+    "description": "Conveniently located next to Estación del Norte, ideal for short city breaks.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-VLC-020"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/estacion-norte-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-01",
+    "name": "Costa Azul Resort",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 210,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "beach_access",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 38.345,
+      "lng": -0.481
+    },
+    "description": "Luxury resort by the Alicante Marina with sea views, spa, and rooftop restaurant.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-001"
+    },
+    "cancellation_terms": "free_until_2025-11-19",
+    "images": [
+      "https://cdn.echoaway.com/hotels/costa-azul-alicante.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-02",
+    "name": "Santa Barbara View Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 155,
+    "amenities": [
+      "wifi",
+      "ac",
+      "city_view",
+      "rooftop_bar"
+    ],
+    "location": {
+      "lat": 38.349,
+      "lng": -0.479
+    },
+    "description": "Hotel overlooking the Santa Bárbara Castle and Alicante old town skyline.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-002"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/santa-barbara-view.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-03",
+    "name": "Postiguet Beach Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 165,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "pool"
+    ],
+    "location": {
+      "lat": 38.343,
+      "lng": -0.478
+    },
+    "description": "Seafront hotel with direct access to Playa del Postiguet and Mediterranean views.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-003"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/postiguet-beach.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-04",
+    "name": "Barrio Antiguo Boutique",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 105,
+    "amenities": [
+      "wifi",
+      "ac",
+      "historic_building"
+    ],
+    "location": {
+      "lat": 38.345,
+      "lng": -0.482
+    },
+    "description": "Charming boutique hotel set in a restored townhouse in Alicante’s old quarter.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-004"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/barrio-antiguo-boutique.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-05",
+    "name": "Marina Bay Suites",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 230,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 38.340,
+      "lng": -0.480
+    },
+    "description": "Luxury suites at Alicante Marina with infinity pool and fine dining restaurant.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-005"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/marina-bay-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-06",
+    "name": "El Postiguet Inn",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 70,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access"
+    ],
+    "location": {
+      "lat": 38.343,
+      "lng": -0.476
+    },
+    "description": "Budget-friendly inn just a few steps from Postiguet Beach.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-006"
+    },
+    "cancellation_terms": "free_until_2025-11-19",
+    "images": [
+      "https://cdn.echoaway.com/hotels/el-postiguet-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-07",
+    "name": "Castillo View Apartments",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 115,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "city_view"
+    ],
+    "location": {
+      "lat": 38.348,
+      "lng": -0.481
+    },
+    "description": "Apartments offering panoramic views of Castillo de Santa Bárbara.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-007"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/castillo-view-apartments.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-08",
+    "name": "Luceros Central Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 140,
+    "amenities": [
+      "wifi",
+      "ac",
+      "gym",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 38.347,
+      "lng": -0.490
+    },
+    "description": "Elegant hotel near Plaza de los Luceros with modern gym and breakfast buffet.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-008"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/luceros-central.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-09",
+    "name": "Alicante Port Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 150,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "parking"
+    ],
+    "location": {
+      "lat": 38.340,
+      "lng": -0.484
+    },
+    "description": "Seaside property near the harbor offering spacious rooms and parking.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-009"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/alicante-port-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-10",
+    "name": "San Juan Beach Resort",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 245,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "beach_access",
+      "spa"
+    ],
+    "location": {
+      "lat": 38.378,
+      "lng": -0.412
+    },
+    "description": "Beachfront resort in San Juan offering spa treatments and outdoor pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-010"
+    },
+    "cancellation_terms": "free_until_2025-11-27",
+    "images": [
+      "https://cdn.echoaway.com/hotels/san-juan-beach.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-11",
+    "name": "Mercado Central Boutique",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 100,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location"
+    ],
+    "location": {
+      "lat": 38.346,
+      "lng": -0.489
+    },
+    "description": "Stylish boutique hotel next to Mercado Central and walking distance to main attractions.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-011"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/mercado-central-alc.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-12",
+    "name": "Alicante Cathedral Suites",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 160,
+    "amenities": [
+      "wifi",
+      "ac",
+      "city_view",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 38.346,
+      "lng": -0.481
+    },
+    "description": "Charming suites facing the cathedral square with daily breakfast service.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-012"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/alicante-cathedral-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-13",
+    "name": "Montemar Hills Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 175,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa"
+    ],
+    "location": {
+      "lat": 38.339,
+      "lng": -0.470
+    },
+    "description": "Tranquil hillside hotel overlooking the bay, featuring spa and infinity pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-013"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/montemar-hills.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-14",
+    "name": "El Barrio Hostel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 55,
+    "amenities": [
+      "wifi",
+      "shared_kitchen",
+      "central_location"
+    ],
+    "location": {
+      "lat": 38.345,
+      "lng": -0.480
+    },
+    "description": "Friendly hostel in the old town with shared spaces and vibrant atmosphere.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-014"
+    },
+    "cancellation_terms": "free_until_2025-11-19",
+    "images": [
+      "https://cdn.echoaway.com/hotels/el-barrio-hostel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-15",
+    "name": "La Explanada Hotel",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 120,
+    "amenities": [
+      "wifi",
+      "ac",
+      "terrace"
+    ],
+    "location": {
+      "lat": 38.344,
+      "lng": -0.480
+    },
+    "description": "Boutique hotel right on the Explanada promenade with sun terrace and café.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-015"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/la-explanada-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-16",
+    "name": "Lucentum Palace",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 275,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "fine_dining",
+      "valet_parking"
+    ],
+    "location": {
+      "lat": 38.347,
+      "lng": -0.484
+    },
+    "description": "Grand five-star hotel in the city center with elegant décor and gourmet restaurant.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-016"
+    },
+    "cancellation_terms": "free_until_2025-11-27",
+    "images": [
+      "https://cdn.echoaway.com/hotels/lucentum-palace.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-17",
+    "name": "Alicante Garden Inn",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 110,
+    "amenities": [
+      "wifi",
+      "ac",
+      "garden",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 38.348,
+      "lng": -0.486
+    },
+    "description": "Cozy hotel surrounded by gardens near the main shopping streets.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-017"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/alicante-garden-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-18",
+    "name": "San Fernando Suites",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 150,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "central_location"
+    ],
+    "location": {
+      "lat": 38.346,
+      "lng": -0.484
+    },
+    "description": "Serviced apartments in the heart of Alicante near San Fernando Castle.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-018"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/san-fernando-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-19",
+    "name": "Arenas del Sol Resort",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 185,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "pool",
+      "spa"
+    ],
+    "location": {
+      "lat": 38.262,
+      "lng": -0.509
+    },
+    "description": "Seaside resort south of Alicante with spa center and beach bar.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-019"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/arenas-del-sol.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-alc-20",
+    "name": "Tabarca Island Lodge",
+    "city": "Alicante",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 135,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 38.167,
+      "lng": -0.476
+    },
+    "description": "Charming lodge on Tabarca Island with sea-facing rooms and breakfast terrace.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-ALC-020"
+    },
+    "cancellation_terms": "free_until_2025-11-28",
+    "images": [
+      "https://cdn.echoaway.com/hotels/tabarca-island-lodge.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-01",
+    "name": "La Caleta Beach Resort",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 230,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "pool",
+      "spa"
+    ],
+    "location": {
+      "lat": 36.531,
+      "lng": -6.303
+    },
+    "description": "Luxury beachfront resort on Playa de la Caleta with ocean-view pool and full-service spa.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-001"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/la-caleta-beach-resort.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-02",
+    "name": "Cádiz Old Town Boutique",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 155,
+    "amenities": [
+      "wifi",
+      "ac",
+      "historic_building",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 36.530,
+      "lng": -6.299
+    },
+    "description": "Stylish boutique hotel in the heart of Cádiz’s historic center with Andalusian patio.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-002"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/cadiz-old-town-boutique.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-03",
+    "name": "Santa María Port Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 160,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "parking"
+    ],
+    "location": {
+      "lat": 36.597,
+      "lng": -6.232
+    },
+    "description": "Seaside hotel near Puerto de Santa María with marina views and private parking.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-003"
+    },
+    "cancellation_terms": "free_until_2025-11-26",
+    "images": [
+      "https://cdn.echoaway.com/hotels/santa-maria-port.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-04",
+    "name": "Plaza Mina Suites",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 110,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "central_location"
+    ],
+    "location": {
+      "lat": 36.532,
+      "lng": -6.295
+    },
+    "description": "Modern serviced apartments steps from Plaza de Mina and the main shopping street.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-004"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/plaza-mina-suites.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-05",
+    "name": "Cathedral View Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 145,
+    "amenities": [
+      "wifi",
+      "ac",
+      "city_view",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 36.529,
+      "lng": -6.292
+    },
+    "description": "Elegant hotel with direct views of Cádiz Cathedral and short walk to the seafront.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-005"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/cathedral-view-cadiz.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-06",
+    "name": "La Viña Boutique",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 120,
+    "amenities": [
+      "wifi",
+      "ac",
+      "terrace",
+      "pet_friendly"
+    ],
+    "location": {
+      "lat": 36.532,
+      "lng": -6.302
+    },
+    "description": "Colorful boutique hotel in the La Viña neighborhood with rooftop terrace and tapas bar.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-006"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/la-vina-boutique.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-07",
+    "name": "San Sebastián Tower Inn",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 165,
+    "amenities": [
+      "wifi",
+      "ac",
+      "sea_view",
+      "rooftop_bar"
+    ],
+    "location": {
+      "lat": 36.526,
+      "lng": -6.311
+    },
+    "description": "Coastal inn near Torre de San Sebastián with rooftop bar and stunning sunset views.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-007"
+    },
+    "cancellation_terms": "free_until_2025-11-28",
+    "images": [
+      "https://cdn.echoaway.com/hotels/san-sebastian-tower-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-08",
+    "name": "Puertas de Tierra Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 130,
+    "amenities": [
+      "wifi",
+      "ac",
+      "gym",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 36.525,
+      "lng": -6.289
+    },
+    "description": "Conveniently located near Puertas de Tierra, with gym and breakfast buffet.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-008"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/puertas-de-tierra.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-09",
+    "name": "Campo del Sur Apartments",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 115,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 36.529,
+      "lng": -6.297
+    },
+    "description": "Modern apartments overlooking Campo del Sur and the Atlantic coast.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-009"
+    },
+    "cancellation_terms": "free_until_2025-11-23",
+    "images": [
+      "https://cdn.echoaway.com/hotels/campo-del-sur-apartments.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-10",
+    "name": "Parador de Cádiz Atlántico",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 260,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "pool",
+      "fine_dining"
+    ],
+    "location": {
+      "lat": 36.531,
+      "lng": -6.305
+    },
+    "description": "Contemporary luxury Parador with panoramic ocean views and an infinity pool.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-010"
+    },
+    "cancellation_terms": "free_until_2025-11-30",
+    "images": [
+      "https://cdn.echoaway.com/hotels/parador-cadiz.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-11",
+    "name": "Playa Victoria Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 180,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "pool"
+    ],
+    "location": {
+      "lat": 36.501,
+      "lng": -6.289
+    },
+    "description": "Upscale hotel directly on Playa Victoria with large outdoor pool and ocean views.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-011"
+    },
+    "cancellation_terms": "free_until_2025-11-27",
+    "images": [
+      "https://cdn.echoaway.com/hotels/playa-victoria.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-12",
+    "name": "Teatro Romano Boutique",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 100,
+    "amenities": [
+      "wifi",
+      "ac",
+      "historic_building"
+    ],
+    "location": {
+      "lat": 36.531,
+      "lng": -6.293
+    },
+    "description": "Boutique hotel beside the Roman Theater ruins, blending history and comfort.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-012"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/teatro-romano-boutique.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-13",
+    "name": "Cádiz Garden Inn",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 115,
+    "amenities": [
+      "wifi",
+      "ac",
+      "garden",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 36.533,
+      "lng": -6.295
+    },
+    "description": "Tranquil hotel surrounded by gardens near Plaza de España.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-013"
+    },
+    "cancellation_terms": "free_until_2025-11-24",
+    "images": [
+      "https://cdn.echoaway.com/hotels/cadiz-garden-inn.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-14",
+    "name": "Mirador del Atlántico",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 275,
+    "amenities": [
+      "wifi",
+      "ac",
+      "spa",
+      "pool",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 36.520,
+      "lng": -6.308
+    },
+    "description": "Exclusive oceanfront property with rooftop pool and Atlantic panorama.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-014"
+    },
+    "cancellation_terms": "free_until_2025-11-28",
+    "images": [
+      "https://cdn.echoaway.com/hotels/mirador-del-atlantico.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-15",
+    "name": "San Francisco Plaza Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 95,
+    "amenities": [
+      "wifi",
+      "ac",
+      "central_location"
+    ],
+    "location": {
+      "lat": 36.532,
+      "lng": -6.297
+    },
+    "description": "Centrally located hotel near Plaza San Francisco, ideal for city explorers.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-015"
+    },
+    "cancellation_terms": "free_until_2025-11-21",
+    "images": [
+      "https://cdn.echoaway.com/hotels/san-francisco-plaza.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-16",
+    "name": "Avenida Andalucía Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 140,
+    "amenities": [
+      "wifi",
+      "ac",
+      "parking",
+      "breakfast_included"
+    ],
+    "location": {
+      "lat": 36.516,
+      "lng": -6.286
+    },
+    "description": "Modern hotel on Avenida Andalucía with parking and continental breakfast.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-016"
+    },
+    "cancellation_terms": "free_until_2025-11-25",
+    "images": [
+      "https://cdn.echoaway.com/hotels/avenida-andalucia-hotel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-17",
+    "name": "El Pópulo Hostel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 2,
+    "price_per_night": 60,
+    "amenities": [
+      "wifi",
+      "shared_kitchen",
+      "central_location"
+    ],
+    "location": {
+      "lat": 36.531,
+      "lng": -6.295
+    },
+    "description": "Friendly backpacker hostel in El Pópulo, Cádiz’s oldest quarter.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-017"
+    },
+    "cancellation_terms": "free_until_2025-11-20",
+    "images": [
+      "https://cdn.echoaway.com/hotels/el-populo-hostel.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-18",
+    "name": "Campo del Sur Loft",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 3,
+    "price_per_night": 105,
+    "amenities": [
+      "wifi",
+      "ac",
+      "kitchenette",
+      "sea_view"
+    ],
+    "location": {
+      "lat": 36.528,
+      "lng": -6.299
+    },
+    "description": "Bright modern lofts facing the ocean promenade, perfect for long stays.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-018"
+    },
+    "cancellation_terms": "free_until_2025-11-22",
+    "images": [
+      "https://cdn.echoaway.com/hotels/campo-del-sur-loft.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-19",
+    "name": "Bahía de Cádiz Resort",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 5,
+    "price_per_night": 250,
+    "amenities": [
+      "wifi",
+      "ac",
+      "pool",
+      "spa",
+      "beach_access"
+    ],
+    "location": {
+      "lat": 36.519,
+      "lng": -6.297
+    },
+    "description": "Elegant resort on Bahía de Cádiz offering spa, pools, and direct beach access.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-019"
+    },
+    "cancellation_terms": "free_until_2025-11-30",
+    "images": [
+      "https://cdn.echoaway.com/hotels/bahia-de-cadiz.jpg"
+    ]
+  },
+  {
+    "_id": "hotel-cad-20",
+    "name": "Cortadura Beach Hotel",
+    "city": "Cádiz",
+    "country": "ES",
+    "stars": 4,
+    "price_per_night": 160,
+    "amenities": [
+      "wifi",
+      "ac",
+      "beach_access",
+      "parking"
+    ],
+    "location": {
+      "lat": 36.492,
+      "lng": -6.276
+    },
+    "description": "Modern hotel right on Playa de Cortadura, ideal for surf lovers and families.",
+    "supplier": {
+      "name": "Hotelbeds",
+      "contract_ref": "HB-CAD-020"
+    },
+    "cancellation_terms": "free_until_2025-11-28",
+    "images": [
+      "https://cdn.echoaway.com/hotels/cortadura-beach-hotel.jpg"
+    ]
+  }
+]

@@ -1,0 +1,89 @@
+[
+  {
+    "_id": "flt-ber-bcn-01",
+    "from": "BER",
+    "to": "BCN",
+    "stops": 0,
+    "legs": [
+      {
+        "from": "BER",
+        "to": "BCN",
+        "flight_no": "VY1885",
+        "airline": "Vueling",
+        "dep_time": "07:00",
+        "arr_time": "09:40"
+      }
+    ],
+    "days_of_week": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "price_avg": 120,
+    "currency": "EUR",
+    "fare_conditions": "non_refundable",
+    "duration_hours": 2.7
+  },
+  {
+    "_id": "flt-ams-vlc-01",
+    "from": "AMS",
+    "to": "VLC",
+    "stops": 0,
+    "legs": [
+      {
+        "from": "AMS",
+        "to": "VLC",
+        "flight_no": "KL1235",
+        "airline": "KLM",
+        "dep_time": "12:30",
+        "arr_time": "15:00"
+      }
+    ],
+    "days_of_week": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "price_avg": 150,
+    "currency": "EUR",
+    "fare_conditions": "changeable_fee",
+    "duration_hours": 2.5
+  },
+  {
+    "_id": "flt-osl-alc-02",
+    "from": "OSL",
+    "to": "ALC",
+    "stops": 1,
+    "legs": [
+      {
+        "from": "OSL",
+        "to": "BCN",
+        "flight_no": "DY1850",
+        "airline": "Norwegian",
+        "dep_time": "08:15",
+        "arr_time": "11:15"
+      },
+      {
+        "from": "BCN",
+        "to": "ALC",
+        "flight_no": "VY1304",
+        "airline": "Vueling",
+        "dep_time": "13:00",
+        "arr_time": "14:10"
+      }
+    ],
+    "days_of_week": [
+      1,
+      4,
+      6
+    ],
+    "price_avg": 220,
+    "currency": "EUR",
+    "fare_conditions": "non_refundable",
+    "duration_hours": 5.5
+  }
+]

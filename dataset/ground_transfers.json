@@ -1,0 +1,59 @@
+[
+  {
+    "_id": "trf-bcn-hotelbrisa",
+    "from": "BCN Airport",
+    "to": "Hotel Brisa Barcelona",
+    "mode": "bus",
+    "duration_minutes": 35,
+    "price": 18,
+    "currency": "EUR",
+    "supplier": {
+      "name": "Iberia Ground Transfers",
+      "contract_ref": "TRF-BCN-HB001"
+    },
+    "schedule": {
+      "start": "06:00",
+      "end": "23:00",
+      "frequency_minutes": 30
+    },
+    "description": "Shared shuttle from Barcelona El Prat Airport (T1/T2) to Barceloneta hotels, with drop-off at Hotel Brisa."
+  },
+  {
+    "_id": "trf-vlc-urban",
+    "from": "Valencia Airport",
+    "to": "Valencia Urban Boutique",
+    "mode": "bus",
+    "duration_minutes": 25,
+    "price": 15,
+    "currency": "EUR",
+    "supplier": {
+      "name": "Iberia Ground Transfers",
+      "contract_ref": "TRF-VLC-HB002"
+    },
+    "schedule": {
+      "start": "07:00",
+      "end": "22:00",
+      "frequency_minutes": 20
+    },
+    "description": "Shared shuttle from VLC Airport to the city center, stop near Valencia Urban Boutique."
+  },
+  {
+    "_id": "trf-alc-costaazul",
+    "from": "Alicante Airport",
+    "to": "Costa Azul Resort",
+    "mode": "bus",
+    "duration_minutes": 40,
+    "price": 20,
+    "currency": "EUR",
+    "supplier": {
+      "name": "Iberia Ground Transfers",
+      "contract_ref": "TRF-ALC-HB003"
+    },
+    "schedule": {
+      "start": "05:30",
+      "end": "00:00",
+      "frequency_minutes": 30
+    },
+    "description": "Express coach from Alicante–Elche Airport to Costa Azul Resort near the marina."
+  }
+]

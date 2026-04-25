@@ -1,0 +1,1022 @@
+[
+  {
+    "_id": "act-bcn-sagrada",
+    "name": "Sagrada Família Fast-Track Entry & Guided Tour",
+    "city": "Barcelona",
+    "tags": [
+      "architecture",
+      "culture",
+      "guided"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-19:00",
+      "tue": "09:00-19:00",
+      "wed": "09:00-19:00",
+      "thu": "09:00-19:00",
+      "fri": "09:00-19:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-19:00"
+    },
+    "price": 42,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-BCN-SAGRADA"
+    },
+    "description": "Skip the lines and explore Gaudí’s masterpiece with an expert guide explaining its symbolism and history."
+  },
+  {
+    "_id": "act-bcn-ebike",
+    "name": "Barcelona E-Bike City Highlights Tour",
+    "city": "Barcelona",
+    "tags": [
+      "cycling",
+      "sightseeing",
+      "eco_friendly"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00"
+    },
+    "price": 39,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-BCN-EBIKE"
+    },
+    "description": "Guided e-bike tour covering Barceloneta, Sagrada Família, and the Gothic Quarter with scenic photo stops."
+  },
+  {
+    "_id": "act-bcn-cooking",
+    "name": "Barcelona Paella Cooking Class & Market Visit",
+    "city": "Barcelona",
+    "tags": [
+      "food",
+      "cooking_class",
+      "local_experience"
+    ],
+    "duration_hours": 4,
+    "opening_hours": {
+      "mon": "10:00-17:00",
+      "tue": "10:00-17:00",
+      "wed": "10:00-17:00",
+      "thu": "10:00-17:00",
+      "fri": "10:00-17:00",
+      "sat": "10:00-17:00"
+    },
+    "price": 78,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-BCN-PAELLA"
+    },
+    "description": "Hands-on cooking class starting with a Boqueria market visit and ending with homemade paella and sangría."
+  },
+  {
+    "_id": "act-bcn-parkguell",
+    "name": "Park Güell Entry & Audio Guide",
+    "city": "Barcelona",
+    "tags": [
+      "architecture",
+      "family",
+      "outdoors"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:30-19:30",
+      "tue": "09:30-19:30",
+      "wed": "09:30-19:30",
+      "thu": "09:30-19:30",
+      "fri": "09:30-19:30",
+      "sat": "09:30-19:30",
+      "sun": "09:30-19:30"
+    },
+    "price": 18,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-BCN-PARKGUELL"
+    },
+    "description": "Discover Gaudí’s colorful park with a self-guided audio tour through mosaic benches and fairy-tale architecture."
+  },
+  {
+    "_id": "act-bcn-sunsetboat",
+    "name": "Barcelona Sunset Sailing Experience",
+    "city": "Barcelona",
+    "tags": [
+      "boat",
+      "romantic",
+      "sunset"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "17:00-21:00",
+      "tue": "17:00-21:00",
+      "wed": "17:00-21:00",
+      "thu": "17:00-21:00",
+      "fri": "17:00-21:00",
+      "sat": "17:00-21:00",
+      "sun": "17:00-21:00"
+    },
+    "price": 55,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-BCN-SUNSET"
+    },
+    "description": "Relax on a catamaran with live music, drinks, and the best sunset views over Barcelona’s skyline."
+  },
+  {
+    "_id": "act-bcn-flamenco",
+    "name": "Flamenco Show at Tablao Cordobés",
+    "city": "Barcelona",
+    "tags": [
+      "music",
+      "dance",
+      "culture"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "18:00-23:00",
+      "tue": "18:00-23:00",
+      "wed": "18:00-23:00",
+      "thu": "18:00-23:00",
+      "fri": "18:00-23:00",
+      "sat": "18:00-23:00",
+      "sun": "18:00-23:00"
+    },
+    "price": 49,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-BCN-FLAMENCO"
+    },
+    "description": "Authentic flamenco performance with live guitar, singing, and optional tapas dinner in Las Ramblas."
+  },
+  {
+    "_id": "act-bcn-montjuic",
+    "name": "Montjuïc Cable Car & Castle Ticket",
+    "city": "Barcelona",
+    "tags": [
+      "viewpoint",
+      "family",
+      "adventure"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "10:00-19:00",
+      "tue": "10:00-19:00",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00",
+      "sun": "10:00-19:00"
+    },
+    "price": 22,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-BCN-MONTJUIC"
+    },
+    "description": "Round-trip cable car ticket with access to Montjuïc Castle and panoramic city views."
+  },
+  {
+    "_id": "act-bcn-gothic",
+    "name": "Gothic Quarter Walking Tour",
+    "city": "Barcelona",
+    "tags": [
+      "history",
+      "walking",
+      "culture"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-19:00",
+      "tue": "09:00-19:00",
+      "wed": "09:00-19:00",
+      "thu": "09:00-19:00",
+      "fri": "09:00-19:00",
+      "sat": "09:00-19:00"
+    },
+    "price": 25,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-BCN-GOTHIC"
+    },
+    "description": "Discover the medieval streets of Barri Gòtic with a local historian and learn about Roman ruins and legends."
+  },
+  {
+    "_id": "act-bcn-wine",
+    "name": "Penedès Wine Country Day Trip",
+    "city": "Barcelona",
+    "tags": [
+      "wine",
+      "day_trip",
+      "scenic"
+    ],
+    "duration_hours": 8,
+    "opening_hours": {
+      "mon": "08:00-18:00",
+      "tue": "08:00-18:00",
+      "wed": "08:00-18:00",
+      "thu": "08:00-18:00",
+      "fri": "08:00-18:00",
+      "sat": "08:00-18:00"
+    },
+    "price": 95,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-BCN-WINE"
+    },
+    "description": "Full-day guided trip from Barcelona to Penedès region with wine tastings and vineyard lunch."
+  },
+  {
+    "_id": "act-bcn-campnou",
+    "name": "Camp Nou Stadium & FC Barcelona Museum Tour",
+    "city": "Barcelona",
+    "tags": [
+      "sports",
+      "museum",
+      "family"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "10:00-19:00",
+      "tue": "10:00-19:00",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00",
+      "sun": "10:00-19:00"
+    },
+    "price": 36,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-BCN-CAMPNOU"
+    },
+    "description": "Explore the legendary stadium, locker rooms, and interactive FC Barcelona museum at your own pace."
+  },
+  {
+    "_id": "act-vlc-artsci",
+    "name": "City of Arts & Sciences Entry Ticket",
+    "city": "Valencia",
+    "tags": [
+      "museum",
+      "architecture",
+      "family"
+    ],
+    "duration_hours": 4,
+    "opening_hours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "price": 35,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-VLC-ARTSCI"
+    },
+    "description": "General admission to Valencia’s architectural landmark complex including the Oceanogràfic aquarium and Science Museum."
+  },
+  {
+    "_id": "act-vlc-bike",
+    "name": "Valencia Turia Park & Beach Bike Tour",
+    "city": "Valencia",
+    "tags": [
+      "cycling",
+      "outdoors",
+      "eco_friendly"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00"
+    },
+    "price": 29,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-VLC-BIKE"
+    },
+    "description": "Cycle through the old Turia riverbed gardens to the City of Arts and end at Malvarrosa Beach."
+  },
+  {
+    "_id": "act-vlc-foodtour",
+    "name": "Valencia Central Market Tapas Tour",
+    "city": "Valencia",
+    "tags": [
+      "food",
+      "walking",
+      "local_experience"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "10:00-14:00",
+      "tue": "10:00-14:00",
+      "wed": "10:00-14:00",
+      "thu": "10:00-14:00",
+      "fri": "10:00-14:00",
+      "sat": "10:00-14:00"
+    },
+    "price": 52,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-VLC-TAPAS"
+    },
+    "description": "Taste your way through Mercado Central while learning about Valencian produce and cuisine with a local foodie guide."
+  },
+  {
+    "_id": "act-vlc-ocean",
+    "name": "Oceanogràfic Aquarium Ticket",
+    "city": "Valencia",
+    "tags": [
+      "aquarium",
+      "family",
+      "wildlife"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "price": 38,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-VLC-OCEAN"
+    },
+    "description": "Visit Europe’s largest aquarium featuring sharks, penguins, dolphins, and spectacular underwater tunnels."
+  },
+  {
+    "_id": "act-vlc-boat",
+    "name": "Albufera Natural Park Boat Tour",
+    "city": "Valencia",
+    "tags": [
+      "nature",
+      "boat",
+      "photography"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-19:00",
+      "tue": "09:00-19:00",
+      "wed": "09:00-19:00",
+      "thu": "09:00-19:00",
+      "fri": "09:00-19:00",
+      "sat": "09:00-19:00",
+      "sun": "09:00-19:00"
+    },
+    "price": 25,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-VLC-ALBUFERA"
+    },
+    "description": "Peaceful boat ride through Albufera lagoon with optional paella lunch in the nearby fishing village of El Palmar."
+  },
+  {
+    "_id": "act-vlc-paella",
+    "name": "Valencian Paella Cooking Workshop",
+    "city": "Valencia",
+    "tags": [
+      "food",
+      "cooking_class",
+      "local_experience"
+    ],
+    "duration_hours": 4,
+    "opening_hours": {
+      "mon": "10:00-17:00",
+      "tue": "10:00-17:00",
+      "wed": "10:00-17:00",
+      "thu": "10:00-17:00",
+      "fri": "10:00-17:00",
+      "sat": "10:00-17:00"
+    },
+    "price": 75,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-VLC-PAELLA"
+    },
+    "description": "Learn to cook authentic Valencian paella from scratch in a hands-on class with sangría and appetizers."
+  },
+  {
+    "_id": "act-vlc-cathedral",
+    "name": "Valencia Cathedral & Holy Grail Tour",
+    "city": "Valencia",
+    "tags": [
+      "history",
+      "religious",
+      "guided"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00",
+      "sun": "13:00-18:00"
+    },
+    "price": 18,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-VLC-CATHEDRAL"
+    },
+    "description": "Guided visit through Valencia Cathedral and its bell tower, including the chapel where the Holy Grail is kept."
+  },
+  {
+    "_id": "act-vlc-streetart",
+    "name": "Valencia Street Art & Graffiti Tour",
+    "city": "Valencia",
+    "tags": [
+      "art",
+      "walking",
+      "local_experience"
+    ],
+    "duration_hours": 2.5,
+    "opening_hours": {
+      "mon": "11:00-17:00",
+      "tue": "11:00-17:00",
+      "wed": "11:00-17:00",
+      "thu": "11:00-17:00",
+      "fri": "11:00-17:00",
+      "sat": "11:00-17:00"
+    },
+    "price": 28,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-VLC-STREETART"
+    },
+    "description": "Discover the colorful murals and urban art scene in the trendy El Carmen district with a local guide."
+  },
+  {
+    "_id": "act-vlc-segway",
+    "name": "City of Arts & Turia Gardens Segway Tour",
+    "city": "Valencia",
+    "tags": [
+      "segway",
+      "sightseeing",
+      "family"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "10:00-19:00",
+      "tue": "10:00-19:00",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00"
+    },
+    "price": 45,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-VLC-SEGWAY"
+    },
+    "description": "Fun and easy Segway ride through Turia Gardens and the futuristic City of Arts and Sciences."
+  },
+  {
+    "_id": "act-vlc-flamenco",
+    "name": "Flamenco Dinner Show in Ruzafa",
+    "city": "Valencia",
+    "tags": [
+      "music",
+      "dance",
+      "nightlife"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "19:00-23:00",
+      "tue": "19:00-23:00",
+      "wed": "19:00-23:00",
+      "thu": "19:00-23:00",
+      "fri": "19:00-23:00",
+      "sat": "19:00-23:00"
+    },
+    "price": 60,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-VLC-FLAMENCO"
+    },
+    "description": "Enjoy an intimate flamenco performance with dinner and local wines in Valencia’s trendy Ruzafa neighborhood."
+  },
+  {
+    "_id": "act-alc-catamaran",
+    "name": "Alicante Catamaran Sunset Cruise",
+    "city": "Alicante",
+    "tags": [
+      "boat",
+      "sunset",
+      "romantic"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "17:00-21:00",
+      "tue": "17:00-21:00",
+      "wed": "17:00-21:00",
+      "thu": "17:00-21:00",
+      "fri": "17:00-21:00",
+      "sat": "17:00-21:00",
+      "sun": "17:00-21:00"
+    },
+    "price": 49,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-ALC-CRUISE"
+    },
+    "description": "Relaxing sunset sailing with music, drinks, and panoramic coastal views departing from Postiguet Beach Marina."
+  },
+  {
+    "_id": "act-alc-castle",
+    "name": "Santa Bárbara Castle Guided Visit",
+    "city": "Alicante",
+    "tags": [
+      "history",
+      "castle",
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "price": 18,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-ALC-CASTLE"
+    },
+    "description": "Explore Alicante’s medieval fortress with a local guide and enjoy sweeping views of the city and sea."
+  },
+  {
+    "_id": "act-alc-tapas",
+    "name": "Alicante Tapas Tasting & Old Town Tour",
+    "city": "Alicante",
+    "tags": [
+      "food",
+      "walking",
+      "local_experience"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "11:00-21:00",
+      "tue": "11:00-21:00",
+      "wed": "11:00-21:00",
+      "thu": "11:00-21:00",
+      "fri": "11:00-21:00",
+      "sat": "11:00-21:00"
+    },
+    "price": 55,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-ALC-TAPAS"
+    },
+    "description": "Taste local delicacies like jamón, gambas rojas, and turrón while walking through Alicante’s old town streets."
+  },
+  {
+    "_id": "act-alc-snorkel",
+    "name": "Tabarca Island Snorkeling Adventure",
+    "city": "Alicante",
+    "tags": [
+      "boat",
+      "snorkeling",
+      "island"
+    ],
+    "duration_hours": 4,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-18:00",
+      "sun": "09:00-18:00"
+    },
+    "price": 65,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-ALC-TABARCA"
+    },
+    "description": "Boat trip to the protected marine reserve of Tabarca Island with snorkeling gear, guide, and lunch included."
+  },
+  {
+    "_id": "act-alc-wine",
+    "name": "Alicante Wine Region Day Trip",
+    "city": "Alicante",
+    "tags": [
+      "wine",
+      "day_trip",
+      "scenic"
+    ],
+    "duration_hours": 7,
+    "opening_hours": {
+      "mon": "08:00-18:00",
+      "tue": "08:00-18:00",
+      "wed": "08:00-18:00",
+      "thu": "08:00-18:00",
+      "fri": "08:00-18:00",
+      "sat": "08:00-18:00"
+    },
+    "price": 90,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-ALC-WINE"
+    },
+    "description": "Visit two local wineries in the Vinalopó Valley, sample regional wines, and enjoy a traditional Spanish lunch."
+  },
+  {
+    "_id": "act-alc-caving",
+    "name": "Canelobre Caves & Busot Village Tour",
+    "city": "Alicante",
+    "tags": [
+      "nature",
+      "adventure",
+      "family"
+    ],
+    "duration_hours": 4,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-18:00",
+      "sun": "09:00-18:00"
+    },
+    "price": 45,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-ALC-CAVES"
+    },
+    "description": "Half-day guided tour exploring the stunning Canelobre Caves and the charming mountain village of Busot."
+  },
+  {
+    "_id": "act-alc-kayak",
+    "name": "Kayaking & Snorkeling from Playa San Juan",
+    "city": "Alicante",
+    "tags": [
+      "adventure",
+      "water_sports",
+      "beach"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "09:00-17:00",
+      "tue": "09:00-17:00",
+      "wed": "09:00-17:00",
+      "thu": "09:00-17:00",
+      "fri": "09:00-17:00",
+      "sat": "09:00-17:00",
+      "sun": "09:00-17:00"
+    },
+    "price": 40,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-ALC-KAYAK"
+    },
+    "description": "Guided kayak adventure exploring cliffs, caves, and marine life along Alicante’s stunning San Juan coastline."
+  },
+  {
+    "_id": "act-alc-walking",
+    "name": "Alicante Historical Walking Tour",
+    "city": "Alicante",
+    "tags": [
+      "history",
+      "walking",
+      "culture"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "10:00-19:00",
+      "tue": "10:00-19:00",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00"
+    },
+    "price": 25,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-ALC-HISTORY"
+    },
+    "description": "Learn about Alicante’s Moorish roots and Baroque architecture on a guided stroll through its oldest quarters."
+  },
+  {
+    "_id": "act-alc-tuktuk",
+    "name": "Alicante Electric Tuk-Tuk City Tour",
+    "city": "Alicante",
+    "tags": [
+      "eco_friendly",
+      "family",
+      "sightseeing"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "09:00-20:00",
+      "tue": "09:00-20:00",
+      "wed": "09:00-20:00",
+      "thu": "09:00-20:00",
+      "fri": "09:00-20:00",
+      "sat": "09:00-20:00"
+    },
+    "price": 35,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-ALC-TUKTUK"
+    },
+    "description": "Fun and sustainable city sightseeing experience by electric tuk-tuk, passing by the marina and key landmarks."
+  },
+  {
+    "_id": "act-alc-flamenco",
+    "name": "Flamenco Show with Dinner in Alicante Center",
+    "city": "Alicante",
+    "tags": [
+      "music",
+      "dance",
+      "nightlife"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "19:00-23:00",
+      "tue": "19:00-23:00",
+      "wed": "19:00-23:00",
+      "thu": "19:00-23:00",
+      "fri": "19:00-23:00",
+      "sat": "19:00-23:00"
+    },
+    "price": 58,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-ALC-FLAMENCO"
+    },
+    "description": "Enjoy an unforgettable evening of traditional Spanish flamenco paired with a Mediterranean dinner and local wine."
+  },
+  {
+    "_id": "act-cad-oldtown",
+    "name": "Cádiz Old Town Walking Tour",
+    "city": "Cádiz",
+    "tags": [
+      "history",
+      "walking",
+      "culture"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00"
+    },
+    "price": 25,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-CAD-OLDTOWN"
+    },
+    "description": "Discover Cádiz’s ancient streets, from Roman ruins to the Cathedral, on a guided walk through Europe’s oldest city."
+  },
+  {
+    "_id": "act-cad-boat",
+    "name": "Cádiz Bay Catamaran Cruise",
+    "city": "Cádiz",
+    "tags": [
+      "boat",
+      "scenic",
+      "relax"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "11:00-19:00",
+      "tue": "11:00-19:00",
+      "wed": "11:00-19:00",
+      "thu": "11:00-19:00",
+      "fri": "11:00-19:00",
+      "sat": "11:00-19:00",
+      "sun": "11:00-19:00"
+    },
+    "price": 45,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-CAD-BOAT"
+    },
+    "description": "Sail along the Bay of Cádiz with complimentary drinks, live commentary, and optional swimming stops."
+  },
+  {
+    "_id": "act-cad-cathedral",
+    "name": "Cádiz Cathedral & Bell Tower Visit",
+    "city": "Cádiz",
+    "tags": [
+      "architecture",
+      "religious",
+      "viewpoint"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "10:00-19:00",
+      "tue": "10:00-19:00",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00",
+      "sun": "13:00-19:00"
+    },
+    "price": 15,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-CAD-CATHEDRAL"
+    },
+    "description": "Climb the Poniente Tower for the best panoramic views of Cádiz and visit the Baroque-style cathedral’s crypts."
+  },
+  {
+    "_id": "act-cad-foodtour",
+    "name": "Cádiz Tapas & Wine Tasting Tour",
+    "city": "Cádiz",
+    "tags": [
+      "food",
+      "wine",
+      "walking"
+    ],
+    "duration_hours": 3,
+    "opening_hours": {
+      "mon": "12:00-22:00",
+      "tue": "12:00-22:00",
+      "wed": "12:00-22:00",
+      "thu": "12:00-22:00",
+      "fri": "12:00-22:00",
+      "sat": "12:00-22:00"
+    },
+    "price": 59,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-CAD-TAPAS"
+    },
+    "description": "Sample local tapas and sherries while exploring Cádiz’s vibrant taverns with a local gastronomic guide."
+  },
+  {
+    "_id": "act-cad-flamenco",
+    "name": "Flamenco Show in Cádiz Old Quarter",
+    "city": "Cádiz",
+    "tags": [
+      "music",
+      "dance",
+      "nightlife"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "19:00-23:00",
+      "tue": "19:00-23:00",
+      "wed": "19:00-23:00",
+      "thu": "19:00-23:00",
+      "fri": "19:00-23:00",
+      "sat": "19:00-23:00"
+    },
+    "price": 48,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-CAD-FLAMENCO"
+    },
+    "description": "Authentic Andalusian flamenco show in an intimate tablao featuring guitarists, dancers, and singers."
+  },
+  {
+    "_id": "act-cad-beachyoga",
+    "name": "Sunrise Yoga on La Caleta Beach",
+    "city": "Cádiz",
+    "tags": [
+      "wellness",
+      "beach",
+      "outdoors"
+    ],
+    "duration_hours": 1,
+    "opening_hours": {
+      "mon": "07:00-09:00",
+      "tue": "07:00-09:00",
+      "wed": "07:00-09:00",
+      "thu": "07:00-09:00",
+      "fri": "07:00-09:00",
+      "sat": "07:00-09:00",
+      "sun": "07:00-09:00"
+    },
+    "price": 20,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-CAD-YOGA"
+    },
+    "description": "Start your day with a relaxing yoga session at sunrise on Cádiz’s iconic La Caleta Beach."
+  },
+  {
+    "_id": "act-cad-markets",
+    "name": "Mercado Central de Abastos Food Tour",
+    "city": "Cádiz",
+    "tags": [
+      "food",
+      "market",
+      "local_experience"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "10:00-15:00",
+      "tue": "10:00-15:00",
+      "wed": "10:00-15:00",
+      "thu": "10:00-15:00",
+      "fri": "10:00-15:00",
+      "sat": "10:00-15:00"
+    },
+    "price": 35,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-CAD-MARKET"
+    },
+    "description": "Guided visit through Cádiz’s historic market to taste local seafood, Iberian ham, and artisan cheeses."
+  },
+  {
+    "_id": "act-cad-carnival",
+    "name": "Cádiz Carnival Experience & Museum Tour",
+    "city": "Cádiz",
+    "tags": [
+      "culture",
+      "festival",
+      "music"
+    ],
+    "duration_hours": 1.5,
+    "opening_hours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00",
+      "sun": "10:00-18:00"
+    },
+    "price": 22,
+    "supplier": {
+      "name": "Tiqets",
+      "contract_ref": "TQ-CAD-CARNIVAL"
+    },
+    "description": "Interactive visit to the Cádiz Carnival Museum with costume exhibits and live chirigota performance recordings."
+  },
+  {
+    "_id": "act-cad-birdwatch",
+    "name": "Doñana Wetlands Birdwatching Excursion",
+    "city": "Cádiz",
+    "tags": [
+      "nature",
+      "wildlife",
+      "day_trip"
+    ],
+    "duration_hours": 7,
+    "opening_hours": {
+      "mon": "08:00-17:00",
+      "tue": "08:00-17:00",
+      "wed": "08:00-17:00",
+      "thu": "08:00-17:00",
+      "fri": "08:00-17:00",
+      "sat": "08:00-17:00"
+    },
+    "price": 85,
+    "supplier": {
+      "name": "Viator",
+      "contract_ref": "VTR-CAD-BIRDWATCH"
+    },
+    "description": "Day trip to the Doñana wetlands to observe flamingos, storks, and other migratory birds with an expert guide."
+  },
+  {
+    "_id": "act-cad-surf",
+    "name": "Surf Lesson at Playa de Cortadura",
+    "city": "Cádiz",
+    "tags": [
+      "surfing",
+      "adventure",
+      "beach"
+    ],
+    "duration_hours": 2,
+    "opening_hours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-18:00",
+      "sun": "09:00-18:00"
+    },
+    "price": 40,
+    "supplier": {
+      "name": "GetYourGuide",
+      "contract_ref": "GYG-CAD-SURF"
+    },
+    "description": "Learn to surf with certified instructors on Cádiz’s best surfing beach, Playa de Cortadura."
+  }
+]
