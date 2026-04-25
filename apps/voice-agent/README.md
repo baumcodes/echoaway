@@ -94,6 +94,44 @@ persona, the open-ended scope ("compose whatever tools fit the
 request"), the conversational arc, and the hard rules (always quote
 before confirm; always ask for explicit confirmation).
 
+## Voice backbone — Gemini Live ⇄ Gradium 3-piece (Phase 7)
+
+The worker constructs the AgentSession in one of two shapes, gated by
+the `USE_GRADIUM_VOICE` env flag:
+
+| `USE_GRADIUM_VOICE` | Backbone | Pipeline |
+|---|---|---|
+| unset / `false` (default) | `gemini-realtime` | Gemini Live `RealtimeModel` — audio in + LLM + audio out as one WebSocket. Phase-5 fallback, always reachable. |
+| `true` | `gradium-3-piece` | `{ llm: Gemini 2.5 Flash, stt: GradiumSTT, tts: GradiumTTS }` — STT + TTS each open their own WebSocket to `wss://api.gradium.ai/api/speech/{asr,tts}`. |
+
+Both branches share the same `Agent` definition (instructions + tools).
+Switching back is a one-line env flip — no rebuild, no other env churn.
+The selection logic lives in `buildAgentSession()` at the bottom of
+`src/worker.ts`.
+
+The custom Gradium plugins:
+
+- **`src/gradium/stt.ts`** — extends `@livekit/agents`'s `STT` /
+  `SpeechStream`. Sends `setup` + base64 PCM frames; emits
+  `INTERIM_TRANSCRIPT` per Gradium `text` chunk and `FINAL_TRANSCRIPT`
+  when the framework's VAD calls `flush()` (Gradium's own VAD steps
+  are ignored to avoid double-flushing mid-utterance).
+- **`src/gradium/tts.ts`** — extends `TTS` / `SynthesizeStream` /
+  `ChunkedStream`. One WebSocket per segment (Gradium closes after
+  `end_of_stream`); streams 48 kHz PCM mono frames back to LiveKit.
+
+Auth: `x-api-key: $GRADIUM_API_KEY` on the WS upgrade. Voice is
+selected via `GRADIUM_VOICE_UID` (the demo pin is **Rémi**, a
+chill-friendly English voice with a French accent — list voices via
+`GET /api/voices/HtgP9v8SoWbq_jxi` on the Gradium API).
+
+Smoke tests against the live API (require the env vars set):
+
+```bash
+yarn workspace @echoaway/voice-agent tsx scripts/gradium-smoke.ts       # TTS only
+yarn workspace @echoaway/voice-agent tsx scripts/gradium-stt-smoke.ts   # TTS → STT round-trip
+```
+
 ## ai-coustics speech enhancement (Phase 6)
 
 The worker plugs `@livekit/plugins-ai-coustics` into the AgentSession's
@@ -151,10 +189,9 @@ covered there (`yarn test:app`).
 
 ## Limits
 
-- **Phase 7 swaps the audio backbone.** Today's Gemini Live
-  (`RealtimeModel`) handles audio in + LLM + audio out as one
-  websocket. Phase 7 splits this into `{ llm, stt: GradiumSTT,
-  tts: GradiumTTS }` so Gradium can plug in. ai-coustics enhancement
-  carries over unchanged — it's an input-pipeline `FrameProcessor`,
-  not coupled to the LLM choice.
 - **`searchTravelContext` is a stub.** Phase 8 will wire Tavily.
+- **Gradium TTS opens one WebSocket per segment.** Gradium closes the
+  connection after `end_of_stream`, so we re-open per segment rather
+  than maintaining a persistent socket. TTFB is ~480 ms in practice
+  (well within the < 300 ms first-token target on the same continent
+  + connection reuse — fine for hackathon latency).

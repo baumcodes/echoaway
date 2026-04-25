@@ -6,18 +6,28 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 loadEnv({ path: resolve(__dirname, '../../../.env') })
 
-import { cli, defineAgent, voice, WorkerOptions, type JobContext } from '@livekit/agents'
+import {
+  cli,
+  defineAgent,
+  voice,
+  WorkerOptions,
+  type JobContext,
+} from '@livekit/agents'
 
 const E = voice.AgentSessionEventTypes
-import { beta } from '@livekit/agents-plugin-google'
+import { beta, LLM as GoogleLLM } from '@livekit/agents-plugin-google'
 import * as aiCoustics from '@livekit/plugins-ai-coustics'
 import { createApiClient } from '@echoaway/app'
 import { buildLivekitToolCtx } from './agent/livekit-tools.js'
 import { SYSTEM_PROMPT } from './agent/system-prompt.js'
 import { computeAudioMetric } from './agent/audio-metric.js'
+import { GradiumSTT, GradiumTTS } from './gradium/index.js'
 
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:4000'
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+const GRADIUM_API_KEY = process.env.GRADIUM_API_KEY
+const GRADIUM_VOICE_UID = process.env.GRADIUM_VOICE_UID
+const USE_GRADIUM_VOICE = process.env.USE_GRADIUM_VOICE === 'true'
 
 /**
  * LiveKit Agents worker entry. The worker registers with LiveKit Cloud
@@ -87,58 +97,11 @@ export default defineAgent({
     const ourToolCtx = { apiClient, sessionId, tripId }
     const toolCtx = buildLivekitToolCtx(ourToolCtx)
 
-    // Picking the Live model is a moving target — Google sunsets and
-    // renames bidiGenerateContent models on a quarterly cadence:
-    //   2025-10-20  gemini-2.5-flash-preview-native-audio-dialog       ✗
-    //   2025-12-09  gemini-2.0-flash-exp                                ✗
-    //   2025-12-09  gemini-2.0-flash-live-001                           ✗
-    //   2025-12-09  gemini-live-2.5-flash-preview                       ✗
-    //   …
-    // The two models active for AI Studio API keys (v1beta endpoint,
-    // i.e. `GEMINI_API_KEY` rather than Vertex) as of April 2026:
-    //   • gemini-3.1-flash-live-preview                  (2026-03-26, newest)
-    //   • gemini-2.5-flash-native-audio-preview-12-2025  (2025-12-12, plugin default)
-    // Names like `gemini-live-2.5-flash-native-audio` only resolve via
-    // Vertex (`*-aiplatform.googleapis.com`), so they 1008-close on the
-    // AI Studio websocket.
-    //
-    // Picked the December model — it has the most real-world flight
-    // time for function calling. If it starts dropping connections
-    // mid-tool-call (the recurring failure mode of these previews),
-    // step UP to `gemini-3.1-flash-live-preview`. Plugin allowlist:
-    //   node_modules/@livekit/agents-plugin-google/.../api_proto.d.ts
-    //
-    // Phase 7 sidesteps all this churn by swapping to the 3-piece
-    // `{ llm, stt, tts }` pipeline backed by Gradium.
-    const realtime = new beta.realtime.RealtimeModel({
-      apiKey: GEMINI_API_KEY,
-      model: 'gemini-2.5-flash-native-audio-preview-12-2025',
-      voice: 'Aoede',
-      instructions: SYSTEM_PROMPT,
-    })
-    // Phase 7: when Gradium STT + TTS land, this whole `RealtimeModel`
-    // is replaced by `{ llm: LLM, stt: GradiumSTT, tts: GradiumTTS }`.
-    // The RealtimeModel has no separate stt/tts slots — it's audio-in +
-    // LLM + audio-out fused, so you can't bolt Gradium onto it. The
-    // switch will be gated behind USE_GRADIUM_VOICE so this branch
-    // remains the always-available fallback. Phase 7's PLAN block
-    // documents the migration in detail.
-
     // Phase 6: ai-coustics speech enhancement on the input pipeline.
     // The Quail Voice Focus model isolates the foreground speaker; a
     // 0.8 enhancement level matches the plugin's recommendation for
     // optimal word-error-rate on challenging data (see
     // docs/ai-coustics/livekit-quickstart.md).
-    //
-    // Note: the plugin's quickstart adds `vad: aiCoustics.vad()` to
-    // the AgentSession — that's for the 3-piece `{ llm, stt, tts }`
-    // pipeline. With `RealtimeModel`, Gemini Live runs its own
-    // server-side VAD and emits input-speech events for AgentSession
-    // to track user activity. Adding aicVad on top intercepts frames
-    // before those events fire, which trips the user-away timeout
-    // after 15s of "silence" even when the user is talking. So we
-    // skip it here and only attach the audio-enhancement FrameProcessor
-    // (which runs in the input pipeline irrespective of VAD choice).
     const noiseCancellation = aiCoustics.audioEnhancement({
       model: 'quailVfL',
       modelParameters: { enhancementLevel: 0.8 },
@@ -149,7 +112,7 @@ export default defineAgent({
       },
     })
 
-    const session = new voice.AgentSession({ llm: realtime })
+    const { session, backbone } = buildAgentSession()
     // Telemetry: surface the events that drive turn detection so future
     // debug sessions don't have to read the SDK source. Most pertinent
     // for diagnosing "agent never replies" — `user_input_transcribed`
@@ -188,8 +151,32 @@ export default defineAgent({
     })
 
     console.log(
-      `[voice-agent worker] session ready · tripId=${tripId} sessionId=${sessionId} · ai-coustics=quailVfL@0.8 · scenario=${scenario}`,
+      `[voice-agent worker] session ready · backbone=${backbone} · tripId=${tripId} sessionId=${sessionId} · ai-coustics=quailVfL@0.8 · scenario=${scenario}`,
     )
+
+    // 3-piece cold-start mitigation. The ai-coustics VAD piggy-backs on
+    // the audio-enhancement model's per-frame metadata, so it can't
+    // fire until the enhancement model has processed the first ~1-2 s
+    // of audio. Until VAD fires, AgentSession holds frames back from
+    // STT — so anything the user says in those first seconds is
+    // silently dropped. Greeting the user immediately solves both
+    // halves of that problem: (a) the input pipeline warms up while
+    // we speak, and (b) the user has a clear "I'm listening" cue and
+    // naturally waits before replying.
+    //
+    // Use `generateReply` (not `say`) so the wording follows the
+    // system prompt — persona, brand name, "ask for phone number"
+    // hint, etc. all stay authoritative in one place.
+    //
+    // Gemini Live runs its own server-side VAD with no warmup, so we
+    // skip the greeting on that path to keep the existing behavior.
+    if (backbone === 'gradium-3-piece') {
+      session.generateReply({
+        instructions:
+          'Open the conversation. Greet the traveler briefly per your persona and ask whatever question you would normally ask first to load their trip.',
+        allowInterruptions: true,
+      })
+    }
 
     ctx.addShutdownCallback(async () => {
       // Best-effort shutdown logging + audio metric. If the trip /
@@ -258,6 +245,92 @@ async function resolveSession(
   const trip = await apiClient.getTripByPhone('+4915112345678')
   const session = await apiClient.createVoiceSession({ tripId: trip.id })
   return { tripId: trip.id, sessionId: session.id }
+}
+
+/**
+ * Constructs the AgentSession backbone in one of two shapes,
+ * gated by USE_GRADIUM_VOICE:
+ *
+ * 1. **`gradium-3-piece`** (USE_GRADIUM_VOICE=true) — classic pipeline
+ *    `{ llm: Gemini, stt: Gradium, tts: Gradium }`. Each leg is its
+ *    own websocket, so we get a real Gradium STT + TTS integration
+ *    for the side challenge. AgentSession needs an explicit VAD for
+ *    turn-taking (Gemini is text-only here), so we attach
+ *    `aiCoustics.vad()`.
+ *
+ * 2. **`gemini-realtime`** (USE_GRADIUM_VOICE unset / false) — the
+ *    Phase-5 fallback. Gemini Live's `RealtimeModel` handles audio in
+ *    + LLM + audio out as one websocket; there are no STT / TTS slots.
+ *    Server-side VAD is built into Gemini Live, so we deliberately
+ *    skip `aiCoustics.vad()` (it would intercept frames before
+ *    Gemini's input-speech events fire and trip the user-away
+ *    timeout).
+ *
+ * Both branches share the same `Agent` definition (instructions +
+ * tools) — only the audio + LLM substrate changes. Switching back is
+ * a one-line env flip with no rebuild.
+ */
+function buildAgentSession(): {
+  session: voice.AgentSession
+  backbone: 'gradium-3-piece' | 'gemini-realtime'
+} {
+  if (USE_GRADIUM_VOICE) {
+    if (!GRADIUM_API_KEY || !GRADIUM_VOICE_UID) {
+      throw new Error(
+        '[voice-agent worker] USE_GRADIUM_VOICE=true but GRADIUM_API_KEY / GRADIUM_VOICE_UID missing — set them in /.env',
+      )
+    }
+    const llm = new GoogleLLM({
+      apiKey: GEMINI_API_KEY,
+      // Tool calling on a fast non-realtime model is rock-solid; pick
+      // the latest 2.5-flash for low-latency, high-throughput function
+      // calling. Swappable to any plugin model id without code change.
+      model: 'gemini-2.5-flash',
+    })
+    const sttPlugin = new GradiumSTT({
+      apiKey: GRADIUM_API_KEY,
+    })
+    const ttsPlugin = new GradiumTTS({
+      apiKey: GRADIUM_API_KEY,
+      voiceId: GRADIUM_VOICE_UID,
+    })
+    const session = new voice.AgentSession({
+      llm,
+      stt: sttPlugin,
+      tts: ttsPlugin,
+      vad: aiCoustics.vad(),
+    })
+    return { session, backbone: 'gradium-3-piece' }
+  }
+
+  // Picking the Live model is a moving target — Google sunsets and
+  // renames bidiGenerateContent models on a quarterly cadence:
+  //   2025-10-20  gemini-2.5-flash-preview-native-audio-dialog       ✗
+  //   2025-12-09  gemini-2.0-flash-exp                                ✗
+  //   2025-12-09  gemini-2.0-flash-live-001                           ✗
+  //   2025-12-09  gemini-live-2.5-flash-preview                       ✗
+  //   …
+  // The two models active for AI Studio API keys (v1beta endpoint,
+  // i.e. `GEMINI_API_KEY` rather than Vertex) as of April 2026:
+  //   • gemini-3.1-flash-live-preview                  (2026-03-26, newest)
+  //   • gemini-2.5-flash-native-audio-preview-12-2025  (2025-12-12, plugin default)
+  // Names like `gemini-live-2.5-flash-native-audio` only resolve via
+  // Vertex (`*-aiplatform.googleapis.com`), so they 1008-close on the
+  // AI Studio websocket.
+  //
+  // Picked the December model — it has the most real-world flight
+  // time for function calling. If it starts dropping connections
+  // mid-tool-call (the recurring failure mode of these previews),
+  // step UP to `gemini-3.1-flash-live-preview`. Plugin allowlist:
+  //   node_modules/@livekit/agents-plugin-google/.../api_proto.d.ts
+  const realtime = new beta.realtime.RealtimeModel({
+    apiKey: GEMINI_API_KEY,
+    model: 'gemini-2.5-flash-native-audio-preview-12-2025',
+    voice: 'Aoede',
+    instructions: SYSTEM_PROMPT,
+  })
+  const session = new voice.AgentSession({ llm: realtime })
+  return { session, backbone: 'gemini-realtime' }
 }
 
 cli.runApp(new WorkerOptions({ agent: __filename }))

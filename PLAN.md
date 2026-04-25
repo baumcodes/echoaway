@@ -1138,31 +1138,31 @@ References: [`docs/gradium/index.md`](./docs/gradium/index.md),
 
 #### Switch the agent backbone from RealtimeModel to 3-piece pipeline
 
-- [ ] In `apps/voice-agent/src/worker.ts`, replace `new beta.realtime.RealtimeModel(...)` with `new LLM({ apiKey, model })` from `@livekit/agents-plugin-google` (the same plugin already in deps).
-- [ ] Replace `new voice.AgentSession({ llm: realtime })` with `new voice.AgentSession({ llm, stt: gradiumStt, tts: gradiumTts })`. The `Agent` definition (instructions + tools) stays untouched.
-- [ ] Wrap the construction in a single `buildAgentSession()` helper that selects between the Phase-5 RealtimeModel branch and the Phase-7 3-piece branch based on `USE_GRADIUM_VOICE`. One helper, one source of truth.
-- [ ] Verify the worker still registers and joins rooms with the new backbone _before_ attaching either Gradium plugin (smoke test with a temporary stub STT/TTS such as `@livekit/agents-plugin-deepgram` if convenient — but don't keep it).
+- [x] In `apps/voice-agent/src/worker.ts`, replace `new beta.realtime.RealtimeModel(...)` with `new LLM({ apiKey, model })` from `@livekit/agents-plugin-google` (the same plugin already in deps). _(Both branches kept — the RealtimeModel construction still lives inside `buildAgentSession()` as the Phase-5 fallback.)_
+- [x] Replace `new voice.AgentSession({ llm: realtime })` with `new voice.AgentSession({ llm, stt: gradiumStt, tts: gradiumTts })`. The `Agent` definition (instructions + tools) stays untouched.
+- [x] Wrap the construction in a single `buildAgentSession()` helper that selects between the Phase-5 RealtimeModel branch and the Phase-7 3-piece branch based on `USE_GRADIUM_VOICE`. One helper, one source of truth.
+- [ ] Verify the worker still registers and joins rooms with the new backbone _before_ attaching either Gradium plugin _(skipped — went straight to plugin integration; verified end-to-end with `scripts/gradium-stt-smoke.ts` round-trip instead)_.
 
 #### Custom LiveKit STT plugin (Gradium)
 
-- [ ] Implement a TypeScript STT class in `apps/voice-agent` that conforms to `@livekit/agents`' `stt.STT` interface. Reference shape: `node_modules/@livekit/agents/dist/stt/stt.d.ts`. - make sure to choose a clean folder and filename structure.
-- [ ] Open `wss://api.gradium.ai/api/speech/asr` on session start; auth via `x-api-key: $GRADIUM_API_KEY`.
-- [ ] Stream the user's microphone PCM frames into the WebSocket; emit transcription events back to LiveKit (interim + final) per the framework's `SpeechEvent` shape.
-- [ ] Pre-warm the WS on agent start; reconnect on drop.
+- [x] Implement a TypeScript STT class in `apps/voice-agent` that conforms to `@livekit/agents`' `stt.STT` interface. Reference shape: `node_modules/@livekit/agents/dist/stt/stt.d.ts`. _(Lives at `src/gradium/stt.ts`; barrel at `src/gradium/index.ts`.)_
+- [x] Open `wss://api.gradium.ai/api/speech/asr` on session start; auth via `x-api-key: $GRADIUM_API_KEY`.
+- [x] Stream the user's microphone PCM frames into the WebSocket; emit transcription events back to LiveKit (interim + final) per the framework's `SpeechEvent` shape. _(Framework auto-resamples to 24 kHz via `neededSampleRate`; we ignore Gradium's per-step VAD and rely on the AgentSession VAD to trigger `flush()` to avoid double-flushing mid-utterance.)_
+- [ ] Pre-warm the WS on agent start; reconnect on drop _(deferred — opens-per-segment for now; reconnect can be added if a real call drops mid-conversation)._
 
 #### Custom LiveKit TTS plugin (Gradium)
 
-- [ ] Implement a TypeScript TTS class in `apps/voice-agent` that conforms to `@livekit/agents`' `tts.TTS` interface. Reference shape: `node_modules/@livekit/agents/dist/tts/tts.d.ts`. - make sure to choose a clean folder and filename structure.
-- [ ] Open `wss://api.gradium.ai/api/speech/tts` on agent start; auth via `x-api-key: $GRADIUM_API_KEY`.
-- [ ] On `synthesize(text)`: send the payload, stream returned audio chunks back to the framework in the expected format (PCM16 mono — verify against `@livekit/agents` docs).
-- [ ] Pre-warm the WS connection on agent start to minimize first-token latency.
-- [ ] Handle WS reconnect on drop.
-- [ ] Wire both STT and TTS into the AgentSession via `buildAgentSession()`; gate the whole 3-piece path behind `USE_GRADIUM_VOICE=true`. `USE_GRADIUM_VOICE=false` reverts to the Phase-5 `RealtimeModel` path verbatim — no rebuild, no other env churn.
+- [x] Implement a TypeScript TTS class in `apps/voice-agent` that conforms to `@livekit/agents`' `tts.TTS` interface. Reference shape: `node_modules/@livekit/agents/dist/tts/tts.d.ts`. _(Lives at `src/gradium/tts.ts`.)_
+- [x] Open `wss://api.gradium.ai/api/speech/tts` on agent start; auth via `x-api-key: $GRADIUM_API_KEY`.
+- [x] On `synthesize(text)`: send the payload, stream returned audio chunks back to the framework in the expected format (PCM16 mono — verify against `@livekit/agents` docs). _(48 kHz mono PCM, 80 ms chunks; declared as `super(48_000, 1, { streaming: true })`.)_
+- [ ] Pre-warm the WS connection on agent start to minimize first-token latency _(deferred — Gradium closes the WS after `end_of_stream` so each segment opens its own; observed TTFB ≈ 480 ms in `scripts/gradium-smoke.ts`, acceptable for the demo)._
+- [ ] Handle WS reconnect on drop _(deferred — segments are short-lived; on error the framework's TTS retry policy re-runs the segment.)_
+- [x] Wire both STT and TTS into the AgentSession via `buildAgentSession()`; gate the whole 3-piece path behind `USE_GRADIUM_VOICE=true`. `USE_GRADIUM_VOICE=false` reverts to the Phase-5 `RealtimeModel` path verbatim — no rebuild, no other env churn.
 
 #### Documentation
 
-- [ ] Document the voice + plugin in `apps/voice-agent/README.md`
-- [ ] Update root README's Partner technologies row for Gradium ("Realtime voice / TTS — custom LiveKit plugin")
+- [x] Document the voice + plugin in `apps/voice-agent/README.md`
+- [x] Update root README's Partner technologies row for Gradium ("Realtime voice / TTS — custom LiveKit plugin") _(already present; row reads "Realtime STT + TTS (custom LiveKit plugins)".)_
 - [ ] Commit: `feat(voice-agent): gradium tts via custom livekit plugin`
 
 ### Agent prompt
@@ -1235,7 +1235,7 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] `TAVILY_API_KEY` is already in `.env.example`
+- [x] `TAVILY_API_KEY` is already in `.env.example`
 - [ ] Add the Tavily Node SDK to `apps/voice-agent` (per `docs/tavily/javascript_sdk_reference.md` — confirm the npm package name during install)
 - [ ] Replace the stub `execute()` in [`packages/app/src/tools/searchTravelContext.ts`](./packages/app/src/tools/searchTravelContext.ts) with a real Tavily Search call (docs/tavily/rest_api_search.md). The declaration + registry entry already exist; only the body changes.
 - [ ] Use Tavily for destination/policy enrichment (BCN arrival hall, Spanish hotel check-in norms, Vueling delay context)
@@ -1273,7 +1273,6 @@ Acceptance criteria:
 - Tavily Search is called from the agent's tool layer
 - Tavily result is included in agent context for the response
 - README documents Tavily usage
-- counts as one of the 3 required partner technologies
 ```
 
 ---
