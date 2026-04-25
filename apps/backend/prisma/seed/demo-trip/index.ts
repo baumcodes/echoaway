@@ -10,13 +10,15 @@ import { seedTrip } from './trip.js'
 
 /**
  * Composes the "Barcelona Long Weekend" demo trip referenced in
- * docs/data-model.md §5 and PLAN.md §1. Not idempotent on its own —
- * pass `reset=true` to wipe and recreate.
+ * docs/data-model.md §5 and PLAN.md §1.
+ *
+ * Always wipes the demo trip first (cheap; cascades from Trip clear
+ * Components/Bookings/Events/Disruption) so re-runs are safe. The
+ * `reset` flag is retained for the `seed:demo:reset` alias and for
+ * explicit log lines, but the wipe happens unconditionally.
  */
 export async function seedDemoTrip(opts: { reset: boolean }): Promise<void> {
-  if (opts.reset) {
-    await resetDemoTrip()
-  }
+  await resetDemoTrip()
 
   const catalog = await loadDemoCatalog()
   const dates = tripDates()

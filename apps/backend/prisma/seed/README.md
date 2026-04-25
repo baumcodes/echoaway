@@ -5,10 +5,10 @@ Two phases (per [`/docs/seed-strategy.md`](../../../../docs/seed-strategy.md)):
 1. **`seed:catalog`** — idempotent load of all reusable inventory. Run as
    often as you like; safe to re-run.
 2. **`seed:demo`** — runs catalog (idempotent), then composes the
-   "Barcelona Long Weekend" demo trip. The demo-trip step is **not**
-   idempotent on its own — re-runs without `--reset` will fail on unique
-   constraints. Use `seed:demo:reset` to wipe just the demo trip and
-   recreate.
+   "Barcelona Long Weekend" demo trip. The demo-trip step **wipes the
+   demo trip first** on every run (cascade from `Trip` clears
+   Components/Bookings/Events/Disruption), so re-runs are safe.
+   `seed:demo:reset` is kept as an explicit alias for the same behavior.
 
 ## Layout
 

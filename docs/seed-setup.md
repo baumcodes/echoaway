@@ -99,23 +99,16 @@ and produces no duplicates.
 yarn seed:demo
 ```
 
-> **Status:** lands in Phase 2C of [`PLAN.md`](../PLAN.md). The script
-> exists at `apps/backend/prisma/seed/index.ts demo`. Until Phase 2C
-> ships, this only validates inputs and exits.
-
-When implemented, it composes the **Barcelona Long Weekend** trip
-(travelers, segment, 5 components, 5 bookings, ~10 events, 1
-flight-delay disruption) per
+Composes the **Barcelona Long Weekend** trip (travelers, segment, 5
+components, 5 bookings, 10 events, 1 flight-delay disruption) per
 [`./data-model.md`](./data-model.md) §5 and
 [`./seed-strategy.md`](./seed-strategy.md) §3.
 
-**Re-running:** `seed:demo` is *not* idempotent. To recreate cleanly:
-
-```bash
-yarn seed:demo --reset      # deletes trip-demo-bcn cascade, then re-seeds
-```
-
-`--reset` only touches the demo trip. Catalog rows are untouched.
+**Re-runnable.** The script wipes `trip-demo-bcn` (cascade) before
+recreating, so calling it twice in a row is safe. Only the demo trip is
+touched — catalog rows, travelers, and any other trips are left alone.
+`yarn seed:demo:reset` is kept as an explicit alias for the same
+behavior.
 
 ### 5. Sanity check
 
@@ -146,7 +139,7 @@ schema, run:
 ```bash
 yarn db:migrate     # only if schema changed
 yarn seed           # always safe; idempotent
-yarn seed:demo --reset    # only if Trip schema or demo composition changed
+yarn seed:demo      # always safe; self-resets the demo trip first
 ```
 
 ### Nuke and reseed from zero
@@ -195,7 +188,7 @@ added.
 | `Cannot find module '@prisma/client'` | `prisma generate` never ran | `yarn db:generate` (or `yarn setup`) |
 | Seed fails on FK violation | Catalog rows missing (e.g., `seed:demo` before `seed`) | Run `yarn seed` first |
 | Sanity script reports 0 rows | DB was reset but catalog seed didn't re-run | `yarn seed && yarn seed:demo` |
-| `seed:demo --reset` complains the trip doesn't exist | Demo trip already gone — that's fine | Just run `yarn seed:demo` without `--reset` |
+| `Unique constraint failed (id)` on `seed:demo` | Stale code — `seed:demo` now self-resets | Pull latest and retry; or run `yarn db:reset && yarn seed && yarn seed:demo` |
 
 ---
 

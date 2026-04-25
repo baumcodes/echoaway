@@ -67,7 +67,7 @@ Four layers: **Catalog** (reusable inventory seeded from `dataset/`), **Identity
 4. **Money snapshots are frozen.** Once a `ComponentBooking` exists, do not recompute its price from the catalog. Mutate only when the agent confirms a change.
 5. **Component → catalog FK is polymorphic-by-nullable-FK.** Exactly one of the 4 catalog FKs is non-null per Component, matching `Component.type`. Validated at app level (Zod), not by SQLite.
 6. **Hotel demo policy override.** The seeded hotel `ComponentBooking.policy.modification.freeUntil` is set to end-of-today so the demo always succeeds. This is intentional — see @docs/seed-strategy.md §3.3.
-7. **Catalog seed is idempotent; demo seed is not.** Re-running `seed:catalog` is safe (upsert by source `_id`). Re-running `seed:demo-trip` requires `--reset`.
+7. **Both seeds are safe to re-run.** `seed:catalog` upserts by source `_id`; `seed:demo` wipes `trip-demo-bcn` (cascade) before recreating it. `seed:demo:reset` is just an explicit alias.
 8. **`VoiceActionEvent` is persisted _and_ streamed.** Don't treat it as in-memory only. Web UI subscribes to a stream backed by the table.
 9. **All JSON columns are validated with Zod from `packages/types`.** Don't write raw `Json` without a schema. Shapes are in @docs/component-data-shapes.md.
 10. **Web is the primary demo renderer.** Mobile is a placeholder. UI components live in `packages/ui`; orchestration in `packages/app`. Don't put feature logic in `apps/web` directly.
