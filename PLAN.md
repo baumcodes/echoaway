@@ -436,22 +436,22 @@ The hackathon implementation should be **web-first**. Build the full demo experi
 
 ### Checklist
 
-- [ ] Create public GitHub repository
-- [ ] Initialize monorepo (yarn workspaces)
-- [ ] Add README skeleton
-- [ ] Create `/apps/web`
-- [ ] Create `/apps/mobile` as placeholder / later renderer
-- [ ] Create `/apps/backend` (NestJS scaffold; Prisma added in Phase 2A)
-- [ ] Create `/apps/voice-agent`
-- [ ] Create `/packages/types`
-- [ ] Create `/packages/app` for shared orchestration, API client, event state machine
-- [ ] Create `/packages/ui`
-- [ ] Move `/dataset` into the repo root (already present)
-- [ ] Move `/docs` into the repo root (already present)
-- [ ] Add shared TypeScript config
-- [ ] Add `.env.example`
-- [ ] Add architecture diagram to README pointing at `docs/erm.md`
-- [ ] Commit: `chore: initialize hackathon monorepo`
+- [x] Create public GitHub repository
+- [x] Initialize monorepo (yarn workspaces)
+- [x] Add README skeleton
+- [x] Create `/apps/web`
+- [x] Create `/apps/mobile` as placeholder / later renderer
+- [x] Create `/apps/backend` (NestJS scaffold; Prisma added in Phase 2A)
+- [x] Create `/apps/voice-agent`
+- [x] Create `/packages/types`
+- [x] Create `/packages/app` for shared orchestration, API client, event state machine
+- [x] Create `/packages/ui`
+- [x] Move `/dataset` into the repo root (already present)
+- [x] Move `/docs` into the repo root (already present)
+- [x] Add shared TypeScript config
+- [x] Add `.env.example`
+- [x] Add architecture diagram to README pointing at `docs/erm.md`
+- [x] Commit: `chore: initialize hackathon monorepo`
 
 ### Agent prompt
 
