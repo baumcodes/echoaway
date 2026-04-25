@@ -158,12 +158,14 @@ This means we are not "building a website instead of an app." We are building th
     /prisma/seed/           ← catalog + demo-trip seed scripts
 
   /voice-agent
-    Node or Python worker
-    Handles realtime voice session
-    ai-coustics audio enhancement
-    Gradium voice component
-    Gemini LLM tool calling
-    Calls backend tools
+    Node + TypeScript LiveKit Agent (@livekit/agents)
+    Joins a LiveKit Cloud room when the web app starts a voice session
+    @livekit/plugins-ai-coustics — realtime noise cancellation (Phase 6)
+    Custom LiveKit TTS plugin wrapping Gradium TTS WebSocket (Phase 7)
+    Google Gen AI Node SDK — Gemini reasoning + tool calling (Phase 5)
+    Tavily Node SDK — searchTravelContext tool (Phase 8)
+    Tools call NestJS backend over HTTP; backend never touches audio
+    Imports shared Zod schemas from @echoaway/types (yarn workspace)
 
 /packages
   /types
@@ -187,22 +189,34 @@ This means we are not "building a website instead of an app." We are building th
 ### Runtime flow
 
 ```txt
-User voice
+Browser mic → @livekit/components-react + livekit-client
+  ↓ audio over WebRTC
+LiveKit Cloud room (managed media)
+  ↓ audio frames
+Node + TS voice-agent (@livekit/agents)
   ↓
-ai-coustics enhancement
+@livekit/plugins-ai-coustics  (noise cancellation)
+  ↓ cleaned audio
+STT (LiveKit default in Phase 5; Gradium STT WS optional in Phase 7)
+  ↓ transcript
+Gemini agent (Google Gen AI Node SDK) with tools
+  ↓ HTTP
+NestJS tool API → Prisma → SQLite (read trip / mutate booking / append event)
   ↓
-Gradium / STT / realtime voice component
-  ↓
-Gemini agent with tools
-  ↓
-NestJS tool API
-  ↓
-Prisma → SQLite (read trip / mutate booking / append event)
-  ↓
-WebSocket/SSE event
-  ↓
-Web UI updates live
+VoiceActionEvent persisted
+  ↓ SSE
+Web UI updates live (parallel channel to the audio room)
+
+Agent reply path:
+Gemini text → Gradium TTS (custom LiveKit plugin) → LiveKit Cloud → Browser
 ```
+
+**Stack note.** Voice-agent uses LiveKit Agents' Node SDK
+(`@livekit/agents`), so it stays a yarn workspace and imports shared
+Zod schemas from `@echoaway/types` directly. ai-coustics integrates via
+[`@livekit/plugins-ai-coustics`](https://github.com/livekit/plugins-ai-coustics-node);
+Gradium needs a small custom TTS class (no off-the-shelf plugin). First
+install pulls LiveKit's `@livekit/rtc-node` native binary.
 
 ---
 
@@ -710,6 +724,7 @@ Acceptance criteria:
   - Updates ComponentBooking.status / Component.status
   - Emits VoiceActionEvent { type: 'change_confirmed', payload: { quote } }
 - [ ] Implement `POST /support-logs`
+- [ ] Implement `POST /voice/token` — mints a LiveKit access token for the web app to join the agent's room (uses `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` from root `.env`)
 - [ ] Implement catalog read endpoints (5 from §5)
 - [ ] Validate all request bodies via Zod from /packages/types
 - [ ] OpenAPI / Swagger or curl-based README docs
@@ -764,7 +779,8 @@ Acceptance criteria:
 - [ ] Add trip overview card (reads real seeded trip)
 - [ ] Add flight delay card (reads disruption + flight component)
 - [ ] Add hotel booking card (reads accommodation component + booking)
-- [ ] Add "Talk to Away" voice button / browser microphone entry point
+- [ ] Install `@livekit/components-react` + `livekit-client` in `apps/web`; wrap LiveKit primitives behind a `/packages/app` hook so `apps/mobile` can reuse later
+- [ ] Add "Talk to Away" voice button (in Phase 5 it joins the LiveKit room; in Phase 3 it can stay a placeholder that triggers debug events)
 - [ ] Add assistant status states: idle, listening, thinking, suggesting, confirmed
 - [ ] Add live action card component (renders ChangeQuote)
 - [ ] Add confirmation modal/card
@@ -867,152 +883,295 @@ Acceptance criteria:
 
 ---
 
-# Phase 5 — Voice-agent skeleton with Gemini tool calling
+# Phase 5 — Voice-agent skeleton: LiveKit Agent + Gemini tool calling
 
-**Timebox:** Saturday 20:30–22:30
+**Timebox:** Saturday 20:30–23:30 (extended; foundation for Phase 6 & 7)
+
+This phase grows the Phase-1 Node placeholder at `apps/voice-agent/`
+into a working LiveKit Agent built on `@livekit/agents`. Voice-agent
+stays a yarn workspace and imports `@echoaway/types`.
 
 ### Checklist
 
-- [ ] Create agent system prompt
-- [ ] Define tool schemas mirroring `packages/types`
-- [ ] Connect Gemini API
-- [ ] Implement tool calls against NestJS backend
-- [ ] Add transcript logging via VoiceSession + VoiceActionEvent
-- [ ] Add deterministic fallback demo script
-- [ ] Add CLI mode for testing typed user messages
-- [ ] Commit: `feat: add gemini tool-calling voice agent skeleton`
+#### Foundation (LiveKit Cloud + Node agent)
+
+- [ ] Create LiveKit Cloud account + project at <https://cloud.livekit.io/>
+- [ ] Install LiveKit CLI (`brew install livekit/livekit/livekit-cli` or platform equivalent)
+- [ ] `lk cloud auth` from the project root
+- [ ] Add `@livekit/agents`, `@livekit/rtc-node`, `livekit-server-sdk` to `apps/voice-agent`
+- [ ] Optional: bootstrap from `lk app create --template voice-pipeline-agent-node` and merge into the existing workspace structure
+- [ ] LiveKit env vars are already in `.env.example` (`LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`); confirm `GEMINI_API_KEY` is filled
+- [ ] Update `yarn dev:voice-agent` to start the agent in dev mode
+
+#### Web ↔ Agent room wiring
+
+- [ ] In `apps/backend`: implement `POST /voice/token` (mints LiveKit access tokens — already in Phase 2D)
+- [ ] In `apps/web`: "Talk to Away" button calls `/voice/token`, then joins the agent's room via `livekit-client`
+- [ ] Hide LiveKit primitives behind `/packages/app` hooks (`useVoiceRoom`) so `apps/mobile` can reuse later
+- [ ] Render the agent's audio track in the web app
+
+#### Agent behavior
+
+- [ ] Wire Gemini via the official Google Gen AI Node SDK (`@google/genai` or `@google/generative-ai`, whichever LiveKit Agents documents) as the LLM
+- [ ] Define LiveKit agent tools mirroring §5 — each tool is a thin `fetch` wrapper around the NestJS backend; reuse Zod input schemas from `@echoaway/types` for tool definitions:
+  - `getTripByPhone(phoneNumber)`
+  - `getTripDisruptions(tripId)`
+  - `quoteHotelCheckInChange(componentId, newCheckInDate)`
+  - `confirmHotelCheckInChange(componentId, newCheckInDate)`
+  - `createSupportLog(tripId, sessionId, transcript, summary, actions)`
+  - `searchTravelContext(query)` — stub here; Tavily lands in Phase 8
+  - `listAccommodations(destinationId)`
+- [ ] System prompt: calm, human, concise, premium concierge; ALWAYS asks for confirmation before executing changes; never claims a real supplier was changed
+- [ ] Voice session lifecycle (HTTP to backend):
+  - On room join → POST `VoiceSession`, emit `session_started`
+  - On each tool call → emit `assistant_thinking` then the tool's resulting event
+  - On change suggested → emit `change_suggested`
+  - On user "yes" → emit `confirmation_required` then `change_confirmed`
+  - On disconnect → emit `session_ended`, POST `createSupportLog`
+- [ ] STT / TTS in this phase: keep LiveKit defaults — Gradium custom plugin lands in Phase 7
+- [ ] No ai-coustics yet — that's Phase 6
+
+#### Deterministic fallback (critical for demo backup)
+
+- [ ] Node script (`yarn workspace @echoaway/voice-agent replay`) that takes a fixture transcript ("my flight is delayed, can I move my hotel check-in to tomorrow?" → "yes confirm") and walks the same tool sequence **without LiveKit or Gemini** in the loop. Persists identical `VoiceActionEvent` rows so the web UI behaves the same.
+
+#### Verification
+
+- [ ] `yarn dev:voice-agent` starts the agent and connects to LiveKit Cloud
+- [ ] Pressing "Talk to Away" in the web app joins the same room as the agent
+- [ ] Speaking the demo prompt triggers `quoteHotelCheckInChange` via Gemini tool calling
+- [ ] Web UI updates via SSE within ~1s of each `VoiceActionEvent`
+- [ ] Replay script works fully offline with the backend running and produces an identical event sequence
+- [ ] Commit: `feat(voice-agent): livekit + gemini tool-calling skeleton`
 
 ### Agent prompt
 
 ```txt
-Build the voice-agent service for EchoAway Voice Concierge.
+Grow the Phase-1 placeholder at apps/voice-agent into a LiveKit Agent built
+on @livekit/agents (Node + TypeScript). This phase is the foundation for
+Phase 6 (ai-coustics plugin) and Phase 7 (Gradium TTS plugin); both build
+on top of the agent skeleton you create here.
 
-For now, implement a text-based agent loop first so we can test tool
-calling without audio.
+Foundation work first — don't skip:
+1. Confirm a LiveKit Cloud project exists; run `lk cloud auth` locally.
+2. Add @livekit/agents, @livekit/rtc-node, livekit-server-sdk to
+   apps/voice-agent (it stays a yarn workspace).
+3. Optionally bootstrap with `lk app create --template voice-pipeline-agent-node`
+   and merge the result into the existing workspace.
+4. Confirm LIVEKIT_URL / LIVEKIT_API_KEY / LIVEKIT_API_SECRET / GEMINI_API_KEY
+   are present in the root .env (already in .env.example).
 
-Use Gemini as the LLM. The agent has these tools (must match the API in
-PLAN.md §5):
+Voice agent behavior (matches PLAN.md §5 tool API):
+- Tools listed in the checklist above; each is a thin fetch wrapper around the
+  NestJS endpoints. The agent never talks to the DB directly. Reuse Zod input
+  schemas from @echoaway/types for tool definitions.
+- LLM: Gemini via the Google Gen AI Node SDK. Configure in the @livekit/agents
+  Agent definition.
+- STT/TTS: LiveKit defaults for now (Gradium custom plugin lands in Phase 7).
+- ai-coustics: NOT in this phase (Phase 6).
+- Personality: calm, human, premium concierge; ALWAYS asks for confirmation
+  before executing changes; never claims a real supplier was changed.
 
-- getTripByPhone(phoneNumber)
-- getTripDisruptions(tripId)
-- quoteHotelCheckInChange(componentId, newCheckInDate)
-- confirmHotelCheckInChange(componentId, newCheckInDate)
-- createSupportLog(tripId, sessionId, transcript, summary, actions)
-- searchTravelContext(query)   ← Phase 8 will plug Tavily; stub for now
-- listAccommodations(destinationId)
+Lifecycle (HTTP calls to NestJS backend, NOT direct DB writes):
+- On room join → POST VoiceSession, emit `session_started` VoiceActionEvent
+- On tool call → emit `assistant_thinking` then the tool's resulting event
+- On change suggested → emit `change_suggested`
+- On user "yes" → emit `confirmation_required` then `change_confirmed`
+- On disconnect → emit `session_ended` and POST createSupportLog
 
-Agent personality:
-- calm, human, concise
-- sounds like a premium travel concierge
-- ALWAYS asks for confirmation before executing changes
-- Never claims a real supplier was changed; this is a demo / mock booking backend
+Web side:
+- Ensure @livekit/components-react + livekit-client are installed in apps/web
+  (Phase 3).
+- "Talk to Away" calls POST /voice/token (Phase 2D), then joins the room
+  using VITE_LIVEKIT_URL.
+- Hide LiveKit primitives behind /packages/app hooks (useVoiceRoom) so
+  apps/mobile can reuse later.
 
-Voice session lifecycle:
-- On session start: POST a VoiceSession row, emit `session_started` event
-- On every tool call: emit `assistant_thinking` then the tool's resulting event
-- On change suggested: emit `change_suggested`
-- On user confirmation: emit `confirmation_required` then `change_confirmed`
-- On hangup: emit `session_ended` and call createSupportLog
+Deterministic fallback (critical for demo):
+- `yarn workspace @echoaway/voice-agent replay` — a Node script that takes a
+  fixture transcript and walks the same tool sequence without LiveKit or
+  Gemini. Used as a stable demo recording path if voice flakes during the
+  live pitch.
 
-CLI test mode:
-- user types text, agent responds, tools fire against the running backend,
-  events propagate to the web UI
+Reference docs:
+- LiveKit Agents Node SDK: https://docs.livekit.io/agents/
+- Gemini Node SDK: https://ai.google.dev/gemini-api/docs/quickstart?lang=node
 
 Acceptance criteria:
-- Text input "my flight is delayed, can I move my hotel check-in to tomorrow?" triggers quoteHotelCheckInChange
-- Agent asks for confirmation
-- Text input "yes confirm" triggers confirmHotelCheckInChange
-- Web UI updates live (Phase 4 wiring)
-- Support log is created after confirmation
-- A deterministic fallback script can replay the same flow without an LLM call (for offline demo backup)
+- yarn dev:voice-agent starts the agent and connects to LiveKit Cloud
+- Web app's "Talk to Away" joins the same room as the agent
+- Speaking the demo prompt triggers quoteHotelCheckInChange via Gemini
+- Web UI updates via SSE within 1s of each VoiceActionEvent
+- Replay script works offline and produces identical VoiceActionEvent sequence
 ```
 
 ---
 
-# Phase 6 — ai-coustics and noisy environment demo
+# Phase 6 — ai-coustics LiveKit plugin (noise cancellation)
 
-**Timebox:** Saturday 22:30–00:30 (Sunday)
+**Timebox:** Saturday 23:30–01:30 (Sunday)
+
+The LiveKit Agent skeleton from Phase 5 is the prerequisite. We add
+[`@livekit/plugins-ai-coustics`](https://github.com/livekit/plugins-ai-coustics-node)
+(Node) to the agent's input audio pipeline. The vendored
+[`docs/ai-coustics/livekit-quickstart.md`](./docs/ai-coustics/livekit-quickstart.md)
+documents the Python plugin but the wiring concept is the same.
 
 ### Checklist
 
-- [ ] Install / test ai-coustics SDK or LiveKit plugin
-- [ ] Prepare airport noise audio file
-- [ ] Create clean vs noisy test sample
-- [ ] Route audio through ai-coustics if possible
-- [ ] Show audio enhancement status in UI (read from VoiceSession.audioMetric)
-- [ ] Persist AudioIntelligenceMetric on session end
-- [ ] Commit: `feat: add noisy audio demo and audio intelligence metric`
+#### Plugin install + wire-up
+
+- [ ] Add `@livekit/plugins-ai-coustics` to `apps/voice-agent` (npm: <https://www.npmjs.com/package/@livekit/plugins-ai-coustics>)
+- [ ] Verify auth requirement on install: the Python plugin needs only LiveKit Cloud auth; confirm the same for the Node plugin. If a separate ai-coustics key is needed, fill `AICOUSTICS_API_KEY` in `.env` (already scaffolded)
+- [ ] Wire the plugin into the agent's input `AudioStream` per the plugin README
+- [ ] Confirm the plugin loads (LiveKit Agents debug logs show ai-coustics in the chain)
+
+#### Noisy demo source
+
+- [ ] Vendor an airport-noise audio file at `apps/voice-agent/fixtures/airport-noise.wav` (royalty-free or self-recorded)
+- [ ] **Path A (preferred):** web app overlays the noise file as a virtual mic source via the LiveKit Browser SDK while the user speaks; agent processes through ai-coustics
+- [ ] **Path B (fallback, see Risk Management):** ai-coustics Node SDK file processing using `docs/ai-coustics/example_file-processing_node.js` as the reference — pre-process a noisy sample offline, ship the cleaned audio + a synthesized transcript
+
+#### Audio intelligence metric
+
+- [ ] Compute and persist `VoiceSession.audioMetric` per `AudioIntelligenceMetric` (docs/component-data-shapes.md §5):
+  - `scenario: 'airport_noise'`
+  - `inputSignalToNoiseRatio` (estimated from raw audio energy)
+  - `enhancedSignalToNoiseRatio` (estimated from cleaned audio energy)
+  - `transcriptQuality` (average STT confidence over the session, fallback 0.85 if unavailable)
+  - `taskCompleted`, `correctTripIdentified`, `correctActionSuggested`, `confirmationRequested` (booleans set by the agent based on lifecycle events)
+  - `finalScore` per §8 weighting
+- [ ] Web UI reads `VoiceSession.audioMetric` and renders the audio clarity card (component already scaffolded in Phase 3)
+
+#### Verification
+
+- [ ] Demo visibly references airport noise (toggle in the web app)
+- [ ] UI shows audio was enhanced; metric numbers look credible
+- [ ] `VoiceSession.audioMetric` row exists after the demo runs
+- [ ] `apps/voice-agent/README.md` documents the ai-coustics plugin and the auth model
+- [ ] Commit: `feat(voice-agent): ai-coustics plugin + audio intelligence metric`
 
 ### Agent prompt
 
 ```txt
-Add the noisy-environment demo for the telli & ai-coustics track.
+Add the @livekit/plugins-ai-coustics Node plugin to the Phase-5 voice agent
+and wire up the audio intelligence metric.
 
-Goal: Show that EchoAway Voice Concierge works in real-world travel
-chaos, specifically airport noise.
+References:
+- Plugin source: https://github.com/livekit/plugins-ai-coustics-node
+- docs/ai-coustics/livekit-quickstart.md (Python flavor — wiring concept is
+  the same; pattern-match to the Node plugin's README)
+- docs/ai-coustics/index.md
 
-Tasks:
-- integrate ai-coustics SDK or LiveKit ai-coustics plugin if available
-- prepare a demo mode with airport background noise
-- compute and persist VoiceSession.audioMetric (AudioIntelligenceMetric shape from docs/component-data-shapes.md §5):
-  - scenario: 'airport_noise'
-  - inputSignalToNoiseRatio
-  - enhancedSignalToNoiseRatio
-  - transcriptQuality (0..1)
-  - taskCompleted, correctTripIdentified, correctActionSuggested, confirmationRequested
-  - finalScore (0..100, computed per PLAN §8)
+Steps:
+1. Install @livekit/plugins-ai-coustics in apps/voice-agent.
+2. On install, verify whether a separate ai-coustics API key is required.
+   Per the Python plugin docs, LiveKit Cloud auth alone is sufficient. If
+   the Node plugin behaves the same, leave AICOUSTICS_API_KEY blank.
+   Otherwise, fill it from https://developers.ai-coustics.io.
+3. Wire the plugin into the Agent's input AudioStream per the plugin README.
+4. Vendor a short airport-noise WAV at apps/voice-agent/fixtures/airport-noise.wav.
+5. Web app: add a "noisy environment" toggle that mixes the noise file into
+   the LiveKit room as a virtual mic source while the user speaks.
+6. On session end, compute and persist VoiceSession.audioMetric per
+   AudioIntelligenceMetric (docs/component-data-shapes.md §5):
+   - scenario, inputSNR, enhancedSNR, transcriptQuality, taskCompleted,
+     correctTripIdentified, correctActionSuggested, confirmationRequested,
+     finalScore (PLAN §8 formula)
+7. Web UI reads VoiceSession.audioMetric and renders the audio clarity card.
 
-Web UI reads VoiceSession.audioMetric and shows the audio clarity card.
-
-If full realtime integration is too slow, create a credible fallback:
-- pre-record one noisy sample
-- process/enhance it
-- show before/after transcript quality
-- still connect the final transcript to the agent
+Fallback (only if the plugin doesn't integrate cleanly in the time budget):
+- Use the ai-coustics Node SDK directly via docs/ai-coustics/example_file-processing_node.js
+- Pre-process the noisy fixture offline; ship the enhanced audio + a
+  hand-written transcript through the same agent loop
+- Persist the same audioMetric shape (computed from the offline run)
 
 Acceptance criteria:
-- Demo visibly references airport noise
-- UI shows that noisy audio was enhanced
+- Demo visibly references airport noise (toggle in the web UI)
+- ai-coustics processes audio in real time via the LiveKit plugin (or the
+  documented Node SDK fallback)
 - VoiceSession.audioMetric is persisted with realistic numbers
-- README explains how ai-coustics is used
+- apps/voice-agent/README.md explains the integration
 ```
 
 ---
 
-# Phase 7 — Gradium integration
+# Phase 7 — Gradium TTS via custom LiveKit plugin
 
-**Timebox:** Sunday 00:30–02:00
+**Timebox:** Sunday 01:30–03:00
+
+Gradium has no off-the-shelf LiveKit plugin, so we implement a thin
+custom TTS class that conforms to LiveKit Agents' TTS interface and
+streams from Gradium's TTS WebSocket. The default LiveKit TTS stays
+one env flag away as a fallback.
+
+References: [`docs/gradium/index.md`](./docs/gradium/index.md),
+[`docs/gradium/tts-websocket.md`](./docs/gradium/tts-websocket.md),
+[`docs/gradium/get-voices.md`](./docs/gradium/get-voices.md).
 
 ### Checklist
 
-- [ ] Create Gradium account / org
-- [ ] Get API access
-- [ ] Use Gradium for voice component where feasible
-- [ ] Prefer using Gradium for TTS or realtime voice response
-- [ ] Add Gradium usage to README
-- [ ] Add environment variables
-- [ ] Commit: `feat: integrate gradium voice component`
+#### Account + voice selection
+
+- [ ] Create Gradium org; obtain API key
+- [ ] Add `GRADIUM_API_KEY` and `GRADIUM_VOICE_UID` to root `.env.example`
+- [ ] List available voices via `GET /voices/` (docs/gradium/get-voices.md); pick a calm, clear, English-capable voice; pin its UID
+
+#### Custom LiveKit TTS plugin
+
+- [ ] Implement a TypeScript TTS class in `apps/voice-agent` that conforms to `@livekit/agents`' TTS interface (uses `ws` for the WebSocket, Buffer for PCM frames)
+- [ ] Open `wss://api.gradium.ai/api/speech/tts` on agent start; auth via `x-api-key: $GRADIUM_API_KEY` header on the WS upgrade
+- [ ] On `synthesize(text)`: send the payload, stream returned audio chunks back to the framework in the expected format (PCM16 mono — verify against `@livekit/agents` docs)
+- [ ] Pre-warm the WS connection on agent start to minimize first-token latency
+- [ ] Handle WS reconnect on drop
+- [ ] Wire the new TTS into the Agent definition; gate behind `USE_GRADIUM_TTS=true` with the LiveKit default as the fallback path
+
+#### Optional STT
+
+- [ ] **Only if time allows:** mirror the same approach for Gradium STT via `wss://api.gradium.ai/api/speech/asr` (docs/gradium/stt-websocket.md). Otherwise leave LiveKit's default STT.
+
+#### Documentation
+
+- [ ] Document the voice + plugin in `apps/voice-agent/README.md`
+- [ ] Update root README's Partner technologies row for Gradium ("Realtime voice / TTS — custom LiveKit plugin")
+- [ ] Commit: `feat(voice-agent): gradium tts via custom livekit plugin`
 
 ### Agent prompt
 
 ```txt
-Integrate Gradium into the EchoAway Voice Concierge demo.
+Implement a custom TTS plugin for LiveKit Agents that calls Gradium's TTS
+WebSocket. The Phase-5 agent currently uses LiveKit's default TTS — replace
+that path with the Gradium plugin, but keep the default reachable via an env
+flag for fallback.
 
-Use Gradium for one meaningful voice-AI component. Prefer:
-- TTS response generation for the assistant voice, or
-- realtime voice interaction if feasible in time
+References:
+- docs/gradium/index.md
+- docs/gradium/tts-websocket.md
+- docs/gradium/get-voices.md
 
-Keep the integration minimal but real. Add clear README documentation:
-- what Gradium is used for
-- where the code is located
-- how to configure the API key
-- how it appears in the demo
+Steps:
+1. Add GRADIUM_API_KEY and GRADIUM_VOICE_UID to root .env.example.
+2. Pre-flight: GET /voices/ to list available voices. Pick one with a calm,
+   clear English voice. Pin the UID as GRADIUM_VOICE_UID.
+3. Implement a TypeScript TTS class conforming to @livekit/agents' TTS interface:
+   - Open wss://api.gradium.ai/api/speech/tts on agent start (use the `ws` package)
+   - Auth: x-api-key header on the WS upgrade
+   - On synthesize(text): send payload, stream audio chunks back to LiveKit
+     in the framework's expected format (PCM16 mono — verify against
+     @livekit/agents docs)
+   - Pre-warm WS on agent start; reconnect on drop
+4. Wire into the Agent definition, gated behind USE_GRADIUM_TTS=true.
+   Leaving USE_GRADIUM_TTS=false reverts to the LiveKit default — same code
+   path, no rebuild.
+5. (Optional, only if time allows) Add a parallel STT plugin via the
+   wss://api.gradium.ai/api/speech/asr endpoint (docs/gradium/stt-websocket.md).
+6. Update apps/voice-agent/README.md and the root README's partner-tech row.
 
 Acceptance criteria:
-- project genuinely calls Gradium API or SDK
-- Gradium usage is visible in code
-- README explicitly lists Gradium as a partner technology used
-- submission can honestly opt into the Gradium side challenge
+- Agent speaks responses through Gradium-generated audio in the LiveKit room
+- First syllable arrives within ~1.5s of agent text generation (pre-warmed WS)
+- USE_GRADIUM_TTS=false falls back to LiveKit default TTS without code changes
+- README clearly states Gradium as the side-challenge target with a real API call
 ```
 
 ---
@@ -1023,21 +1182,25 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Add Tavily API key env var
-- [ ] Implement `searchTravelContext(query)` in voice-agent (replaces stub from Phase 5)
-- [ ] Use Tavily for destination/policy enrichment
-- [ ] In demo, agent can say "I also checked local arrival guidance"
-- [ ] Add README docs
-- [ ] Commit: `feat: add tavily travel context tool`
+- [ ] `TAVILY_API_KEY` is already in `.env.example`
+- [ ] Add the Tavily Node SDK to `apps/voice-agent` (per `docs/tavily/javascript_sdk_reference.md` — confirm the npm package name during install)
+- [ ] Implement `searchTravelContext(query)` as a LiveKit agent tool that wraps Tavily Search (docs/tavily/rest_api_search.md). Replaces the Phase-5 stub.
+- [ ] Use Tavily for destination/policy enrichment (BCN arrival hall, Spanish hotel check-in norms, Vueling delay context)
+- [ ] In the demo, the agent can mention "I also checked local arrival guidance"
+- [ ] Update `apps/voice-agent/README.md` and the root README partner-tech row
+- [ ] Commit: `feat(voice-agent): tavily search travel context tool`
 
 ### Agent prompt
 
 ```txt
-Add Tavily as a travel context enrichment tool.
+Replace the Phase-5 searchTravelContext stub with a real Tavily call inside
+the LiveKit agent.
 
-Replace the searchTravelContext stub in the voice-agent service with a real Tavily call.
+Reference: docs/tavily/index.md, docs/tavily/rest_api_search.md, and
+docs/tavily/javascript_sdk_reference.md.
+Use the official Tavily Node SDK (matches the agent's Node + TS stack).
 
-Use Tavily to search for lightweight real-time travel context, such as:
+Use Tavily for lightweight real-time travel context:
 - destination arrival information (e.g., BCN airport arrival hall layout)
 - hotel check-in norms in Spain
 - airline delay support context for Vueling
@@ -1050,10 +1213,10 @@ In the demo, the agent may say:
 depends on your hotel policy, which allows this mock change for free."
 
 Acceptance criteria:
-- Tavily is called from code
-- Tavily result can be included in agent context
+- Tavily Search is called from the agent's tool layer
+- Tavily result is included in agent context for the response
 - README documents Tavily usage
-- this counts as one of the 3 partner technologies
+- counts as one of the 3 required partner technologies
 ```
 
 ---
@@ -1068,7 +1231,7 @@ Acceptance criteria:
 - [ ] Fix only blocking bugs
 - [ ] Add final README screenshots / GIFs if possible
 - [ ] Add "Partner technologies used" section
-- [ ] Add "How to run locally" section (incl. `yarn seed && yarn seed:demo`)
+- [ ] Add "How to run locally" section (incl. `yarn seed && yarn seed:demo`, plus `lk cloud auth` for `apps/voice-agent` and the LiveKit env vars)
 - [ ] Add "Demo flow" section
 - [ ] Add "Audio intelligence metric" section
 - [ ] Add "Future EchoAway integration" section
@@ -1092,12 +1255,15 @@ README must include:
 - architecture diagram + link to docs/erm.md
 - data model summary + link to docs/data-model.md
 - partner technologies used:
-  - Google DeepMind / Gemini
-  - Gradium
-  - Tavily
-  - ai-coustics for the track-specific audio layer
-- setup instructions including yarn install + yarn seed + yarn seed:demo
-- environment variables
+  - Google DeepMind / Gemini (Google Gen AI Node SDK inside the LiveKit agent)
+  - Gradium (TTS via custom @livekit/agents TTS class)
+  - Tavily (Search via Tavily Node SDK)
+  - ai-coustics for the track-specific audio layer (@livekit/plugins-ai-coustics)
+  - LiveKit Cloud (managed media + Agents framework — substrate for the voice loop)
+- setup instructions:
+  - yarn install + yarn db:migrate + yarn seed + yarn seed:demo
+  - LiveKit Cloud account + `lk cloud auth` for apps/voice-agent
+- environment variables (LiveKit, Gemini, Gradium, Tavily, plus DATABASE_URL)
 - API docs (link to apps/backend/README.md)
 - audio intelligence metric
 - known limitations
@@ -1206,20 +1372,38 @@ Fallback:
 - [ ] Manually feed transcript into agent
 - [ ] Still show UI live updates from backend events
 
-### Biggest risk: ai-coustics integration unstable
+### Biggest risk: ai-coustics LiveKit plugin integration unstable
+
+Fallback (the second of the two paths in `docs/ai-coustics/index.md`):
+
+- [ ] Switch to ai-coustics Node SDK file processing using
+      `docs/ai-coustics/example_file-processing_node.js` as the starting point
+- [ ] Pre-process a vendored airport-noise WAV offline; ship the cleaned audio
+      and a hand-written transcript through the same agent loop
+- [ ] Show before/after waveform + computed `audioMetric` in the UI
+- [ ] Document the path switch in `apps/voice-agent/README.md`
+
+### Biggest risk: Gradium custom plugin unstable
 
 Fallback:
 
-- [ ] Show before/after transcript demo
-- [ ] Document integration attempt clearly
-- [ ] Use track story around task completion under noise
+- [ ] Set `USE_GRADIUM_TTS=false` to revert to LiveKit's default TTS — same
+      code path, no rebuild
+- [ ] Keep one isolated Gradium TTS call alive (e.g., the welcome message via
+      the TTS POST endpoint, `docs/gradium/tts-post.md`) so the side-challenge
+      submission still has a real Gradium API call in code
+- [ ] Keep the main demo stable
 
-### Biggest risk: Gradium integration unstable
+### Biggest risk: voice integration (LiveKit + Gemini) overruns
 
 Fallback:
 
-- [ ] Use Gradium for a small isolated response generation / TTS call
-- [ ] Keep main demo stable with text/standard voice
+- [ ] Run the deterministic Node replay script from Phase 5
+      (`yarn workspace @echoaway/voice-agent replay`) to drive the demo
+      without LiveKit or Gemini in the loop
+- [ ] Web UI behavior is identical — it subscribes to `VoiceActionEvent`s via
+      SSE regardless of how those events are produced
+- [ ] Use a pre-recorded narration as the audio track during the Loom demo
 
 ### Biggest risk: Prisma seed scripts brittle
 
