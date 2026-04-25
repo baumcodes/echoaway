@@ -14,7 +14,9 @@
     "seed:catalog": "tsx prisma/seed/index.ts catalog",
     "seed:demo": "tsx prisma/seed/index.ts demo",
     "seed:demo:reset": "tsx prisma/seed/index.ts demo --reset",
-    "sanity": "tsx prisma/seed/sanity.ts"
+    "sanity": "tsx prisma/seed/sanity.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
@@ -27,16 +29,23 @@
     "@prisma/client": "^5.22.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
+    "livekit-server-sdk": "^2.9.5",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.4.0",
+    "@nestjs/testing": "^10.4.0",
+    "@swc/core": "^1.10.0",
     "@types/node": "^20.14.0",
+    "@types/supertest": "^6.0.2",
     "dotenv-cli": "^7.4.2",
     "prisma": "^5.22.0",
+    "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.16.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "unplugin-swc": "^1.5.1",
+    "vitest": "^2.1.8"
   }
 }

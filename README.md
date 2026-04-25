@@ -122,7 +122,9 @@ yarn seed:demo        # catalog + demo trip (demo-trip step lands in Phase 2C)
 
 # checks
 yarn typecheck        # tsc --noEmit across every workspace
-yarn test             # @echoaway/types Zod round-trip
+yarn test             # types Zod round-trip + backend e2e (~10s)
+yarn test:backend     # backend e2e only (vitest + supertest on a separate test.db)
+yarn test:types       # types Zod round-trip only
 yarn build            # build every workspace
 ```
 

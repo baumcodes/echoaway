@@ -709,26 +709,26 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Implement `GET /health`
-- [ ] Implement `GET /trips/:tripId` (with components, segments, bookings, events, traveler list)
-- [ ] Implement `GET /trips/by-phone/:phoneNumber`
-- [ ] Implement `GET /trips/:tripId/disruptions`
-- [ ] Implement `POST /trips/:tripId/hotel/check-in/quote-change`
+- [x] Implement `GET /health`
+- [x] Implement `GET /trips/:tripId` (with components, segments, bookings, events, traveler list)
+- [x] Implement `GET /trips/by-phone/:phoneNumber`
+- [x] Implement `GET /trips/:tripId/disruptions`
+- [x] Implement `POST /trips/:tripId/hotel/check-in/quote-change`
   - Reads ComponentBooking.policy
   - Computes proposed new check-in date and fee
   - Returns ChangeQuote shape (per docs/component-data-shapes.md §6)
   - Emits VoiceActionEvent { type: 'change_suggested', payload: { quote } }
-- [ ] Implement `POST /trips/:tripId/hotel/check-in/confirm-change`
+- [x] Implement `POST /trips/:tripId/hotel/check-in/confirm-change`
   - Mutates ComponentBooking.data.checkInDate
   - Updates ComponentEvent(check_in).startsAt
   - Updates ComponentBooking.status / Component.status
   - Emits VoiceActionEvent { type: 'change_confirmed', payload: { quote } }
-- [ ] Implement `POST /support-logs`
-- [ ] Implement `POST /voice/token` — mints a LiveKit access token for the web app to join the agent's room (uses `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` from root `.env`)
-- [ ] Implement catalog read endpoints (5 from §5)
-- [ ] Validate all request bodies via Zod from /packages/types
-- [ ] OpenAPI / Swagger or curl-based README docs
-- [ ] Commit: `feat(backend): tool API on prisma`
+- [x] Implement `POST /support-logs`
+- [x] Implement `POST /voice/token` — mints a LiveKit access token for the web app to join the agent's room (uses `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` from root `.env`)
+- [x] Implement catalog read endpoints (5 from §5)
+- [x] Validate all request bodies via Zod from /packages/types
+- [x] OpenAPI / Swagger or curl-based README docs
+- [x] Commit: `feat(backend): tool API on prisma`
 
 ### Agent prompt
 
