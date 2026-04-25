@@ -143,7 +143,7 @@ const suppliers: SupplierSeed[] = [
   { id: 'sup-getyourguide',      name: 'GetYourGuide',      category: 'activity' },
   { id: 'sup-tiqets',            name: 'Tiqets',            category: 'activity' },
   { id: 'sup-viator',            name: 'Viator',            category: 'activity' },
-  { id: 'sup-iberia-ground', name: 'Iberia Ground Transfers', category: 'transfer' },
+  { id: 'sup-iberia-ground',     name: 'Iberia Ground Transfers', category: 'transfer' },
   { id: 'sup-airline-aggregator', name: 'Airline Aggregator', category: 'flight' },
 ]
 ```
