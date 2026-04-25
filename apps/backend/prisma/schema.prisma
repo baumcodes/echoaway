@@ -1,0 +1,437 @@
+// EchoAway Prisma schema — mirrors docs/erm.md exactly.
+//
+// Notes for future agents:
+//   - SQLite has no native enums, so every enum-typed column is `String`.
+//     The canonical enum values live in @echoaway/types/enums and are
+//     enforced at app/seed/tool-call boundaries via Zod.
+//   - All money is in minor units (cents); currency stored next to it.
+//   - Component → catalog product is "polymorphic by nullable FK":
+//     exactly one of accommodationProductId / activityProductId /
+//     flightRouteProductId / groundTransferProductId is non-null,
+//     matching `Component.type`. SQLite does not enforce this.
+//   - JSON columns: amenities, coordinates, daysOfWeek, openingHours,
+//     schedule, defaultModificationPolicy, images, suggestedActions,
+//     audioMetric, payload, location, data, policy, tags. Validated by
+//     Zod schemas in @echoaway/types/schemas.
+//   - Cascade deletes:
+//       Trip → TripSegment, Component, TripTraveler, Disruption,
+//              VoiceSession, SupportLog
+//       Component → ComponentBooking, ComponentEvent
+//       VoiceSession → VoiceActionEvent
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// CATALOG LAYER
+// ============================================================
+
+model Destination {
+  id                  String   @id
+  parentDestinationId String?
+  parent              Destination?  @relation("DestinationHierarchy", fields: [parentDestinationId], references: [id])
+  children            Destination[] @relation("DestinationHierarchy")
+
+  type         String  // DestinationType
+  name         String
+  countryCode  String
+  countryName  String
+  timezone     String
+  coordinates  String?
+  summary      String?
+  tags         String?
+
+  airports               Airport[]
+  accommodations         AccommodationProduct[]
+  activities             ActivityProduct[]
+  groundTransfers        GroundTransferProduct[]
+  tripSegments           TripSegment[]
+  componentEvents        ComponentEvent[]
+
+  @@index([parentDestinationId])
+  @@index([countryCode])
+}
+
+model Airport {
+  id                  String  @id
+  iataCode            String  @unique
+  icaoCode            String?
+  name                String
+  city                String
+  country             String
+  servesDestinationId String?
+  servesDestination   Destination? @relation(fields: [servesDestinationId], references: [id])
+  coordinates         String?
+
+  flightRouteLegsFrom    FlightRouteLeg[]      @relation("LegFromAirport")
+  flightRouteLegsTo      FlightRouteLeg[]      @relation("LegToAirport")
+  flightRoutesFrom       FlightRouteProduct[]  @relation("FlightRouteFromAirport")
+  flightRoutesTo         FlightRouteProduct[]  @relation("FlightRouteToAirport")
+  groundTransfersFrom    GroundTransferProduct[]
+
+  @@index([servesDestinationId])
+  @@index([city])
+}
+
+model Supplier {
+  id                  String  @id
+  name                String  @unique
+  category            String  // SupplierCategory
+  contractRefPattern  String?
+
+  accommodations  AccommodationProduct[]
+  activities      ActivityProduct[]
+  groundTransfers GroundTransferProduct[]
+  flightRoutes    FlightRouteProduct[]
+  bookings        ComponentBooking[]
+}
+
+model AccommodationProduct {
+  id                          String  @id
+  destinationId               String?
+  destination                 Destination? @relation(fields: [destinationId], references: [id])
+  supplierId                  String
+  supplier                    Supplier     @relation(fields: [supplierId], references: [id])
+
+  name                        String
+  stars                       Int
+  pricePerNightCents          Int
+  currency                    String  @default("EUR")
+  amenities                   String?
+  coordinates                 String?
+  description                 String?
+  defaultCancellationTerms    String?
+  defaultModificationPolicy   String?
+  images                      String?
+  contractRef                 String?
+
+  components               Component[]
+  groundTransferDropoffs   GroundTransferProduct[] @relation("TransferToAccommodation")
+
+  @@index([destinationId])
+  @@index([supplierId])
+}
+
+model ActivityProduct {
+  id            String  @id
+  destinationId String?
+  destination   Destination? @relation(fields: [destinationId], references: [id])
+  supplierId    String
+  supplier      Supplier     @relation(fields: [supplierId], references: [id])
+
+  name           String
+  tags           String?
+  durationHours  Float
+  openingHours   String?
+  priceCents     Int
+  currency       String  @default("EUR")
+  description    String?
+  contractRef    String?
+
+  components Component[]
+
+  @@index([destinationId])
+  @@index([supplierId])
+}
+
+model FlightRouteProduct {
+  id              String  @id
+  fromAirportId   String
+  fromAirport     Airport @relation("FlightRouteFromAirport", fields: [fromAirportId], references: [id])
+  toAirportId     String
+  toAirport       Airport @relation("FlightRouteToAirport", fields: [toAirportId], references: [id])
+  supplierId      String
+  supplier        Supplier @relation(fields: [supplierId], references: [id])
+
+  stops           Int
+  daysOfWeek      String
+  priceAvgCents   Int
+  currency        String  @default("EUR")
+  fareConditions  String  // 'non_refundable' | 'changeable_fee' | 'flexible'
+  durationHours   Float
+
+  legs       FlightRouteLeg[]
+  components Component[]
+
+  @@index([fromAirportId])
+  @@index([toAirportId])
+  @@index([supplierId])
+}
+
+model FlightRouteLeg {
+  id                   String  @id
+  flightRouteProductId String
+  flightRouteProduct   FlightRouteProduct @relation(fields: [flightRouteProductId], references: [id], onDelete: Cascade)
+
+  order         Int
+  fromAirportId String
+  fromAirport   Airport @relation("LegFromAirport", fields: [fromAirportId], references: [id])
+  toAirportId   String
+  toAirport     Airport @relation("LegToAirport", fields: [toAirportId], references: [id])
+  flightNo      String
+  airline       String
+  depTime       String  // local time "HH:mm"
+  arrTime       String
+
+  @@index([flightRouteProductId])
+  @@index([fromAirportId])
+  @@index([toAirportId])
+}
+
+model GroundTransferProduct {
+  id                          String  @id
+  fromAirportId               String?
+  fromAirport                 Airport? @relation(fields: [fromAirportId], references: [id])
+  toDestinationId             String?
+  toDestination               Destination? @relation(fields: [toDestinationId], references: [id])
+  toAccommodationProductId    String?
+  toAccommodation             AccommodationProduct? @relation("TransferToAccommodation", fields: [toAccommodationProductId], references: [id])
+  supplierId                  String
+  supplier                    Supplier @relation(fields: [supplierId], references: [id])
+
+  fromLabel        String
+  toLabel          String
+  mode             String  // TransferMode
+  durationMinutes  Int
+  priceCents       Int
+  currency         String  @default("EUR")
+  schedule         String?
+  description      String?
+  contractRef      String?
+
+  components Component[]
+
+  @@index([fromAirportId])
+  @@index([toDestinationId])
+  @@index([toAccommodationProductId])
+  @@index([supplierId])
+}
+
+// ============================================================
+// IDENTITY LAYER
+// ============================================================
+
+model Traveler {
+  id        String  @id
+  fullName  String
+  email     String?
+  phone     String? @unique
+  locale    String?
+
+  trips          TripTraveler[]
+  voiceSessions  VoiceSession[]
+}
+
+// ============================================================
+// TRIP LAYER
+// ============================================================
+
+model Trip {
+  id        String   @id
+  title     String
+  status    String   // TripStatus
+  startDate DateTime
+  endDate   DateTime
+  currency  String   @default("EUR")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  segments        TripSegment[]
+  components      Component[]
+  travelers       TripTraveler[]
+  disruptions     Disruption[]
+  voiceSessions   VoiceSession[]
+  supportLogs     SupportLog[]
+  voiceEvents     VoiceActionEvent[]
+
+  @@index([status])
+  @@index([startDate])
+}
+
+model TripTraveler {
+  tripId      String
+  trip        Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  travelerId  String
+  traveler    Traveler @relation(fields: [travelerId], references: [id], onDelete: Cascade)
+  role        String   // TripTravelerRole
+
+  @@id([tripId, travelerId])
+  @@index([travelerId])
+}
+
+model TripSegment {
+  id            String   @id
+  tripId        String
+  trip          Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id])
+  startDate     DateTime
+  endDate       DateTime
+  order         Int
+  title         String
+
+  components Component[]
+
+  @@index([tripId])
+  @@index([destinationId])
+}
+
+model Component {
+  id        String  @id
+  tripId    String
+  trip      Trip    @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  segmentId String?
+  segment   TripSegment? @relation(fields: [segmentId], references: [id])
+
+  type    String  // ComponentType
+  title   String
+  status  String  // ComponentStatus
+
+  // Polymorphic-by-nullable-FK: exactly one is non-null, matching `type`.
+  accommodationProductId   String?
+  accommodationProduct     AccommodationProduct?  @relation(fields: [accommodationProductId], references: [id])
+  activityProductId        String?
+  activityProduct          ActivityProduct?       @relation(fields: [activityProductId], references: [id])
+  flightRouteProductId     String?
+  flightRouteProduct       FlightRouteProduct?    @relation(fields: [flightRouteProductId], references: [id])
+  groundTransferProductId  String?
+  groundTransferProduct    GroundTransferProduct? @relation(fields: [groundTransferProductId], references: [id])
+
+  booking      ComponentBooking?
+  events       ComponentEvent[]
+  disruptions  Disruption[]
+  voiceEvents  VoiceActionEvent[]
+
+  @@index([tripId])
+  @@index([segmentId])
+  @@index([type])
+  @@index([accommodationProductId])
+  @@index([activityProductId])
+  @@index([flightRouteProductId])
+  @@index([groundTransferProductId])
+}
+
+model ComponentBooking {
+  id                          String   @id
+  componentId                 String   @unique
+  component                   Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+  supplierId                  String
+  supplier                    Supplier @relation(fields: [supplierId], references: [id])
+
+  supplierBookingReference    String
+  status                      String   // BookingStatus
+  priceCents                  Int
+  currency                    String   @default("EUR")
+  policy                      String
+  data                        String
+  bookedAt                    DateTime @default(now())
+  cancelledAt                 DateTime?
+
+  @@index([supplierId])
+  @@index([status])
+}
+
+model ComponentEvent {
+  id            String   @id
+  componentId   String
+  component     Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+  destinationId String?
+  destination   Destination? @relation(fields: [destinationId], references: [id])
+
+  type      String   // EventType
+  title     String
+  startsAt  DateTime
+  endsAt    DateTime?
+  timezone  String
+  location  String
+
+  @@index([componentId])
+  @@index([destinationId])
+  @@index([type])
+  @@index([startsAt])
+}
+
+// ============================================================
+// OPERATIONS LAYER
+// ============================================================
+
+model Disruption {
+  id                   String   @id
+  tripId               String
+  trip                 Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  affectedComponentId  String?
+  affectedComponent    Component? @relation(fields: [affectedComponentId], references: [id])
+
+  type             String  // DisruptionType
+  severity         String  // DisruptionSeverity
+  message          String
+  suggestedActions String
+  status           String  // DisruptionStatus
+  detectedAt       DateTime @default(now())
+  resolvedAt       DateTime?
+
+  @@index([tripId])
+  @@index([affectedComponentId])
+  @@index([status])
+}
+
+model VoiceSession {
+  id          String   @id
+  tripId      String
+  trip        Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  travelerId  String?
+  traveler    Traveler? @relation(fields: [travelerId], references: [id])
+
+  startedAt    DateTime @default(now())
+  endedAt      DateTime?
+  audioMetric  String?
+  status       String   // 'active' | 'ended' | 'failed'
+
+  events     VoiceActionEvent[]
+  supportLog SupportLog?
+
+  @@index([tripId])
+  @@index([travelerId])
+  @@index([status])
+}
+
+model VoiceActionEvent {
+  id          String   @id
+  sessionId   String
+  session     VoiceSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  tripId      String?
+  trip        Trip?    @relation(fields: [tripId], references: [id])
+  componentId String?
+  component   Component? @relation(fields: [componentId], references: [id])
+
+  type      String  // VoiceActionEventType
+  payload   String
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([tripId])
+  @@index([componentId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+model SupportLog {
+  id         String   @id
+  tripId     String
+  trip       Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  sessionId  String?  @unique
+  session    VoiceSession? @relation(fields: [sessionId], references: [id])
+
+  transcript String
+  summary    String
+  actions    String
+  createdAt  DateTime @default(now())
+
+  @@index([tripId])
+}

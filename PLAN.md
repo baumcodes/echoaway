@@ -122,10 +122,9 @@ At the same time, the web UI animates into a confirmation card:
 - [ ] Full customer support dashboard
 - [ ] Complex RAG / embeddings unless everything else is done
 
-
 ### Web-first implementation decision
 
-For the hackathon, the main UI target is **web**, not mobile. This reduces Expo/audio/device friction and makes the demo easier to record, debug, and present. The product should still *feel* like EchoAway's future mobile experience by rendering a phone-like app surface inside the browser.
+For the hackathon, the main UI target is **web**, not mobile. This reduces Expo/audio/device friction and makes the demo easier to record, debug, and present. The product should still _feel_ like EchoAway's future mobile experience by rendering a phone-like app surface inside the browser.
 
 The important architectural rule:
 
@@ -218,12 +217,12 @@ The data model is split into four layers; full design lives in:
 
 ### Layers at a glance
 
-| Layer | Entities | Source |
-|-------|----------|--------|
-| Catalog | `Destination`, `Airport`, `Supplier`, `AccommodationProduct`, `ActivityProduct`, `FlightRouteProduct`, `FlightRouteLeg`, `GroundTransferProduct` | Seeded from `dataset/*.json` |
-| Identity | `Traveler` | Seeded by demo |
-| Trip | `Trip`, `TripTraveler`, `TripSegment`, `Component`, `ComponentBooking`, `ComponentEvent` | Composed by `seed:demo-trip` |
-| Operations | `Disruption`, `VoiceSession`, `VoiceActionEvent`, `SupportLog` | Disruption seeded; rest live |
+| Layer      | Entities                                                                                                                                         | Source                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- |
+| Catalog    | `Destination`, `Airport`, `Supplier`, `AccommodationProduct`, `ActivityProduct`, `FlightRouteProduct`, `FlightRouteLeg`, `GroundTransferProduct` | Seeded from `dataset/*.json` |
+| Identity   | `Traveler`                                                                                                                                       | Seeded by demo               |
+| Trip       | `Trip`, `TripTraveler`, `TripSegment`, `Component`, `ComponentBooking`, `ComponentEvent`                                                         | Composed by `seed:demo-trip` |
+| Operations | `Disruption`, `VoiceSession`, `VoiceActionEvent`, `SupportLog`                                                                                   | Disruption seeded; rest live |
 
 ### The single rule the agent must respect
 
@@ -235,11 +234,18 @@ The data model is split into four layers; full design lives in:
 ### Key TypeScript types (defined in `packages/types`)
 
 ```ts
-type ComponentType    = 'flight' | 'accommodation' | 'activity' | 'transfer'
-type ComponentStatus  = 'planned' | 'quoted' | 'booked' | 'cancelled' | 'changed'
-type BookingStatus    = 'confirmed' | 'pending_change' | 'cancelled'
-type EventType        = 'departure' | 'arrival' | 'check_in' | 'check_out'
-                       | 'pickup' | 'meeting_point' | 'activity_start' | 'activity_end'
+type ComponentType = 'flight' | 'accommodation' | 'activity' | 'transfer'
+type ComponentStatus = 'planned' | 'quoted' | 'booked' | 'cancelled' | 'changed'
+type BookingStatus = 'confirmed' | 'pending_change' | 'cancelled'
+type EventType =
+  | 'departure'
+  | 'arrival'
+  | 'check_in'
+  | 'check_out'
+  | 'pickup'
+  | 'meeting_point'
+  | 'activity_start'
+  | 'activity_end'
 
 type Trip = {
   id: string
@@ -261,9 +267,15 @@ type ComponentBookingData =
 type VoiceActionEvent = {
   id: string
   type:
-    | 'session_started' | 'assistant_listening' | 'assistant_thinking'
-    | 'trip_loaded' | 'change_suggested' | 'confirmation_required'
-    | 'change_confirmed' | 'change_rejected' | 'support_log_created'
+    | 'session_started'
+    | 'assistant_listening'
+    | 'assistant_thinking'
+    | 'trip_loaded'
+    | 'change_suggested'
+    | 'confirmation_required'
+    | 'change_confirmed'
+    | 'change_rejected'
+    | 'support_log_created'
     | 'session_ended'
   payload: Record<string, unknown>
   createdAt: string
@@ -314,7 +326,6 @@ The agent's primary path is `getTripByPhone → getTripDisruptions → quoteHote
 ## 6. UI wireframes
 
 The hackathon implementation should be **web-first**. Build the full demo experience in `/apps/web`, but keep the UI components and app-state logic inside packages so the experience can later be projected into `/apps/mobile`. Think of `/apps/web` as the first renderer, not the only product.
-
 
 ### Web demo shell
 
@@ -493,20 +504,20 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Add Prisma + SQLite to `/apps/backend`
-- [ ] Translate `docs/erm.md` into `apps/backend/prisma/schema.prisma`
-- [ ] Generate Prisma client
-- [ ] Run `prisma migrate dev --name init`
-- [ ] In `/packages/types`, add Zod schemas for:
-  - [ ] `ComponentBookingData` (discriminated by `kind`)
-  - [ ] `ComponentEventLocation`
-  - [ ] `BookingPolicy`
-  - [ ] `VoiceActionEventPayload`
-  - [ ] `SuggestedAction` / `Disruption.suggestedActions`
-  - [ ] `AudioIntelligenceMetric`
-- [ ] Re-export Prisma enums from `/packages/types` so non-backend code can use them
-- [ ] Add `assertComponentDataMatchesType(data, type)` helper
-- [ ] Commit: `feat(backend): prisma schema and shared types`
+- [x] Add Prisma + SQLite to `/apps/backend`
+- [x] Translate `docs/erm.md` into `apps/backend/prisma/schema.prisma`
+- [x] Generate Prisma client
+- [x] Run `prisma migrate dev --name init`
+- [x] In `/packages/types`, add Zod schemas for:
+  - [x] `ComponentBookingData` (discriminated by `kind`)
+  - [x] `ComponentEventLocation`
+  - [x] `BookingPolicy`
+  - [x] `VoiceActionEventPayload`
+  - [x] `SuggestedAction` / `Disruption.suggestedActions`
+  - [x] `AudioIntelligenceMetric`
+- [x] Re-export Prisma enums from `/packages/types` so non-backend code can use them
+- [x] Add `assertComponentDataMatchesType(data, type)` helper
+- [x] Commit: `feat(backend): prisma schema and shared types`
 
 ### Agent prompt
 
@@ -1146,14 +1157,14 @@ This is a hackathon prototype, but it fits directly into EchoAway's future: the 
 ```ts
 export type AudioIntelligenceMetric = {
   scenario: 'clean' | 'airport_noise' | 'cafe_noise' | 'street_noise'
-  inputSignalToNoiseRatio?: number     // 0..1
-  enhancedSignalToNoiseRatio?: number  // 0..1
-  transcriptQuality: number            // 0..1
+  inputSignalToNoiseRatio?: number // 0..1
+  enhancedSignalToNoiseRatio?: number // 0..1
+  transcriptQuality: number // 0..1
   taskCompleted: boolean
   correctTripIdentified: boolean
   correctActionSuggested: boolean
   confirmationRequested: boolean
-  finalScore: number                   // 0..100
+  finalScore: number // 0..100
 }
 ```
 
@@ -1272,13 +1283,13 @@ The winning version is not the biggest version. The winning version is the one w
 
 ## Appendix — Where to look
 
-| If you need…                              | Look at                                       |
-|-------------------------------------------|-----------------------------------------------|
-| The canonical entity diagram              | [`docs/erm.md`](./docs/erm.md)                |
-| Why the schema is shaped this way         | [`docs/data-model.md`](./docs/data-model.md)  |
-| JSON shapes for `ComponentBooking.data`   | [`docs/component-data-shapes.md`](./docs/component-data-shapes.md) |
-| How the seed pipeline transforms dataset  | [`docs/seed-strategy.md`](./docs/seed-strategy.md) |
-| Raw inventory data                         | `dataset/*.json`                              |
-| Demo trip composition (5 components)      | [`docs/data-model.md`](./docs/data-model.md) §5 |
-| Tool API contract                         | PLAN.md §5 + `apps/backend/README.md`         |
-| Agent system prompt + tools               | `apps/voice-agent/README.md`                  |
+| If you need…                             | Look at                                                            |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| The canonical entity diagram             | [`docs/erm.md`](./docs/erm.md)                                     |
+| Why the schema is shaped this way        | [`docs/data-model.md`](./docs/data-model.md)                       |
+| JSON shapes for `ComponentBooking.data`  | [`docs/component-data-shapes.md`](./docs/component-data-shapes.md) |
+| How the seed pipeline transforms dataset | [`docs/seed-strategy.md`](./docs/seed-strategy.md)                 |
+| Raw inventory data                       | `dataset/*.json`                                                   |
+| Demo trip composition (5 components)     | [`docs/data-model.md`](./docs/data-model.md) §5                    |
+| Tool API contract                        | PLAN.md §5 + `apps/backend/README.md`                              |
+| Agent system prompt + tools              | `apps/voice-agent/README.md`                                       |

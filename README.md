@@ -69,28 +69,55 @@ The hackathon requires at least three. Used here:
 
 Requires Node 20+ and Yarn 1 (classic).
 
+### First-time setup
+
 ```bash
-yarn install
+cp .env.example .env       # single root env, all apps read from here
+yarn setup                 # install + run prisma migrate dev (creates dev.db)
 ```
 
-Each app exposes a placeholder dev command from the repo root:
+`yarn setup` is shorthand for `yarn install && yarn db:migrate`. The
+migrate step also runs `prisma generate`, which produces the typed Prisma
+Client into `node_modules/@prisma/client`. Without it, the backend can't
+import a working `PrismaClient`.
+
+### Daily commands (all from repo root)
 
 ```bash
-yarn dev:web          # Vite dev server, http://localhost:5173
+# dev servers
+yarn dev:web          # Vite, http://localhost:5173
 yarn dev:backend      # NestJS, http://localhost:4000
 yarn dev:voice-agent  # Node worker placeholder
-yarn dev:mobile       # Expo placeholder (prints a message in Phase 1)
+yarn dev:mobile       # Expo placeholder
+
+# database (Prisma + SQLite at apps/backend/prisma/dev.db)
+yarn db:generate      # regenerate Prisma Client (after schema change)
+yarn db:migrate       # apply pending migrations (creates one if schema drifted)
+yarn db:reset         # nuke dev.db + replay migrations + reseed
+yarn db:studio        # open Prisma Studio in the browser
+
+# seeds (Phase 2B/2C — not yet implemented)
+yarn seed             # catalog only (idempotent)
+yarn seed:demo        # catalog + Barcelona Long Weekend demo trip
+
+# checks
+yarn typecheck        # tsc --noEmit across every workspace
+yarn test             # @echoaway/types Zod round-trip
+yarn build            # build every workspace
 ```
 
-`.env.example` files live at the repo root and inside each app — copy each
-to `.env` and fill in API keys when you reach the relevant phase.
+### Environment
 
-Database seeding (added in Phase 2):
+There is **one** env file at the repo root: `/.env` (copied from
+`/.env.example`, gitignored). All apps read from it:
 
-```bash
-yarn seed       # catalog (idempotent)
-yarn seed:demo  # catalog + demo trip ("Barcelona Long Weekend")
-```
+- `apps/web` — Vite is configured with `envDir: '../..'`
+- `apps/backend` — `dotenv` loads `../../.env` in `src/main.ts`; Prisma
+  scripts go through `dotenv-cli -e ../../.env` so `DATABASE_URL`
+  resolves at migrate time
+- `apps/voice-agent` — `dotenv` loads `../../.env` in `src/index.ts`
+
+Don't create per-app `.env` files; that defeats the single-source rule.
 
 ---
 
