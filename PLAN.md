@@ -162,7 +162,7 @@ This means we are not "building a website instead of an app." We are building th
     Joins a LiveKit Cloud room when the web app starts a voice session
     @livekit/plugins-ai-coustics — realtime noise cancellation (Phase 6)
     Custom LiveKit TTS plugin wrapping Gradium TTS WebSocket (Phase 7)
-    Google Gen AI Node SDK — Gemini reasoning + tool calling (Phase 5)
+    @livekit/agents-plugin-google — Gemini reasoning + tool calling via LiveKit's universal LLM plugin (Phase 5; sibling plugins swap providers later)
     Tavily Node SDK — searchTravelContext tool (Phase 8)
     Tools call NestJS backend over HTTP; backend never touches audio
     Imports shared Zod schemas from @echoaway/types (yarn workspace)
@@ -199,7 +199,7 @@ Node + TS voice-agent (@livekit/agents)
   ↓ cleaned audio
 STT (LiveKit default in Phase 5; Gradium STT WS optional in Phase 7)
   ↓ transcript
-Gemini agent (Google Gen AI Node SDK) with tools
+Gemini agent via @livekit/agents-plugin-google (universal LLM plugin) with tools
   ↓ HTTP
 NestJS tool API → Prisma → SQLite (read trip / mutate booking / append event)
   ↓
@@ -898,7 +898,7 @@ stays a yarn workspace and imports `@echoaway/types`.
 - [ ] Create LiveKit Cloud account + project at <https://cloud.livekit.io/>
 - [ ] Install LiveKit CLI (`brew install livekit/livekit/livekit-cli` or platform equivalent)
 - [ ] `lk cloud auth` from the project root
-- [ ] Add `@livekit/agents`, `@livekit/rtc-node`, `livekit-server-sdk` to `apps/voice-agent`
+- [ ] Add `@livekit/agents`, `@livekit/agents-plugin-google`, `@livekit/rtc-node`, `livekit-server-sdk` to `apps/voice-agent` (LiveKit's plugin family is the universal LLM wrapper — swap to `@livekit/agents-plugin-openai` / `-anthropic` later by changing the plugin import, no agent rewrite)
 - [ ] Optional: bootstrap from `lk app create --template voice-pipeline-agent-node` and merge into the existing workspace structure
 - [ ] LiveKit env vars are already in `.env.example` (`LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`); confirm `GEMINI_API_KEY` is filled
 - [ ] Update `yarn dev:voice-agent` to start the agent in dev mode
@@ -912,7 +912,7 @@ stays a yarn workspace and imports `@echoaway/types`.
 
 #### Agent behavior
 
-- [ ] Wire Gemini via the official Google Gen AI Node SDK (`@google/genai` or `@google/generative-ai`, whichever LiveKit Agents documents) as the LLM
+- [ ] Wire Gemini via `@livekit/agents-plugin-google` as the LLM. This is LiveKit's universal LLM-plugin abstraction — switching providers later (OpenAI, Anthropic, Cerebras, …) means swapping the plugin import + env key, not rewriting the agent. Do **not** call `@google/genai` / `@google/generative-ai` directly from the agent loop; let the plugin own the SDK so the LLM stays interchangeable.
 - [ ] Define LiveKit agent tools mirroring §5 — each tool is a thin `fetch` wrapper around the NestJS backend; reuse Zod input schemas from `@echoaway/types` for tool definitions:
   - `getTripByPhone(phoneNumber)`
   - `getTripDisruptions(tripId)`
@@ -939,7 +939,7 @@ stays a yarn workspace and imports `@echoaway/types`.
 
 - [ ] `yarn dev:voice-agent` starts the agent and connects to LiveKit Cloud
 - [ ] Pressing "Talk to Away" in the web app joins the same room as the agent
-- [ ] Speaking the demo prompt triggers `quoteHotelCheckInChange` via Gemini tool calling
+- [ ] Speaking the demo prompt triggers `quoteHotelCheckInChange` via the LLM plugin's tool calling
 - [ ] Web UI updates via SSE within ~1s of each `VoiceActionEvent`
 - [ ] Replay script works fully offline with the backend running and produces an identical event sequence
 - [ ] Commit: `feat(voice-agent): livekit + gemini tool-calling skeleton`
@@ -965,8 +965,10 @@ Voice agent behavior (matches PLAN.md §5 tool API):
 - Tools listed in the checklist above; each is a thin fetch wrapper around the
   NestJS endpoints. The agent never talks to the DB directly. Reuse Zod input
   schemas from @echoaway/types for tool definitions.
-- LLM: Gemini via the Google Gen AI Node SDK. Configure in the @livekit/agents
-  Agent definition.
+- LLM: Gemini via @livekit/agents-plugin-google. This is LiveKit's universal
+  LLM-plugin abstraction — switching to OpenAI/Anthropic/etc. later is a
+  one-line plugin swap, not an agent rewrite. Do NOT call @google/genai /
+  @google/generative-ai directly from the agent loop; the plugin owns the SDK.
 - STT/TTS: LiveKit defaults for now (Gradium custom plugin lands in Phase 7).
 - ai-coustics: NOT in this phase (Phase 6).
 - Personality: calm, human, premium concierge; ALWAYS asks for confirmation
@@ -995,7 +997,8 @@ Deterministic fallback (critical for demo):
 
 Reference docs:
 - LiveKit Agents Node SDK: https://docs.livekit.io/agents/
-- Gemini Node SDK: https://ai.google.dev/gemini-api/docs/quickstart?lang=node
+- LiveKit LLM plugins (universal LLM wrapper): https://docs.livekit.io/agents/integrations/llm/
+- @livekit/agents-plugin-google: https://www.npmjs.com/package/@livekit/agents-plugin-google
 
 Acceptance criteria:
 - yarn dev:voice-agent starts the agent and connects to LiveKit Cloud
@@ -1255,7 +1258,7 @@ README must include:
 - architecture diagram + link to docs/erm.md
 - data model summary + link to docs/data-model.md
 - partner technologies used:
-  - Google DeepMind / Gemini (Google Gen AI Node SDK inside the LiveKit agent)
+  - Google DeepMind / Gemini (via @livekit/agents-plugin-google — LiveKit's universal LLM-plugin abstraction inside the LiveKit agent)
   - Gradium (TTS via custom @livekit/agents TTS class)
   - Tavily (Search via Tavily Node SDK)
   - ai-coustics for the track-specific audio layer (@livekit/plugins-ai-coustics)
