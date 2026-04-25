@@ -51,6 +51,22 @@ partner integrations.
 
 ---
 
+## Resource docs
+
+Vendored third-party API references (so agents can work offline).
+
+- [`docs/gradium/`](./docs/gradium/) — Gradium voice API (TTS/STT,
+  voices, pronunciation dictionaries). Start at
+  [`docs/gradium/index.md`](./docs/gradium/index.md).
+- [`docs/tavily/`](./docs/tavily/) — Tavily API (Search, Extract, Map,
+  Crawl, JS SDK). Start at
+  [`docs/tavily/index.md`](./docs/tavily/index.md).
+- [`docs/ai-coustics/`](./docs/ai-coustics/) — ai-coustics speech
+  enhancement (LiveKit plugin + Node SDK examples). Start at
+  [`docs/ai-coustics/index.md`](./docs/ai-coustics/index.md).
+
+---
+
 ## Partner technologies
 
 The hackathon requires at least three. Used here:

@@ -14,6 +14,9 @@ The four files under `docs/` are the **canonical** source of truth for the data 
 - **@docs/data-model.md** — narrative + decision log. Explains _why_ the schema looks the way it does, layer-by-layer rationale, the demo trip composition (§5), and what we deliberately don't model.
 - **@docs/component-data-shapes.md** — typed JSON contracts for `ComponentBooking.data`, `ComponentEvent.location`, `BookingPolicy`, `Disruption.suggestedActions`, `VoiceActionEvent.payload`, `VoiceSession.audioMetric`. Use these shapes verbatim in code.
 - **@docs/seed-strategy.md** — pipeline that turns `dataset/*.json` into the DB. Order of inserts, helpers (`matchDestinationByCity`, `parseCancellationToPolicy`, …), idempotency rules, demo-trip composition.
+- **@docs/gradium/index.md** — Gradium voice API reference (TTS/STT, voices, pronunciation dictionaries). Read this before touching `apps/voice-agent` voice code; start at `index.md` to find the right endpoint doc, don't grep the whole folder.
+- **@docs/tavily/index.md** — Tavily API reference (Search/Extract/Map/Crawl + JS SDK). Read this before implementing `searchTravelContext` or any other Tavily call; start at `index.md` to find the right endpoint doc.
+- **@docs/ai-coustics/index.md** — ai-coustics speech enhancement reference (LiveKit plugin path + Node SDK examples). Read this before touching any audio cleanup code in `apps/voice-agent`; start at `index.md` to choose the LiveKit vs Node SDK path.
 - **@PLAN.md** — phased build plan (Phase 1 setup → Phase 10 pitch). Each phase has a checklist and an agent prompt.
 - `dataset/*.json` — raw inventory: 28 destinations (Spain), 20 airports (10 DE / 10 ES), 80 hotels, 40 activities, 3 flight routes, 3 transfers.
 
