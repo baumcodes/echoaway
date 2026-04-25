@@ -93,3 +93,4 @@ Four layers: **Catalog** (reusable inventory seeded from `dataset/`), **Identity
 - `docs/` is the canonical source of truth for design. Update those files when the data model evolves; don't let the schema, types, or PLAN.md drift from them.
 - When adding components, hotels, flights, etc., source from `dataset/*.json` rather than inventing data.
 - The hackathon is solo and time-boxed (~48 hours) — keep scope tight per @PLAN.md §10.
+- **Tick PLAN.md checkboxes as you finish work.** When you complete a task in a phase and have verified it (build passes, endpoint works, etc.), flip its `- [ ]` to `- [x]` in @PLAN.md. Only check items you actually verified — don't check ahead.
