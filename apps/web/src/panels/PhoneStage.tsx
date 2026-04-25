@@ -2,6 +2,7 @@ import { useDemo } from '@echoaway/app'
 import { PhoneShell, VoiceMicButton } from '@echoaway/ui'
 import { AssistantOverlay } from './AssistantOverlay.js'
 import { BookingPager } from './BookingPager.js'
+import { SessionChimes } from './SessionChimes.js'
 import { TripOverview } from './TripOverview.js'
 import { TripTimeline } from './TripTimeline.js'
 
@@ -27,6 +28,8 @@ export function PhoneStage() {
         playsInline
         style={{ display: 'none' }}
       />
+      {/* Side-effect-only: plays chimes on room open/close edges. */}
+      <SessionChimes />
     </div>
   )
 }
