@@ -1,0 +1,28 @@
+{
+  "name": "echoaway",
+  "version": "0.0.0",
+  "private": true,
+  "description": "EchoAway Voice Concierge — Big Berlin Hack prototype",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:web": "yarn workspace @echoaway/web dev",
+    "dev:backend": "yarn workspace @echoaway/backend start:dev",
+    "dev:voice-agent": "yarn workspace @echoaway/voice-agent dev",
+    "dev:mobile": "yarn workspace @echoaway/mobile start",
+    "build": "yarn workspaces run build",
+    "typecheck": "yarn workspaces run typecheck",
+    "seed": "yarn workspace @echoaway/backend seed:catalog",
+    "seed:demo": "yarn workspace @echoaway/backend seed:demo"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}

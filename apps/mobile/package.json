@@ -1,0 +1,19 @@
+{
+  "name": "@echoaway/mobile",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Expo placeholder. Reuses /packages/ui and /packages/app once wired.",
+  "scripts": {
+    "start": "node -e \"console.log('mobile: Expo scaffold pending. See PLAN.md Phase 1 — placeholder only.')\"",
+    "build": "node -e \"process.exit(0)\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@echoaway/app": "0.0.0",
+    "@echoaway/types": "0.0.0",
+    "@echoaway/ui": "0.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

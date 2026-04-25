@@ -1,0 +1,27 @@
+node_modules/
+dist/
+build/
+.next/
+.expo/
+.expo-shared/
+.cache/
+.turbo/
+coverage/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Prisma (added in Phase 2A)
+*.db
+*.db-journal
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# TypeScript build info
+*.tsbuildinfo
