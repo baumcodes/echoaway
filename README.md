@@ -46,6 +46,8 @@ Design docs (canonical):
   Prisma pipeline.
 - [`docs/seed-setup.md`](./docs/seed-setup.md) — exact commands and order
   to seed a fresh checkout (catalog → demo trip → sanity).
+- [`docs/runtime-flow.md`](./docs/runtime-flow.md) — mermaid diagrams of
+  the realtime audio + control loop and the demo conversation sequence.
 
 Build plan: [`PLAN.md`](./PLAN.md). Phase 1 sets up the monorepo
 skeleton; Phase 2 adds Prisma + seeds; Phase 3+ build UI, voice, and
