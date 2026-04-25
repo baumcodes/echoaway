@@ -23,7 +23,7 @@ that works in the wild") with side-challenge targets at **Gradium** and
 /apps
   /web          Vite + React — primary demo renderer
   /mobile       Expo placeholder — reuses /packages later
-  /backend      NestJS + Prisma + SQLite (Prisma added in Phase 2A)
+  /backend      NestJS + Prisma + SQLite
   /voice-agent  Node worker — Gemini + Gradium + ai-coustics
 
 /packages
@@ -45,9 +45,9 @@ Design docs (canonical):
 - [`docs/seed-strategy.md`](./docs/seed-strategy.md) — `dataset/*.json` →
   Prisma pipeline.
 
-Build plan: [`PLAN.md`](./PLAN.md). Phase 1 (this commit) sets up the
-monorepo skeleton; Phase 2 adds Prisma + seeds; Phase 3+ build UI, voice,
-and partner integrations.
+Build plan: [`PLAN.md`](./PLAN.md). Phase 1 sets up the monorepo
+skeleton; Phase 2 adds Prisma + seeds; Phase 3+ build UI, voice, and
+partner integrations.
 
 ---
 
@@ -96,9 +96,9 @@ yarn db:migrate       # apply pending migrations (creates one if schema drifted)
 yarn db:reset         # nuke dev.db + replay migrations + reseed
 yarn db:studio        # open Prisma Studio in the browser
 
-# seeds (Phase 2B/2C — not yet implemented)
-yarn seed             # catalog only (idempotent)
-yarn seed:demo        # catalog + Barcelona Long Weekend demo trip
+# seeds
+yarn seed             # catalog from /dataset (idempotent, ~80 hotels etc.)
+yarn seed:demo        # catalog + demo trip (demo-trip step lands in Phase 2C)
 
 # checks
 yarn typecheck        # tsc --noEmit across every workspace
@@ -135,10 +135,13 @@ Demo trip seed: [`docs/seed-strategy.md`](./docs/seed-strategy.md) §3.
 
 ## Status
 
-**Phase 1 — Scope lock and repository setup** is complete. The monorepo
-installs cleanly and each workspace has a placeholder start command. The
-shared `@echoaway/types` package already exposes the canonical enums and
-Zod schemas from the design docs so subsequent phases can import them
-without churn.
+- **Phase 1 — Scope lock and repository setup**: complete. Monorepo
+  installs cleanly; `@echoaway/types` exposes the canonical enums + Zod
+  schemas from the design docs.
+- **Phase 2A — Prisma schema and types**: complete. `apps/backend/prisma/schema.prisma`
+  mirrors `docs/erm.md`. Migration `init` is applied.
+- **Phase 2B — Catalog seed from dataset**: complete. `yarn seed` loads
+  ~180 catalog rows idempotently. See
+  [`apps/backend/prisma/seed/README.md`](./apps/backend/prisma/seed/README.md).
 
-Next: **Phase 2A — Prisma schema and types**.
+Next: **Phase 2C — Demo trip seed**.

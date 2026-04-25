@@ -10,7 +10,10 @@
     "prisma:generate": "dotenv -e ../../.env -- prisma generate",
     "prisma:migrate:dev": "dotenv -e ../../.env -- prisma migrate dev",
     "prisma:migrate:reset": "dotenv -e ../../.env -- prisma migrate reset",
-    "prisma:studio": "dotenv -e ../../.env -- prisma studio"
+    "prisma:studio": "dotenv -e ../../.env -- prisma studio",
+    "seed:catalog": "tsx prisma/seed/index.ts catalog",
+    "seed:demo": "tsx prisma/seed/index.ts demo",
+    "sanity": "tsx prisma/seed/sanity.ts"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
@@ -31,6 +34,7 @@
     "dotenv-cli": "^7.4.2",
     "prisma": "^5.22.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.16.0",
     "typescript": "^5.4.5"
   }
 }

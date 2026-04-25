@@ -574,18 +574,18 @@ Acceptance criteria:
 
 ### Checklist
 
-- [ ] Add `yarn seed:catalog` script wired through `prisma db seed`
-- [ ] Create `apps/backend/prisma/seed/catalog/` with one file per entity
-- [ ] Implement helpers in `seed/catalog/shared.ts`:
-  - [ ] `inferDestinationType(src)`
-  - [ ] `matchDestinationByCity(city)`
-  - [ ] `matchSupplier(name)`
-  - [ ] `parseCancellationToPolicy(raw)`
-  - [ ] `airportByIata(iata)`
-- [ ] Insert order per `docs/seed-strategy.md` §2.1
-- [ ] Idempotent upserts on source `_id`
-- [ ] Sanity script that prints row counts after seeding
-- [ ] Commit: `feat(backend): catalog seed from dataset`
+- [x] Add `yarn seed:catalog` script wired through `prisma db seed`
+- [x] Create `apps/backend/prisma/seed/catalog/` with one file per entity
+- [x] Implement helpers in `seed/catalog/shared.ts`:
+  - [x] `inferDestinationType(src)`
+  - [x] `matchDestinationByCity(city)`
+  - [x] `matchSupplier(name)`
+  - [x] `parseCancellationToPolicy(raw)`
+  - [x] `airportByIata(iata)`
+- [x] Insert order per `docs/seed-strategy.md` §2.1
+- [x] Idempotent upserts on source `_id`
+- [x] Sanity script that prints row counts after seeding
+- [x] Commit: `feat(backend): catalog seed from dataset`
 
 ### Agent prompt
 
